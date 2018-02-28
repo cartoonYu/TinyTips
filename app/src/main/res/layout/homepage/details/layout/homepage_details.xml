@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--笔记详情页-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/homePageDetails">
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/ashBlack"
+        android:id="@+id/homePageDetailsToolbar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:id="@+id/toolBarBack"/>
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/homePageDetailsToolbar"
+        android:background="@null"
+        android:id="@+id/homePageDetailsDetails"/>
+</RelativeLayout>

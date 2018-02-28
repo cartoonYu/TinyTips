@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--个人资料签名修改页-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"
+        android:id="@+id/personalProfileRevampSignatureToolbar"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="请输入你的签名"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:id="@+id/personalProfileRevampSignature"
+        android:layout_below="@id/personalProfileRevampSignatureToolbar"/>
+</RelativeLayout>
