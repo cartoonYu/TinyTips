@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.cartoon.tinytips.DbUtil.DatabaseUtil;
@@ -17,22 +18,16 @@ import java.util.logging.Handler;
 
 public class AddNoteModel implements IAddNote.Model {
     private Note note;
-    private SQLiteDatabase db;
-
-    public AddNoteModel(SQLiteDatabase sqLiteDatabase) {
-        super();
-        db=sqLiteDatabase;
-    }
 
     @Override
-    public void addNote(ValueCallBack<String> callBack) {
+    public void addNote(final ValueCallBack<String> callBack) {
         if ((note.getDetails().equals(null))&&note.getAuthor().equals(null)){
             callBack.onFail("笔记新建失败，请重试");
         }else{
             new android.os.Handler().post(new Runnable() {
                 @Override
                 public void run() {
-                    DatabaseUtil.insert(note,db);
+                    DatabaseUtil.insert(note);
                 }
             });
             callBack.onSuccess("新建笔记成功");

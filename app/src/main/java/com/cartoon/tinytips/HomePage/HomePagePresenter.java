@@ -21,24 +21,26 @@ import java.util.List;
  * 2.HomePagePresenter所有函数应到IHomePage.Presenter定义再在此重写方法
  */
 
-class HomePagePresenter extends BaseFragmentPresenter<HomePage> implements IHomePage.Presenter{
+class HomePagePresenter extends BaseFragmentPresenter<HomePage>
+        implements IHomePage.Presenter{
+
     private IHomePage.View view;
     private IHomePage.Model model;
     private List<Note> noteList;
+
     public HomePagePresenter(IHomePage.View view){
         this.view=view;
-        model=new HomePageModel(view.getMyDatabaseHelper().getWritableDatabase());
+        model=new HomePageModel(view.getContext());
         noteList=new ArrayList<>();
     }
     @Override
     public void initData(){
         //为View层的初始化提供数据
-        noteList=model.getHomePageMessages(new ValueCallBack<List<Note>>() {
+        model.getHomePageMessages(new ValueCallBack<List<Note>>() {
             @Override
             public void onSuccess(List<Note> notes) {
                 noteList=notes;
             }
-
             @Override
             public void onFail(String code) {
                 view.showToast(code);

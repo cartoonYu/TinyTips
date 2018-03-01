@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -221,7 +222,9 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mSelectedItems.add(newClassify.getText().toString());
+                if(!newClassify.getText().toString().isEmpty()){
+                    mSelectedItems.add(newClassify.getText().toString());
+                }
                 if(mSelectedItems.size()<=3){
                     getClassify(mSelectedItems);
                     for(int i=0;i<mSelectedItems.size();i++){

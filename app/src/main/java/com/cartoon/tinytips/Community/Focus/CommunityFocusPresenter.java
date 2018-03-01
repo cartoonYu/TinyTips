@@ -14,7 +14,8 @@ import com.cartoon.tinytips.BaseFragmentPresenter;
  * 2.CommunityFocusPresenter所有函数应到ICommunityFocus.Presenter定义再在此重写方法
  */
 
-class CommunityFocusPresenter extends BaseFragmentPresenter<CommunityFocus> implements ICommunityFocus.Presenter{
+class CommunityFocusPresenter extends BaseFragmentPresenter<CommunityFocus>
+        implements ICommunityFocus.Presenter{
     private ICommunityFocus.View view;
     public CommunityFocusPresenter(ICommunityFocus.View view){
         this.view=view;

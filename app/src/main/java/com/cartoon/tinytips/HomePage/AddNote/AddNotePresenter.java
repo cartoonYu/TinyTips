@@ -15,7 +15,7 @@ class AddNotePresenter extends BaseActivityPresenter<AddNote> implements IAddNot
     private IAddNote.Model model;
     public AddNotePresenter(IAddNote.View view){
         this.view=view;
-        this.model=new AddNoteModel(view.getMyDatabaseHelper().getWritableDatabase());
+        this.model=new AddNoteModel();
     }
     @Override
     public void saveNote(String title, String date, String author,String imageDetails, String details, String[] classify, boolean isCollect) {

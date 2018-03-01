@@ -12,7 +12,8 @@ import com.cartoon.tinytips.BaseActivityPresenter;
  * 2.MainPresenter所有函数应到IMain.Presenter定义再在此重写方法
  */
 
-class MainPresenter extends BaseActivityPresenter<Main> implements IMain.Presenter{
+class MainPresenter extends BaseActivityPresenter<Main>
+        implements IMain.Presenter{
     private IMain.View view;
     public MainPresenter(IMain.View view){
         this.view=view;

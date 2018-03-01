@@ -14,7 +14,8 @@ import com.cartoon.tinytips.BaseFragmentPresenter;
  * 2.CommunityHotPresenter所有函数应到ICommunityHot.Presenter定义再在此重写方法
  */
 
-public class CommunityHotPresenter extends BaseFragmentPresenter<CommunityHot> implements ICommunityHot.Presenter{
+public class CommunityHotPresenter extends BaseFragmentPresenter<CommunityHot>
+        implements ICommunityHot.Presenter{
     private ICommunityHot.View view;
     public CommunityHotPresenter(ICommunityHot.View view){
         this.view=view;

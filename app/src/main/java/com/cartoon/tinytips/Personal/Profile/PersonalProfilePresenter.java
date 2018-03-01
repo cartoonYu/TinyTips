@@ -14,7 +14,8 @@ import com.cartoon.tinytips.BaseActivityPresenter;
  * 2.PersonalProfilePresenter所有函数应到IPersonalProfile.Presenter定义再在此重写方法
  */
 
-class PersonalProfilePresenter extends BaseActivityPresenter<PersonalProfile> implements IProfile.Presenter{
+class PersonalProfilePresenter extends BaseActivityPresenter<PersonalProfile>
+        implements IProfile.Presenter{
     private IProfile.View view;
     public PersonalProfilePresenter(IProfile.View view){
         this.view=view;

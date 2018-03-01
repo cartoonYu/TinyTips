@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -105,11 +106,11 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     }
 
     @Override
-    public MyDatabaseHelper getMyDatabaseHelper() {
-        return new MyDatabaseHelper(getActivity(),"TinyTips.db",null,1);
-    }
-    @Override
     public void showToast(String code){
         Toast.makeText(getActivity(),code,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public Context getContext(){
+        return getActivity().getApplicationContext();
     }
 }

@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.HomePage;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
@@ -18,13 +19,13 @@ import java.util.List;
 interface IHomePage {
     interface View{
         void initNote();       //初始化笔记列表
-        MyDatabaseHelper getMyDatabaseHelper();
         void showToast(String code);
+        Context getContext();
     }
     interface Presenter{
         void initData();
     }
     interface Model{
-        List<Note> getHomePageMessages(ValueCallBack<List<Note>> noteList);
+        void getHomePageMessages(ValueCallBack<List<Note>> noteList);
     }
 }

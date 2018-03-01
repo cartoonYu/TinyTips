@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
+import android.content.Context;
+
 import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.data.TableNote.Note;
@@ -27,7 +29,6 @@ interface IAddNote {
         String getImageDetails();
         MyDatabaseHelper getMyDatabaseHelper();
         void showToast(String code);
-
     }
     interface Presenter{
         void saveNote(String title, String date,String author,String imageDetails,String details,String[] classify,boolean isCollect);

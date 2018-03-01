@@ -14,7 +14,8 @@ import com.cartoon.tinytips.BaseActivityPresenter;
  * 2.PersonalSecurityPresenter所有函数应到IPersonalSecurity.Presenter定义再在此重写方法
  */
 
-class PersonalSecurityPresenter extends BaseActivityPresenter<PersonalSecurity> implements ISecurity.Presenter{
+class PersonalSecurityPresenter extends BaseActivityPresenter<PersonalSecurity>
+        implements ISecurity.Presenter{
     private ISecurity.View view;
     public PersonalSecurityPresenter(ISecurity.View view){
         this.view=view;

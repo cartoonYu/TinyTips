@@ -14,7 +14,8 @@ import com.cartoon.tinytips.BaseFragmentPresenter;
  * 2.PersonalPresenter所有函数应到IPersonal.Presenter定义再在此重写方法
  */
 
-class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPersonal.Presenter{
+class PersonalPresenter extends BaseFragmentPresenter<Personal> implements
+        IPersonal.Presenter{
     private IPersonal.View view;
     public PersonalPresenter(IPersonal.View view){
         this.view=view;
