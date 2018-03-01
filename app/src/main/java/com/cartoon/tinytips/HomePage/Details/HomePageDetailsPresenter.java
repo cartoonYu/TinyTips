@@ -2,6 +2,7 @@ package com.cartoon.tinytips.HomePage.Details;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.data.TableNote.Note;
 
 /**
  * Created by cartoon on 2018/2/11.
@@ -23,8 +24,8 @@ class HomePageDetailsPresenter extends BaseActivityPresenter<HomePageDetails> im
         this.model=new HomePageDetailsModel();
     }
     @Override
-    public void deleteNote(){
-        model.setNote(view.deleteNote());
+    public void deleteNote(Note note){
+        model.setNote(note);
         model.deleteNote(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String s) {

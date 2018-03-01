@@ -130,6 +130,7 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
             popupView.findViewById(R.id.homePageDetailsDeleteConfirm).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    presenter.deleteNote(note);
                     popupWindow.dismiss();
                     lightOn();
                 }
@@ -146,11 +147,10 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
             popupWindow.dismiss();
             lightOn();
         }
-        lightOff();
         popupWindow.showAtLocation(HomePageDetails.this.findViewById(R.id.homePageDetails),
                 Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
-
         popupView.startAnimation(animation);
+        lightOff();
     }
     @Override
     public void handleClickRevamp(){
@@ -182,7 +182,7 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
     public void lightOn(){
         //调整背景亮度
         WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = 0.3f;
+        lp.alpha = 1f;
         getWindow().setAttributes(lp);
     }
     @Override
@@ -196,10 +196,6 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.homepage_details,menu);
         return true;
-    }
-    @Override
-    public Note deleteNote(){
-        return this.note;
     }
     @Override
     public void onBackPressed(){

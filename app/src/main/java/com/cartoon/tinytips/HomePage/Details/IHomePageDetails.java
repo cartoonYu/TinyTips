@@ -18,10 +18,9 @@ interface IHomePageDetails {
         void lightOn();
         void lightOff();
         void showToast(String code);
-        Note deleteNote();     //把要删除的Note传进Presenter
     }
     interface Presenter{
-        void deleteNote();
+        void deleteNote(Note note);
     }
     interface Model{
         void deleteNote(ValueCallBack<String> code);
