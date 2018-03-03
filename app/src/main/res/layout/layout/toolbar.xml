@@ -47,7 +47,7 @@
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_toLeftOf="@id/tooBarTool1"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="40dp"
             android:id="@+id/tooBarTool2" />
         <TextView
             android:layout_width="wrap_content"

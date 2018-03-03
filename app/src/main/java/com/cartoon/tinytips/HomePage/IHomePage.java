@@ -19,8 +19,9 @@ import java.util.List;
 interface IHomePage {
     interface View{
         void initNote();       //初始化笔记列表
+        void handleClickSearch();
+        void handleClickAdd();
         void showToast(String code);
-        Context getContext();
     }
     interface Presenter{
         void initData();

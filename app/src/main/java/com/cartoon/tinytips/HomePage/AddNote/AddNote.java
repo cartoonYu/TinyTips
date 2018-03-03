@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -83,8 +84,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     private View v;
 
     private String imageDetails;
-
-
+    private String[] classifyInDialog;      //供用户选择的分类集合，数据来源为数据库
 
     @Override
     protected AddNotePresenter initPresent(){
@@ -114,6 +114,10 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     @Override
     public void onPrepare(){
         back.setOnClickListener(this);
+        title.setOnClickListener(this);
+        classify[0].setOnClickListener(this);
+        classify[1].setOnClickListener(this);
+        classify[2].setOnClickListener(this);
         save.setOnClickListener(this);
         menu.setOnClickListener(this);
         addTitle.setOnClickListener(this);
@@ -127,6 +131,26 @@ public class AddNote extends BaseActivity<AddNotePresenter>
             case R.id.toolBarBack:{
                 //点击标题栏上的返回按钮
                 handleClickBack();
+                break;
+            }
+            case R.id.toolBarTag:{
+                //点击标题栏的标题
+                handleClickAddTitle();
+                break;
+            }
+            case R.id.tooBarTool2:{
+                //点击标题3
+                handleClickClassify(2);
+                break;
+            }
+            case R.id.tooBarTool3:{
+                //点击标题2
+                handleClickClassify(1);
+                break;
+            }
+            case R.id.tooBarTool4:{
+                //点击标题1
+                handleClickClassify(0);
                 break;
             }
             case R.id.tooBarTool1:{
@@ -164,6 +188,34 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         finish();
     }
     @Override
+    public void handleClickClassify(final int i){
+        classifyInDialog=new String[]{"1","2","3"};
+        inflater=LayoutInflater.from(this);
+        v=inflater.inflate(R.layout.homepage_add_note_classify, null);
+        final EditText newClassify=v.findViewById(R.id.homePageAddNoteMenuAddClassifyClassify);
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle("请选择或输入分类");
+        builder.setView(v);
+        builder.setItems(classifyInDialog, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                classify[i].setText(classifyInDialog[which]);
+            }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                classify[i].setText(newClassify.getText().toString());
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
+    }
+    @Override
     public void handleClickSave(){
         presenter.addNote();
     }
@@ -198,7 +250,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     @Override
     public void handleClickAddClassify(){
         drawerLayout.closeDrawers();
-        final String[] classifyInDialog=new String[]{"1","2","3"};
+        classifyInDialog=new String[]{"1","2","3"};
         final List<String> mSelectedItems = new ArrayList();
         inflater=LayoutInflater.from(this);
         v=inflater.inflate(R.layout.homepage_add_note_classify, null);
@@ -227,12 +279,18 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                 }
                 if(mSelectedItems.size()<=3){
                     getClassify(mSelectedItems);
+                    for(int i=0;i<3;i++){
+                        classify[i].setText("");
+                    }
                     for(int i=0;i<mSelectedItems.size();i++){
                         classify[i].setText(mSelectedItems.get(i));
                     }
                 }
                 else{
                     showToast("只能选择或填写3个分类");
+                }
+                for(int i=0;i<mSelectedItems.size();i++){
+                    mSelectedItems.remove(i);
                 }
             }
         });
@@ -326,7 +384,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         return imageDetails;
     }
 
-
     //把图片转化为SpannableString并加载到edittext中
     public void addBitmapToText(Bitmap bitmap){
         if(bitmap!=null){
@@ -346,12 +403,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
             showToast("加载图片失败");
         }
     }
-
-    @Override
-    public MyDatabaseHelper getMyDatabaseHelper() {
-        return new MyDatabaseHelper(this,"TinyTips.db",null,1);
-    }
-
     @Override
     public void onBackPressed(){
         handleClickBack();

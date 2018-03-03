@@ -2,10 +2,15 @@ package com.cartoon.tinytips.HomePage;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +59,10 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
 
     private Intent intent;
 
+    private AlertDialog.Builder builder;
+    private LayoutInflater inflater;
+    private View v;
+
     @Override
     protected int getLayout(){
         return R.layout.homepage;
@@ -83,21 +92,48 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
         switch (view.getId()){
             case R.id.tooBarTool2:{
                 //点击标题栏上的搜索按钮
+                handleClickSearch();
                 break;
             }
             case R.id.tooBarTool1:{
                 //点击标题栏上的添加按钮
-                intent=new Intent(getActivity(), AddNote.class);
-                startActivity(intent);
-                getActivity().finish();
+                handleClickAdd();
                 break;
             }
         }
     }
     @Override
+    public void handleClickSearch(){
+        inflater=LayoutInflater.from(getContext());
+        v=inflater.inflate(R.layout.homepage_search, null);
+        final EditText search=v.findViewById(R.id.homePageSearch);
+        builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("请输入分类");
+        builder.setView(v);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //搜索逻辑在这里编写
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
+    }
+    @Override
+    public void handleClickAdd(){
+        intent=new Intent(getActivity(), AddNote.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+    @Override
     public void initNote() {
         //初始化笔记列表
         noteList=new ArrayList<>();
+        presenter.initData();
         noteList=presenter.getNoteList();
         manager = new GridLayoutManager(getActivity(), 1);
         note.setLayoutManager(manager);
@@ -108,9 +144,5 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     @Override
     public void showToast(String code){
         Toast.makeText(getActivity(),code,Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public Context getContext(){
-        return getActivity().getApplicationContext();
     }
 }

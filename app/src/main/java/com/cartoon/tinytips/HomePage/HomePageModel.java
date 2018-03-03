@@ -2,6 +2,7 @@ package com.cartoon.tinytips.HomePage;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.cartoon.tinytips.DbUtil.DatabaseUtil;
 import com.cartoon.tinytips.ValueCallBack;
@@ -15,18 +16,17 @@ import java.util.List;
  */
 
 public class HomePageModel implements IHomePage.Model {
-    private List<Note> noteList;
-    private Context context;
 
-    public HomePageModel(Context context) {
+    private List<Note> noteList;
+
+    public HomePageModel() {
         super();
-        this.context=context;
         noteList=new ArrayList<>();
     }
 
     @Override
     public void getHomePageMessages(ValueCallBack<List<Note>> callBack) {
-        noteList= DatabaseUtil.queryNote(context,"note",
+        noteList= DatabaseUtil.queryNote("note",
                 null,null,null,null,null,"date",null);
         if (noteList.isEmpty()){
             callBack.onFail("笔记初始化失败，请重试");

@@ -19,6 +19,7 @@ interface IAddNote {
         void handleClickMenu();
         void handleClickAddTitle();
         void handleClickAddClassify();
+        void handleClickClassify(int i);
         void handleClickSelectPhoto();
         String getDate();
         String getAuthor();
@@ -27,7 +28,6 @@ interface IAddNote {
         Boolean getIsCollect();
         String getNoteTitle();
         String getImageDetails();
-        MyDatabaseHelper getMyDatabaseHelper();
         void showToast(String code);
     }
     interface Presenter{

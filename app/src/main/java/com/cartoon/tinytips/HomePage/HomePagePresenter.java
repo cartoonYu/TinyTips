@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.ValueCallBack;
@@ -30,7 +31,7 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
 
     public HomePagePresenter(IHomePage.View view){
         this.view=view;
-        model=new HomePageModel(view.getContext());
+        model=new HomePageModel();
         noteList=new ArrayList<>();
     }
     @Override
