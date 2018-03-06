@@ -35,7 +35,9 @@ public class Note implements Serializable{
         this.title=titile;
         this.date=date;
         this.author=author;
+        this.imageDetails=imageDetails;
         this.details=details;
+        this.classify=new String[3];
         this.classify=classify;
         this.isCollect=isCollect;
     }

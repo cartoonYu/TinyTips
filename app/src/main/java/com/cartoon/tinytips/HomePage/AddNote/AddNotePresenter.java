@@ -24,13 +24,13 @@ class AddNotePresenter extends BaseActivityPresenter<AddNote> implements IAddNot
 
     @Override
     public void addNote() {
-        saveNote("title",view.getDate(),"author",view.getImageDetails(),view.getDetails(),new String[]{"classify"},true);
+        saveNote(view.getNoteTitle(),view.getDate(),"author",view.getImageDetails(),view.getDetails(),new String[]{"d"},true);
         model.addNote(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String Code) {
                 view.showToast(Code);
+                view.handleClickBack();
             }
-
             @Override
             public void onFail(String Code) {
                 view.showToast(Code);

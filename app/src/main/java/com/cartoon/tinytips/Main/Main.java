@@ -23,7 +23,7 @@ import com.cartoon.tinytips.R;
  * 1.为首页（HomePage),社区(Community)，我的(Personal)提供切换支持
  *
  * 操作：
- * 1.在其他活动返回到此活动的时候，初始化页面时底部导航栏还是默认第一个，还不能人为控制
+ * 1.在其他活回到此活动的时候，初始化页面时底部导航栏还是默认第一个，还不能人为控制
  */
 
 public class Main extends BaseActivity<MainPresenter> implements IMain.View,BottomNavigationBar.OnTabSelectedListener {

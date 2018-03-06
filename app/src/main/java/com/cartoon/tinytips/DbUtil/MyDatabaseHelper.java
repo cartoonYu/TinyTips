@@ -32,13 +32,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_NOTE="create table Note("
             +"title TEXT,"
             +"date TEXT,"
-            /*+"FOREIGN KEY(author) REFERENCES PersonalInformation(nickName),"
-            +"ON DELETE CASCADE"
-            +"ON UPDATE CASCADE,"*/
+            +"author TEXT,"
             +"imageDetails BLOB,"
             +"details BLOB,"
             +"classify TEXT,"
-            +"isCollect INTEGER);";
+            +"isCollect INTEGER"
+            //未使用PersonalInformation时，不可关联主键
+            /*+ "FOREIGN KEY(author) REFERENCES PersonalInformation(nickName) "
+            +"ON DELETE CASCADE "
+            +"ON UPDATE CASCADE "*/
+            +");";
     public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context=context;

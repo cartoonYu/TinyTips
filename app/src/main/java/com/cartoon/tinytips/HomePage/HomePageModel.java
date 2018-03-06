@@ -26,8 +26,9 @@ public class HomePageModel implements IHomePage.Model {
 
     @Override
     public void getHomePageMessages(ValueCallBack<List<Note>> callBack) {
-        noteList= DatabaseUtil.queryNote("note",
-                null,null,null,null,null,"date",null);
+        noteList= DatabaseUtil.queryNote("Note",
+                null,null,null,null,null,null,null);
+
         if (noteList.isEmpty()){
             callBack.onFail("笔记初始化失败，请重试");
         }else {

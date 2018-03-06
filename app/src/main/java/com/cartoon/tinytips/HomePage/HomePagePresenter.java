@@ -40,7 +40,7 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
         model.getHomePageMessages(new ValueCallBack<List<Note>>() {
             @Override
             public void onSuccess(List<Note> notes) {
-                noteList=notes;
+                noteList.addAll(notes);
             }
             @Override
             public void onFail(String code) {

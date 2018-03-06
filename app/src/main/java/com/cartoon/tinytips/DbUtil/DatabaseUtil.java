@@ -22,13 +22,19 @@ public class DatabaseUtil {
             (TinyTipsApplication.getContext(),"TinyTips.db",null,1);
     private static SQLiteDatabase db=helper.getWritableDatabase();
     public static void insert(Note note){
+        String string="";
+        for(int i=0;i<note.getClassify().length;i++){
+            string=string+note.getClassify()[i];
+        }
         values.put("title",note.getTitle());
         values.put("date",note.getDate());
         values.put("author",note.getAuthor());
         values.put("imageDetails",note.getImageDetails());
         values.put("details",note.getDetails());
-        values.put("classify",note.getClassify()[0]+","+note.getClassify()[1]+","+note.getClassify()[2]);
+        //values.put("classify",note.getClassify()[0]+","+note.getClassify()[1]+","+note.getClassify()[2]);
+        values.put("classify",string);
         values.put("isCollect",note.isCollect());
+        Log.d("sdf", "insert: "+values.getAsString("title"));
         db.insert("Note",null,values);
     }
     public static List<Note> queryNote(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit){
@@ -46,8 +52,8 @@ public class DatabaseUtil {
                 }
                 note=new Note(cursor.getString(cursor.getColumnIndex("title")),
                         cursor.getString(cursor.getColumnIndex("date")),
-                        cursor.getString(cursor.getColumnIndex("nickName")),
-                        cursor.getString(cursor.getColumnIndex("ImageDetails")),
+                        cursor.getString(cursor.getColumnIndex("author")),
+                        cursor.getString(cursor.getColumnIndex("imageDetails")),
                         cursor.getString(cursor.getColumnIndex("details")),
                         cursor.getString(cursor.getColumnIndex("classify")).split(","),
                         isCollect);

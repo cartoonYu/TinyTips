@@ -27,10 +27,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -85,6 +87,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
 
     private String imageDetails;
     private String[] classifyInDialog;      //供用户选择的分类集合，数据来源为数据库
+    private String[] classifyString;
 
     @Override
     protected AddNotePresenter initPresent(){
@@ -249,6 +252,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     }
     @Override
     public void handleClickAddClassify(){
+        classifyString=new String[3];
         drawerLayout.closeDrawers();
         classifyInDialog=new String[]{"1","2","3"};
         final List<String> mSelectedItems = new ArrayList();
@@ -278,7 +282,8 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                     mSelectedItems.add(newClassify.getText().toString());
                 }
                 if(mSelectedItems.size()<=3){
-                    getClassify(mSelectedItems);
+                    classifyString=mSelectedItems.toArray(new String[3]);
+                    //getClassify(mSelectedItems);
                     for(int i=0;i<3;i++){
                         classify[i].setText("");
                     }

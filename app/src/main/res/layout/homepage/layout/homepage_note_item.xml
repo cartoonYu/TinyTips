@@ -22,12 +22,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:gravity="start"
                 android:textSize="18sp"
                 android:id="@+id/homePageNoteTitle"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:textSize="16sp"
+                android:gravity="start"
                 android:id="@+id/homePageNoteWord"/>
             <TextView
                 android:layout_width="match_parent"
