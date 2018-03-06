@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -25,7 +27,9 @@ import com.cartoon.tinytips.R;
  * 2.1中的操作写到保存按钮的点击事件中（函数onClick）
  */
 
-public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter> implements ISecurity.View, View.OnClickListener{
+public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter>
+        implements ISecurity.View, View.OnClickListener{
+
     private TextView back;      //标题栏上的返回按键，点击返回在我的页面
     private TextView tag;        //标题栏上返回按钮右边的textView，用于显示当前页面名字
     private TextView save;      //标题栏上的保存按钮，点击对所输入的原密码，新密码，确认密码（与新密码进行匹配）对比，相同保存在数据库上，并返回我的页面
@@ -64,27 +68,48 @@ public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter> im
         switch (view.getId()){
             case R.id.toolBarBack:{
                 //点击标题栏上的返回按钮
-                Intent intent=new Intent(this,Main.class);
-                intent.putExtra("flag",2);
-                startActivity(intent);
-                finish();
+                handleClickBack();
                 break;
             }
             case R.id.tooBarTool1:{
                 //点击标题栏上的保存
-                Intent intent=new Intent(this,Main.class);
-                intent.putExtra("flag",2);
-                startActivity(intent);
-                finish();
+                handleClickSave();
                 break;
             }
         }
     }
     @Override
-    public void onBackPressed(){
+    public void handleClickBack(){
         Intent intent=new Intent(this,Main.class);
         intent.putExtra("flag",2);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void handleClickSave(){
+        presenter.revampPassword();
+    }
+    @Override
+    public PersonalInformation getOldPassword(){
+        PersonalInformation information=new PersonalInformation();
+        information.setNickName(getIntent().getStringExtra("nickName"));
+        information.setPassword(oldPassword.getText().toString());
+        return information;
+    }
+    @Override
+    public String getConfirmPassword(){
+        return confirmPassword.getText().toString();
+    }
+    @Override
+    public String getNewPassword(){
+        return newPassword.getText().toString();
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onBackPressed(){
+        handleClickBack();
     }
 }

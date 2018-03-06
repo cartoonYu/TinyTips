@@ -1,14 +1,17 @@
 package com.cartoon.tinytips.data.TablePersonalInformation;
 
+import java.io.Serializable;
+
 /**
  * Created by cartoon on 2018/2/1.
  * 个人信息类
  */
 
-public class PersonalInformation {
+public class PersonalInformation implements Serializable{
     private String headPortrait;  //头像，数据类型待定
     private String nickName;  //昵称
     private String account;   //账号
+    private String password;  //密码
     private String school;    //高校
     private String sex;       //性别
     private String resume;    //个人简介
@@ -25,6 +28,10 @@ public class PersonalInformation {
 
     public String getAccount() {
         return account;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getHeadPortrait() {
@@ -49,6 +56,10 @@ public class PersonalInformation {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setHeadPortrait(String headPortrait) {

@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.Security;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.ValueCallBack;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -17,7 +18,30 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 class PersonalSecurityPresenter extends BaseActivityPresenter<PersonalSecurity>
         implements ISecurity.Presenter{
     private ISecurity.View view;
+    private ISecurity.Model model;
     public PersonalSecurityPresenter(ISecurity.View view){
         this.view=view;
+        this.model=new PersonalSecurityModel();
+    }
+    @Override
+    public void revampPassword(){
+        if(view.getConfirmPassword().equals(view.getNewPassword())){
+            model.setNewPassword(view.getNewPassword());
+            model.setOldPassword(view.getOldPassword());
+            model.revampPassword(new ValueCallBack<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    view.showToast(s);
+                    view.handleClickBack();
+                }
+                @Override
+                public void onFail(String code) {
+                    view.showToast(code);
+                }
+            });
+        }
+        else{
+            view.showToast("两次密码输入不一致，请重试");
+        }
     }
 }

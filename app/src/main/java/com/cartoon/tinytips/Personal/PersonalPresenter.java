@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
@@ -18,8 +20,12 @@ import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
 
 class PersonalPresenter extends BaseFragmentPresenter<Personal> implements
         IPersonal.Presenter{
+
     private IPersonal.View view;
     private IPersonal.Model model;
+
+    private PersonalInformation information;
+
     public PersonalPresenter(IPersonal.View view){
         this.view=view;
         this.model=new PersonalModel();
@@ -32,6 +38,7 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements
                 view.initHeadPortrait(personalInformation.getHeadPortrait());
                 view.initNickName(personalInformation.getNickName());
                 view.initSignature(personalInformation.getSignature());
+                information=personalInformation;
             }
             @Override
             public void onFail(String code) {

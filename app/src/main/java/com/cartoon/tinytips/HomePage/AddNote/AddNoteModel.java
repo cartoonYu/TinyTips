@@ -8,6 +8,7 @@ import com.cartoon.tinytips.DbUtil.DatabaseUtil;
 import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 import java.util.Date;
 import java.util.logging.Handler;
@@ -21,9 +22,7 @@ public class AddNoteModel implements IAddNote.Model {
 
     @Override
     public void addNote(final ValueCallBack<String> callBack) {
-        if ((note.getDetails().equals(null))&&note.getAuthor().equals(null)){
-            callBack.onFail("笔记新建失败，请重试");
-        }else{
+        if (JudgeObjectIsEmpty.isNotEmpty(note)){
             new android.os.Handler().post(new Runnable() {
                 @Override
                 public void run() {
@@ -31,6 +30,9 @@ public class AddNoteModel implements IAddNote.Model {
                 }
             });
             callBack.onSuccess("新建笔记成功");
+        }
+        else{
+            callBack.onFail("笔记新建失败，请重试");
         }
     }
 

@@ -118,6 +118,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @Override
     public void handleClickSecurity(){
         intent=new Intent(getActivity(), PersonalSecurity.class);
+        intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         getActivity().finish();
     }
@@ -133,7 +134,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
     @Override
     public void initHeadPortrait(String str){
-        //Glide.with(getActivity()).load(str).into(headPortrait);
+        Glide.with(getActivity()).load(str).into(headPortrait);
     }
     @Override
     public void initSignature(String str){
