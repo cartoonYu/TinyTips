@@ -29,6 +29,8 @@ android {
                             'src/main/res/layout/community/hot',
                             'src/main/res/layout/community/recommend',
                             'src/main/res/layout/personal',
+                            'src/main/res/layout/personal/collect',
+                            'src/main/res/layout/personal/collect/details',
                             'src/main/res/layout/personal/security',
                             'src/main/res/layout/personal/profile',
                             'src/main/res/layout/personal/profile/revamp',

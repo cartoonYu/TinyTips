@@ -19,11 +19,12 @@ public class HomePageModel implements IHomePage.Model {
 
     private List<Note> noteList;
 
+    private String word;      //用户输入的关键词
+
     public HomePageModel() {
         super();
         noteList=new ArrayList<>();
     }
-
     @Override
     public void getHomePageMessages(ValueCallBack<List<Note>> callBack) {
         noteList= DatabaseUtil.queryNote("Note",
@@ -34,5 +35,14 @@ public class HomePageModel implements IHomePage.Model {
         }else {
             callBack.onSuccess(noteList);
         }
+    }
+    @Override
+    public void setWord(String word){
+        this.word=word;
+    }
+    @Override
+    public void searchData(ValueCallBack<List<Note>> callBack){
+        //成员变量word就是用户输入的分类
+
     }
 }

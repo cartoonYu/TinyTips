@@ -1,6 +1,8 @@
 package com.cartoon.tinytips.Personal;
 
 import com.cartoon.tinytips.BaseFragmentPresenter;
+import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -17,7 +19,24 @@ import com.cartoon.tinytips.BaseFragmentPresenter;
 class PersonalPresenter extends BaseFragmentPresenter<Personal> implements
         IPersonal.Presenter{
     private IPersonal.View view;
+    private IPersonal.Model model;
     public PersonalPresenter(IPersonal.View view){
         this.view=view;
+        this.model=new PersonalModel();
+    }
+    @Override
+    public void initData(){
+        model.getPersonalInformation(new ValueCallBack<PersonalInformation>() {
+            @Override
+            public void onSuccess(PersonalInformation personalInformation) {
+                view.initHeadPortrait(personalInformation.getHeadPortrait());
+                view.initNickName(personalInformation.getNickName());
+                view.initSignature(personalInformation.getSignature());
+            }
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }

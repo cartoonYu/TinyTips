@@ -21,6 +21,7 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.TableNote.Note;
 import com.cartoon.tinytips.util.HomePage.HomePageNoteAdapter;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.List;
  * Created by cartoon on 2018/2/4.
  *
  * 1.首页页面，主活动（Main）的三个Fragment之一
- * 2.layout：personal
+ * 2.layout：homepage
  * 3.新建方法前先到IHomePage.View定义方法，再回到此类重写方法
  * 4.具体业务逻辑在HomePagePresenter中处理
  * 5.利用父类（BaseFragment）的成员变量presenter调用HomePagePresenter的成员方法进行业务逻辑的处理
@@ -54,7 +55,6 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     private RecyclerView note;          //日记滚动列表
 
     private HomePageNoteAdapter adapter;          //日记滚动列表适配器
-    private List<Note> noteList;                  //日记滚动列表的数据集合
     private GridLayoutManager manager;            //日记滚动列表布局管理器
 
     private Intent intent;
@@ -104,7 +104,7 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     }
     @Override
     public void handleClickSearch(){
-        inflater=LayoutInflater.from(getContext());
+        inflater=LayoutInflater.from(TinyTipsApplication.getContext());
         v=inflater.inflate(R.layout.homepage_search, null);
         final EditText search=v.findViewById(R.id.homePageSearch);
         builder = new AlertDialog.Builder(getContext());
@@ -114,6 +114,7 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //搜索逻辑在这里编写
+                presenter.search(search.getText().toString());
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -132,15 +133,16 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     @Override
     public void initNote() {
         //初始化笔记列表
-        noteList=new ArrayList<>();
         presenter.initData();
-        noteList=presenter.getNoteList();
         manager = new GridLayoutManager(getActivity(), 1);
         note.setLayoutManager(manager);
-        adapter = new HomePageNoteAdapter(noteList);
+        adapter = new HomePageNoteAdapter(presenter.getNoteList());
         note.setAdapter(adapter);
     }
-
+    @Override
+    public void refreshAdapter(){
+        adapter.notifyDataSetChanged();
+    }
     @Override
     public void showToast(String code){
         Toast.makeText(getActivity(),code,Toast.LENGTH_SHORT).show();

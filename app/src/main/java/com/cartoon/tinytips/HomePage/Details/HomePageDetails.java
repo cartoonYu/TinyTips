@@ -24,6 +24,7 @@ import com.cartoon.tinytips.HomePage.Details.Revamp.HomePageDetailsRevamp;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 /**
  * Created by cartoon on 2018/2/11.
@@ -80,7 +81,7 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
             toolbar.setTitle("");
         }
         note=(Note)getIntent().getSerializableExtra("data");
-        if(!note.getAuthor().isEmpty()){
+        if(JudgeObjectIsEmpty.isNotEmpty(note)){
             tag.setText(note.getTitle());
             details.setText(note.getDetails());
         }
@@ -90,7 +91,6 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
         setSupportActionBar(toolbar);
         back.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v){
         switch (v.getId()){

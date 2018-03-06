@@ -41,6 +41,7 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
             @Override
             public void onSuccess(List<Note> notes) {
                 noteList.addAll(notes);
+                view.refreshAdapter();
             }
             @Override
             public void onFail(String code) {
@@ -50,5 +51,21 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
     }
     public List<Note> getNoteList(){
         return noteList;
+    }
+    @Override
+    public void search(String word){
+        model.setWord(word);
+        model.searchData(new ValueCallBack<List<Note>>() {
+            @Override
+            public void onSuccess(List<Note> noteList) {
+                noteList.addAll(noteList);
+                view.showToast("查询成功");
+                view.refreshAdapter();
+            }
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }

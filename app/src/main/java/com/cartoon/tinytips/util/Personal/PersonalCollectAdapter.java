@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.HomePage;
+package com.cartoon.tinytips.util.Personal;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,24 +13,24 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Details.HomePageDetails;
+import com.cartoon.tinytips.Personal.Collect.Details.PersonalCollectDetails;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.TableNote.Note;
-import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import java.util.List;
 
 /**
- * Created by cartoon on 2018/2/4.
- * 1.HomePage的笔记（RecyclerView）的适配器
+ * Created by cartoon on 2018/3/5.
+ *  1.PersonalCollect的笔记（RecyclerView）的适配器
  *
  * 功能：
- * 1.为HomePage的笔记（RecyclerView）提供布局以及初始化的操作
+ * 1.为PersonalCollect的笔记（RecyclerView）提供布局以及初始化的操作
  *
  * 操作
  * 1.点击事件在函数onCreateViewHolder编写具体逻辑
  */
 
-public class HomePageNoteAdapter extends RecyclerView.Adapter<HomePageNoteAdapter.ViewHolder>{
+public class PersonalCollectAdapter extends RecyclerView.Adapter<PersonalCollectAdapter.ViewHolder>{
     private Context context;
     private List<Note> noteList;
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -43,29 +43,28 @@ public class HomePageNoteAdapter extends RecyclerView.Adapter<HomePageNoteAdapte
         public ViewHolder(View view){
             super(view);
             cardView=(CardView)view;
-            noteTitle=view.findViewById(R.id.homePageNoteTitle);
-            noteImage=view.findViewById(R.id.homePageNoteImage);
-            noteWord=view.findViewById(R.id.homePageNoteWord);
-            noteDate=view.findViewById(R.id.homePageNoteDate);
+            noteTitle=view.findViewById(R.id.personalCollectNoteTitle);
+            noteImage=view.findViewById(R.id.personalCollectNoteImage);
+            noteWord=view.findViewById(R.id.personalCollectNoteWord);
+            noteDate=view.findViewById(R.id.personalCollectNoteDate);
             this.view=view;
         }
     }
-    public HomePageNoteAdapter(List<Note> noteList){
+    public PersonalCollectAdapter(List<Note> noteList){
         this.noteList=noteList;
     }
     @Override
-    public ViewHolder onCreateViewHolder(final ViewGroup group, int viewType){
+    public PersonalCollectAdapter.ViewHolder onCreateViewHolder(final ViewGroup group, int viewType){
         if(context==null){
             context=group.getContext();
-
         }
-        View view= LayoutInflater.from(context).inflate(R.layout.homepage_note_item,group,false);
-        final ViewHolder holder=new ViewHolder(view);
+        View view= LayoutInflater.from(context).inflate(R.layout.personal_collect_item,group,false);
+        final PersonalCollectAdapter.ViewHolder holder=new PersonalCollectAdapter.ViewHolder(view);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, HomePageDetails.class);
-                intent.putExtra("dataFromMain",noteList.get(holder.getAdapterPosition()));
+                Intent intent=new Intent(context, PersonalCollectDetails.class);
+                intent.putExtra("dataFromCollect",noteList.get(holder.getAdapterPosition()));
                 Activity activity=(Activity)group.getContext();
                 activity.startActivity(intent);
                 activity.finish();

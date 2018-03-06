@@ -19,14 +19,18 @@ import java.util.List;
 interface IHomePage {
     interface View{
         void initNote();       //初始化笔记列表
+        void refreshAdapter();
         void handleClickSearch();
         void handleClickAdd();
         void showToast(String code);
     }
     interface Presenter{
         void initData();
+        void search(String word);
     }
     interface Model{
-        void getHomePageMessages(ValueCallBack<List<Note>> noteList);
+        void getHomePageMessages(ValueCallBack<List<Note>> callBack);
+        void setWord(String word);
+        void searchData(ValueCallBack<List<Note>> callBack);
     }
 }

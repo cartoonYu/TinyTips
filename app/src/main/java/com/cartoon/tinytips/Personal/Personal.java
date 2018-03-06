@@ -8,10 +8,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
+import com.cartoon.tinytips.Personal.Collect.PersonalCollect;
 import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
 import com.cartoon.tinytips.Personal.Security.PersonalSecurity;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 
 /**
  * Created by cartoon on 2018/2/4.
@@ -66,6 +69,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         security=getActivity().findViewById(R.id.personalSecurity);
         logout=getActivity().findViewById(R.id.personalLogout);
         back.setBackgroundColor(getResources().getColor(R.color.ashBlack));
+        presenter.initData();
     }
     @Override
     protected void onPrepare(){
@@ -85,18 +89,22 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
             }
             case R.id.personalMyCollect:{
                 //点击我的收藏
+                handleClickCollect();
                 break;
             }
             case R.id.personalMyShare:{
                 //点击我的分享
+                showToast("此功能暂未开放");
                 break;
             }
             case R.id.personalSecurity:{
                 //点击安全，跳转到修改密码页（PersonalSecurity）
                 handleClickSecurity();
+                break;
             }
             case R.id.personalLogout:{
                 //点击注销
+                showToast("此功能暂未开放");
                 break;
             }
         }
@@ -112,5 +120,27 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         intent=new Intent(getActivity(), PersonalSecurity.class);
         startActivity(intent);
         getActivity().finish();
+    }
+    @Override
+    public void handleClickCollect(){
+        intent=new Intent(getActivity(), PersonalCollect.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(TinyTipsApplication.getContext(),code,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void initHeadPortrait(String str){
+        //Glide.with(getActivity()).load(str).into(headPortrait);
+    }
+    @Override
+    public void initSignature(String str){
+        signature.setText(str);
+    }
+    @Override
+    public void initNickName(String str){
+        nickName.setText(str);
     }
 }

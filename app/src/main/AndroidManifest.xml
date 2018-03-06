@@ -33,9 +33,7 @@
         <activity android:name=".HomePage.AddNote.AddNote"
             android:launchMode="singleTask"/>
         <activity android:name=".HomePage.Details.HomePageDetails"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask"/>
         <activity android:name=".HomePage.Details.Revamp.HomePageDetailsRevamp"
             android:launchMode="singleTask"/>
 
@@ -49,6 +47,10 @@
             android:launchMode="singleTask"/>
 
         <activity android:name=".Personal.Security.PersonalSecurity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Personal.Collect.PersonalCollect"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Personal.Collect.Details.PersonalCollectDetails"
             android:launchMode="singleTask"/>
     </application>
 </manifest>
