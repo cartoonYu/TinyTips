@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.Profile.RevampSchool;
 
+import com.cartoon.tinytips.ValueCallBack;
+
 /**
  * Created by cartoon on 2018/2/22.
  * PersonalProfileSchool的公共接口
@@ -11,8 +13,16 @@ interface IPersonalProfileSchool {
     interface View{
         void handleClickBack();      //handleClick开头的方法为点击事件的处理函数
         void handleClickSave();
+        String getNickName();
+        String getNewSchool();
+        void showToast(String code);
     }
     interface Presenter{
-
+        void revampSchool();
+    }
+    interface Model{
+        void setNickName(String nickName);
+        void setNewSchool(String newSchool);
+        void revampSchool(ValueCallBack<String> callBack);
     }
 }

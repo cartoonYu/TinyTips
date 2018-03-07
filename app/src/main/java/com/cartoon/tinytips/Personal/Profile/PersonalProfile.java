@@ -16,13 +16,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Profile.RevampResume.PersonalProfileResume;
 import com.cartoon.tinytips.Personal.Profile.RevampSchool.PersonalProfileSchool;
 import com.cartoon.tinytips.Personal.Profile.RevampSignature.PersonalProfileSignature;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -106,6 +109,7 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     }
     @Override
     protected void onPrepare(){
+        presenter.initData(getIntent().getStringExtra("nickName"));
         back.setOnClickListener(this);
         headPortrait.setOnClickListener(this);
         school.setOnClickListener(this);
@@ -178,6 +182,7 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     @Override
     public void handleClickSchool(){
         intent=new Intent(this, PersonalProfileSchool.class);
+        intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         finish();
     }
@@ -209,23 +214,28 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     }
 
     @Override
+    public void initData(PersonalInformation information){
+        Glide.with(this).load(information.getHeadPortrait()).into(headPortraitImage);
+        nickName.setText(information.getNickName());
+        account.setText(information.getAccount());
+        schoolName.setText(information.getSchool());
+        sexSex.setText(information.getSex());
+        resumeResume.setText(information.getResume());
+        signatureSignature.setText(information.getSignature());
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            List<Uri> mSelected;
-            mSelected = Matisse.obtainResult(data);
-            try{
-                for(int i=0;i<mSelected.size();i++){
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mSelected.get(i));
-                    headPortraitImage.setImageBitmap(bitmap);
-                }
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
+            List<Uri> mSelected=Matisse.obtainResult(data);
+            Glide.with(this).load(mSelected.get(0)).into(headPortraitImage);
         }
     }
-
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onBackPressed(){
         handleClickBack();

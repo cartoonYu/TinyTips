@@ -1,6 +1,8 @@
 package com.cartoon.tinytips.Personal.Profile;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -16,8 +18,27 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 
 class PersonalProfilePresenter extends BaseActivityPresenter<PersonalProfile>
         implements IProfile.Presenter{
+
     private IProfile.View view;
+    private IProfile.Model model;
+
     public PersonalProfilePresenter(IProfile.View view){
         this.view=view;
+        this.model=new PersonalProfileModel();
+    }
+    @Override
+    public void initData(String nickName){
+        model.setNickName(nickName);
+        model.initData(new ValueCallBack<PersonalInformation>() {
+            @Override
+            public void onSuccess(PersonalInformation personalInformation) {
+                view.initData(personalInformation);
+            }
+
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }

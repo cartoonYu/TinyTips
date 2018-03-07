@@ -112,6 +112,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @Override
     public void handleClickProfile(){
         intent=new Intent(getActivity(), PersonalProfile.class);
+        intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         getActivity().finish();
     }

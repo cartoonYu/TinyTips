@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.Profile.RevampSchool;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.ValueCallBack;
 
 /**
  * Created by cartoon on 2018/2/22.
@@ -14,7 +15,26 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 class PersonalProfileSchoolPresenter extends BaseActivityPresenter<PersonalProfileSchool>
         implements IPersonalProfileSchool.Presenter{
     private IPersonalProfileSchool.View view;
+    private IPersonalProfileSchool.Model model;
     public PersonalProfileSchoolPresenter(IPersonalProfileSchool.View view){
         this.view=view;
+        this.model=new PersonalProfileSchoolModel();
+    }
+    @Override
+    public void revampSchool(){
+        model.setNickName(view.getNickName());
+        model.setNewSchool(view.getNewSchool());
+        model.revampSchool(new ValueCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                view.showToast(s);
+                view.handleClickBack();
+            }
+
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }

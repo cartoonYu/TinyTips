@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
@@ -80,10 +81,19 @@ public class PersonalProfileSchool extends BaseActivity<PersonalProfileSchoolPre
     }
     @Override
     public void handleClickSave(){
-        String school=newSchool.getText().toString();      //用户输入的信息
-        intent=new Intent(this, PersonalProfile.class);
-        startActivity(intent);
-        finish();
+        presenter.revampSchool();
+    }
+    @Override
+    public String getNickName(){
+        return getIntent().getStringExtra("nickName");
+    }
+    @Override
+    public String getNewSchool(){
+        return newSchool.getText().toString();
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onBackPressed(){

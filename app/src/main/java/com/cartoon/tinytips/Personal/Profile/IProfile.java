@@ -1,5 +1,8 @@
 package com.cartoon.tinytips.Personal.Profile;
 
+import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
+
 /**
  * Created by cartoon on 2018/2/6.
  * PersonalProfile的公共接口
@@ -15,8 +18,14 @@ interface IProfile {
         void handleClickSchool();
         void handleClickResume();
         void handleClickSignature();
+        void showToast(String code);
+        void initData(PersonalInformation information);
     }
     interface Presenter{
-
+        void initData(String nickName);
+    }
+    interface Model{
+        void setNickName(String nickName);
+        void initData(ValueCallBack<PersonalInformation> callBack);
     }
 }
