@@ -203,12 +203,14 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     @Override
     public void handleClickResume(){
         intent=new Intent(this, PersonalProfileResume.class);
+        intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         finish();
     }
     @Override
     public void handleClickSignature(){
         intent=new Intent(this, PersonalProfileSignature.class);
+        intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         finish();
     }

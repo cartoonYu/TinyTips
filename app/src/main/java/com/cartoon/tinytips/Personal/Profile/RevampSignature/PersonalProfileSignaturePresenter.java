@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.Profile.RevampSignature;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.ValueCallBack;
 
 /**
  * Created by cartoon on 2018/2/22.
@@ -13,8 +14,27 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 
 class PersonalProfileSignaturePresenter extends BaseActivityPresenter<PersonalProfileSignature>
         implements IPersonalProfileSignature.Presenter{
+
     private IPersonalProfileSignature.View view;
+    private IPersonalProfileSignature.Model model;
     public PersonalProfileSignaturePresenter(IPersonalProfileSignature.View view){
         this.view=view;
+        this.model=new PersonalProfileSignatureModel();
+    }
+    @Override
+    public void revampSignature(){
+        model.setNickName(view.getNickName());
+        model.setNewSignature(view.getNewSignature());
+        model.revampSignature(new ValueCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                view.showToast(s);
+                view.handleClickBack();
+            }
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }

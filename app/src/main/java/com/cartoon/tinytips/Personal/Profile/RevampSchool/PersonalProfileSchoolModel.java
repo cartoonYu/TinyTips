@@ -5,6 +5,7 @@ import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 /**
  * Created by cartoon on 2018/3/7.
+ * 在函数revampSchool中的if语句块中，以成员变量nickName为搜索条件，将选中项的school替换成成员变量newSchool的值
  */
 
 class PersonalProfileSchoolModel implements IPersonalProfileSchool.Model{

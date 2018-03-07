@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.Profile.RevampResume;
 
+import com.cartoon.tinytips.ValueCallBack;
+
 /**
  * Created by cartoon on 2018/2/22.
  * PersonalProfileResume的公共接口
@@ -11,8 +13,16 @@ interface IPersonalProfileResume {
     interface View{
         void handleClickBack();      //handleClick开头的方法为点击事件的处理函数
         void handleClickSave();
+        String getNickName();
+        String getResume();
+        void showToast(String code);
     }
     interface Presenter{
-
+        void revampResume();
+    }
+    interface Model{
+        void setNickName(String nickName);
+        void setNewResume(String newResume);
+        void revampResume(ValueCallBack<String> callBack);
     }
 }

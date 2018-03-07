@@ -80,7 +80,7 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
         if(toolbar!=null){
             toolbar.setTitle("");
         }
-        note=(Note)getIntent().getSerializableExtra("data");
+        note=(Note)getIntent().getSerializableExtra("dataFromMain");
         if(JudgeObjectIsEmpty.isNotEmpty(note)){
             tag.setText(note.getTitle());
             details.setText(note.getDetails());

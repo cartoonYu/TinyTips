@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
@@ -80,12 +81,20 @@ public class PersonalProfileSignature extends BaseActivity<PersonalProfileSignat
     }
     @Override
     public void handleClickSave(){
-        String signature=newSignature.getText().toString();      //用户输入的信息
-        intent=new Intent(this, PersonalProfile.class);
-        startActivity(intent);
-        finish();
+        presenter.revampSignature();
     }
-
+    @Override
+    public String getNickName(){
+        return getIntent().getStringExtra("nickName");
+    }
+    @Override
+    public String getNewSignature() {
+        return newSignature.getText().toString();
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onBackPressed(){
         handleClickBack();

@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.Profile.RevampResume;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.ValueCallBack;
 
 /**
  * Created by cartoon on 2018/2/22.
@@ -13,8 +14,28 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 
 class PersonalProfileResumePresenter extends BaseActivityPresenter<PersonalProfileResume>
         implements IPersonalProfileResume.Presenter {
+
     private IPersonalProfileResume.View view;
+    private IPersonalProfileResume.Model model;
     public PersonalProfileResumePresenter(IPersonalProfileResume.View view){
         this.view=view;
+        this.model=new PersonalProfileResumeModel();
+    }
+    @Override
+    public void revampResume(){
+        model.setNickName(view.getNickName());
+        model.setNewResume(view.getResume());
+        model.revampResume(new ValueCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                view.showToast(s);
+                view.handleClickBack();
+            }
+
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+            }
+        });
     }
 }
