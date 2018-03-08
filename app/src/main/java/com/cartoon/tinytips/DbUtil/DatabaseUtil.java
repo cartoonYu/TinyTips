@@ -34,7 +34,7 @@ public class DatabaseUtil {
         //values.put("classify",note.getClassify()[0]+","+note.getClassify()[1]+","+note.getClassify()[2]);
         values.put("classify",string);
         values.put("isCollect",note.isCollect());
-        Log.d("sdf", "insert: "+values.getAsString("title"));
+
         db.insert("Note",null,values);
     }
     public static List<Note> queryNote(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit){
@@ -61,5 +61,23 @@ public class DatabaseUtil {
             }while(cursor.moveToNext());
         }
         return noteList;
+    }
+    public static void deleteNote(String table,String whereClause,String[] whereArgs){
+        db.delete(table,whereClause,whereArgs);
+    }
+    public static void updateNote(String table,String whereClaus,String[] whereArgs,Note newNote){
+        String string="";
+        for(int i=0;i<newNote.getClassify().length;i++){
+            string=string+newNote.getClassify()[i];
+        }
+        values.put("title",newNote.getTitle());
+        values.put("date",newNote.getDate());
+        values.put("author",newNote.getAuthor());
+        values.put("imageDetails",newNote.getImageDetails());
+        values.put("details",newNote.getDetails());
+        //values.put("classify",note.getClassify()[0]+","+note.getClassify()[1]+","+note.getClassify()[2]);
+        values.put("classify",string);
+        values.put("isCollect",newNote.isCollect());
+        db.update(table,values,whereClaus,whereArgs);
     }
 }

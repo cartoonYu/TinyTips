@@ -139,10 +139,10 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
         adapter = new HomePageNoteAdapter(presenter.getNoteList());
         note.setAdapter(adapter);
     }
-    @Override
+    /*@Override
     public void refreshAdapter(){
         adapter.notifyDataSetChanged();
-    }
+    }*/
     @Override
     public void showToast(String code){
         Toast.makeText(getActivity(),code,Toast.LENGTH_SHORT).show();

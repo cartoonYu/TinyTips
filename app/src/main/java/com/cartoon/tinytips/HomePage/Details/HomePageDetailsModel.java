@@ -20,6 +20,7 @@ class HomePageDetailsModel implements IHomePageDetails.Model{
                 @Override
                 public void run() {
                     //删除逻辑在这里填写
+                    DatabaseUtil.deleteNote("Note","details=? and title=?",new String[]{note.getDetails(),note.getTitle()});
 
                 }
             });

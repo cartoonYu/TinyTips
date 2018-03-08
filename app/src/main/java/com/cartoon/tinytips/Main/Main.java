@@ -3,6 +3,7 @@ package com.cartoon.tinytips.Main;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -80,6 +81,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View,Bott
             case 1:{
                 transaction.replace(fragment,community);
                 transaction.commit();
+                Toast.makeText(this,"此功能尚未完成",Toast.LENGTH_SHORT).show();
                 break;
             }
             case 2:{

@@ -41,7 +41,7 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
             @Override
             public void onSuccess(List<Note> notes) {
                 noteList.addAll(notes);
-                view.refreshAdapter();
+                //view.refreshAdapter();
             }
             @Override
             public void onFail(String code) {
@@ -60,7 +60,7 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
             public void onSuccess(List<Note> noteList) {
                 noteList.addAll(noteList);
                 view.showToast("查询成功");
-                view.refreshAdapter();
+                //view.refreshAdapter();
             }
             @Override
             public void onFail(String code) {
