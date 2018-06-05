@@ -340,6 +340,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mSelected.get(i));
                     addBitmapToText(bitmap);
                     if(i==0){
+
                         imageDetails=bitmap.toString();
                     }
                 }
@@ -366,6 +367,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
 
     @Override
     public String getDetails() {
+        Log.d("hello", "getDetails: "+details.getText().toString());
         return details.getText().toString();
     }
 
@@ -401,8 +403,10 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                 edit_text.append("\n");
                 edit_text.append(spannableString);
                 edit_text.append("\n");
+                details.setText(edit_text);
             }else{
                 edit_text.insert(index,spannableString);
+                details.setText(edit_text);
             }
         }else {
             showToast("加载图片失败");
