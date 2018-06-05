@@ -1,12 +1,11 @@
 package com.cartoon.tinytips.DbUtil;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import java.util.ArrayList;

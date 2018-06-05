@@ -2,9 +2,6 @@ package com.cartoon.tinytips.HomePage.AddNote;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
-
-import java.util.Date;
 
 /**
  * Created by cartoon on 2018/2/17.

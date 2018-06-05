@@ -1,11 +1,7 @@
 package com.cartoon.tinytips.HomePage;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
-import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 

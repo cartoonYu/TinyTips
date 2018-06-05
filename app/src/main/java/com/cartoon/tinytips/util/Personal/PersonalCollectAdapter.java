@@ -12,10 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.HomePage.Details.HomePageDetails;
 import com.cartoon.tinytips.Personal.Collect.Details.PersonalCollectDetails;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 

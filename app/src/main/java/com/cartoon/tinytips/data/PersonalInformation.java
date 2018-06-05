@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.data.TablePersonalInformation;
+package com.cartoon.tinytips.data;
 
 import java.io.Serializable;
 

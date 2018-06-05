@@ -14,8 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Details.HomePageDetails;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
-import com.cartoon.tinytips.util.TinyTipsApplication;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 

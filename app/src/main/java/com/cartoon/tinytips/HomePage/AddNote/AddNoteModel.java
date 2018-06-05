@@ -1,17 +1,9 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
 import com.cartoon.tinytips.DbUtil.DatabaseUtil;
-import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
-
-import java.util.Date;
-import java.util.logging.Handler;
 
 /**
  * Created by 许锦鹏 on 2018/2/23

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 

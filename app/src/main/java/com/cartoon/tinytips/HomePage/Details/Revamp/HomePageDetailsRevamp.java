@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.HomePage.Details.HomePageDetails;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;

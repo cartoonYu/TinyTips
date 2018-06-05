@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.Personal.Security;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
+import com.cartoon.tinytips.data.PersonalInformation;
 
 /**
  * Created by cartoon on 2018/2/6.

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Collect.PersonalCollect;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 /**
  * Created by cartoon on 2018/3/6.

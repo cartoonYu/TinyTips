@@ -1,13 +1,10 @@
 package com.cartoon.tinytips.HomePage;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -15,16 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.HomePage.AddNote.AddNote;
-import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
 import com.cartoon.tinytips.util.HomePage.HomePageNoteAdapter;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
-import java.util.ArrayList;
-import java.util.List;
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/2/4.
@@ -48,7 +41,7 @@ import java.util.List;
 
 public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePage.View,View.OnClickListener{
 
-    private TextView back;              //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
+    //private TextView back;              //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
     private TextView addNote;           //标题栏上的添加按钮
     private TextView search;            //标题栏上的搜索按钮
 
@@ -62,6 +55,8 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     private AlertDialog.Builder builder;
     private LayoutInflater inflater;
     private View v;
+
+    @BindView(R.id.toolBarBack) TextView back;
 
     @Override
     protected int getLayout(){

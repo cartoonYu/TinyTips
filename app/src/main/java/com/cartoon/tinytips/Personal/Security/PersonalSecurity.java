@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
+import com.cartoon.tinytips.data.PersonalInformation;
 
 /**
  * Created by cartoon on 2018/2/6.

@@ -1,11 +1,8 @@
 package com.cartoon.tinytips.HomePage;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.ArrayList;
 import java.util.List;

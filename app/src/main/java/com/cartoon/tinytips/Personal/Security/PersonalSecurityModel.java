@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.Personal.Security;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TablePersonalInformation.PersonalInformation;
+import com.cartoon.tinytips.data.PersonalInformation;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 /**

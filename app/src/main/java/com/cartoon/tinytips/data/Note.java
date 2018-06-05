@@ -1,9 +1,8 @@
-package com.cartoon.tinytips.data.TableNote;
+package com.cartoon.tinytips.data;
 
-import com.cartoon.tinytips.data.TableComment.Comment;
+import com.cartoon.tinytips.data.Comment;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,8 +20,6 @@ public class Note implements Serializable{
     private String details;
     private String[] classify;       //分类，最多3个
     private boolean isCollect;      //是否收藏
-
-
 
     private boolean isShare;        //是否允许分享
     private long pageView;         //浏览量
@@ -98,9 +95,6 @@ public class Note implements Serializable{
         return title;
     }
 
-   /* public String getWordDetails() {
-        return wordDetails;
-    }*/
 
     public String[] getClassify() {
         return classify;
@@ -133,10 +127,6 @@ public class Note implements Serializable{
     public void setTitle(String title) {
         this.title = title;
     }
-
-    /*public void setWordDetails(String wordDetails) {
-        this.wordDetails = wordDetails;
-    }*/
 
     public void setComment(long comment) {
         this.comment = comment;

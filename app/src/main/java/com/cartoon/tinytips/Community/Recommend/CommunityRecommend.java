@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.Community.Recommend.CommunityRecommendAdapter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.data.TablePlan;
+package com.cartoon.tinytips.data;
 
 import java.util.Date;
 

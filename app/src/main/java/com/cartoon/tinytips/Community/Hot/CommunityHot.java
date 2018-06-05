@@ -2,12 +2,10 @@ package com.cartoon.tinytips.Community.Hot;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
-import com.cartoon.tinytips.util.Community.Focus.CommunityFocusAdapter;
+import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.Community.Hot.CommunityHotAdapter;
 
 import java.util.ArrayList;

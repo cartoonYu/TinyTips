@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.HomePage.Details;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 /**
  * Created by cartoon on 2018/2/11.

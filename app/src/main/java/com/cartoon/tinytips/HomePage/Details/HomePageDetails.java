@@ -2,9 +2,6 @@ package com.cartoon.tinytips.HomePage.Details;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -23,7 +20,7 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.HomePage.Details.Revamp.HomePageDetailsRevamp;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 /**

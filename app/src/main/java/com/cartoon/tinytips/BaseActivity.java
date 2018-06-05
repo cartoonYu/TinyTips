@@ -3,6 +3,8 @@ package com.cartoon.tinytips;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import butterknife.ButterKnife;
+
 
 /**
  * Created by cartoon on 2018/2/1.
@@ -15,6 +17,7 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(getLayout());
+        ButterKnife.bind(this);
         presenter=initPresent();
         initView();
         onPrepare();

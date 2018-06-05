@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.data.TableComment;
+package com.cartoon.tinytips.data;
 
 import java.util.Date;
 
@@ -53,4 +53,5 @@ public class Comment {
     public void setPointDislike(int pointDislike) {
         this.pointDislike = pointDislike;
     }
+
 }

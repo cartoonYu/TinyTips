@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Personal.Collect;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.TableNote.Note;
+import com.cartoon.tinytips.data.Note;
 
 import java.util.ArrayList;
 import java.util.List;
