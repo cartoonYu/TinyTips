@@ -41,11 +41,11 @@ import butterknife.BindView;
 
 public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePage.View,View.OnClickListener{
 
-    //private TextView back;              //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
-    private TextView addNote;           //标题栏上的添加按钮
-    private TextView search;            //标题栏上的搜索按钮
 
-    private RecyclerView note;          //日记滚动列表
+    @BindView(R.id.toolBarBack) TextView back; //标题栏的返回按钮，因为此页面没有返回功能，定义此变量目的是把返回符号去掉
+    @BindView(R.id.tooBarTool1) TextView addNote; //标题栏上的添加按钮
+    @BindView(R.id.tooBarTool2) TextView search;   //标题栏上的搜索按钮
+    @BindView(R.id.homePageNote) RecyclerView note;          //日记滚动列表
 
     private HomePageNoteAdapter adapter;          //日记滚动列表适配器
     private GridLayoutManager manager;            //日记滚动列表布局管理器
@@ -56,7 +56,7 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     private LayoutInflater inflater;
     private View v;
 
-    @BindView(R.id.toolBarBack) TextView back;
+
 
     @Override
     protected int getLayout(){
@@ -68,10 +68,6 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     }
     @Override
     protected void initView(){
-        back=getActivity().findViewById(R.id.toolBarBack);
-        addNote=getActivity().findViewById(R.id.tooBarTool1);
-        search=getActivity().findViewById(R.id.tooBarTool2);
-        note=getActivity().findViewById(R.id.homePageNote);
         back.setBackgroundColor(getResources().getColor(R.color.ashBlack));
         addNote.setBackground(getResources().getDrawable(R.drawable.homepage_addnote));
         search.setBackground(getResources().getDrawable(R.drawable.homepage_search));

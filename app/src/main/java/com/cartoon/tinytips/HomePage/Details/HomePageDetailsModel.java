@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage.Details;
 
 
+import com.cartoon.tinytips.DbUtil.DatabaseUtil;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.data.Note;
 

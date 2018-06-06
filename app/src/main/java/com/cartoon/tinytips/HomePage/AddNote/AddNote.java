@@ -44,6 +44,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.BindViews;
+
 /**
  * Created by cartoon on 2018/2/17.
  *1.新增笔记页面
@@ -66,18 +69,18 @@ import java.util.List;
 public class AddNote extends BaseActivity<AddNotePresenter>
         implements IAddNote.View, View.OnClickListener{
 
-    private TextView back;
-    private TextView title;
-    private TextView classify[];
-    private TextView save;
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView title;
+    @BindViews({R.id.tooBarTool4,R.id.tooBarTool3,R.id.tooBarTool2}) List<TextView> classify;
+    @BindView(R.id.tooBarTool1) TextView save;
 
-    private EditText details;
+    @BindView(R.id.homePageAddNoteNote) EditText details;
 
-    private ImageView menu;
-    private DrawerLayout drawerLayout;
-    private Button addTitle;
-    private Button addClassify;
-    private Button addPhoto;
+    @BindView(R.id.homePageAddNoteDrawerLayout) DrawerLayout drawerLayout;
+    @BindView(R.id.homePageAddNoteMenu) ImageView menu;
+    @BindView(R.id.homePageAddNoteMenuAddTitle) Button addTitle;
+    @BindView(R.id.homePageAddNoteMenuAddClassify) Button addClassify;
+    @BindView(R.id.homePageAddNoteMenuSelectPhoto) Button addPhoto;
 
     private Intent intent;
 
@@ -87,6 +90,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
 
     private String imageDetails;
     private String[] classifyInDialog;      //供用户选择的分类集合，数据来源为数据库
+
     private String[] classifyString;
 
     @Override
@@ -99,17 +103,7 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     }
     @Override
     protected void initView(){
-        classify=new TextView[3];
-        drawerLayout=findViewById(R.id.homePageAddNoteDrawerLayout);
-        back=findViewById(R.id.toolBarBack);
-        classify[0]=findViewById(R.id.tooBarTool4);
-        classify[1]=findViewById(R.id.tooBarTool3);
-        classify[2]=findViewById(R.id.tooBarTool2);
-        save=findViewById(R.id.tooBarTool1);
-        title=findViewById(R.id.toolBarTag);
         save.setText("保存");
-        details=findViewById(R.id.homePageAddNoteNote);
-        menu=findViewById(R.id.homePageAddNoteMenu);
         addTitle=findViewById(R.id.homePageAddNoteMenuAddTitle);
         addClassify=findViewById(R.id.homePageAddNoteMenuAddClassify);
         addPhoto=findViewById(R.id.homePageAddNoteMenuSelectPhoto);
@@ -118,9 +112,9 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     public void onPrepare(){
         back.setOnClickListener(this);
         title.setOnClickListener(this);
-        classify[0].setOnClickListener(this);
-        classify[1].setOnClickListener(this);
-        classify[2].setOnClickListener(this);
+        for(int i=0;i<classify.size();i++){
+            classify.get(i).setOnClickListener(this);
+        }
         save.setOnClickListener(this);
         menu.setOnClickListener(this);
         addTitle.setOnClickListener(this);
@@ -202,13 +196,13 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         builder.setItems(classifyInDialog, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                classify[i].setText(classifyInDialog[which]);
+                classify.get(i).setText(classifyInDialog[which]);
             }
         });
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                classify[i].setText(newClassify.getText().toString());
+                classify.get(i).setText(newClassify.getText().toString());
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -285,10 +279,10 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                     classifyString=mSelectedItems.toArray(new String[3]);
                     //getClassify(mSelectedItems);
                     for(int i=0;i<3;i++){
-                        classify[i].setText("");
+                        classify.get(i).setText("");
                     }
                     for(int i=0;i<mSelectedItems.size();i++){
-                        classify[i].setText(mSelectedItems.get(i));
+                        classify.get(i).setText(mSelectedItems.get(i));
                     }
                 }
                 else{
