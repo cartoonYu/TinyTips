@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.HomePage.AddNote.AddNote;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.HomePage.HomePageNoteAdapter;
+import com.cartoon.tinytips.util.Adapter.HomePage.HomePageNoteAdapter;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import butterknife.BindView;

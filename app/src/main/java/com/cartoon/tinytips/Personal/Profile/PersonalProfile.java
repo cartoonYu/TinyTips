@@ -31,6 +31,8 @@ import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/6.
  * 1.个人信息页
@@ -50,27 +52,26 @@ import java.util.List;
 
 public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> implements IProfile.View, View.OnClickListener{
 
-    private TextView back;        //标题栏上的返回按钮，点击返回我的页面
-    private TextView tag;         //标题栏上返回按钮右边的textView，用于显示当前页面名字
+    @BindView(R.id.toolBarBack) TextView back;        //标题栏上的返回按钮，点击返回我的页面
+    @BindView(R.id.toolBarTag) TextView tag;         //标题栏上返回按钮右边的textView，用于显示当前页面名字
 
-    private RelativeLayout headPortrait;      //头像栏，点击进入选择图片页面
-    private ImageView headPortraitImage;       //显示头像，图片来源于数据库
+    @BindView(R.id.personalProfileHeadPortrait) RelativeLayout headPortrait;      //头像栏，点击进入选择图片页面
+    @BindView(R.id.personalProfileNickNameName) TextView nickName;                 //显示昵称，昵称来源于数据库
+    @BindView(R.id.personalProfileHeadPortraitImage) ImageView headPortraitImage;       //显示头像，图片来源于数据库
 
-    private TextView nickName;                 //显示昵称，昵称来源于数据库
+    @BindView(R.id.personalProfileAccountAccount) TextView account;                  //显示账号，账号来源数据库
 
-    private TextView account;                  //显示账号，账号来源数据库
+    @BindView(R.id.personalProfileSchool) RelativeLayout school;            //高校栏，点击进入修改高校页面
+    @BindView(R.id.personalProfileSchoolSchool) TextView schoolName;               //显示高校名称，数据来源于数据库
 
-    private RelativeLayout school;            //高校栏，点击进入修改高校页面
-    private TextView schoolName;               //显示高校名称，数据来源于数据库
+    @BindView(R.id.personalProfileSex) RelativeLayout sex;               //性别栏，点击弹窗选择
+    @BindView(R.id.personalProfileSexSex) TextView sexSex;                   //显示用户性别，数据来源于数据库
 
-    private RelativeLayout sex;               //性别栏，点击弹窗选择
-    private TextView sexSex;                   //显示用户性别，数据来源于数据库
+    @BindView(R.id.personalProfileResume) RelativeLayout resume;            //个人简介栏，点击进入修改个人简介页面
+    @BindView(R.id.personalProfileResumeResume) TextView resumeResume;             //显示个人简介，数据来源于数据库
 
-    private RelativeLayout resume;            //个人简介栏，点击进入修改个人简介页面
-    private TextView resumeResume;             //显示个人简介，数据来源于数据库
-
-    private RelativeLayout signature;         //个人签名栏，点击进入修改个人签名页面
-    private TextView signatureSignature;       //显示个人签名，，数据来源于数据库
+    @BindView(R.id.personalProfileSignature) RelativeLayout signature;         //个人签名栏，点击进入修改个人签名页面
+    @BindView(R.id.personalProfileSignatureSignature) TextView signatureSignature;       //显示个人签名，，数据来源于数据库
 
     private AlertDialog.Builder builder;
     private LayoutInflater inflater;
@@ -88,21 +89,7 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     @Override
     protected void initView(){
         //为xml的页面绑定组件，并对页面进行必要的初始化操作
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
         tag.setText("个人资料");
-        headPortrait=findViewById(R.id.personalProfileHeadPortrait);
-        school=findViewById(R.id.personalProfileSchool);
-        sex=findViewById(R.id.personalProfileSex);
-        resume=findViewById(R.id.personalProfileResume);
-        signature=findViewById(R.id.personalProfileSignature);
-        headPortraitImage=findViewById(R.id.personalProfileHeadPortraitImage);
-        nickName=findViewById(R.id.personalProfileNickNameName);
-        account=findViewById(R.id.personalProfileAccountAccount);
-        schoolName=findViewById(R.id.personalProfileSchoolSchool);
-        sexSex=findViewById(R.id.personalProfileSexSex);
-        resumeResume=findViewById(R.id.personalProfileResumeResume);
-        signatureSignature=findViewById(R.id.personalProfileSignatureSignature);
     }
     @Override
     protected void onPrepare(){

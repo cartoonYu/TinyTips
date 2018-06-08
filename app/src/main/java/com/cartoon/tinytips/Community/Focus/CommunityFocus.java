@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
-import com.cartoon.tinytips.util.Community.Focus.CommunityFocusAdapter;
+import com.cartoon.tinytips.util.Adapter.Community.Focus.CommunityFocusAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/2/8.
@@ -29,7 +31,7 @@ import java.util.List;
 
 public class CommunityFocus extends BaseFragment<CommunityFocusPresenter> implements ICommunityFocus.View{
 
-    private RecyclerView focus;    //关注人动态列表
+    @BindView(R.id.communityFocusView) RecyclerView focus;    //关注人动态列表
 
     private CommunityFocusAdapter adapter;          //关注人动态滚动列表适配器
     private List<Note> noteList;                   //关注人动态滚动列表的数据集合
@@ -45,7 +47,6 @@ public class CommunityFocus extends BaseFragment<CommunityFocusPresenter> implem
     }
     @Override
     protected void initView(){
-        focus=getActivity().findViewById(R.id.communityFocusView);
         initFocus();
     }
     @Override

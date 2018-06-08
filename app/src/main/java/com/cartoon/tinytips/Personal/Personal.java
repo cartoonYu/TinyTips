@@ -16,6 +16,8 @@ import com.cartoon.tinytips.Personal.Security.PersonalSecurity;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/4.
  * 1.我的页面，主活动（Main）的三个Fragment之一
@@ -35,17 +37,15 @@ import com.cartoon.tinytips.util.TinyTipsApplication;
 
 public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View, View.OnClickListener{
 
-    private TextView back;                   //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
-
-    private RelativeLayout profile;          //头像，昵称等所在位置，点击进入个人资料页面
-    private ImageView headPortrait;          //用户头像
-    private TextView nickName;               //用户昵称
-    private TextView signature;              //用户签名
-
-    private RelativeLayout myCollect;        //我的收藏，点击进入我的收藏详情页
-    private RelativeLayout myShare;          //我的分享，点击进入我所允许分享的笔记详情页
-    private RelativeLayout security;         //安全，点击进入安全页面修改密码
-    private RelativeLayout logout;         //注销，点击即可登出账户
+    @BindView(R.id.toolBarBack) TextView back;                   //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
+    @BindView(R.id.personalProfile) RelativeLayout profile;          //头像，昵称等所在位置，点击进入个人资料页面
+    @BindView(R.id.personalHeadPortrait) ImageView headPortrait;          //用户头像
+    @BindView(R.id.personalNickName) TextView nickName;               //用户昵称
+    @BindView(R.id.personalSignature) TextView signature;              //用户签名
+    @BindView(R.id.personalMyCollect) RelativeLayout myCollect;        //我的收藏，点击进入我的收藏详情页
+    @BindView(R.id.personalMyShare) RelativeLayout myShare;          //我的分享，点击进入我所允许分享的笔记详情页
+    @BindView(R.id.personalSecurity) RelativeLayout security;         //安全，点击进入安全页面修改密码
+    @BindView(R.id.personalLogout) RelativeLayout logout;         //注销，点击即可登出账户
 
     private Intent intent;
 
@@ -59,15 +59,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
     @Override
     protected void initView(){
-        back=getActivity().findViewById(R.id.toolBarBack);
-        profile=getActivity().findViewById(R.id.personalProfile);
-        headPortrait=getActivity().findViewById(R.id.personalHeadPortrait);
-        nickName=getActivity().findViewById(R.id.personalNickName);
-        signature=getActivity().findViewById(R.id.personalSignature);
-        myCollect=getActivity().findViewById(R.id.personalMyCollect);
-        myShare=getActivity().findViewById(R.id.personalMyShare);
-        security=getActivity().findViewById(R.id.personalSecurity);
-        logout=getActivity().findViewById(R.id.personalLogout);
         back.setBackgroundColor(getResources().getColor(R.color.ashBlack));
         presenter.initData();
     }

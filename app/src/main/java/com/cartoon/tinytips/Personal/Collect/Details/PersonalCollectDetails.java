@@ -9,6 +9,11 @@ import com.cartoon.tinytips.Personal.Collect.PersonalCollect;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
 
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.BindViews;
+
 /**
  * Created by cartoon on 2018/3/6.
  */
@@ -16,10 +21,10 @@ import com.cartoon.tinytips.data.Note;
 public class PersonalCollectDetails extends BaseActivity<PersonalCollectDetailsPresenter>
         implements IPersonalCollectDetails.View,View.OnClickListener{
 
-    private TextView back;
-    private TextView title;
-    private TextView classify[];
-    private TextView details;
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView title;
+    @BindViews({R.id.tooBarTool1,R.id.tooBarTool2,R.id.tooBarTool3}) List<TextView> classify;
+    @BindView(R.id.personalCollectDetails) TextView details;
 
     private Note note;
 
@@ -35,13 +40,6 @@ public class PersonalCollectDetails extends BaseActivity<PersonalCollectDetailsP
     }
     @Override
     protected void initView(){
-        back=findViewById(R.id.toolBarBack);
-        title=findViewById(R.id.toolBarTag);
-        classify=new TextView[3];
-        classify[0]=findViewById(R.id.tooBarTool1);
-        classify[1]=findViewById(R.id.tooBarTool2);
-        classify[2]=findViewById(R.id.tooBarTool3);
-        details=findViewById(R.id.personalCollectDetails);
         initData();
     }
     @Override
@@ -72,7 +70,7 @@ public class PersonalCollectDetails extends BaseActivity<PersonalCollectDetailsP
         note=(Note)getIntent().getSerializableExtra("dataFromCollect");
         title.setText(note.getTitle());
         for(int i=0;i<note.getClassify().length;i++){
-            classify[i].setText(note.getClassify()[i]);
+            classify.get(i).setText(note.getClassify()[i]);
         }
         details.setText(note.getDetails());
     }

@@ -13,6 +13,8 @@ import com.cartoon.tinytips.HomePage.HomePage;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/4.
  * 1.主界面，底部导航栏切换首页，社区以及我的三个页面
@@ -29,7 +31,7 @@ import com.cartoon.tinytips.R;
 
 public class Main extends BaseActivity<MainPresenter> implements IMain.View,BottomNavigationBar.OnTabSelectedListener {
 
-    private BottomNavigationBar bar;    //底部导航栏实例
+    @BindView(R.id.mainBottomBar) BottomNavigationBar bar;    //底部导航栏实例
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
     private Intent intent;             //接收其他页面跳转回来携带的变量
@@ -45,7 +47,6 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View,Bott
     }
     @Override
     protected void initView(){
-        bar=findViewById(R.id.mainBottomBar);
         bar.setMode(BottomNavigationBar.MODE_FIXED)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.drawable.homepage,"首页"))

@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
-import com.cartoon.tinytips.util.Community.Hot.CommunityHotAdapter;
+import com.cartoon.tinytips.util.Adapter.Community.Hot.CommunityHotAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/2/8.
@@ -29,7 +31,8 @@ import java.util.List;
 
 public class CommunityHot extends BaseFragment<CommunityHotPresenter> implements ICommunityHot.View{
 
-    private RecyclerView hot;    //热门动态列表
+    @BindView(R.id.communityHotView) RecyclerView hot;    //热门动态列表
+
     private CommunityHotAdapter adapter;
     private List<Note> noteList;
     private GridLayoutManager manager;
@@ -44,7 +47,6 @@ public class CommunityHot extends BaseFragment<CommunityHotPresenter> implements
     }
     @Override
     protected void initView(){
-        hot=getActivity().findViewById(R.id.communityHotView);
         initHot();
     }
     @Override

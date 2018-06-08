@@ -11,6 +11,8 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.PersonalInformation;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/6.
  * 1.安全页
@@ -30,14 +32,12 @@ import com.cartoon.tinytips.data.PersonalInformation;
 public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter>
         implements ISecurity.View, View.OnClickListener{
 
-    private TextView back;      //标题栏上的返回按键，点击返回在我的页面
-    private TextView tag;        //标题栏上返回按钮右边的textView，用于显示当前页面名字
-    private TextView save;      //标题栏上的保存按钮，点击对所输入的原密码，新密码，确认密码（与新密码进行匹配）对比，相同保存在数据库上，并返回我的页面
-
-    private EditText oldPassword;    //输入原密码
-    private EditText newPassword;    //输入新密码
-    private EditText confirmPassword;    //用于与新密码进行匹配，防止出现错误
-
+    @BindView(R.id.toolBarBack) TextView back;      //标题栏上的返回按键，点击返回在我的页面
+    @BindView(R.id.toolBarTag) TextView tag;        //标题栏上返回按钮右边的textView，用于显示当前页面名字
+    @BindView(R.id.tooBarTool1)  TextView save;      //标题栏上的保存按钮，点击对所输入的原密码，新密码，确认密码（与新密码进行匹配）对比，相同保存在数据库上，并返回我的页面
+    @BindView(R.id.personalSecurityOldPassword) EditText oldPassword;    //输入原密码
+    @BindView(R.id.personalSecurityNewPassword) EditText newPassword;    //输入新密码
+    @BindView(R.id.personalSecurityConfirmPassword) EditText confirmPassword;    //用于与新密码进行匹配，防止出现错误
 
     @Override
     protected PersonalSecurityPresenter initPresent(){

@@ -13,10 +13,12 @@ import com.cartoon.tinytips.Community.Focus.CommunityFocus;
 import com.cartoon.tinytips.Community.Hot.CommunityHot;
 import com.cartoon.tinytips.Community.Recommend.CommunityRecommend;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Community.CommunityAdapter;
+import com.cartoon.tinytips.util.Adapter.Community.CommunityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/2/28.
@@ -39,12 +41,12 @@ import java.util.List;
 
 public class Community extends BaseFragment<CommunityPresenter>
         implements ICommunity.View,ViewPager.OnPageChangeListener,View.OnClickListener{
-    private TextView search;            //标题栏上的搜索按钮
-    private TextView hot;               //热门标签
-    private TextView recommend;         //推荐标签
-    private TextView focus;             //关注标签
 
-    private ViewPager pager;           //ViewPager，用于切换热门，推荐，关注的fragment
+    @BindView(R.id.toolBarBack) TextView search;            //标题栏上的搜索按钮
+    @BindView(R.id.communityHot) TextView hot;               //热门标签
+    @BindView(R.id.communityRecommend) TextView recommend;         //推荐标签
+    @BindView(R.id.communityFocus) TextView focus;             //关注标签
+    @BindView(R.id.communityFrame) ViewPager pager;           //ViewPager，用于切换热门，推荐，关注的fragment
 
     private PagerAdapter adapter;      //ViewPager的适配器
 
@@ -63,10 +65,6 @@ public class Community extends BaseFragment<CommunityPresenter>
     }
     @Override
     protected void initView(){
-        search=getActivity().findViewById(R.id.toolBarBack);
-        hot=getActivity().findViewById(R.id.communityHot);
-        recommend=getActivity().findViewById(R.id.communityRecommend);
-        focus=getActivity().findViewById(R.id.communityFocus);
         pager=getActivity().findViewById(R.id.communityFrame);
         initData();
         hot.setTextColor(Color.BLUE);

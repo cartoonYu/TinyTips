@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/14.
  * 1.笔记修改页
@@ -53,18 +55,16 @@ import java.util.List;
 public class HomePageDetailsRevamp extends BaseActivity<HomePageDetailsRevampPresenter>
         implements IHomePageDetailsRevamp.View, View.OnClickListener{
 
-    private DrawerLayout drawerLayout;
+    @BindView(R.id.homePageRevampNoteDrawerLayout) DrawerLayout drawerLayout;
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView title;
+    @BindView(R.id.tooBarTool1) TextView save;
+    @BindView(R.id.homePageRevampNoteNote) EditText details;
+    @BindView(R.id.homePageRevampNoteMenu) ImageView menu;
+    @BindView(R.id.homePageRevampNoteMenuTitle) Button revampTitle;
+    @BindView(R.id.homePageRevampNoteMenuClassify) Button revampClassify;
+    @BindView(R.id.homePageRevampNoteMenuSelectPhoto) Button revampPhoto;
 
-    private TextView back;
-    private TextView title;
-    private TextView save;
-
-    private EditText details;
-
-    private ImageView menu;
-    private Button revampTitle;
-    private Button revampClassify;
-    private Button revampPhoto;
 
     private AlertDialog.Builder builder;
     private LayoutInflater inflater;
@@ -83,15 +83,6 @@ public class HomePageDetailsRevamp extends BaseActivity<HomePageDetailsRevampPre
     }
     @Override
     protected void initView(){
-        drawerLayout=findViewById(R.id.homePageRevampNoteDrawerLayout);
-        back=findViewById(R.id.toolBarBack);
-        title=findViewById(R.id.toolBarTag);
-        save=findViewById(R.id.tooBarTool1);
-        details=findViewById(R.id.homePageRevampNoteNote);
-        menu=findViewById(R.id.homePageRevampNoteMenu);
-        revampTitle=findViewById(R.id.homePageRevampNoteMenuTitle);
-        revampClassify=findViewById(R.id.homePageRevampNoteMenuClassify);
-        revampPhoto=findViewById(R.id.homePageRevampNoteMenuSelectPhoto);
         save.setText("保存");
     }
     @Override

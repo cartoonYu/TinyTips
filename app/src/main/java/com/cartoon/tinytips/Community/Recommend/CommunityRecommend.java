@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
-import com.cartoon.tinytips.util.Community.Recommend.CommunityRecommendAdapter;
+import com.cartoon.tinytips.util.Adapter.Community.Recommend.CommunityRecommendAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/2/8.
@@ -28,7 +30,9 @@ import java.util.List;
  */
 
 public class CommunityRecommend extends BaseFragment<CommunityRecommendPresenter> implements ICommunityRecommend.View{
-    private RecyclerView recommend;    //推荐列表
+
+    @BindView(R.id.communityRecommendView) RecyclerView recommend;    //推荐列表
+
     private CommunityRecommendAdapter adapter;
     private List<Note> noteList;
     private GridLayoutManager manager;
@@ -43,12 +47,10 @@ public class CommunityRecommend extends BaseFragment<CommunityRecommendPresenter
     }
     @Override
     protected void initView(){
-        recommend=getActivity().findViewById(R.id.communityRecommendView);
         initRecommend();
     }
     @Override
     protected void onPrepare(){
-
     }
     @Override
     public void initRecommend(){

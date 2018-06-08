@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Personal;
+package com.cartoon.tinytips.util.Adapter.Personal;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.HomePage;
+package com.cartoon.tinytips.util.Adapter.HomePage;
 
 import android.app.Activity;
 import android.content.Context;

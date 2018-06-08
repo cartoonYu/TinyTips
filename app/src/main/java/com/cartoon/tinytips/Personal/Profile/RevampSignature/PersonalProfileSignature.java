@@ -10,6 +10,8 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
 import com.cartoon.tinytips.R;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/22.
  * 1.个人信息签名修改页
@@ -28,11 +30,10 @@ import com.cartoon.tinytips.R;
 public class PersonalProfileSignature extends BaseActivity<PersonalProfileSignaturePresenter> implements
         IPersonalProfileSignature.View, View.OnClickListener{
 
-    private TextView back;
-    private TextView tag;
-    private TextView save;
-
-    private EditText newSignature;
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView tag;
+    @BindView(R.id.tooBarTool1) TextView save;
+    @BindView(R.id.personalProfileRevampSignature) EditText newSignature;
 
     private Intent intent;
 
@@ -46,10 +47,6 @@ public class PersonalProfileSignature extends BaseActivity<PersonalProfileSignat
     }
     @Override
     protected void initView(){
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
-        save=findViewById(R.id.tooBarTool1);
-        newSignature=findViewById(R.id.personalProfileRevampSignature);
         tag.setText("修改你的签名");
         save.setText("保存");
     }

@@ -10,6 +10,8 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
 import com.cartoon.tinytips.R;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/22.
  * 1.个人信息高校修改页
@@ -28,11 +30,10 @@ import com.cartoon.tinytips.R;
 public class PersonalProfileSchool extends BaseActivity<PersonalProfileSchoolPresenter>
         implements IPersonalProfileSchool.View , View.OnClickListener{
 
-    private TextView back;
-    private TextView tag;
-    private TextView save;
-
-    private EditText newSchool;
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView tag;
+    @BindView(R.id.tooBarTool1) TextView save;
+    @BindView(R.id.personalProfileRevampSchool) EditText newSchool;
 
     private Intent intent;
 
@@ -46,10 +47,6 @@ public class PersonalProfileSchool extends BaseActivity<PersonalProfileSchoolPre
     }
     @Override
     protected void initView(){
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
-        save=findViewById(R.id.tooBarTool1);
-        newSchool=findViewById(R.id.personalProfileRevampSchool);
         tag.setText("修改你的高校");
         save.setText("保存");
     }

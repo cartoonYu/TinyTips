@@ -23,6 +23,8 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/2/11.
  * 1.笔记详情
@@ -42,11 +44,10 @@ import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
         implements IHomePageDetails.View, View.OnClickListener{
 
-    private Toolbar toolbar;
-    private TextView back;      //标题栏上的返回按钮
-    private TextView tag;       //标题栏返回按钮右侧的文字
-
-    private TextView details;   //笔记详情，图片文字混合显示
+    @BindView(R.id.homePageDetailsToolbar) Toolbar toolbar;
+    @BindView(R.id.toolBarBack) TextView back;      //标题栏上的返回按钮
+    @BindView(R.id.toolBarTag) TextView tag;       //标题栏返回按钮右侧的文字
+    @BindView(R.id.homePageDetailsDetails) TextView details;   //笔记详情，图片文字混合显示
 
     private PopupWindow popupWindow;
     // 声明PopupWindow对应的视图
@@ -69,10 +70,6 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
     }
     @Override
     protected void initView(){
-        toolbar=findViewById(R.id.homePageDetailsToolbar);
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
-        details=findViewById(R.id.homePageDetailsDetails);
         setSupportActionBar(toolbar);
         if(toolbar!=null){
             toolbar.setTitle("");

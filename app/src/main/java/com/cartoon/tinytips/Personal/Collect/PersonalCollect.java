@@ -10,7 +10,9 @@ import android.widget.Toast;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Personal.PersonalCollectAdapter;
+import com.cartoon.tinytips.util.Adapter.Personal.PersonalCollectAdapter;
+
+import butterknife.BindView;
 
 /**
  * Created by cartoon on 2018/3/5.
@@ -31,10 +33,9 @@ import com.cartoon.tinytips.util.Personal.PersonalCollectAdapter;
 public class PersonalCollect extends BaseActivity<PersonalCollectPresenter>
         implements IPersonalCollect.View,View.OnClickListener{
 
-    private TextView back;
-    private TextView tag;
-
-    private RecyclerView note;          //日记滚动列表
+    @BindView(R.id.toolBarBack) TextView back;
+    @BindView(R.id.toolBarTag) TextView tag;
+    @BindView(R.id.personalCollectNote) RecyclerView note;          //日记滚动列表
 
     private PersonalCollectAdapter adapter;          //日记滚动列表适配器
     private GridLayoutManager manager;            //日记滚动列表布局管理器
@@ -51,9 +52,6 @@ public class PersonalCollect extends BaseActivity<PersonalCollectPresenter>
     }
     @Override
     protected void initView(){
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
-        note=findViewById(R.id.personalCollectNote);
         tag.setText("收藏");
         initNote();
     }
