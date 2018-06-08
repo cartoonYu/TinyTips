@@ -18,6 +18,9 @@ import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by cartoon on 2018/2/4.
  * 1.HomePage的笔记（RecyclerView）的适配器
@@ -33,19 +36,16 @@ public class HomePageNoteAdapter extends RecyclerView.Adapter<HomePageNoteAdapte
     private Context context;
     private List<Note> noteList;
     static class ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.homePageNoteTitle)  TextView noteTitle;            //笔记的标题
+        @BindView(R.id.homePageNoteImage) ImageView noteImage;       //笔记的缩略图(随机从笔记的图片选一张）
+        @BindView(R.id.homePageNoteWord) TextView noteWord;         //笔记的简单描述（截取笔记的开头的10字）
+        @BindView(R.id.homePageNoteDate) TextView noteDate;         //笔记建立的日期
         CardView cardView;
-        TextView noteTitle;            //笔记的标题
-        ImageView noteImage;       //笔记的缩略图(随机从笔记的图片选一张）
-        TextView noteWord;         //笔记的简单描述（截取笔记的开头的10字）
-        TextView noteDate;         //笔记建立的日期
         View view;
         public ViewHolder(View view){
             super(view);
+            ButterKnife.bind(this,view);
             cardView=(CardView)view;
-            noteTitle=view.findViewById(R.id.homePageNoteTitle);
-            noteImage=view.findViewById(R.id.homePageNoteImage);
-            noteWord=view.findViewById(R.id.homePageNoteWord);
-            noteDate=view.findViewById(R.id.homePageNoteDate);
             this.view=view;
         }
     }

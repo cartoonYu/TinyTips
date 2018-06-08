@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/14.
@@ -53,18 +54,11 @@ import butterknife.BindView;
  */
 
 public class HomePageDetailsRevamp extends BaseActivity<HomePageDetailsRevampPresenter>
-        implements IHomePageDetailsRevamp.View, View.OnClickListener{
+        implements IHomePageDetailsRevamp.View{
 
     @BindView(R.id.homePageRevampNoteDrawerLayout) DrawerLayout drawerLayout;
-    @BindView(R.id.toolBarBack) TextView back;
     @BindView(R.id.toolBarTag) TextView title;
     @BindView(R.id.tooBarTool1) TextView save;
-    @BindView(R.id.homePageRevampNoteNote) EditText details;
-    @BindView(R.id.homePageRevampNoteMenu) ImageView menu;
-    @BindView(R.id.homePageRevampNoteMenuTitle) Button revampTitle;
-    @BindView(R.id.homePageRevampNoteMenuClassify) Button revampClassify;
-    @BindView(R.id.homePageRevampNoteMenuSelectPhoto) Button revampPhoto;
-
 
     private AlertDialog.Builder builder;
     private LayoutInflater inflater;
@@ -87,14 +81,10 @@ public class HomePageDetailsRevamp extends BaseActivity<HomePageDetailsRevampPre
     }
     @Override
     protected void onPrepare(){
-        back.setOnClickListener(this);
-        save.setOnClickListener(this);
-        menu.setOnClickListener(this);
-        revampTitle.setOnClickListener(this);
-        revampClassify.setOnClickListener(this);
-        revampPhoto.setOnClickListener(this);
     }
-    @Override
+    @OnClick({R.id.toolBarBack,R.id.tooBarTool1,R.id.homePageRevampNoteMenu,
+            R.id.homePageRevampNoteMenuTitle,R.id.homePageRevampNoteMenuClassify,
+            R.id.homePageRevampNoteMenuSelectPhoto})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/28.
@@ -40,7 +41,7 @@ import butterknife.BindView;
  */
 
 public class Community extends BaseFragment<CommunityPresenter>
-        implements ICommunity.View,ViewPager.OnPageChangeListener,View.OnClickListener{
+        implements ICommunity.View,ViewPager.OnPageChangeListener{
 
     @BindView(R.id.toolBarBack) TextView search;            //标题栏上的搜索按钮
     @BindView(R.id.communityHot) TextView hot;               //热门标签
@@ -73,7 +74,6 @@ public class Community extends BaseFragment<CommunityPresenter>
     }
     @Override
     protected void onPrepare(){
-        search.setOnClickListener(this);
         hot.setOnClickListener(new MyOnclickListener(0));
         recommend.setOnClickListener(new MyOnclickListener(1));
         focus.setOnClickListener(new MyOnclickListener(2));
@@ -98,7 +98,7 @@ public class Community extends BaseFragment<CommunityPresenter>
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(this);
     }
-    @Override
+    @OnClick(R.id.toolBarBack)
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{

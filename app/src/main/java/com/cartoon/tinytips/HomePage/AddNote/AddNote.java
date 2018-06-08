@@ -46,6 +46,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.BindViews;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/17.
@@ -69,7 +70,6 @@ import butterknife.BindViews;
 public class AddNote extends BaseActivity<AddNotePresenter>
         implements IAddNote.View, View.OnClickListener{
 
-    @BindView(R.id.toolBarBack) TextView back;
     @BindView(R.id.toolBarTag) TextView title;
     @BindViews({R.id.tooBarTool4,R.id.tooBarTool3,R.id.tooBarTool2}) List<TextView> classify;
     @BindView(R.id.tooBarTool1) TextView save;
@@ -77,10 +77,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     @BindView(R.id.homePageAddNoteNote) EditText details;
 
     @BindView(R.id.homePageAddNoteDrawerLayout) DrawerLayout drawerLayout;
-    @BindView(R.id.homePageAddNoteMenu) ImageView menu;
-    @BindView(R.id.homePageAddNoteMenuAddTitle) Button addTitle;
-    @BindView(R.id.homePageAddNoteMenuAddClassify) Button addClassify;
-    @BindView(R.id.homePageAddNoteMenuSelectPhoto) Button addPhoto;
 
     private Intent intent;
 
@@ -104,25 +100,15 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     @Override
     protected void initView(){
         save.setText("保存");
-        addTitle=findViewById(R.id.homePageAddNoteMenuAddTitle);
-        addClassify=findViewById(R.id.homePageAddNoteMenuAddClassify);
-        addPhoto=findViewById(R.id.homePageAddNoteMenuSelectPhoto);
     }
     @Override
     public void onPrepare(){
-        back.setOnClickListener(this);
-        title.setOnClickListener(this);
-        for(int i=0;i<classify.size();i++){
-            classify.get(i).setOnClickListener(this);
-        }
-        save.setOnClickListener(this);
-        menu.setOnClickListener(this);
-        addTitle.setOnClickListener(this);
-        addClassify.setOnClickListener(this);
-        addPhoto.setOnClickListener(this);
+
     }
 
-    @Override
+    @OnClick({R.id.toolBarBack,R.id.toolBarTag,R.id.tooBarTool2,R.id.tooBarTool3,
+            R.id.tooBarTool4,R.id.tooBarTool1,R.id.homePageAddNoteMenu,R.id.homePageAddNoteMenuAddTitle,
+            R.id.homePageAddNoteMenuAddClassify,R.id.homePageAddNoteMenuSelectPhoto})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{

@@ -13,15 +13,15 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.BindViews;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/3/6.
  */
 
 public class PersonalCollectDetails extends BaseActivity<PersonalCollectDetailsPresenter>
-        implements IPersonalCollectDetails.View,View.OnClickListener{
+        implements IPersonalCollectDetails.View{
 
-    @BindView(R.id.toolBarBack) TextView back;
     @BindView(R.id.toolBarTag) TextView title;
     @BindViews({R.id.tooBarTool1,R.id.tooBarTool2,R.id.tooBarTool3}) List<TextView> classify;
     @BindView(R.id.personalCollectDetails) TextView details;
@@ -44,9 +44,8 @@ public class PersonalCollectDetails extends BaseActivity<PersonalCollectDetailsP
     }
     @Override
     protected void onPrepare(){
-        back.setOnClickListener(this);
     }
-    @Override
+    @OnClick(R.id.toolBarBack)
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolBarBack:{

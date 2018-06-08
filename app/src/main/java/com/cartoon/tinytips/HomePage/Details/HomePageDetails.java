@@ -24,6 +24,7 @@ import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/11.
@@ -42,10 +43,9 @@ import butterknife.BindView;
  */
 
 public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
-        implements IHomePageDetails.View, View.OnClickListener{
+        implements IHomePageDetails.View{
 
     @BindView(R.id.homePageDetailsToolbar) Toolbar toolbar;
-    @BindView(R.id.toolBarBack) TextView back;      //标题栏上的返回按钮
     @BindView(R.id.toolBarTag) TextView tag;       //标题栏返回按钮右侧的文字
     @BindView(R.id.homePageDetailsDetails) TextView details;   //笔记详情，图片文字混合显示
 
@@ -83,9 +83,8 @@ public class HomePageDetails extends BaseActivity<HomePageDetailsPresenter>
     @Override
     protected void onPrepare(){
         setSupportActionBar(toolbar);
-        back.setOnClickListener(this);
     }
-    @Override
+    @OnClick(R.id.toolBarBack)
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolBarBack:{

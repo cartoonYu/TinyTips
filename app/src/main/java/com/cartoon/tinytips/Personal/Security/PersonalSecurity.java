@@ -12,6 +12,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.PersonalInformation;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -30,11 +31,10 @@ import butterknife.BindView;
  */
 
 public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter>
-        implements ISecurity.View, View.OnClickListener{
+        implements ISecurity.View{
 
-    @BindView(R.id.toolBarBack) TextView back;      //标题栏上的返回按键，点击返回在我的页面
     @BindView(R.id.toolBarTag) TextView tag;        //标题栏上返回按钮右边的textView，用于显示当前页面名字
-    @BindView(R.id.tooBarTool1)  TextView save;      //标题栏上的保存按钮，点击对所输入的原密码，新密码，确认密码（与新密码进行匹配）对比，相同保存在数据库上，并返回我的页面
+    @BindView(R.id.tooBarTool1) TextView save;      //标题栏上的保存按钮，点击对所输入的原密码，新密码，确认密码（与新密码进行匹配）对比，相同保存在数据库上，并返回我的页面
     @BindView(R.id.personalSecurityOldPassword) EditText oldPassword;    //输入原密码
     @BindView(R.id.personalSecurityNewPassword) EditText newPassword;    //输入新密码
     @BindView(R.id.personalSecurityConfirmPassword) EditText confirmPassword;    //用于与新密码进行匹配，防止出现错误
@@ -49,21 +49,13 @@ public class PersonalSecurity extends BaseActivity<PersonalSecurityPresenter>
     }
     @Override
     protected void initView(){
-        back=findViewById(R.id.toolBarBack);
-        tag=findViewById(R.id.toolBarTag);
-        save=findViewById(R.id.tooBarTool1);
-        oldPassword=findViewById(R.id.personalSecurityOldPassword);
-        newPassword=findViewById(R.id.personalSecurityNewPassword);
-        confirmPassword=findViewById(R.id.personalSecurityConfirmPassword);
         tag.setText("安全");
         save.setText("保存");
     }
     @Override
     protected void onPrepare(){
-        back.setOnClickListener(this);
-        save.setOnClickListener(this);
     }
-    @Override
+    @OnClick({R.id.toolBarBack,R.id.tooBarTool1})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{

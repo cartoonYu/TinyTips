@@ -18,6 +18,8 @@ import com.cartoon.tinytips.data.Note;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by cartoon on 2018/3/5.
  *  1.PersonalCollect的笔记（RecyclerView）的适配器
@@ -34,18 +36,14 @@ public class PersonalCollectAdapter extends RecyclerView.Adapter<PersonalCollect
     private List<Note> noteList;
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
-        TextView noteTitle;            //笔记的标题
-        ImageView noteImage;       //笔记的缩略图(随机从笔记的图片选一张）
-        TextView noteWord;         //笔记的简单描述（截取笔记的开头的10字）
-        TextView noteDate;         //笔记建立的日期
+        @BindView(R.id.personalCollectNoteTitle) TextView noteTitle;            //笔记的标题
+        @BindView(R.id.personalCollectNoteImage) ImageView noteImage;       //笔记的缩略图(随机从笔记的图片选一张）
+        @BindView(R.id.personalCollectNoteWord) TextView noteWord;         //笔记的简单描述（截取笔记的开头的10字）
+        @BindView(R.id.personalCollectNoteDate) TextView noteDate;         //笔记建立的日期
         View view;
         public ViewHolder(View view){
             super(view);
             cardView=(CardView)view;
-            noteTitle=view.findViewById(R.id.personalCollectNoteTitle);
-            noteImage=view.findViewById(R.id.personalCollectNoteImage);
-            noteWord=view.findViewById(R.id.personalCollectNoteWord);
-            noteDate=view.findViewById(R.id.personalCollectNoteDate);
             this.view=view;
         }
     }

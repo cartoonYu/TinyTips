@@ -11,6 +11,7 @@ import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
 import com.cartoon.tinytips.R;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/22.
@@ -28,11 +29,9 @@ import butterknife.BindView;
  */
 
 public class PersonalProfileResume extends BaseActivity<PersonalProfileResumePresenter>
-        implements IPersonalProfileResume.View, View.OnClickListener{
+        implements IPersonalProfileResume.View{
 
-    @BindView(R.id.toolBarBack) TextView back;
     @BindView(R.id.toolBarTag) TextView tag;
-    @BindView(R.id.tooBarTool1) TextView save;
     @BindView(R.id.personalProfileRevampResume) EditText newResume;
 
     private Intent intent;
@@ -50,10 +49,8 @@ public class PersonalProfileResume extends BaseActivity<PersonalProfileResumePre
     }
     @Override
     protected void onPrepare(){
-        back.setOnClickListener(this);
-        save.setOnClickListener(this);
     }
-    @Override
+    @OnClick({R.id.toolBarBack,R.id.tooBarTool1})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolBarBack:{

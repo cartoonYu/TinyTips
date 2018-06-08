@@ -32,6 +32,7 @@ import com.zhihu.matisse.internal.entity.CaptureStrategy;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/6.
@@ -50,27 +51,21 @@ import butterknife.BindView;
  * 2.用户修改个人信息的入口要到函数onClick中编写具体逻辑
  */
 
-public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> implements IProfile.View, View.OnClickListener{
+public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> implements IProfile.View{
 
-    @BindView(R.id.toolBarBack) TextView back;        //标题栏上的返回按钮，点击返回我的页面
     @BindView(R.id.toolBarTag) TextView tag;         //标题栏上返回按钮右边的textView，用于显示当前页面名字
 
-    @BindView(R.id.personalProfileHeadPortrait) RelativeLayout headPortrait;      //头像栏，点击进入选择图片页面
     @BindView(R.id.personalProfileNickNameName) TextView nickName;                 //显示昵称，昵称来源于数据库
     @BindView(R.id.personalProfileHeadPortraitImage) ImageView headPortraitImage;       //显示头像，图片来源于数据库
 
     @BindView(R.id.personalProfileAccountAccount) TextView account;                  //显示账号，账号来源数据库
 
-    @BindView(R.id.personalProfileSchool) RelativeLayout school;            //高校栏，点击进入修改高校页面
     @BindView(R.id.personalProfileSchoolSchool) TextView schoolName;               //显示高校名称，数据来源于数据库
 
-    @BindView(R.id.personalProfileSex) RelativeLayout sex;               //性别栏，点击弹窗选择
     @BindView(R.id.personalProfileSexSex) TextView sexSex;                   //显示用户性别，数据来源于数据库
 
-    @BindView(R.id.personalProfileResume) RelativeLayout resume;            //个人简介栏，点击进入修改个人简介页面
     @BindView(R.id.personalProfileResumeResume) TextView resumeResume;             //显示个人简介，数据来源于数据库
 
-    @BindView(R.id.personalProfileSignature) RelativeLayout signature;         //个人签名栏，点击进入修改个人签名页面
     @BindView(R.id.personalProfileSignatureSignature) TextView signatureSignature;       //显示个人签名，，数据来源于数据库
 
     private AlertDialog.Builder builder;
@@ -94,15 +89,10 @@ public class PersonalProfile extends BaseActivity<PersonalProfilePresenter> impl
     @Override
     protected void onPrepare(){
         presenter.initData(getIntent().getStringExtra("nickName"));
-        back.setOnClickListener(this);
-        headPortrait.setOnClickListener(this);
-        school.setOnClickListener(this);
-        sex.setOnClickListener(this);
-        resume.setOnClickListener(this);
-        signature.setOnClickListener(this);
     }
 
-    @Override
+    @OnClick({R.id.toolBarBack,R.id.personalProfileHeadPortrait,R.id.personalProfileSchool,
+            R.id.personalProfileSex,R.id.personalProfileResume,R.id.personalProfileSignature})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{

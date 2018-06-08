@@ -17,6 +17,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/4.
@@ -35,17 +36,12 @@ import butterknife.BindView;
  * 2.用户头像，昵称，个人签名具体的数据要到数据库中提取显示
  */
 
-public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View, View.OnClickListener{
+public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View{
 
     @BindView(R.id.toolBarBack) TextView back;                   //标题栏的返回按钮，因为此页面没有返回功能，所以定义此变量目的是把返回符号去掉
-    @BindView(R.id.personalProfile) RelativeLayout profile;          //头像，昵称等所在位置，点击进入个人资料页面
     @BindView(R.id.personalHeadPortrait) ImageView headPortrait;          //用户头像
     @BindView(R.id.personalNickName) TextView nickName;               //用户昵称
     @BindView(R.id.personalSignature) TextView signature;              //用户签名
-    @BindView(R.id.personalMyCollect) RelativeLayout myCollect;        //我的收藏，点击进入我的收藏详情页
-    @BindView(R.id.personalMyShare) RelativeLayout myShare;          //我的分享，点击进入我所允许分享的笔记详情页
-    @BindView(R.id.personalSecurity) RelativeLayout security;         //安全，点击进入安全页面修改密码
-    @BindView(R.id.personalLogout) RelativeLayout logout;         //注销，点击即可登出账户
 
     private Intent intent;
 
@@ -64,13 +60,9 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
     @Override
     protected void onPrepare(){
-        profile.setOnClickListener(this);
-        myCollect.setOnClickListener(this);
-        myShare.setOnClickListener(this);
-        security.setOnClickListener(this);
-        logout.setOnClickListener(this);
     }
-    @Override
+    @OnClick({R.id.personalProfile,R.id.personalMyCollect,R.id.personalMyShare,
+            R.id.personalSecurity,R.id.personalLogout})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.personalProfile:{

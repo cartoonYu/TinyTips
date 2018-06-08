@@ -13,6 +13,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapter.Personal.PersonalCollectAdapter;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/3/5.
@@ -31,9 +32,8 @@ import butterknife.BindView;
  */
 
 public class PersonalCollect extends BaseActivity<PersonalCollectPresenter>
-        implements IPersonalCollect.View,View.OnClickListener{
+        implements IPersonalCollect.View{
 
-    @BindView(R.id.toolBarBack) TextView back;
     @BindView(R.id.toolBarTag) TextView tag;
     @BindView(R.id.personalCollectNote) RecyclerView note;          //日记滚动列表
 
@@ -57,9 +57,8 @@ public class PersonalCollect extends BaseActivity<PersonalCollectPresenter>
     }
     @Override
     protected void onPrepare(){
-        back.setOnClickListener(this);
     }
-    @Override
+    @OnClick(R.id.toolBarBack)
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolBarBack:{

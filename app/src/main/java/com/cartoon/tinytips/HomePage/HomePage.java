@@ -18,6 +18,7 @@ import com.cartoon.tinytips.util.Adapter.HomePage.HomePageNoteAdapter;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by cartoon on 2018/2/4.
@@ -39,7 +40,7 @@ import butterknife.BindView;
  * 3.笔记滑动列表的点击事件到HomePageAdapter处理
  */
 
-public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePage.View,View.OnClickListener{
+public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePage.View{
 
 
     @BindView(R.id.toolBarBack) TextView back; //标题栏的返回按钮，因为此页面没有返回功能，定义此变量目的是把返回符号去掉
@@ -75,10 +76,9 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     }
     @Override
     protected void onPrepare(){
-        search.setOnClickListener(this);
-        addNote.setOnClickListener(this);
+
     }
-    @Override
+    @OnClick({R.id.tooBarTool2,R.id.tooBarTool1})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tooBarTool2:{
