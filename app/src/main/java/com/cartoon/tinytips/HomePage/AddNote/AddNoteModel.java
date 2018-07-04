@@ -1,6 +1,6 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
-import com.cartoon.tinytips.DbUtil.DatabaseUtil;
+import com.cartoon.tinytips.util.DbUtil.DatabaseUtil;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.data.Note;
 import com.cartoon.tinytips.util.JudgeObjectIsEmpty;

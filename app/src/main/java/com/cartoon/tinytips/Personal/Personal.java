@@ -1,18 +1,16 @@
 package com.cartoon.tinytips.Personal;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.Personal.Collect.PersonalCollect;
-import com.cartoon.tinytips.Personal.Profile.PersonalProfile;
-import com.cartoon.tinytips.Personal.Security.PersonalSecurity;
+import com.cartoon.tinytips.Personal.Collect.Collect;
+import com.cartoon.tinytips.Personal.Profile.Profile;
+import com.cartoon.tinytips.Personal.Security.Security;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
@@ -61,61 +59,49 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @Override
     protected void onPrepare(){
     }
-    @OnClick({R.id.personalProfile,R.id.personalMyCollect,R.id.personalMyShare,
-            R.id.personalSecurity,R.id.personalLogout})
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.personalProfile:{
-                //点击头像所在区域，跳转到个人资料页（PersonalProfile）
-                handleClickProfile();
-                break;
-            }
-            case R.id.personalMyCollect:{
-                //点击我的收藏
-                handleClickCollect();
-                break;
-            }
-            case R.id.personalMyShare:{
-                //点击我的分享
-                showToast("此功能暂未开放");
-                break;
-            }
-            case R.id.personalSecurity:{
-                //点击安全，跳转到修改密码页（PersonalSecurity）
-                handleClickSecurity();
-                break;
-            }
-            case R.id.personalLogout:{
-                //点击注销
-                showToast("此功能暂未开放");
-                break;
-            }
-        }
-    }
-    @Override
+
+    @OnClick(R.id.personalProfile)
     public void handleClickProfile(){
-        intent=new Intent(getActivity(), PersonalProfile.class);
+        //点击头像所在区域，跳转到个人资料页（Profile）
+        intent=new Intent(getActivity(), Profile.class);
         intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         getActivity().finish();
     }
-    @Override
+
+    @OnClick(R.id.personalSecurity)
     public void handleClickSecurity(){
-        intent=new Intent(getActivity(), PersonalSecurity.class);
+        //点击安全，跳转到修改密码页（Security）
+        intent=new Intent(getActivity(), Security.class);
         intent.putExtra("nickName",nickName.getText().toString());
         startActivity(intent);
         getActivity().finish();
     }
-    @Override
+
+    @OnClick(R.id.personalMyCollect)
     public void handleClickCollect(){
-        intent=new Intent(getActivity(), PersonalCollect.class);
+        //点击我的收藏
+        intent=new Intent(getActivity(), Collect.class);
         startActivity(intent);
         getActivity().finish();
     }
+
+    @OnClick(R.id.personalMyShare)
+    public void handleClickShare(){
+        showToast("此功能尚未开放");
+    }
+
+    @OnClick(R.id.personalLogout)
+    public void handleClickLogout(){
+        //点击注销
+        showToast("此功能暂未开放");
+    }
+
     @Override
     public void showToast(String code){
         Toast.makeText(TinyTipsApplication.getContext(),code,Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void initHeadPortrait(String str){
         Glide.with(getActivity()).load(str).into(headPortrait);

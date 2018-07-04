@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.Personal.Collect.Details.PersonalCollectDetails;
+import com.cartoon.tinytips.Personal.Collect.Details.CollectDetails;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
 
@@ -60,7 +60,7 @@ public class PersonalCollectAdapter extends RecyclerView.Adapter<PersonalCollect
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, PersonalCollectDetails.class);
+                Intent intent=new Intent(context, CollectDetails.class);
                 intent.putExtra("dataFromCollect",noteList.get(holder.getAdapterPosition()));
                 Activity activity=(Activity)group.getContext();
                 activity.startActivity(intent);

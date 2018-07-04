@@ -3,6 +3,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".util.TinyTipsApplication"
@@ -32,25 +34,25 @@
 
         <activity android:name=".HomePage.AddNote.AddNote"
             android:launchMode="singleTask"/>
-        <activity android:name=".HomePage.Details.HomePageDetails"
+        <activity android:name=".HomePage.Details.Details"
             android:launchMode="singleTask"/>
-        <activity android:name=".HomePage.Details.Revamp.HomePageDetailsRevamp"
-            android:launchMode="singleTask"/>
-
-        <activity android:name=".Personal.Profile.PersonalProfile"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampSchool.PersonalProfileSchool"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampResume.PersonalProfileResume"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampSignature.PersonalProfileSignature"
+        <activity android:name=".HomePage.Details.Revamp.DetailsRevamp"
             android:launchMode="singleTask"/>
 
-        <activity android:name=".Personal.Security.PersonalSecurity"
+        <activity android:name=".Personal.Profile.Profile"
             android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Collect.PersonalCollect"
+        <activity android:name=".Personal.Profile.RevampSchool.ProfileSchool"
             android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Collect.Details.PersonalCollectDetails"
+        <activity android:name=".Personal.Profile.RevampResume.ProfileResume"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Personal.Profile.RevampSignature.ProfileSignature"
+            android:launchMode="singleTask"/>
+
+        <activity android:name=".Personal.Security.Security"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Personal.Collect.Collect"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Personal.Collect.Details.CollectDetails"
             android:launchMode="singleTask"/>
     </application>
 </manifest>

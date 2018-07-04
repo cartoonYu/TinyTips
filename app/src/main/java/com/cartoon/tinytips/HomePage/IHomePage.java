@@ -15,9 +15,8 @@ import java.util.List;
 interface IHomePage {
     interface View{
         void initNote();       //初始化笔记列表
-        //void refreshAdapter();
-        void handleClickSearch();
-        void handleClickAdd();
+        //void handleClickSearch();
+        //void handleClickAdd();
         void showToast(String code);
     }
     interface Presenter{
