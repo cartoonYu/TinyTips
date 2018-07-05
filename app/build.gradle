@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support:design:26+'
+
     /*******************************控件依赖项*********************************/
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
@@ -59,6 +60,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.zhihu.android:matisse:0.4.3'
     /*******************************图片类*********************************/
+
+    /***************************网络通讯类*********************************/
+    //implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    /***************************网络通讯类*********************************/
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
