@@ -44,4 +44,9 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

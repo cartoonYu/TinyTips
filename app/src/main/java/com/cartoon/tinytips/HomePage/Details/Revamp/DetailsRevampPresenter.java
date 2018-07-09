@@ -20,4 +20,8 @@ class DetailsRevampPresenter extends BaseActivityPresenter<DetailsRevamp>
     public DetailsRevampPresenter(IDetailsRevamp.View view){
         this.view=view;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

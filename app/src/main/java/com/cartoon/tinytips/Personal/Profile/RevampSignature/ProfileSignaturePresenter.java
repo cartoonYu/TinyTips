@@ -37,4 +37,9 @@ class ProfileSignaturePresenter extends BaseActivityPresenter<ProfileSignature>
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

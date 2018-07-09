@@ -39,6 +39,5 @@ public class HomePageModel implements IHomePage.Model {
     @Override
     public void searchData(ValueCallBack<List<Note>> callBack){
         //成员变量word就是用户输入的分类
-
     }
 }

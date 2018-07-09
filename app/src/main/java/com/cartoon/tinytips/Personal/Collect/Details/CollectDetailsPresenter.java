@@ -15,4 +15,9 @@ class CollectDetailsPresenter extends BaseActivityPresenter<CollectDetails> impl
         this.view=view;
         this.model=new CollectDetailsModel();
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

@@ -38,4 +38,9 @@ class ProfileResumePresenter extends BaseActivityPresenter<ProfileResume>
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

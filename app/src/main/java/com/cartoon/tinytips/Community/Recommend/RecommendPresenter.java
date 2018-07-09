@@ -19,4 +19,8 @@ class RecommendPresenter extends BaseFragmentPresenter<Recommend> implements IRe
     public RecommendPresenter(IRecommend.View view){
         this.view=view;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

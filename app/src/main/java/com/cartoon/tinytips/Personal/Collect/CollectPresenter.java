@@ -41,4 +41,9 @@ class CollectPresenter extends BaseActivityPresenter<Collect>
     public List<Note> getNoteList(){
         return noteList;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }
