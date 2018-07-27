@@ -26,19 +26,20 @@
                     android:textSize="16sp"
                     android:id="@+id/homePageRevampNoteNote"/>
             </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/homePageRevampNoteMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="-18dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="-8dp"
+                android:paddingTop="20dp"
+                android:src="@drawable/homepage_addnote_arrows" />
         </ScrollView>
-        <ImageView
-            android:id="@+id/homePageRevampNoteMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="-18dp"
-            android:background="@color/white"
-            android:paddingBottom="20dp"
-            android:paddingLeft="-8dp"
-            android:paddingTop="20dp"
-            android:src="@drawable/homepage_addnote_arrows" />
     </RelativeLayout>
 
     <LinearLayout

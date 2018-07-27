@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.HomePage.AddNote;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -20,13 +21,18 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
+import com.cartoon.tinytips.DbUtil.MyDatabaseHelper;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -58,7 +64,7 @@ import butterknife.OnClick;
  * 2.点击侧边栏，弹出图片，已经在函数onActivityResult中返回了Uri的List--mSelected，
  *   并已经在try catch模块中的try中for循环将它转换成Bitmap，显示以及存储的具体逻辑到try里面编写
  * 3.点击侧边栏,弹出分类，用户选择或填写的分类已经存储在函数onClick的局部变量mSelectedItems，具体逻辑到
- *   builder.setPositiveButton的点击函数的if(mSelectedItems.size()<=3)编写
+ *   builder.setPositiveButtond的点击函数的if(mSelectedItems.size()<=3)编写
  */
 
 public class AddNote extends BaseActivity<AddNotePresenter>
@@ -87,29 +93,32 @@ public class AddNote extends BaseActivity<AddNotePresenter>
     protected AddNotePresenter initPresent(){
         return new AddNotePresenter(this);
     }
-
     @Override
     protected int getLayout(){
         return R.layout.homepage_add_note;
     }
-
     @Override
     protected void initView(){
         save.setText("保存");
     }
-
     @Override
     public void onPrepare(){
 
     }
 
-    @OnClick({R.id.toolBarBack,R.id.tooBarTool2,R.id.tooBarTool3,
-            R.id.tooBarTool4})
+    @OnClick({R.id.toolBarBack,R.id.toolBarTag,R.id.tooBarTool2,R.id.tooBarTool3,
+            R.id.tooBarTool4,R.id.tooBarTool1,R.id.homePageAddNoteMenu,R.id.homePageAddNoteMenuAddTitle,
+            R.id.homePageAddNoteMenuAddClassify,R.id.homePageAddNoteMenuSelectPhoto})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolBarBack:{
                 //点击标题栏上的返回按钮
                 handleClickBack();
+                break;
+            }
+            case R.id.toolBarTag:{
+                //点击标题栏的标题
+                handleClickAddTitle();
                 break;
             }
             case R.id.tooBarTool2:{
@@ -127,9 +136,33 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                 handleClickClassify(0);
                 break;
             }
+            case R.id.tooBarTool1:{
+                //点击标题栏上的保存按钮
+                handleClickSave();
+                break;
+            }
+            case R.id.homePageAddNoteMenu:{
+                //点击屏幕右侧的箭头，弹出菜单
+                handleClickMenu();
+                break;
+            }
+            case R.id.homePageAddNoteMenuAddTitle:{
+                //点击左滑菜单的添加标题
+                handleClickAddTitle();
+                break;
+            }
+            case R.id.homePageAddNoteMenuAddClassify:{
+                //点击左滑菜单的添加分类
+                handleClickAddClassify();
+                break;
+            }
+            case R.id.homePageAddNoteMenuSelectPhoto:{
+                //点击左滑菜单的从相册中选择图片
+                handleClickSelectPhoto();
+                break;
+            }
         }
     }
-
     @Override
     public void handleClickBack(){
         intent=new Intent(this,Main.class);
@@ -137,7 +170,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         startActivity(intent);
         finish();
     }
-
     @Override
     public void handleClickClassify(final int i){
         classifyInDialog=new String[]{"1","2","3"};
@@ -166,22 +198,16 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         });
         builder.show();
     }
-
-    @OnClick(R.id.tooBarTool1)
+    @Override
     public void handleClickSave(){
-        //点击标题栏上的保存按钮
         presenter.addNote();
     }
-
-    @OnClick(R.id.homePageAddNoteMenu)
+    @Override
     public void handleClickMenu(){
-        //点击屏幕右侧的箭头，弹出菜单
         drawerLayout.openDrawer(GravityCompat.END);
     }
-
-    @OnClick({R.id.toolBarTag,R.id.homePageAddNoteMenuAddTitle})
+    @Override
     public void handleClickAddTitle(){
-        //点击标题栏的标题
         drawerLayout.closeDrawers();
         inflater=LayoutInflater.from(this);
         v=inflater.inflate(R.layout.homepage_add_note_title, null);
@@ -204,10 +230,8 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         builder.create();
         builder.show();
     }
-
-    @OnClick(R.id.homePageAddNoteMenuAddClassify)
+    @Override
     public void handleClickAddClassify(){
-        //点击左滑菜单的添加分类
         classifyString=new String[3];
         drawerLayout.closeDrawers();
         classifyInDialog=new String[]{"1","2","3"};
@@ -265,10 +289,8 @@ public class AddNote extends BaseActivity<AddNotePresenter>
         });
         builder.show();
     }
-
-    @OnClick(R.id.homePageAddNoteMenuSelectPhoto)
+    @Override
     public void handleClickSelectPhoto(){
-        //点击左滑菜单的从相册中选择图片
         drawerLayout.closeDrawers();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission. READ_EXTERNAL_STORAGE }, 1);
@@ -308,7 +330,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
             }
         }
     }
-
     @Override
     public void showToast(String code){
         Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
@@ -371,7 +392,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
             showToast("加载图片失败");
         }
     }
-
     @Override
     public void onBackPressed(){
         handleClickBack();

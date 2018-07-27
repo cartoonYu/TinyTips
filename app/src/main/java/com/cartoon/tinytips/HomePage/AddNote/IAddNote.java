@@ -11,7 +11,12 @@ import java.util.List;
 interface IAddNote {
     interface View{
         void handleClickBack();
+        void handleClickSave();
+        void handleClickMenu();
+        void handleClickAddTitle();
+        void handleClickAddClassify();
         void handleClickClassify(int i);
+        void handleClickSelectPhoto();
         String getDate();
         String getAuthor();
         String getDetails();

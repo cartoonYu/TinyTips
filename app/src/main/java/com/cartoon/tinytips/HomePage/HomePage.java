@@ -57,6 +57,8 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     private LayoutInflater inflater;
     private View v;
 
+
+
     @Override
     protected int getLayout(){
         return R.layout.homepage;
@@ -76,10 +78,23 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
     protected void onPrepare(){
 
     }
-
-    @OnClick(R.id.tooBarTool2)
+    @OnClick({R.id.tooBarTool2,R.id.tooBarTool1})
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.tooBarTool2:{
+                //点击标题栏上的搜索按钮
+                handleClickSearch();
+                break;
+            }
+            case R.id.tooBarTool1:{
+                //点击标题栏上的添加按钮
+                handleClickAdd();
+                break;
+            }
+        }
+    }
+    @Override
     public void handleClickSearch(){
-        //添加标题栏上的搜索按钮
         inflater=LayoutInflater.from(TinyTipsApplication.getContext());
         v=inflater.inflate(R.layout.homepage_search, null);
         final EditText search=v.findViewById(R.id.homePageSearch);
@@ -100,15 +115,12 @@ public class HomePage extends BaseFragment<HomePagePresenter> implements IHomePa
         });
         builder.show();
     }
-
-    @OnClick(R.id.tooBarTool1)
+    @Override
     public void handleClickAdd(){
-        //点击标题栏上的添加按钮
         intent=new Intent(getActivity(), AddNote.class);
         startActivity(intent);
         getActivity().finish();
     }
-
     @Override
     public void initNote() {
         //初始化笔记列表

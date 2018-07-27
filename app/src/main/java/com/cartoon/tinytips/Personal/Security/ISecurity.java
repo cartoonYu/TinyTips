@@ -10,6 +10,7 @@ import com.cartoon.tinytips.data.PersonalInformation;
 interface ISecurity {
     interface View{
         void handleClickBack();
+        void handleClickSave();
         void showToast(String code);
         PersonalInformation getOldPassword();
         String getNewPassword();

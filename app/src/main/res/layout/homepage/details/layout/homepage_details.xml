@@ -4,12 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/homePageDetails">
+    android:id="@+id/homePageDetails"
+    android:fitsSystemWindows="true">
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/ashBlack"
+        android:background="#00000000"
         android:id="@+id/homePageDetailsToolbar">
         <RelativeLayout
             android:layout_width="match_parent"

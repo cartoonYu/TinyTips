@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.Community.Focus.Focus;
-import com.cartoon.tinytips.Community.Hot.Hot;
-import com.cartoon.tinytips.Community.Recommend.Recommend;
+import com.cartoon.tinytips.Community.Focus.CommunityFocus;
+import com.cartoon.tinytips.Community.Hot.CommunityHot;
+import com.cartoon.tinytips.Community.Recommend.CommunityRecommend;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapter.Community.CommunityAdapter;
 
@@ -35,7 +35,7 @@ import butterknife.OnClick;
  *
  * 仍需进行的操作：
  * 1.搜索按钮的点击事件到函数onClick中编写
- * 2.热门动态，推荐的动态和关注人动态数据到CommunityHot（热门），Recommend（推荐），Focus（关注）中初始化
+ * 2.热门动态，推荐的动态和关注人动态数据到CommunityHot（热门），CommunityRecommend（推荐），CommunityFocus（关注）中初始化
  * 3.热门动态，推荐的动态和关注人动态的点击事件到CommunityHotAdapter（热门），
  *   CommunityRecommendAdapter（推荐），CommunityFocusAdapter（关注）中编写
  */
@@ -88,9 +88,9 @@ public class Community extends BaseFragment<CommunityPresenter>
         textViewList.add(hot);
         textViewList.add(recommend);
         textViewList.add(focus);
-        fragmentList.add(new Hot());
-        fragmentList.add(new Recommend());
-        fragmentList.add(new Focus());
+        fragmentList.add(new CommunityHot());
+        fragmentList.add(new CommunityRecommend());
+        fragmentList.add(new CommunityFocus());
     }
     @Override
     public void initPager(){
@@ -98,13 +98,15 @@ public class Community extends BaseFragment<CommunityPresenter>
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(this);
     }
-
     @OnClick(R.id.toolBarBack)
     public void onClick(View view){
-        //点击标题栏上的搜索按钮
-
+        switch (view.getId()){
+            case R.id.toolBarBack:{
+                //点击标题栏上的搜索按钮
+                break;
+            }
+        }
     }
-
     @Override
     public void onPageSelected(int position){
         for(int i=0;i<textViewList.size();i++){
@@ -118,22 +120,18 @@ public class Community extends BaseFragment<CommunityPresenter>
             }
         }
     }
-
     @Override
     public void onPageScrolled(int arg0,float arg1,int arg2){
     }
-
     @Override
     public void onPageScrollStateChanged(int arg0) {
     }
-
     private class MyOnclickListener implements View.OnClickListener{
         //自定义点击事件
         private int position;
         public MyOnclickListener(int position){
             this.position=position;
         }
-
         @Override
         public void onClick(View v){
             pager.setCurrentItem(position);

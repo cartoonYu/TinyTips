@@ -12,6 +12,12 @@ import com.cartoon.tinytips.data.PersonalInformation;
 
 interface IProfile {
     interface View{
+        void handleClickBack();     //handleClick开头的方法为点击事件的处理函数
+        void handleClickHeadPortrait();
+        void handleClickSex();
+        void handleClickSchool();
+        void handleClickResume();
+        void handleClickSignature();
         void showToast(String code);
         void initData(PersonalInformation information);
     }

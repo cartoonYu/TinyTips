@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.HomePage.Details.Details;
+import com.cartoon.tinytips.HomePage.Details.HomePageDetails;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.data.Note;
 
@@ -63,7 +63,7 @@ public class HomePageNoteAdapter extends RecyclerView.Adapter<HomePageNoteAdapte
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, Details.class);
+                Intent intent=new Intent(context, HomePageDetails.class);
                 intent.putExtra("dataFromMain",noteList.get(holder.getAdapterPosition()));
                 Activity activity=(Activity)group.getContext();
                 activity.startActivity(intent);

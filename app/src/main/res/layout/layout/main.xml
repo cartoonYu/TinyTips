@@ -2,15 +2,19 @@
 <!--主页，内有三个Fragment-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainFrame"/>
+        android:id="@+id/mainFrame"
+        android:fitsSystemWindows="true"/>
+
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
-        android:id="@+id/mainBottomBar"/>
+        android:id="@+id/mainBottomBar"
+        android:fitsSystemWindows="true"/>
 </RelativeLayout>

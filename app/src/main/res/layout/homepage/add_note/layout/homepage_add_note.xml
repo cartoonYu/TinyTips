@@ -5,17 +5,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/homePageAddNoteDrawerLayout">
+    android:id="@+id/homePageAddNoteDrawerLayout"
+    android:fitsSystemWindows="true">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray">
+            android:background="@color/gray"
+            android:fitsSystemWindows="true">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
                 <include layout="@layout/toolbar"
                     android:id="@+id/homePageAddNoteToolbar"/>
                 <EditText
@@ -24,7 +28,8 @@
                     android:background="@null"
                     android:layout_below="@id/homePageAddNoteToolbar"
                     android:textSize="16sp"
-                    android:id="@+id/homePageAddNoteNote"/>
+                    android:id="@+id/homePageAddNoteNote"
+                    android:fitsSystemWindows="true"/>
             </RelativeLayout>
         </ScrollView>
         <ImageView
@@ -38,7 +43,8 @@
             android:paddingLeft="-8dp"
             android:src="@drawable/homepage_addnote_arrows"
             android:background="@color/white"
-            android:id="@+id/homePageAddNoteMenu"/>
+            android:id="@+id/homePageAddNoteMenu"
+            android:fitsSystemWindows="true"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -46,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|center"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +61,8 @@
             android:drawableTop="@drawable/homepage_addnote_classify"
             android:text="分类"
             android:textSize="16sp"
-            android:id="@+id/homePageAddNoteMenuAddClassify"/>
+            android:id="@+id/homePageAddNoteMenuAddClassify"
+            android:fitsSystemWindows="true"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +71,8 @@
             android:drawableTop="@drawable/homepage_addnote_title"
             android:text="标题"
             android:textSize="16sp"
-            android:id="@+id/homePageAddNoteMenuAddTitle"/>
+            android:id="@+id/homePageAddNoteMenuAddTitle"
+            android:fitsSystemWindows="true"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,6 +81,7 @@
             android:drawableTop="@drawable/homepage_addnote_album"
             android:text="图片"
             android:textSize="16sp"
-            android:id="@+id/homePageAddNoteMenuSelectPhoto"/>
+            android:id="@+id/homePageAddNoteMenuSelectPhoto"
+            android:fitsSystemWindows="true"/>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
