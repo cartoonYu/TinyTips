@@ -20,4 +20,8 @@ public class HotPresenter extends BaseFragmentPresenter<Hot>
     public HotPresenter(IHot.View view){
         this.view=view;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

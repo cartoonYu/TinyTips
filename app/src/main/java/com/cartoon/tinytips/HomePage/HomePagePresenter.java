@@ -65,4 +65,9 @@ class HomePagePresenter extends BaseFragmentPresenter<HomePage>
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

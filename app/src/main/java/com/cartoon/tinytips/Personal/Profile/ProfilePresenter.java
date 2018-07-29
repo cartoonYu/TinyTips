@@ -41,4 +41,9 @@ class ProfilePresenter extends BaseActivityPresenter<Profile>
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

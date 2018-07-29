@@ -18,4 +18,8 @@ class CommunityPresenter extends BaseFragmentPresenter<Community>
     public CommunityPresenter(ICommunity.View view){
         this.view=view;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

@@ -20,5 +20,8 @@ class FocusPresenter extends BaseFragmentPresenter<Focus>
     public FocusPresenter(IFocus.View view){
         this.view=view;
     }
-
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

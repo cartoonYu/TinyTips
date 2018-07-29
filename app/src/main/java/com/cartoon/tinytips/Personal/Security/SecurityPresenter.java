@@ -44,4 +44,9 @@ class SecurityPresenter extends BaseActivityPresenter<Security>
             view.showToast("两次密码输入不一致，请重试");
         }
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

@@ -39,4 +39,9 @@ class DetailsPresenter extends BaseActivityPresenter<Details> implements IDetail
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }

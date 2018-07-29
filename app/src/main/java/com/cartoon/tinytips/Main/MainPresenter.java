@@ -18,4 +18,8 @@ class MainPresenter extends BaseActivityPresenter<Main>
     public MainPresenter(IMain.View view){
         this.view=view;
     }
+    @Override
+    public void deleteView(){
+        view=null;
+    }
 }

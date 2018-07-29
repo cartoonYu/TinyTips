@@ -34,4 +34,9 @@ class AddNotePresenter extends BaseActivityPresenter<AddNote> implements IAddNot
             }
         });
     }
+    @Override
+    public void deleteView(){
+        view=null;
+        model=null;
+    }
 }
