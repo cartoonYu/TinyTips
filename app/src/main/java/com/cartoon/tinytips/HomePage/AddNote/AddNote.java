@@ -298,7 +298,6 @@ public class AddNote extends BaseActivity<AddNotePresenter>
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mSelected.get(i));
                     addBitmapToText(bitmap);
                     if(i==0){
-
                         imageDetails=bitmap.toString();
                     }
                 }

@@ -28,8 +28,8 @@ public class Note implements Serializable{
     private long pointDislike;     //点灭量
     private List<Comment> list;    //评论
 
-    public Note(String titile, String date, String author, String imageDetails,String details, String[] classify, boolean isCollect) {
-        this.title=titile;
+    public Note(String title, String date, String author, String imageDetails,String details, String[] classify, boolean isCollect) {
+        this.title=title;
         this.date=date;
         this.author=author;
         this.imageDetails=imageDetails;
