@@ -1,6 +1,6 @@
-package com.cartoon.tinytips.Personal;
+package com.cartoon.tinytips.Message;
 
-interface IPersonal {
+interface IMessage {
     interface View{
 
     }

@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--首页-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <include layout="@layout/toolbar"/>
-        </android.support.design.widget.AppBarLayout>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/homePageNote"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="3dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@color/gray" />
-    </android.support.design.widget.CoordinatorLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="首页"
+        android:gravity="center"/>
 </RelativeLayout>

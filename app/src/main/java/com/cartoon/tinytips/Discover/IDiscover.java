@@ -1,6 +1,6 @@
-package com.cartoon.tinytips.Personal;
+package com.cartoon.tinytips.Discover;
 
-interface IPersonal {
+interface IDiscover {
     interface View{
 
     }

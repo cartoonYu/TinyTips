@@ -1,34 +1,32 @@
 package com.cartoon.tinytips;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import com.cartoon.tinytips.util.UIUtil.RevampStatusBar;
+import android.view.Window;
+import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 
-
-/**
- * Created by cartoon on 2018/2/1.
- * 1.此类为视图（view）基类，本APP所有视图（activity）均要继承此类以及自定义接口进行开发
- */
-
-public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppCompatActivity{
+public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppCompatActivity {
     protected T presenter;       //presenter层的实例对象，用于view与presenter交互
-    protected RevampStatusBar bar;
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(getLayout());
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            this.getWindow().getDecorView().
-                    setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        if(Build.VERSION.SDK_INT>=21){
+            Window window=getWindow();
+            View view=window.getDecorView();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            view.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            );
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
         }
-        bar=new RevampStatusBar();
-        bar.MIUISetStatusBarLightMode(getWindow(),true);
-        bar.FlymeSetStatusBarLightMode(getWindow(),true);
         ButterKnife.bind(this);
         presenter=initPresent();
         initView();
@@ -41,7 +39,6 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
     @Override
     public void onDestroy(){
         super.onDestroy();
-        bar=null;
         presenter.deleteView();
     }
 }
