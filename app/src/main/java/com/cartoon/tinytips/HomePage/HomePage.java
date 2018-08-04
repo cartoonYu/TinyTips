@@ -1,7 +1,6 @@
 package com.cartoon.tinytips.Homepage;
 
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.R;
 
 public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepage.View{

@@ -38,56 +38,47 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
     }
     @Override
     protected void initView(){
-        Drawable defaultDraw=getResources().getDrawable(R.mipmap.d);
-        for(Button button:bottomBar){
-            button.setCompoundDrawablesWithIntrinsicBounds(null,defaultDraw,null,null);
-        }
-        Drawable top=getResources().getDrawable(R.mipmap.e);
+        Drawable top=getResources().getDrawable(R.mipmap.bottombar_homepage_press);
         bottomBar.get(0).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
-
     }
     @Override
     protected void onPrepare(){
         fragment=R.id.mainFragement;
         switchFragment(-1);
+        switchFragment(0);
     }
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
-        setBottomBarDrawable(0,R.mipmap.e);
+        setBottomBarDrawable(0,R.mipmap.bottombar_homepage_press);
         switchFragment(0);
     }
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
-        setBottomBarDrawable(1,R.mipmap.e);
+        setBottomBarDrawable(1,R.mipmap.bottombar_message_press);
         switchFragment(1);
     }
     @OnClick(R.id.mainAddNote)
     public void clickAddNote(){
         //点击新增
-        setBottomBarDrawable(2,R.mipmap.e);
         switchFragment(2);
     }
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
-        setBottomBarDrawable(3,R.mipmap.e);
+        setBottomBarDrawable(3,R.mipmap.bottombar_discover_press);
         switchFragment(3);
     }
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        setBottomBarDrawable(4,R.mipmap.e);
+        setBottomBarDrawable(4,R.mipmap.bottombar_presonal_press);
         switchFragment(4);
     }
 
     @Override
     public void setBottomBarDrawable(int flag,int drawable) {
-        Drawable defaultDraw=getResources().getDrawable(R.mipmap.d);
-        for(Button button:bottomBar){
-            button.setCompoundDrawablesWithIntrinsicBounds(null,defaultDraw,null,null);
-        }
         Drawable top=getResources().getDrawable(drawable);
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }

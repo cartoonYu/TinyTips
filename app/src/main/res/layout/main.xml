@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,7 +17,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_homepage_unpress"
             android:text="首页"
+            android:textSize="11sp"
             android:gravity="center"
             android:id="@+id/mainHomepage"/>
         <Button
@@ -24,15 +27,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/bottombar"
-            android:clickable="true"
+            android:drawableTop="@mipmap/bottombar_message_unpress"
             android:text="消息"
+            android:textSize="11sp"
             android:gravity="center"
             android:id="@+id/mainMessage"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bottombar"
+            android:background="@mipmap/bottombar_addnote"
             android:gravity="center"
             android:id="@+id/mainAddNote"/>
         <Button
@@ -40,7 +44,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_discover_unpress"
             android:text="发现"
+            android:textSize="11sp"
             android:gravity="center"
             android:id="@+id/mainDiscover"/>
         <Button
@@ -48,7 +54,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_personal_unpress"
             android:text="我的"
+            android:textSize="11sp"
             android:gravity="center"
             android:id="@+id/mainPersonal"/>
     </LinearLayout>
