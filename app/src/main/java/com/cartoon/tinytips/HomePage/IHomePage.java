@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.Homepage;
+package com.cartoon.tinytips.HomePage;
 
 interface IHomepage {
     interface View{

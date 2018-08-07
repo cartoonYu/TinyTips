@@ -24,6 +24,7 @@ android {
                             'src/main/res/layout/homepage',
                             'src/main/res/layout/message',
                             'src/main/res/layout/personal',
+                            'src/main/res/layout/personal/detail',
                             'src/main/res/layout',
                             'src/main/res'
                     ]
@@ -36,6 +37,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
     implementation 'com.android.support:design:28+'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
     /*******************************控件依赖项*********************************/
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'

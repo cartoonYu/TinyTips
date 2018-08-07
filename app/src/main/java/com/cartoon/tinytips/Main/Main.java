@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.Main;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,7 +8,7 @@ import android.widget.Button;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
-import com.cartoon.tinytips.Homepage.Homepage;
+import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
@@ -21,6 +22,8 @@ import butterknife.OnClick;
 public class Main extends BaseActivity<MainActivityPresenter> implements IMain.View{
 
     private MainActivityPresenter presenter;
+
+    private int flag;     //决定切换之前显示的fragment
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
@@ -38,6 +41,9 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
     }
     @Override
     protected void initView(){
+        Intent intent=getIntent();
+        flag=intent.getIntExtra("main",0);
+
         Drawable top=getResources().getDrawable(R.mipmap.bottombar_homepage_press);
         bottomBar.get(0).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
@@ -73,12 +79,13 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        setBottomBarDrawable(4,R.mipmap.bottombar_presonal_press);
+        setBottomBarDrawable(4,R.mipmap.bottombar_personal_press);
         switchFragment(4);
     }
 
     @Override
     public void setBottomBarDrawable(int flag,int drawable) {
+
         Drawable top=getResources().getDrawable(drawable);
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }

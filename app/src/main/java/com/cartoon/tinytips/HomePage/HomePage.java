@@ -1,4 +1,6 @@
-package com.cartoon.tinytips.Homepage;
+package com.cartoon.tinytips.HomePage;
+
+import android.support.v4.app.Fragment;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
