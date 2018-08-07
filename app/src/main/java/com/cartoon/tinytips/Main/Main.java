@@ -1,109 +1,128 @@
 package com.cartoon.tinytips.Main;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.Toast;
+import android.widget.Button;
 
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.Community.Community;
-import com.cartoon.tinytips.HomePage.HomePage;
+import com.cartoon.tinytips.Discover.Discover;
+import com.cartoon.tinytips.HomePage.Homepage;
+import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
 
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.OnClick;
 
-/**
- * Created by cartoon on 2018/2/4.
- * 1.主界面，底部导航栏切换首页，社区以及我的三个页面
- * 2.layout:main
- * 3.函数onTabSelected控制页面(HomePage,Community,Personal)的跳转
- * 4.函数switchFragment则是页面跳转的具体实现
- *
- * 功能:
- * 1.为首页（HomePage),社区(Community)，我的(Personal)提供切换支持
- *
- * 操作：
- * 1.在其他活回到此活动的时候，初始化页面时底部导航栏还是默认第一个，还不能人为控制
- */
+public class Main extends BaseActivity<MainActivityPresenter> implements IMain.View{
 
-public class Main extends BaseActivity<MainPresenter> implements IMain.View,BottomNavigationBar.OnTabSelectedListener {
+    private MainActivityPresenter presenter;
 
-    @BindView(R.id.mainBottomBar) BottomNavigationBar bar;    //底部导航栏实例
+    private int flag;     //决定切换之前显示的fragment
+
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
-    private Intent intent;             //接收其他页面跳转回来携带的变量
-    private int intTemp;               //存储其他页面跳转回来携带的变量的值
+   @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
+    List<Button> bottomBar;
 
+    @Override
+    protected MainActivityPresenter initPresent(){
+        presenter=new MainActivityPresenter(this);
+        return presenter;
+    }
     @Override
     protected int getLayout(){
         return R.layout.main;
     }
     @Override
-    protected MainPresenter initPresent(){
-        return new MainPresenter(this);
-    }
-    @Override
     protected void initView(){
-        bar.setMode(BottomNavigationBar.MODE_FIXED)
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
-                .addItem(new BottomNavigationItem(R.drawable.homepage,"首页"))
-                .addItem(new BottomNavigationItem(R.drawable.community,"社区"))
-                .addItem(new BottomNavigationItem(R.drawable.personal,"我的")).initialise();
+        Intent intent=getIntent();
+        flag=intent.getIntExtra("main",0);
+
+        Drawable top=getResources().getDrawable(R.mipmap.bottombar_homepage_press);
+        bottomBar.get(0).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
     @Override
     protected void onPrepare(){
-        fragment=R.id.mainFrame;
-        intent=getIntent();
-        intTemp=intent.getIntExtra("flag",-1);
-        switchFragment(intTemp);
-        bar.setTabSelectedListener(this);
+        fragment=R.id.mainFragement;
+        switchFragment(-1);
+        switchFragment(0);
+    }
+    @OnClick(R.id.mainHomepage)
+    public void clickHomepage(){
+        //点击首页
+        setBottomBarDrawable(0,R.mipmap.bottombar_homepage_press);
+        switchFragment(0);
+    }
+    @OnClick(R.id.mainMessage)
+    public void clickMessage(){
+        //点击消息
+        setBottomBarDrawable(1,R.mipmap.bottombar_message_press);
+        switchFragment(1);
+    }
+    @OnClick(R.id.mainAddNote)
+    public void clickAddNote(){
+        //点击新增
+        switchFragment(2);
+    }
+    @OnClick(R.id.mainDiscover)
+    public void clickDiscover(){
+        //点击发现
+        setBottomBarDrawable(3,R.mipmap.bottombar_discover_press);
+        switchFragment(3);
+    }
+    @OnClick(R.id.mainPersonal)
+    public void clickPersonal(){
+        //点击我的
+        setBottomBarDrawable(4,R.mipmap.bottombar_personal_press);
+        switchFragment(4);
+    }
+
+    @Override
+    public void setBottomBarDrawable(int flag,int drawable) {
+
+        Drawable top=getResources().getDrawable(drawable);
+        bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
     @Override
     public void switchFragment(int flag){
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
-        HomePage homePage=new HomePage();
-        Community community=new Community();
-        Personal personal=new Personal();
         switch (flag){
             case -1:{
-                transaction.add(fragment,homePage);
-                transaction.commit();
+                Homepage homepage=new Homepage();
+                transaction.add(fragment,homepage);
                 break;
             }
             case 0:{
-                transaction.replace(fragment,homePage);
-                transaction.commit();
+                Homepage homepage=new Homepage();
+                transaction.replace(fragment,homepage);
                 break;
             }
             case 1:{
-                transaction.replace(fragment,community);
-                transaction.commit();
-                Toast.makeText(this,"此功能尚未完成",Toast.LENGTH_SHORT).show();
+                Message message=new Message();
+                transaction.replace(fragment,message);
                 break;
             }
             case 2:{
+                break;
+            }
+            case 3:{
+                Discover discover=new Discover();
+                transaction.replace(fragment,discover);
+                break;
+            }
+            case 4:{
+                Personal personal=new Personal();
                 transaction.replace(fragment,personal);
-                transaction.commit();
                 break;
             }
         }
-    }
-    @Override
-    public void onTabSelected(int position){
-        //底部菜单栏从未选中到选中的处理事件
-        switchFragment(position);
-    }
-    @Override
-    public void onTabUnselected(int position){
-        //底部菜单栏从选中到未选中的处理事件
-
-    }
-    @Override
-    public void onTabReselected(int position){
-        //底部菜单栏重复选中的处理事件
+        transaction.commit();
     }
 }

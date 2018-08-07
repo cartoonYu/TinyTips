@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
-    <style name="MainTheme" parent="AppTheme">
-        <item name="android:statusBarColor">#fafafa</item>
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
 
+    </style>
 </resources>
