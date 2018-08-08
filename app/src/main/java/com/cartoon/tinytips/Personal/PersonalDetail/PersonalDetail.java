@@ -25,9 +25,17 @@ public class PersonalDetail extends BaseActivity<PersonalDetailPresenter> implem
     }
     @Override
     protected void onPrepare(){
+
+    }
+    @Override
+    public void intentMain(){
         Intent intent=new Intent(this, Main.class);
         intent.putExtra("main",4);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void onBackPressed(){
+        intentMain();
     }
 }

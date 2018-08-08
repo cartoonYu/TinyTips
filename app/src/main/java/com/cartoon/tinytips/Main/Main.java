@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.Button;
 
 import com.cartoon.tinytips.BaseActivity;
@@ -13,6 +14,7 @@ import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,7 +29,10 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
-   @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
+    private List<Integer> unPressdrawables;      //底部栏五个默认按钮图标
+    private List<Integer> pressdrawables;      //底部栏五个默认按钮已按图标
+
+    @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
     List<Button> bottomBar;
 
     @Override
@@ -41,17 +46,28 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
     }
     @Override
     protected void initView(){
+        pressdrawables=new ArrayList<>();
+        pressdrawables.add(R.mipmap.bottombar_homepage_press);
+        pressdrawables.add(R.mipmap.bottombar_message_press);
+        pressdrawables.add(R.mipmap.bottombar_addnote);
+        pressdrawables.add(R.mipmap.bottombar_discover_press);
+        pressdrawables.add(R.mipmap.bottombar_personal_press);
         Intent intent=getIntent();
         flag=intent.getIntExtra("main",0);
-
-        Drawable top=getResources().getDrawable(R.mipmap.bottombar_homepage_press);
-        bottomBar.get(0).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
+        Drawable top=getResources().getDrawable(pressdrawables.get(flag));
+        bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
     @Override
     protected void onPrepare(){
+        unPressdrawables=new ArrayList<>();
+        unPressdrawables.add(R.mipmap.bottombar_homepage_unpress);
+        unPressdrawables.add(R.mipmap.bottombar_message_unpress);
+        unPressdrawables.add(R.mipmap.bottombar_addnote);
+        unPressdrawables.add(R.mipmap.bottombar_discover_unpress);
+        unPressdrawables.add(R.mipmap.bottombar_personal_unpress);
         fragment=R.id.mainFragement;
         switchFragment(-1);
-        switchFragment(0);
+        switchFragment(flag);
     }
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
@@ -85,7 +101,12 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
 
     @Override
     public void setBottomBarDrawable(int flag,int drawable) {
-
+        for(int i=0;i<unPressdrawables.size();i++){
+            if(i!=2){
+                Drawable temp=getResources().getDrawable(unPressdrawables.get(i));
+                bottomBar.get(i).setCompoundDrawablesWithIntrinsicBounds(null,temp,null,null);
+            }
+        }
         Drawable top=getResources().getDrawable(drawable);
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }

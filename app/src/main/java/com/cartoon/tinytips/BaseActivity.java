@@ -20,13 +20,11 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
         if(Build.VERSION.SDK_INT>=21){
             Window window=getWindow();
             View view=window.getDecorView();
-            //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             view.setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             |View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             );
-            //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
         RevampStatusBar.FlymeSetStatusBarLightMode(getWindow(),true);
