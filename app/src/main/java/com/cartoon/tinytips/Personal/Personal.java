@@ -56,6 +56,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
         params.height= RevampStatusBar.getStatusBar(getContext());
         statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.green));
+        statusBar.setBackgroundColor(getResources().getColor(R.color.skyBlue));
     }
 }
