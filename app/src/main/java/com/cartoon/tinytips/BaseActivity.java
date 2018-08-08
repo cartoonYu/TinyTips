@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.cartoon.tinytips.util.UI.RevampStatusBar;
+
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppCompatActivity {
@@ -15,18 +17,21 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
-        setContentView(getLayout());
         if(Build.VERSION.SDK_INT>=21){
             Window window=getWindow();
             View view=window.getDecorView();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             view.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            |View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             );
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+        RevampStatusBar.FlymeSetStatusBarLightMode(getWindow(),true);
+        RevampStatusBar.MIUISetStatusBarLightMode(getWindow(),true);
+        setContentView(getLayout());
         ButterKnife.bind(this);
         presenter=initPresent();
         initView();
