@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 
@@ -13,6 +14,8 @@ import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Major;
+import com.cartoon.tinytips.util.Adapters.MajorAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +24,9 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 
-public class Main extends BaseActivity<MainActivityPresenter> implements IMain.View{
+public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
-    private MainActivityPresenter presenter;
+    private MainPresenter presenter;
 
     private int flag;     //决定切换之前显示的fragment
 
@@ -32,12 +35,14 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
     private List<Integer> unPressdrawables;      //底部栏五个默认按钮图标
     private List<Integer> pressdrawables;      //底部栏五个默认按钮已按图标
 
+
+
     @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
     List<Button> bottomBar;
 
     @Override
-    protected MainActivityPresenter initPresent(){
-        presenter=new MainActivityPresenter(this);
+    protected MainPresenter initPresent(){
+        presenter=new MainPresenter(this);
         return presenter;
     }
     @Override
@@ -56,7 +61,7 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
         flag=intent.getIntExtra("main",0);
         Drawable top=getResources().getDrawable(pressdrawables.get(flag));
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
-    }
+          }
     @Override
     protected void onPrepare(){
         unPressdrawables=new ArrayList<>();
@@ -68,6 +73,7 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
         fragment=R.id.mainFragement;
         switchFragment(-1);
         switchFragment(flag);
+
     }
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
@@ -146,4 +152,5 @@ public class Main extends BaseActivity<MainActivityPresenter> implements IMain.V
         }
         transaction.commit();
     }
+
 }

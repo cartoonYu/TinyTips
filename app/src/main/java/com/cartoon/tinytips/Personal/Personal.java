@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.Personal.PersonalDetail.PersonalDetail;
+import com.cartoon.tinytips.Personal.Detail.PersonalDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 

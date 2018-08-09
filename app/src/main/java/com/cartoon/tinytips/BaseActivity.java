@@ -3,17 +3,29 @@ package com.cartoon.tinytips;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.cartoon.tinytips.util.Adapters.Major;
+import com.cartoon.tinytips.util.Adapters.MajorAdapter;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppCompatActivity {
     protected T presenter;       //presenter层的实例对象，用于view与presenter交互
+
+
+
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
@@ -34,6 +46,10 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
         presenter=initPresent();
         initView();
         onPrepare();
+
+
+
+
     }
     protected abstract T initPresent();      //为presenter添加view弱引用
     protected abstract int getLayout();       //为活动添加页面

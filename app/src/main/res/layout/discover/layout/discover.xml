@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
     <include layout="@layout/statusbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/discoverStatusBar"/>
-    <include layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/searchbar"
         android:layout_below="@id/discoverStatusBar"
-        android:id="@+id/discoverToolBar"/>
-    <TextView
+        android:layout_width="340dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/coners_bg">
+
+        <SearchView
+            android:id="@+id/search"
+            android:layout_marginLeft="-20dp"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginTop="3dp"
+            android:iconifiedByDefault="false"
+            android:background="@drawable/coners_bg"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/searchbar"
+        android:id="@+id/major_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="发现"
-        android:gravity="center"/>
+        android:background="@color/white">
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
