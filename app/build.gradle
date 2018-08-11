@@ -25,6 +25,7 @@ android {
                             'src/main/res/layout/message',
                             'src/main/res/layout/personal',
                             'src/main/res/layout/personal/detail',
+                            'src/main/res/layout/personal/homepage',
                             'src/main/res/layout',
                             'src/main/res'
                     ]

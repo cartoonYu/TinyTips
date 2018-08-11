@@ -10,15 +10,13 @@ import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import butterknife.BindView;
 
 public class Message extends BaseFragment<MessagePresenter> implements IMessage.View {
-    private MessagePresenter presenter;
 
     @BindView(R.id.statusBar)
     View statusBar;
 
     @Override
     protected MessagePresenter initPresent(){
-        presenter=new MessagePresenter(this);
-        return presenter;
+        return new MessagePresenter(this);
     }
 
     @Override

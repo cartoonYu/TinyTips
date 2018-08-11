@@ -34,6 +34,7 @@ public abstract class BaseFragment<T extends BaseFragmentPresenter> extends Frag
     public void onDestroyView(){
         super.onDestroyView();
         presenter.deleteView();
+        presenter=null;
         unbinder.unbind();
     }
 }

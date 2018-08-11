@@ -4,18 +4,19 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.Personal.Detail.PersonalDetail;
+import com.cartoon.tinytips.Personal.Detail.Detail;
+import com.cartoon.tinytips.Personal.Homepage.Homepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View {
-
-    private PersonalPresenter presenter;
 
     @BindView(R.id.detail_Personal)
     LinearLayout detail;
@@ -23,10 +24,15 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @BindView(R.id.statusBar)
     View statusBar;
 
+    @BindView(R.id.avatar)
+    CircleImageView headPro;
+
+    @BindView(R.id.name)
+    TextView nickName;
+
     @Override
     protected PersonalPresenter initPresent(){
-        presenter=new PersonalPresenter(this);
-        return presenter;
+        return new PersonalPresenter(this);
     }
 
     @Override
@@ -46,7 +52,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-        Intent intent=new Intent(getActivity(), PersonalDetail.class);
+        Intent intent=new Intent(getActivity(), Detail.class);
         startActivity(intent);
         getActivity().finish();
     }
@@ -57,5 +63,12 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         params.height= RevampStatusBar.getStatusBar(getContext());
         statusBar.setLayoutParams(params);
         statusBar.setBackgroundColor(getResources().getColor(R.color.skyBlue));
+
+    }
+    @OnClick(R.id.avatar)
+    public void onClickHeadPro(){
+        Intent intent=new Intent(getActivity(), Homepage.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

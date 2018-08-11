@@ -1,30 +1,23 @@
 package com.cartoon.tinytips.Discover;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Major;
-import com.cartoon.tinytips.util.Adapters.MajorAdapter;
+import com.cartoon.tinytips.util.Adapters.discover.Major;
+import com.cartoon.tinytips.util.Adapters.discover.MajorAdapter;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 
 public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscover.View{
-
-    private DiscoverPresenter presenter;
 
     private Major[] major = {new Major("IT互联网", R.drawable.apple), new Major("经济/管理", R.drawable.apple),
             new Major("电子/通信", R.drawable.apple), new Major("政治/法律", R.drawable.apple),
@@ -37,6 +30,7 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
     private List<Major> MJList = new ArrayList<>();
 
     private MajorAdapter adapter;
+
     @BindView(R.id.major_recyclerview)
     RecyclerView recyclerView;
 
@@ -46,12 +40,9 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
     @BindView(R.id.search)
     View search;
 
-
-
     @Override
     protected DiscoverPresenter initPresent(){
-        presenter=new DiscoverPresenter(this);
-        return presenter;
+        return new DiscoverPresenter(this);
     }
 
     @Override

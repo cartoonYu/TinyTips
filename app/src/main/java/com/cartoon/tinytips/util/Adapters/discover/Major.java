@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters;
+package com.cartoon.tinytips.util.Adapters.discover;
 
 public class Major{
 

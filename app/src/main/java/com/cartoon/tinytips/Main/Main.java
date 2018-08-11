@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Button;
 
 import com.cartoon.tinytips.BaseActivity;
@@ -14,19 +12,15 @@ import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Major;
-import com.cartoon.tinytips.util.Adapters.MajorAdapter;
+import com.cartoon.tinytips.util.UI.FragmentConstant;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 
 public class Main extends BaseActivity<MainPresenter> implements IMain.View{
-
-    private MainPresenter presenter;
 
     private int flag;     //决定切换之前显示的fragment
 
@@ -42,8 +36,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     @Override
     protected MainPresenter initPresent(){
-        presenter=new MainPresenter(this);
-        return presenter;
+        return new MainPresenter(this);
     }
     @Override
     protected int getLayout(){
@@ -58,10 +51,10 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         pressdrawables.add(R.mipmap.bottombar_discover_press);
         pressdrawables.add(R.mipmap.bottombar_personal_press);
         Intent intent=getIntent();
-        flag=intent.getIntExtra("main",0);
+        flag=intent.getIntExtra("main", FragmentConstant.homePage);
         Drawable top=getResources().getDrawable(pressdrawables.get(flag));
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
-          }
+    }
     @Override
     protected void onPrepare(){
         unPressdrawables=new ArrayList<>();
@@ -71,38 +64,38 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         unPressdrawables.add(R.mipmap.bottombar_discover_unpress);
         unPressdrawables.add(R.mipmap.bottombar_personal_unpress);
         fragment=R.id.mainFragement;
-        switchFragment(-1);
+        switchFragment(FragmentConstant.defaultFragment);
         switchFragment(flag);
 
     }
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
-        setBottomBarDrawable(0,R.mipmap.bottombar_homepage_press);
-        switchFragment(0);
+        setBottomBarDrawable(FragmentConstant.homePage,R.mipmap.bottombar_homepage_press);
+        switchFragment(FragmentConstant.homePage);
     }
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
-        setBottomBarDrawable(1,R.mipmap.bottombar_message_press);
-        switchFragment(1);
+        setBottomBarDrawable(FragmentConstant.message,R.mipmap.bottombar_message_press);
+        switchFragment(FragmentConstant.message);
     }
     @OnClick(R.id.mainAddNote)
     public void clickAddNote(){
         //点击新增
-        switchFragment(2);
+        switchFragment(FragmentConstant.addNote);
     }
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
-        setBottomBarDrawable(3,R.mipmap.bottombar_discover_press);
-        switchFragment(3);
+        setBottomBarDrawable(FragmentConstant.discover,R.mipmap.bottombar_discover_press);
+        switchFragment(FragmentConstant.discover);
     }
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        setBottomBarDrawable(4,R.mipmap.bottombar_personal_press);
-        switchFragment(4);
+        setBottomBarDrawable(FragmentConstant.personal,R.mipmap.bottombar_personal_press);
+        switchFragment(FragmentConstant.personal);
     }
 
     @Override
@@ -121,30 +114,30 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
         switch (flag){
-            case -1:{
+            case FragmentConstant.defaultFragment:{
                 Homepage homepage=new Homepage();
                 transaction.add(fragment,homepage);
                 break;
             }
-            case 0:{
+            case FragmentConstant.homePage:{
                 Homepage homepage=new Homepage();
                 transaction.replace(fragment,homepage);
                 break;
             }
-            case 1:{
+            case FragmentConstant.message:{
                 Message message=new Message();
                 transaction.replace(fragment,message);
                 break;
             }
-            case 2:{
+            case FragmentConstant.addNote:{
                 break;
             }
-            case 3:{
+            case FragmentConstant.discover:{
                 Discover discover=new Discover();
                 transaction.replace(fragment,discover);
                 break;
             }
-            case 4:{
+            case FragmentConstant.personal:{
                 Personal personal=new Personal();
                 transaction.replace(fragment,personal);
                 break;

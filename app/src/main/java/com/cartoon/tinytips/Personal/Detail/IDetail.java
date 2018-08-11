@@ -1,10 +1,10 @@
 package com.cartoon.tinytips.Personal.Detail;
 
-interface IPersonalDetail {
+interface IDetail {
     interface View{
-        void intentMain();
-        void revampStatusBar();
 
+        void revampStatusBar();
+        void intentMain();
     }
     interface Presenter{
 

@@ -3,6 +3,7 @@ package com.cartoon.tinytips.HomePage;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
@@ -13,15 +14,15 @@ import butterknife.BindViews;
 
 public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepage.View{
 
-    private HomepagePresenter presenter;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
+    @BindView(R.id.toolbarText)
+    TextView toolbarText;
+
     @Override
     protected HomepagePresenter initPresent(){
-        presenter=new HomepagePresenter(this);
-        return presenter;
+        return new HomepagePresenter(this);
     }
 
     @Override
@@ -32,6 +33,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
     @Override
     protected void initView(){
         revampStatusBar();
+        toolbarText.setText("首页");
     }
 
     @Override
