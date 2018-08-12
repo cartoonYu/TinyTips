@@ -8,5 +8,9 @@
     <color name="skyBlue">#7ae1f7</color>
     <color name="detail_bg">#f2f2f2</color>
     <color name="txcolor">#282828</color>
-    <color name="black">#272727</color>
+	<color name="black">#272727</color>
+    <color name="hot1">#f20204</color>
+    <color name="hot2">#f22f3d</color>
+    <color name="hot3">#f24655</color>
+    <color name="after3">#f2f2f2</color>
 </resources>
