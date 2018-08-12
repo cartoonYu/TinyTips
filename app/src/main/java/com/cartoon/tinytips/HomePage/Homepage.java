@@ -1,6 +1,6 @@
 package com.cartoon.tinytips.HomePage;
 
-import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -9,11 +9,11 @@ import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
-import butterknife.BindViews;
 
 public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepage.View{
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -48,4 +48,5 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
         statusBar.setLayoutParams(params);
         statusBar.setBackgroundColor(getResources().getColor(R.color.white));
     }
+
 }
