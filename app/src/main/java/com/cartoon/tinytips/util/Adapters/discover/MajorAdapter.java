@@ -20,7 +20,7 @@ import java.util.List;
 public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> {
     private Context mContext;
 
-    private List<Major> mMJList;
+    private List<com.cartoon.tinytips.util.Adapters.Major> mMJList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -35,7 +35,7 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
         }
     }
 
-    public MajorAdapter(List<Major> MJList) {
+    public MajorAdapter(List<com.cartoon.tinytips.util.Adapters.Major> MJList) {
         this.mMJList = MJList;
     }
 
@@ -50,7 +50,7 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Major major = mMJList.get(position);
+        com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);
         holder.majorName.setText(major.getName());
         Glide.with(mContext).load(major.getImageId()).into(holder.majorImage);
     }
