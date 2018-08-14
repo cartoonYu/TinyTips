@@ -38,16 +38,13 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
     @BindView(R.id.rg_tab_bar)
     RadioGroup rg_tab_bar;
 
-    @BindView(R.id.txt_topbar)
-    TextView txt_topbar;
-
-    @BindView(R.id.home_Recommend)
+    @BindView(R.id.home_Recommendbutton)
     RadioButton rb_recommend;
 
-    @BindView(R.id.home_Hot)
+    @BindView(R.id.home_Hotbutton)
     RadioButton rb_hot;
 
-    @BindView(R.id.home_Favorite)
+    @BindView(R.id.home_Favoritebutton)
     RadioButton rb_favorite;
 
 
@@ -97,7 +94,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
-            case R.id.home_Recommend:
+            case R.id.home_Recommendbutton:
                 vPager.setCurrentItem(PAGE_ONE);
                 rb_recommend.setTextColor(Color.parseColor("#7ae1f7"));
                 rb_recommend.setBackgroundResource(R.drawable.flowing_press_bg);
@@ -106,7 +103,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
                 rb_hot.setBackgroundResource(R.drawable.flowing_unpress_bg);
                 rb_favorite.setBackgroundResource(R.drawable.flowing_unpress_bg);
                 break;
-            case R.id.home_Hot:
+            case R.id.home_Hotbutton:
                 vPager.setCurrentItem(PAGE_TWO);
                 rb_recommend.setTextColor(Color.BLACK);
                 rb_hot.setTextColor(Color.parseColor("#7ae1f7"));
@@ -115,7 +112,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
                 rb_recommend.setBackgroundResource(R.drawable.flowing_unpress_bg);
                 rb_favorite.setBackgroundResource(R.drawable.flowing_unpress_bg);
                 break;
-            case R.id.home_Favorite:
+            case R.id.home_Favoritebutton:
                 vPager.setCurrentItem(PAGE_THREE);
                 rb_recommend.setTextColor(Color.BLACK);
                 rb_hot.setTextColor(Color.BLACK);
