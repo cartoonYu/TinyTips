@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters.personal;
+package com.cartoon.tinytips.util.Adapters.Personal.Homepage;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;

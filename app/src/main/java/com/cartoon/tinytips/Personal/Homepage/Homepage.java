@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.personal.DynamicState;
-import com.cartoon.tinytips.util.Adapters.personal.DynamicStateAdapter;
+import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
+import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicStateAdapter;
 import com.cartoon.tinytips.util.UI.FragmentConstant;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 

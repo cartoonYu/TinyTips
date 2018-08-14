@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
+import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.Personal.Homepage.Homepage;
 import com.cartoon.tinytips.R;
@@ -29,6 +30,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @BindView(R.id.name)
     TextView nickName;
+
 
     @Override
     protected PersonalPresenter initPresent(){
@@ -56,6 +58,21 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         startActivity(intent);
         getActivity().finish();
     }
+
+    @OnClick(R.id.collect_Personal)
+    public void onClickCollect(){
+        Intent intent=new Intent(getActivity(), Collect.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    @OnClick(R.id.mine_Personal)
+    public void onClickHomepage(){
+        Intent intent=new Intent(getActivity(), Homepage.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
     @Override
     public void revampStatusBar(){
         RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();

@@ -5,22 +5,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
+import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Homepage;
-
-import java.util.List;
+import com.cartoon.tinytips.HomePage.Hot.Hot;
+import com.cartoon.tinytips.HomePage.Recommend.Recommend;
 
 public class HomeFragmentAdapter extends FragmentPagerAdapter {
     private final int PAGER_COUNT = 3;
-    private FragmentRecommend myFragment1 = null;
-    private FragmentHot myFragment2 = null;
-    private FragmentFavorite myFragment3 = null;
+    private Recommend myFragment1 = null;
+    private Hot myFragment2 = null;
+    private Favorite myFragment3 = null;
 
 
     public HomeFragmentAdapter(FragmentManager fm) {
         super(fm);
-        myFragment1 = new FragmentRecommend();
-        myFragment2 = new FragmentHot();
-        myFragment3 = new FragmentFavorite();
+        myFragment1 = new Recommend();
+        myFragment2 = new Hot();
+        myFragment3 = new Favorite();
     }
 
 

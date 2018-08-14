@@ -1,16 +1,10 @@
 package com.cartoon.tinytips.HomePage;
 
 import android.graphics.Color;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -18,18 +12,12 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.homepage.FragmentFavorite;
-import com.cartoon.tinytips.util.Adapters.homepage.FragmentHot;
-import com.cartoon.tinytips.util.Adapters.homepage.FragmentRecommend;
-import com.cartoon.tinytips.util.Adapters.homepage.HomeCardAdapter;
 import com.cartoon.tinytips.util.Adapters.homepage.HomeFragmentAdapter;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepage.View,RadioGroup.OnCheckedChangeListener,ViewPager.OnPageChangeListener{
 

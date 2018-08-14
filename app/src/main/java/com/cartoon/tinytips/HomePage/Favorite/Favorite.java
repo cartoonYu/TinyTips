@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters.homepage;
+package com.cartoon.tinytips.HomePage.Favorite;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,15 +9,15 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
 
-public class FragmentRecommend extends Fragment {
-    public FragmentRecommend() {
+public class Favorite extends Fragment {
+    public Favorite() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_recommend, container, false);
-        TextView txt_content = (TextView) view.findViewById(R.id.recommendtxt_content);
-        txt_content.setText("推荐");
+        View view = inflater.inflate(R.layout.home_favorite, container, false);
+        TextView txt_content = (TextView) view.findViewById(R.id.favoritetxt_content);
+        txt_content.setText("关注");
         return view;
     }
 }
