@@ -10,6 +10,8 @@ import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.Personal.Homepage.Homepage;
+import com.cartoon.tinytips.Personal.MyNote.MyNote;
+import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
@@ -52,6 +54,14 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     }
 
+
+    @OnClick(R.id.personal_notes)
+    public void onClickNote(){
+        Intent intent=new Intent(getActivity(), MyNote.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
         Intent intent=new Intent(getActivity(), Detail.class);
@@ -73,6 +83,13 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         getActivity().finish();
     }
 
+    @OnClick(R.id.setting_Personal)
+    public void onClickSetting(){
+        Intent intent=new Intent(getActivity(), Setting.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
     @Override
     public void revampStatusBar(){
         RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
@@ -88,4 +105,5 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         startActivity(intent);
         getActivity().finish();
     }
+
 }

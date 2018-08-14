@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters.homepage;
+package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

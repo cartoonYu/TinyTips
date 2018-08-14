@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.homepage.HomeFragmentAdapter;
+
+import com.cartoon.tinytips.util.Adapters.Homepage.HomeFragmentAdapter;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.List;

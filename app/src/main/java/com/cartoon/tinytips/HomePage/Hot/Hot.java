@@ -12,24 +12,16 @@ import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.R;
 
-public class Hot extends BaseFragment {
-    public Hot() {
-    }
+public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_hot, container, false);
-        return view;
-    }
-
-    @Override
-    protected BaseFragmentPresenter initPresent() {
-        return null;
+    protected HotPresenter initPresent() {
+        return new HotPresenter(this);
     }
 
     @Override
     protected int getLayout() {
-        return 0;
+        return R.layout.home_hot;
     }
 
     @Override

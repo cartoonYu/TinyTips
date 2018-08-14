@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.Personal.Collect;
+package com.cartoon.tinytips.Personal.MyNote;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
+import com.cartoon.tinytips.util.Adapters.Personal.MyNote.Note;
+import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
 import com.cartoon.tinytips.util.UI.FragmentConstant;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
@@ -20,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class Collect extends BaseActivity<CollectPresenter> implements ICollect.View{
+public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.View{
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -31,30 +32,26 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
-
-    private List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collectList;
-    private CollectAdapter collectAdapter;
-
-    @BindView(R.id.personal_collect_collectList)
-    RecyclerView collect;
-
+    private List<Note> notes;
+    private NoteAdapter adapter;
+    @BindView(R.id.personal_mynote_note)
+    RecyclerView note;
 
 
     @Override
-    protected CollectPresenter initPresent(){
-        return new CollectPresenter(this);
+    protected MyNotePresenter initPresent(){
+        return new MyNotePresenter(this);
     }
 
     @Override
     protected int getLayout(){
-        return R.layout.personal_collect;
+        return R.layout.personal_mynote;
     }
 
     @Override
     protected void initView(){
         revampStatusBar();
-        initToolbar();
-        initCollect();
+        initNote();
     }
 
     @Override
@@ -63,16 +60,8 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     }
 
     @Override
-    public void intentMain(){
-        Intent intent=new Intent(this, Main.class);
-        intent.putExtra("main", FragmentConstant.personal);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
     public void onBackPressed(){
-        intentMain();
+        intentToMain();
     }
 
     @Override
@@ -84,30 +73,31 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
         statusBar.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
+
     @Override
-    public void initToolbar(){
-        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
-        toolbarText.setText("我的收藏");
+    public void initNote(){
+        notes=new ArrayList<>();
+        Note n=new Note("asd","java","python","C","2018-8-14");
+        for(int i=0;i<20;i++){
+            notes.add(n);
+        }
+        LinearLayoutManager manager=new LinearLayoutManager(this);
+        note.setLayoutManager(manager);
+        adapter=new NoteAdapter(notes);
+        note.setAdapter(adapter);
     }
 
     @Override
-    public void initCollect(){
-        collectList=new ArrayList<>();
-        com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect c
-                =new com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect
-                ("asd",getResources().getDrawable(R.drawable.nav_icon),"cartoon",1,2,3,4);
-        for(int i=0;i<20;i++){
-            collectList.add(c);
-        }
-        LinearLayoutManager manager=new LinearLayoutManager(this);
-        collect.setLayoutManager(manager);
-        collectAdapter=new CollectAdapter(collectList);
-        collect.setAdapter(collectAdapter);
+    public void intentToMain(){
+        Intent intent=new Intent(this, Main.class);
+        intent.putExtra("main", FragmentConstant.personal);
+        startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        intentMain();
+        intentToMain();
     }
 
 }

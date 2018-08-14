@@ -24,10 +24,12 @@ android {
                             'src/main/res/layout/homepage',
                             'src/main/res/layout/message',
                             'src/main/res/layout/personal',
-                            'src/main/res/layout/personal/my_note',
+                            'src/main/res/layout/personal/mynote',
                             'src/main/res/layout/personal/detail',
                             'src/main/res/layout/personal/homepage',
                             'src/main/res/layout/personal/collect',
+                            'src/main/res/layout/personal/setting',
+                            'src/main/res/layout/personal/setting/security',
                             'src/main/res/layout',
                             'src/main/res'
                     ]

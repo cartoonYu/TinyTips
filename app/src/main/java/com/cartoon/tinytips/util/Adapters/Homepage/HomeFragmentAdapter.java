@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters.homepage;
+package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
