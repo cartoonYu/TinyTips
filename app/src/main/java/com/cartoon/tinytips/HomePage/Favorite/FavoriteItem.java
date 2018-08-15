@@ -23,4 +23,39 @@ public class FavoriteItem {
         this.time = time;
     }
 
+    public String getuserName() {
+        return username;
+    }
+
+    public int getuserImage() {
+        return userImage;
+    }
+
+    public String gettitle() {
+        return title;
+    }
+
+    public String getcontent() {
+        return content;
+    }
+
+    public int getNumOfRecommend() {
+        return NumOfRecommend;
+    }
+
+    public int getNumOfFavoirte() {
+        return NumOfFavoirte;
+    }
+
+    public int getNumOfCollectoin() {
+        return NumOfCollectoin;
+    }
+
+    public int getNumOfShare() {
+        return NumOfShare;
+    }
+
+    public String getTime() {
+        return time;
+    }
 }
