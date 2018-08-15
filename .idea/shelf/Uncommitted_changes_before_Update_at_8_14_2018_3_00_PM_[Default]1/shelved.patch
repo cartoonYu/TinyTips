@@ -1,0 +1,706 @@
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Homepage/Homepage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.Personal.Homepage;\n\nimport android.content.Intent;\nimport android.support.v7.widget.LinearLayoutManager;\n\nimport android.support.v7.widget.RecyclerView;\nimport android.view.View;\nimport android.widget.ImageView;\nimport android.widget.RelativeLayout;\nimport android.widget.TextView;\n\nimport com.cartoon.tinytips.BaseActivity;\nimport com.cartoon.tinytips.Main.Main;\nimport com.cartoon.tinytips.R;\nimport com.cartoon.tinytips.util.Adapters.personal.DynamicState;\nimport com.cartoon.tinytips.util.Adapters.personal.DynamicStateAdapter;\nimport com.cartoon.tinytips.util.UI.FragmentConstant;\nimport com.cartoon.tinytips.util.UI.RevampStatusBar;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport butterknife.BindView;\nimport butterknife.BindViews;\nimport butterknife.OnClick;\nimport de.hdodenhof.circleimageview.CircleImageView;\n\npublic class Homepage extends BaseActivity<HomepagePresenter> implements IHomepage.View{\n\n    @BindView(R.id.statusBar)\n    View statusBar;\n\n    @BindView(R.id.personal_homepage_HeadPro)\n    CircleImageView headPro;     //头像\n\n    @BindView(R.id.personal_homepage_focus)\n    TextView focus;     //关注按钮\n\n    @BindView(R.id.personal_homepage_nickName)\n    TextView nickName;     //昵称\n\n    @BindView(R.id.personal_homepage_sex)\n    ImageView sex;       //性别图片\n\n    @BindView(R.id.personal_homepage_school)\n    TextView school;     //学校\n\n    @BindView(R.id.personal_homepage_major)\n    TextView major;      //专业\n\n    @BindViews({R.id.personal_homepage_interest1,R.id.personal_homepage_interest2,\n            R.id.personal_homepage_interest3,R.id.personal_homepage_interest4})\n    List<TextView> interests;    //四个兴趣\n\n\n    private List<DynamicState> dynamicStateList;\n    private DynamicStateAdapter dynamicStateAdapter;\n\n    @BindView(R.id.personal_homepage_dynamicState)\n    RecyclerView dynamicState;\n\n    @Override\n    protected HomepagePresenter initPresent(){\n        return new HomepagePresenter(this);\n    }\n\n    @Override\n    protected int getLayout(){\n        return R.layout.personal_homepage;\n    }\n\n    @Override\n    protected void initView(){\n        revampStatusBar();\n        dynamicState.setFocusableInTouchMode(false);\n        dynamicState.requestFocus();\n        initDynamicState();\n    }\n\n    @Override\n    protected void onPrepare(){\n\n    }\n\n    @OnClick(R.id.personal_homepage_back)\n    public void clickBack(){\n        intentToMain();\n    }\n\n    @Override\n    public void onBackPressed(){\n        intentToMain();\n    }\n\n    @Override\n    public void revampStatusBar(){\n        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();\n        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;\n        params.height= RevampStatusBar.getStatusBar(this);\n        statusBar.setLayoutParams(params);\n        statusBar.setBackgroundColor(getResources().getColor(R.color.skyBlue));\n    }\n    @Override\n    public void initDynamicState(){\n        dynamicStateList=new ArrayList<>();\n        DynamicState state=new DynamicState(\"asd\",\"2018-8-11\",2,3,4,5);\n        for(int i=0;i<20;i++){\n            dynamicStateList.add(state);\n        }\n        LinearLayoutManager manager=new LinearLayoutManager(this);\n        dynamicState.setLayoutManager(manager);\n        dynamicStateAdapter=new DynamicStateAdapter(dynamicStateList);\n        dynamicState.setAdapter(dynamicStateAdapter);\n    }\n    @Override\n    public void intentToMain(){\n        Intent intent=new Intent(this, Main.class);\n        intent.putExtra(\"main\", FragmentConstant.personal);\n        startActivity(intent);\n        finish();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Homepage/Homepage.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Homepage/Homepage.java	(date 1534145677186)
+@@ -12,8 +12,8 @@
+ import com.cartoon.tinytips.BaseActivity;
+ import com.cartoon.tinytips.Main.Main;
+ import com.cartoon.tinytips.R;
+-import com.cartoon.tinytips.util.Adapters.personal.DynamicState;
+-import com.cartoon.tinytips.util.Adapters.personal.DynamicStateAdapter;
++import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
++import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicStateAdapter;
+ import com.cartoon.tinytips.util.UI.FragmentConstant;
+ import com.cartoon.tinytips.util.UI.RevampStatusBar;
+ 
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/CollectAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/CollectAdapter.java	(date 1534150799450)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/CollectAdapter.java	(date 1534150799450)
+@@ -0,0 +1,82 @@
++package com.cartoon.tinytips.util.Adapters.Personal.Collect;
++
++import android.content.Context;
++import android.support.v7.widget.CardView;
++import android.support.v7.widget.RecyclerView;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import com.bumptech.glide.Glide;
++import com.cartoon.tinytips.R;
++
++import java.util.List;
++
++import butterknife.BindView;
++import butterknife.ButterKnife;
++import de.hdodenhof.circleimageview.CircleImageView;
++
++public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.ViewHolder>{
++
++    private Context mContext;
++
++    private List<Collect> list;
++
++    static class ViewHolder extends RecyclerView.ViewHolder {
++        CardView cardView;
++
++        @BindView(R.id.personal_collect_title)
++        TextView title;    //标题
++
++        @BindView(R.id.personal_collect_headPro)
++        CircleImageView headPro;   //头像
++
++        @BindView(R.id.personal_collect_like)
++        TextView like;     //点赞个数
++
++        @BindView(R.id.personal_collect_comment)
++        TextView comment;   //评论个数
++
++        @BindView(R.id.personal_collect_collect)
++        TextView collect;    //收藏个数
++
++        @BindView(R.id.personal_collect_forward)
++        TextView forward;     //转发次数
++
++        public ViewHolder(View view) {
++            super(view);
++            ButterKnife.bind(this,view);
++            cardView = (CardView) view;
++        }
++    }
++
++    public CollectAdapter(List<Collect> list) {
++        this.list = list;
++    }
++
++    @Override
++    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
++        if (mContext == null) {
++            mContext = parent.getContext();
++        }
++        View view = LayoutInflater.from(mContext).inflate(R.layout.personal_collect_item, parent, false);
++        return new ViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(ViewHolder holder, int position) {
++        Collect collect=list.get(position);
++        holder.title.setText(collect.getTitle());
++        holder.headPro.setImageDrawable(collect.getHeadPro());
++        holder.like.setText(new StringBuilder("").append(collect.getLike()).toString());
++        holder.comment.setText(new StringBuilder("").append(collect.getComment()).toString());
++        holder.collect.setText(new StringBuilder("").append(collect.getCollect()).toString());
++        holder.forward.setText(new StringBuilder("").append(collect.getForward()).toString());
++    }
++
++    @Override
++    public int getItemCount() {
++        return list.size();
++    }
++}
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetailPresenter.java
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetailPresenter.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetailPresenter.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
+@@ -1,16 +0,0 @@
+-package com.cartoon.tinytips.Personal.Detail;
+-
+-import com.cartoon.tinytips.BaseActivityPresenter;
+-
+-class PersonalDetailPresenter extends BaseActivityPresenter<PersonalDetail> implements IPersonalDetail.Presenter{
+-
+-    private IPersonalDetail.View view;
+-
+-    public PersonalDetailPresenter(IPersonalDetail.View view){
+-        this.view=view;
+-    }
+-    @Override
+-    protected void deleteView(){
+-        view=null;
+-    }
+-}
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Collect/Collect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Collect/Collect.java	(date 1534150897655)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Collect/Collect.java	(date 1534150897655)
+@@ -0,0 +1,111 @@
++package com.cartoon.tinytips.Personal.Collect;
++
++import android.content.Intent;
++import android.support.v7.widget.LinearLayoutManager;
++import android.support.v7.widget.RecyclerView;
++import android.view.View;
++import android.widget.RelativeLayout;
++import android.widget.TextView;
++
++import com.cartoon.tinytips.BaseActivity;
++import com.cartoon.tinytips.Main.Main;
++import com.cartoon.tinytips.R;
++import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
++import com.cartoon.tinytips.util.UI.FragmentConstant;
++import com.cartoon.tinytips.util.UI.RevampStatusBar;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import butterknife.BindView;
++import butterknife.OnClick;
++
++public class Collect extends BaseActivity<CollectPresenter> implements ICollect.View{
++
++    @BindView(R.id.statusBar)
++    View statusBar;
++
++    @BindView(R.id.toolbarBack)
++    TextView back;
++
++    @BindView(R.id.toolbarText)
++    TextView toolbarText;
++
++    private List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collectList;
++    private CollectAdapter collectAdapter;
++
++    @BindView(R.id.personal_collect_collectList)
++    RecyclerView collect;
++
++
++
++    @Override
++    protected CollectPresenter initPresent(){
++        return new CollectPresenter(this);
++    }
++
++    @Override
++    protected int getLayout(){
++        return R.layout.personal_collect;
++    }
++
++    @Override
++    protected void initView(){
++        revampStatusBar();
++        initToolbar();
++        initCollect();
++    }
++
++    @Override
++    protected void onPrepare(){
++
++    }
++
++    @Override
++    public void intentMain(){
++        Intent intent=new Intent(this, Main.class);
++        intent.putExtra("main", FragmentConstant.personal);
++        startActivity(intent);
++        finish();
++    }
++
++    @Override
++    public void onBackPressed(){
++        intentMain();
++    }
++
++    @Override
++    public void revampStatusBar(){
++        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
++        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
++        params.height= RevampStatusBar.getStatusBar(this);
++        statusBar.setLayoutParams(params);
++        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
++    }
++
++    @Override
++    public void initToolbar(){
++        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
++        toolbarText.setText("我的收藏");
++    }
++
++    @Override
++    public void initCollect(){
++        collectList=new ArrayList<>();
++        com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect c
++                =new com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect
++                ("asd",getResources().getDrawable(R.drawable.nav_icon),"cartoon",1,2,3,4);
++        for(int i=0;i<20;i++){
++            collectList.add(c);
++        }
++        LinearLayoutManager manager=new LinearLayoutManager(this);
++        collect.setLayoutManager(manager);
++        collectAdapter=new CollectAdapter(collectList);
++        collect.setAdapter(collectAdapter);
++    }
++
++    @OnClick(R.id.toolbarBack)
++    public void onClickBack(){
++        intentMain();
++    }
++}
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Collect/ICollect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Collect/ICollect.java	(date 1534150615203)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Collect/ICollect.java	(date 1534150615203)
+@@ -0,0 +1,13 @@
++package com.cartoon.tinytips.Personal.Collect;
++
++interface ICollect {
++    interface View{
++        void revampStatusBar();    //沉浸式状态栏
++        void initToolbar();     //初始化toolbar
++        void initCollect();     //初始化收藏列表
++        void intentMain();     //返回上一级
++    }
++    interface Presenter{
++
++    }
++}
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Detail/IPersonalDetail.java
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Detail/IPersonalDetail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Detail/IPersonalDetail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
+@@ -1,12 +0,0 @@
+-package com.cartoon.tinytips.Personal.Detail;
+-
+-interface IPersonalDetail {
+-    interface View{
+-        void intentMain();
+-        void revampStatusBar();
+-
+-    }
+-    interface Presenter{
+-
+-    }
+-}
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Personal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.Personal;\n\nimport android.content.Intent;\nimport android.view.View;\nimport android.widget.LinearLayout;\nimport android.widget.RelativeLayout;\nimport android.widget.TextView;\n\nimport com.cartoon.tinytips.BaseFragment;\nimport com.cartoon.tinytips.Personal.Detail.Detail;\nimport com.cartoon.tinytips.Personal.Homepage.Homepage;\nimport com.cartoon.tinytips.R;\nimport com.cartoon.tinytips.util.UI.RevampStatusBar;\n\nimport butterknife.BindView;\nimport butterknife.OnClick;\nimport de.hdodenhof.circleimageview.CircleImageView;\n\npublic class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View {\n\n    @BindView(R.id.detail_Personal)\n    LinearLayout detail;\n\n    @BindView(R.id.statusBar)\n    View statusBar;\n\n    @BindView(R.id.avatar)\n    CircleImageView headPro;\n\n    @BindView(R.id.name)\n    TextView nickName;\n\n    @Override\n    protected PersonalPresenter initPresent(){\n        return new PersonalPresenter(this);\n    }\n\n    @Override\n    protected int getLayout(){\n        return R.layout.personal;\n    }\n\n    @Override\n    protected void initView(){\n        revampStatusBar();\n    }\n\n    @Override\n    protected void onPrepare(){\n\n    }\n\n    @OnClick(R.id.detail_Personal)\n    public void onClickDetail(){\n        Intent intent=new Intent(getActivity(), Detail.class);\n        startActivity(intent);\n        getActivity().finish();\n    }\n    @Override\n    public void revampStatusBar(){\n        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();\n        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;\n        params.height= RevampStatusBar.getStatusBar(getContext());\n        statusBar.setLayoutParams(params);\n        statusBar.setBackgroundColor(getResources().getColor(R.color.skyBlue));\n\n    }\n    @OnClick(R.id.avatar)\n    public void onClickHeadPro(){\n        Intent intent=new Intent(getActivity(), Homepage.class);\n        startActivity(intent);\n        getActivity().finish();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Personal.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Personal.java	(date 1534146843094)
+@@ -7,6 +7,7 @@
+ import android.widget.TextView;
+ 
+ import com.cartoon.tinytips.BaseFragment;
++import com.cartoon.tinytips.Personal.Collect.Collect;
+ import com.cartoon.tinytips.Personal.Detail.Detail;
+ import com.cartoon.tinytips.Personal.Homepage.Homepage;
+ import com.cartoon.tinytips.R;
+@@ -30,6 +31,7 @@
+     @BindView(R.id.name)
+     TextView nickName;
+ 
++
+     @Override
+     protected PersonalPresenter initPresent(){
+         return new PersonalPresenter(this);
+@@ -56,6 +58,14 @@
+         startActivity(intent);
+         getActivity().finish();
+     }
++
++    @OnClick(R.id.collect_Personal)
++    public void onClickCollect(){
++        Intent intent=new Intent(getActivity(), Collect.class);
++        startActivity(intent);
++        getActivity().finish();
++    }
++
+     @Override
+     public void revampStatusBar(){
+         RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetail.java
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Detail/PersonalDetail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
+@@ -1,58 +0,0 @@
+-package com.cartoon.tinytips.Personal.Detail;
+-
+-import android.content.Intent;
+-import android.view.View;
+-import android.widget.RelativeLayout;
+-
+-import com.cartoon.tinytips.BaseActivity;
+-import com.cartoon.tinytips.Main.Main;
+-import com.cartoon.tinytips.R;
+-import com.cartoon.tinytips.util.UI.RevampStatusBar;
+-
+-import butterknife.BindView;
+-
+-public class PersonalDetail extends BaseActivity<PersonalDetailPresenter> implements IPersonalDetail.View{
+-
+-    private PersonalDetailPresenter presenter;
+-
+-    @BindView(R.id.statusBar)
+-    View statusBar;
+-
+-    @Override
+-    protected PersonalDetailPresenter initPresent(){
+-        presenter=new PersonalDetailPresenter(this);
+-        return presenter;
+-    }
+-    @Override
+-    protected int getLayout(){
+-        return R.layout.personal_detail;
+-    }
+-    @Override
+-    protected void initView(){ revampStatusBar();
+-    }
+-    @Override
+-    protected void onPrepare(){
+-
+-    }
+-    @Override
+-    public void intentMain(){
+-        Intent intent=new Intent(this, Main.class);
+-        intent.putExtra("main",4);
+-        startActivity(intent);
+-        finish();
+-    }
+-
+-    @Override
+-    public void onBackPressed(){
+-        intentMain();
+-    }
+-
+-    @Override
+-    public void revampStatusBar(){
+-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
+-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
+-        params.height= RevampStatusBar.getStatusBar(this);
+-        statusBar.setLayoutParams(params);
+-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+-    }
+-}
+Index: app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml	(date 1534150615253)
++++ app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml	(date 1534150615253)
+@@ -0,0 +1,87 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="80dp"
++    android:layout_marginTop="1dp"
++    android:background="@color/white">
++    <RelativeLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="10dp"
++            android:layout_marginLeft="5dp"
++            android:text="标题"
++            android:textColor="@color/black"
++            android:textSize="16sp"
++            android:id="@+id/personal_collect_title"/>
++        <de.hdodenhof.circleimageview.CircleImageView
++            android:layout_width="25dp"
++            android:layout_height="25dp"
++            android:layout_below="@id/personal_collect_title"
++            android:layout_marginTop="10dp"
++            android:layout_marginLeft="5dp"
++            android:layout_marginBottom="10dp"
++            android:src="@drawable/nav_icon"
++            android:id="@+id/personal_collect_headPro"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_below="@id/personal_collect_title"
++            android:layout_toRightOf="@id/personal_collect_headPro"
++            android:layout_marginTop="15dp"
++            android:layout_marginLeft="10dp"
++            android:text="昵称"
++            android:textSize="14sp"
++            android:id="@+id/personal_collect_nickName"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_alignParentRight="true"
++            android:layout_marginTop="15dp"
++            android:layout_marginRight="10dp"
++            android:layout_below="@id/personal_collect_title"
++            android:text="0"
++            android:textSize="12sp"
++            android:drawableLeft="@mipmap/personal_collect_forward"
++            android:drawablePadding="5dp"
++            android:id="@+id/personal_collect_forward"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="15dp"
++            android:layout_marginRight="15dp"
++            android:layout_below="@id/personal_collect_title"
++            android:layout_toLeftOf="@id/personal_collect_forward"
++            android:text="0"
++            android:textSize="12sp"
++            android:drawableLeft="@mipmap/personal_collect_collect"
++            android:drawablePadding="5dp"
++            android:id="@+id/personal_collect_collect"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="15dp"
++            android:layout_marginRight="15dp"
++            android:layout_below="@id/personal_collect_title"
++            android:layout_toLeftOf="@id/personal_collect_collect"
++            android:text="0"
++            android:textSize="12sp"
++            android:drawableLeft="@mipmap/personal_collect_comment"
++            android:drawablePadding="5dp"
++            android:id="@+id/personal_collect_comment"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="15dp"
++            android:layout_marginRight="15dp"
++            android:layout_below="@id/personal_collect_title"
++            android:layout_toLeftOf="@id/personal_collect_comment"
++            android:text="0"
++            android:textSize="12sp"
++            android:drawableLeft="@mipmap/personal_collect_like"
++            android:drawablePadding="5dp"
++            android:id="@+id/personal_collect_like"/>
++    </RelativeLayout>
++</android.support.v7.widget.CardView>
+\ No newline at end of file
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Detail/Detail.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.Personal.Detail;\n\nimport android.content.Intent;\nimport android.view.View;\nimport android.widget.RelativeLayout;\nimport android.widget.TextView;\n\nimport com.cartoon.tinytips.BaseActivity;\nimport com.cartoon.tinytips.Main.Main;\nimport com.cartoon.tinytips.R;\nimport com.cartoon.tinytips.util.UI.FragmentConstant;\nimport com.cartoon.tinytips.util.UI.RevampStatusBar;\n\nimport butterknife.BindView;\nimport butterknife.OnClick;\n\npublic class Detail extends BaseActivity<DetailPresenter> implements IDetail.View{\n\n    @BindView(R.id.statusBar)\n    View statusBar;\n\n    @BindView(R.id.toolbarBack)\n    TextView back;\n\n    @Override\n    protected DetailPresenter initPresent(){\n        return new DetailPresenter(this);\n    }\n\n    @Override\n    protected int getLayout(){\n        return R.layout.personal_detail;\n    }\n\n    @Override\n    protected void initView() {\n        revampStatusBar();\n        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));\n    }\n\n    @Override\n    protected void onPrepare(){\n\n    }\n\n    @Override\n    public void intentMain(){\n        Intent intent=new Intent(this, Main.class);\n        intent.putExtra(\"main\", FragmentConstant.personal);\n        startActivity(intent);\n        finish();\n    }\n\n    @Override\n    public void onBackPressed(){\n        intentMain();\n    }\n\n    @Override\n    public void revampStatusBar(){\n        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();\n        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;\n        params.height= RevampStatusBar.getStatusBar(this);\n        statusBar.setLayoutParams(params);\n        statusBar.setBackgroundColor(getResources().getColor(R.color.white));\n    }\n\n    @OnClick(R.id.toolbarBack)\n    public void onClickBack(){\n        intentMain();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Detail/Detail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Detail/Detail.java	(date 1534147777815)
+@@ -35,7 +35,7 @@
+     @Override
+     protected void initView() {
+         revampStatusBar();
+-        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
++        initToolbar();
+     }
+ 
+     @Override
+@@ -65,6 +65,11 @@
+         statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+     }
+ 
++    @Override
++    public void initToolbar(){
++        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
++    }
++
+     @OnClick(R.id.toolbarBack)
+     public void onClickBack(){
+         intentMain();
+Index: app/src/main/res/layout/personal/collect/layout/personal_collect.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/personal/collect/layout/personal_collect.xml	(date 1534150615298)
++++ app/src/main/res/layout/personal/collect/layout/personal_collect.xml	(date 1534150615298)
+@@ -0,0 +1,23 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++    <include
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        layout="@layout/statusbar"
++        android:layout_alignParentTop="true"
++        android:id="@+id/collect_statusBar"/>
++    <include
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        layout="@layout/toolbar"
++        android:layout_below="@id/collect_statusBar"
++        android:id="@+id/collect_toolbar"/>
++    <android.support.v7.widget.RecyclerView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:layout_below="@id/collect_toolbar"
++        android:background="@color/gray"
++        android:id="@+id/personal_collect_collectList"/>
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/DynamicStateAdapter.java
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/DynamicStateAdapter.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Homepage/DynamicStateAdapter.java	(date 1534145677308)
+@@ -1,4 +1,4 @@
+-package com.cartoon.tinytips.util.Adapters.personal;
++package com.cartoon.tinytips.util.Adapters.Personal.Homepage;
+ 
+ import android.content.Context;
+ import android.support.v7.widget.CardView;
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/Collect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/Collect.java	(date 1534150615341)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/Collect.java	(date 1534150615341)
+@@ -0,0 +1,50 @@
++package com.cartoon.tinytips.util.Adapters.Personal.Collect;
++
++import android.graphics.drawable.Drawable;
++
++public class Collect {
++    private String title;
++    private Drawable headPro;
++    private String nickName;
++    private int like;
++    private int comment;
++    private int collect;
++    private int forward;
++
++    public Collect(String title,Drawable headPro,String nickName,int like,int comment,int collect,int forward){
++        this.title=title;
++        this.headPro=headPro;
++        this.nickName=nickName;
++        this.like=like;
++        this.comment=comment;
++        this.collect=collect;
++        this.forward=forward;
++    }
++    public String getTitle() {
++        return title;
++    }
++
++    public Drawable getHeadPro() {
++        return headPro;
++    }
++
++    public String getNickName() {
++        return nickName;
++    }
++
++    public int getLike() {
++        return like;
++    }
++
++    public int getComment() {
++        return comment;
++    }
++
++    public int getCollect() {
++        return collect;
++    }
++
++    public int getForward() {
++        return forward;
++    }
++}
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/DynamicState.java
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/DynamicState.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Homepage/DynamicState.java	(date 1534145677393)
+@@ -1,4 +1,4 @@
+-package com.cartoon.tinytips.util.Adapters.personal;
++package com.cartoon.tinytips.util.Adapters.Personal.Homepage;
+ 
+ public class DynamicState {
+     private String title;
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Collect/CollectPresenter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Collect/CollectPresenter.java	(date 1534146362952)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Collect/CollectPresenter.java	(date 1534146362952)
+@@ -0,0 +1,16 @@
++package com.cartoon.tinytips.Personal.Collect;
++
++import com.cartoon.tinytips.BaseActivityPresenter;
++
++class CollectPresenter extends BaseActivityPresenter<Collect> implements ICollect.Presenter{
++    private ICollect.View view;
++
++    public CollectPresenter(ICollect.View view){
++        this.view=view;
++    }
++
++    @Override
++    protected void deleteView(){
++        view=null;
++    }
++}
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\n\nandroid {\n    compileSdkVersion 28\n    defaultConfig {\n        applicationId \"com.cartoon.tinytips\"\n        minSdkVersion 21\n        targetSdkVersion 28\n        versionCode 1\n        versionName \"1.0\"\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n    }\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n        }\n    }\n    sourceSets {\n        main {\n            res.srcDirs =\n                    [\n                            'src/main/res/layout/discover',\n                            'src/main/res/layout/homepage',\n                            'src/main/res/layout/message',\n                            'src/main/res/layout/personal',\n                            'src/main/res/layout/personal/detail',\n                            'src/main/res/layout/personal/homepage',\n                            'src/main/res/layout',\n                            'src/main/res'\n                    ]\n        }\n    }\n}\n\ndependencies {\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\n    implementation 'com.android.support:appcompat-v7:28.0.0-beta01'\n    implementation 'com.android.support:design:28+'\n    implementation 'com.android.support.constraint:constraint-layout:1.1.2'\n    implementation 'de.hdodenhof:circleimageview:2.1.0'\n    /*******************************控件依赖项*********************************/\n    implementation 'com.jakewharton:butterknife:8.8.1'\n    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'\n    implementation 'com.android.support:recyclerview-v7:28.+'   //recyclerView\n    implementation 'com.android.support:cardview-v7:28.+'       //cardView（recyclerView子项）\n    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'\n    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'    //底部菜单栏\n    /*******************************控件依赖项*********************************/\n\n    /*******************************图片类*********************************/\n    implementation 'com.github.bumptech.glide:glide:3.7.0'\n    implementation 'com.zhihu.android:matisse:0.4.3'\n    /*******************************图片类*********************************/\n\n    /***************************网络通讯类*********************************/\n    implementation 'com.squareup.okhttp3:okhttp:3.10.0'\n    /***************************网络通讯类*********************************/\n    testImplementation 'junit:junit:4.12'\n    androidTestImplementation 'com.android.support.test:runner:1.0.2'\n    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/build.gradle	(date 1534145258824)
+@@ -26,6 +26,7 @@
+                             'src/main/res/layout/personal',
+                             'src/main/res/layout/personal/detail',
+                             'src/main/res/layout/personal/homepage',
++                            'src/main/res/layout/personal/collect',
+                             'src/main/res/layout',
+                             'src/main/res'
+                     ]
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.cartoon.tinytips\" >\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\n    <application\n        android:allowBackup=\"true\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/AppTheme\" >\n\n        <activity android:name=\".Main.Main\" >\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n\n        <activity android:name=\".Personal.Detail.Detail\"/>\n        <activity android:name=\".Personal.Homepage.Homepage\"/>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/AndroidManifest.xml	(date 1534147468047)
+@@ -21,6 +21,7 @@
+ 
+         <activity android:name=".Personal.Detail.Detail"/>
+         <activity android:name=".Personal.Homepage.Homepage"/>
++        <activity android:name=".Personal.Collect.Collect"/>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/java/com/cartoon/tinytips/Personal/Detail/IDetail.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.Personal.Detail;\n\ninterface IDetail {\n    interface View{\n\n        void revampStatusBar();\n        void intentMain();\n    }\n    interface Presenter{\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/Personal/Detail/IDetail.java	(revision 124f99ecefc837df99074d5b9f5c6949ff67fb31)
++++ app/src/main/java/com/cartoon/tinytips/Personal/Detail/IDetail.java	(date 1534147778113)
+@@ -2,8 +2,8 @@
+ 
+ interface IDetail {
+     interface View{
+-
+-        void revampStatusBar();
++        void revampStatusBar();   //沉浸式状态栏
++        void initToolbar();       //初始化toolbar
+         void intentMain();
+     }
+     interface Presenter{

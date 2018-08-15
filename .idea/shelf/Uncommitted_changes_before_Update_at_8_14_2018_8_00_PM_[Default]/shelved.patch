@@ -1,0 +1,70 @@
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/homepage/HomeCardAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters.homepage;\n\nimport android.support.v4.view.PagerAdapter;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport java.util.ArrayList;\n\npublic class HomeCardAdapter extends PagerAdapter {\n    private ArrayList<View> viewLists;\n\n    public HomeCardAdapter() {\n    }\n\n    public HomeCardAdapter(ArrayList<View> viewLists) {\n        super();\n        this.viewLists = viewLists;\n    }\n\n    @Override\n    public int getCount() {\n        return viewLists.size();\n    }\n\n    @Override\n    public boolean isViewFromObject(View view, Object object) {\n        return view == object;\n    }\n\n    @Override\n    public Object instantiateItem(ViewGroup container, int position) {\n        container.addView(viewLists.get(position));\n        return viewLists.get(position);\n    }\n\n    @Override\n    public void destroyItem(ViewGroup container, int position, Object object) {\n        container.removeView(viewLists.get(position));\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/homepage/HomeCardAdapter.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeCardAdapter.java	(date 1534235364642)
+@@ -1,4 +1,4 @@
+-package com.cartoon.tinytips.util.Adapters.homepage;
++package com.cartoon.tinytips.util.Adapters.Homepage;
+ 
+ import android.support.v4.view.PagerAdapter;
+ import android.view.View;
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/discover/Major.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters;\n\npublic class Major{\n\n        private String name;\n\n        private int imageId;\n\n        public Major(String name, int imageId) {\n            this.name = name;\n            this.imageId = imageId;\n        }\n\n        public String getName() {\n            return name;\n        }\n\n        public int getImageId() {\n            return imageId;\n        }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/discover/Major.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Discover/Major.java	(date 1534230017460)
+@@ -1,0 +1,0 @@
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/Collect/CollectAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters.Personal.Collect;\n\nimport android.content.Context;\nimport android.support.v7.widget.CardView;\nimport android.support.v7.widget.RecyclerView;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport com.bumptech.glide.Glide;\nimport com.cartoon.tinytips.R;\n\nimport java.util.List;\n\nimport butterknife.BindView;\nimport butterknife.ButterKnife;\nimport de.hdodenhof.circleimageview.CircleImageView;\n\npublic class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.ViewHolder>{\n\n    private Context mContext;\n\n    private List<Collect> list;\n\n    static class ViewHolder extends RecyclerView.ViewHolder {\n        CardView cardView;\n\n        @BindView(R.id.personal_collect_title)\n        TextView title;    //标题\n\n        @BindView(R.id.personal_collect_headPro)\n        CircleImageView headPro;   //头像\n\n        @BindView(R.id.personal_collect_like)\n        TextView like;     //点赞个数\n\n        @BindView(R.id.personal_collect_comment)\n        TextView comment;   //评论个数\n\n        @BindView(R.id.personal_collect_collect)\n        TextView collect;    //收藏个数\n\n        @BindView(R.id.personal_collect_forward)\n        TextView forward;     //转发次数\n\n        public ViewHolder(View view) {\n            super(view);\n            ButterKnife.bind(this,view);\n            cardView = (CardView) view;\n        }\n    }\n\n    public CollectAdapter(List<Collect> list) {\n        this.list = list;\n    }\n\n    @Override\n    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {\n        if (mContext == null) {\n            mContext = parent.getContext();\n        }\n        View view = LayoutInflater.from(mContext).inflate(R.layout.personal_collect_item, parent, false);\n        return new ViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(ViewHolder holder, int position) {\n        Collect collect=list.get(position);\n        holder.title.setText(collect.getTitle());\n        holder.headPro.setImageDrawable(collect.getHeadPro());\n        holder.like.setText(new StringBuilder(\"\").append(collect.getLike()).toString());\n        holder.comment.setText(new StringBuilder(\"\").append(collect.getComment()).toString());\n        holder.collect.setText(new StringBuilder(\"\").append(collect.getCollect()).toString());\n        holder.forward.setText(new StringBuilder(\"\").append(collect.getForward()).toString());\n    }\n\n    @Override\n    public int getItemCount() {\n        return list.size();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/Collect/CollectAdapter.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/CollectAdapter.java	(date 1534230038389)
+@@ -1,0 +1,0 @@
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/discover/MajorAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters;\n\nimport android.content.Context;\nimport android.content.Intent;\nimport android.support.v7.widget.CardView;\nimport android.support.v7.widget.RecyclerView;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.ImageView;\nimport android.widget.TextView;\n\nimport com.bumptech.glide.Glide;\nimport com.cartoon.tinytips.R;\n\nimport java.util.Iterator;\nimport java.util.List;\n\npublic class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> {\n    private Context mContext;\n\n    private List<com.cartoon.tinytips.util.Adapters.Major> mMJList;\n\n    static class ViewHolder extends RecyclerView.ViewHolder {\n        CardView cardView;\n        ImageView majorImage;\n        TextView majorName;\n\n        public ViewHolder(View view) {\n            super(view);\n            cardView = (CardView) view;\n            majorImage = (ImageView) view.findViewById(R.id.class_image);\n            majorName = (TextView) view.findViewById(R.id.class_name);\n        }\n    }\n\n    public MajorAdapter(List<com.cartoon.tinytips.util.Adapters.Major> MJList) {\n        this.mMJList = MJList;\n    }\n\n    @Override\n    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {\n        if (mContext == null) {\n            mContext = parent.getContext();\n        }\n        View view = LayoutInflater.from(mContext).inflate(R.layout.major_item, parent, false);\n        return new ViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(ViewHolder holder, int position) {\n        com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);\n        holder.majorName.setText(major.getName());\n        Glide.with(mContext).load(major.getImageId()).into(holder.majorImage);\n    }\n\n    @Override\n    public int getItemCount() {\n        return mMJList.size();\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/discover/MajorAdapter.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Discover/MajorAdapter.java	(date 1534230017978)
+@@ -1,0 +1,0 @@
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/homepage/HomeFragmentAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters.homepage;\n\nimport android.support.v4.app.Fragment;\nimport android.support.v4.app.FragmentManager;\nimport android.support.v4.app.FragmentPagerAdapter;\nimport android.view.ViewGroup;\n\nimport com.cartoon.tinytips.HomePage.Favorite.Favorite;\nimport com.cartoon.tinytips.HomePage.Homepage;\nimport com.cartoon.tinytips.HomePage.Hot.Hot;\nimport com.cartoon.tinytips.HomePage.Recommend.Recommend;\n\npublic class HomeFragmentAdapter extends FragmentPagerAdapter {\n    private final int PAGER_COUNT = 3;\n    private Recommend myFragment1 = null;\n    private Hot myFragment2 = null;\n    private Favorite myFragment3 = null;\n\n\n    public HomeFragmentAdapter(FragmentManager fm) {\n        super(fm);\n        myFragment1 = new Recommend();\n        myFragment2 = new Hot();\n        myFragment3 = new Favorite();\n    }\n\n\n    @Override\n    public int getCount() {\n        return PAGER_COUNT;\n    }\n\n    @Override\n    public Object instantiateItem(ViewGroup vg, int position) {\n        return super.instantiateItem(vg, position);\n    }\n\n    @Override\n    public void destroyItem(ViewGroup container, int position, Object object) {\n        System.out.println(\"position Destory\" + position);\n        super.destroyItem(container, position, object);\n    }\n\n    @Override\n    public Fragment getItem(int position) {\n        Fragment fragment = null;\n        switch (position) {\n            case Homepage.PAGE_ONE:\n                fragment = myFragment1;\n                break;\n            case Homepage.PAGE_TWO:\n                fragment = myFragment2;\n                break;\n            case Homepage.PAGE_THREE:\n                fragment = myFragment3;\n                break;\n        }\n        return fragment;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/homepage/HomeFragmentAdapter.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeFragmentAdapter.java	(date 1534235364535)
+@@ -1,4 +1,4 @@
+-package com.cartoon.tinytips.util.Adapters.homepage;
++package com.cartoon.tinytips.util.Adapters.Homepage;
+ 
+ import android.support.v4.app.Fragment;
+ import android.support.v4.app.FragmentManager;
+Index: app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/Collect/Collect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cartoon.tinytips.util.Adapters.Personal.Collect;\n\nimport android.graphics.drawable.Drawable;\n\npublic class Collect {\n    private String title;\n    private Drawable headPro;\n    private String nickName;\n    private int like;\n    private int comment;\n    private int collect;\n    private int forward;\n\n    public Collect(String title,Drawable headPro,String nickName,int like,int comment,int collect,int forward){\n        this.title=title;\n        this.headPro=headPro;\n        this.nickName=nickName;\n        this.like=like;\n        this.comment=comment;\n        this.collect=collect;\n        this.forward=forward;\n    }\n    public String getTitle() {\n        return title;\n    }\n\n    public Drawable getHeadPro() {\n        return headPro;\n    }\n\n    public String getNickName() {\n        return nickName;\n    }\n\n    public int getLike() {\n        return like;\n    }\n\n    public int getComment() {\n        return comment;\n    }\n\n    public int getCollect() {\n        return collect;\n    }\n\n    public int getForward() {\n        return forward;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cartoon/tinytips/util/Adapters/personal/Collect/Collect.java	(revision 0cf5f6cacca35628c6ac55e15248436f7128c59d)
++++ app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/Collect.java	(date 1534230038737)
+@@ -1,0 +1,0 @@

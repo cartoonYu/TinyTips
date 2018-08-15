@@ -29,6 +29,7 @@ android {
                             'src/main/res/layout/personal/homepage',
                             'src/main/res/layout/personal/collect',
                             'src/main/res/layout/personal/setting',
+                            'src/main/res/layout/personal/setting/management',
                             'src/main/res/layout/personal/setting/security',
                             'src/main/res/layout',
                             'src/main/res'

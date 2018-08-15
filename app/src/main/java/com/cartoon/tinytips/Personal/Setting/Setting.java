@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
+import com.cartoon.tinytips.Personal.Setting.Management.Management;
 import com.cartoon.tinytips.Personal.Setting.Security.Security;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.FragmentConstant;
@@ -78,6 +79,13 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
         intentToMain();
+    }
+
+    @OnClick(R.id.personal_setting_management)
+    public void onClickManagement(){
+        Intent intent=new Intent(this, Management.class);
+        startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.personal_setting_security)

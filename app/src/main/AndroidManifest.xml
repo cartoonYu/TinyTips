@@ -25,6 +25,8 @@
         <activity android:name=".Personal.Homepage.Homepage"/>
         <activity android:name=".Personal.Setting.Setting"/>
         <activity android:name=".Personal.Setting.Security.Security"/>
+        <activity android:name=".Personal.Setting.Management.Management"/>
+
     </application>
 
 </manifest>
