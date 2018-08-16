@@ -19,6 +19,16 @@ public abstract class BaseFragment<T extends BaseFragmentPresenter> extends Frag
         unbinder= ButterKnife.bind(this,view);
         return view;
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            //可见时进行内容加载或逻辑操作等
+        } else {
+            //不可见
+        }
+    }
     @Override
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);

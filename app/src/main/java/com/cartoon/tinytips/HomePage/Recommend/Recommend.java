@@ -1,11 +1,17 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Homepage.HomeRecommendAdapter;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +32,13 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
     private HomeRecommendAdapter adapter;
 
     private List<RecommendItem> recommendItemList;
+    private ClassicsHeader Classicsheader;
 
     @BindView(R.id.home_recommend_recyclerview)
     RecyclerView recyclerView;
+
+    @BindView(R.id.Recommendrefresh)
+    RefreshLayout Recommendrefresh;
 
 
     @Override
@@ -52,6 +62,26 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
         adapter = new HomeRecommendAdapter(recommendItemList);
         recyclerView.setAdapter(adapter);
 
+        Recommendrefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+            }
+        });
+        Recommendrefresh.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000/*,false*/);//传入false表示加载失败
+            }
+        });
+
+        Classicsheader = new ClassicsHeader(getContext()).setTextSizeTitle(0);
+        Classicsheader.setTextSizeTime(0);
+        Classicsheader.setAccentColor(Color.parseColor("#444444"));
+        Classicsheader.setPrimaryColor(Color.parseColor("#f2f2f2"));
+        Classicsheader.setDrawableMarginRight(-5);
+        Recommendrefresh.setRefreshHeader(Classicsheader);
+        Recommendrefresh.setRefreshFooter(new ClassicsFooter(getContext()));
     }
 
     @Override

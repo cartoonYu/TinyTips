@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/detail_bg">
+    android:background="@color/detail_bg"
+    android:id="@+id/Recommendrefresh">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/home_recommend_recyclerview"
@@ -13,4 +14,4 @@
         android:focusable="true">
     </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

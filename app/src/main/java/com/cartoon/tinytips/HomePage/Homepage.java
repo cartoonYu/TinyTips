@@ -79,7 +79,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
 
     @Override
     public void cardPage(){
-        mAdapter = new HomeFragmentAdapter(getActivity().getSupportFragmentManager());
+        mAdapter = new HomeFragmentAdapter(this.getChildFragmentManager());
         bindViews();
         rb_recommend.setChecked(true);
     }
@@ -88,6 +88,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
         rg_tab_bar.setOnCheckedChangeListener(this);
         vPager.setAdapter(mAdapter);
         vPager.setCurrentItem(0);
+        vPager.setOffscreenPageLimit(1);
         vPager.addOnPageChangeListener(this);
     }
 
