@@ -10,6 +10,7 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
 import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.Message.Message;
+import com.cartoon.tinytips.NewNote.AddNote;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.FragmentConstant;
@@ -130,6 +131,9 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
                 break;
             }
             case FragmentConstant.addNote:{
+                Intent intent=new Intent(this,AddNote.class);
+                startActivity(intent);
+                this.finish();
                 break;
             }
             case FragmentConstant.discover:{
