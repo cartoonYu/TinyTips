@@ -24,6 +24,7 @@ import butterknife.OnClick;
 public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     private int flag;     //决定切换之前显示的fragment
+    private static int stateflag; //进入新建页面之前的fragment
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
@@ -72,12 +73,14 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
+        stateflag = 0;
         setBottomBarDrawable(FragmentConstant.homePage,R.mipmap.bottombar_homepage_press);
         switchFragment(FragmentConstant.homePage);
     }
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
+        stateflag = 1;
         setBottomBarDrawable(FragmentConstant.message,R.mipmap.bottombar_message_press);
         switchFragment(FragmentConstant.message);
     }
@@ -85,18 +88,25 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     public void clickAddNote(){
         //点击新增
         switchFragment(FragmentConstant.addNote);
+
     }
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
+        stateflag = 3;
         setBottomBarDrawable(FragmentConstant.discover,R.mipmap.bottombar_discover_press);
         switchFragment(FragmentConstant.discover);
     }
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
+        stateflag = 4;
         setBottomBarDrawable(FragmentConstant.personal,R.mipmap.bottombar_personal_press);
         switchFragment(FragmentConstant.personal);
+    }
+
+    public static int getStateflag(){
+        return stateflag;
     }
 
     @Override
