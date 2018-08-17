@@ -70,11 +70,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
     }
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(getContext());
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
     @Override

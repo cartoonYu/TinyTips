@@ -13,7 +13,8 @@ import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.NewNote.AddNote;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.UI.FragmentConstant;
+import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +53,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         pressdrawables.add(R.mipmap.bottombar_addnote);
         pressdrawables.add(R.mipmap.bottombar_discover_press);
         pressdrawables.add(R.mipmap.bottombar_personal_press);
-        Intent intent=getIntent();
-        flag=intent.getIntExtra("main", FragmentConstant.homePage);
+        flag= IntentActivity.getIntentData(this,new String("main"), FragmentConstant.homePage);
         Drawable top=getResources().getDrawable(pressdrawables.get(flag));
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }

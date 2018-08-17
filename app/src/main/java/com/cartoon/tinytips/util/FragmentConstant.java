@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.UI;
+package com.cartoon.tinytips.util;
 
 public class FragmentConstant {
     public final static int defaultFragment=-1;

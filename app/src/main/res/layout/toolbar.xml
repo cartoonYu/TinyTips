@@ -20,7 +20,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="消息"
                 android:textSize="18sp"
                 android:gravity="center|bottom"
                 android:id="@+id/toolbarText"/>

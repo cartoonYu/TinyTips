@@ -65,12 +65,9 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
 
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(getContext());
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
+
     @Override
     public void removeUnderLine() {
         if (search != null) {

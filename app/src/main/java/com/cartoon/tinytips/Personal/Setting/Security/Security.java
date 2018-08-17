@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import butterknife.BindView;
@@ -39,27 +40,17 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
 
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(this);
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
     @Override
     public void onBackPressed(){
-        intentToSetting();
+        IntentActivity.intentWithoutData(this,Setting.class);
     }
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        intentToSetting();
+        IntentActivity.intentWithoutData(this,Setting.class);
     }
 
-    @Override
-    public void intentToSetting(){
-        Intent intent=new Intent(this, Setting.class);
-        startActivity(intent);
-        finish();
-    }
 }

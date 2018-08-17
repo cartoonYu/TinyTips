@@ -24,7 +24,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:background="@color/skyBlue"
-                android:src="@mipmap/personal_homepage_back"
+                android:src="@mipmap/back_white"
                 android:id="@+id/personal_homepage_back"/>
             <include
                 android:layout_width="wrap_content"

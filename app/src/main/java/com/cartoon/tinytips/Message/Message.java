@@ -2,10 +2,12 @@ package com.cartoon.tinytips.Message;
 
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
+import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import butterknife.BindView;
 
@@ -13,6 +15,9 @@ public class Message extends BaseFragment<MessagePresenter> implements IMessage.
 
     @BindView(R.id.statusBar)
     View statusBar;
+
+    @BindView(R.id.toolbarText)
+    TextView toolbarText;
 
     @Override
     protected MessagePresenter initPresent(){
@@ -35,10 +40,12 @@ public class Message extends BaseFragment<MessagePresenter> implements IMessage.
     }
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(getContext());
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
+
+    @Override
+    public void revampToolbar(){
+        RevampToolbar.setText(toolbarText,new String("消息"));
+    }
+
 }

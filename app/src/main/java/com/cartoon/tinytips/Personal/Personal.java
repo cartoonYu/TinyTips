@@ -13,6 +13,7 @@ import com.cartoon.tinytips.Personal.Homepage.Homepage;
 import com.cartoon.tinytips.Personal.MyNote.MyNote;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import butterknife.BindView;
@@ -54,56 +55,39 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     }
 
+    @Override
+    public void revampStatusBar(){
+        RevampStatusBar.revampStatusBar(statusBar,R.color.skyBlue);
+    }
+
+    @OnClick(R.id.avatar)
+    public void onClickHeadPro(){
+        IntentActivity.intentWithoutData(getContext(),Homepage.class);
+    }
 
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
-        Intent intent=new Intent(getActivity(), MyNote.class);
-        startActivity(intent);
-        getActivity().finish();
+        IntentActivity.intentWithoutData(getContext(),MyNote.class);
     }
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-        Intent intent=new Intent(getActivity(), Detail.class);
-        startActivity(intent);
-        getActivity().finish();
+        IntentActivity.intentWithoutData(getContext(),Detail.class);
     }
 
     @OnClick(R.id.collect_Personal)
     public void onClickCollect(){
-        Intent intent=new Intent(getActivity(), Collect.class);
-        startActivity(intent);
-        getActivity().finish();
+        IntentActivity.intentWithoutData(getContext(),Collect.class);
     }
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
-        Intent intent=new Intent(getActivity(), Homepage.class);
-        startActivity(intent);
-        getActivity().finish();
+        IntentActivity.intentWithoutData(getContext(),Homepage.class);
     }
 
     @OnClick(R.id.setting_Personal)
     public void onClickSetting(){
-        Intent intent=new Intent(getActivity(), Setting.class);
-        startActivity(intent);
-        getActivity().finish();
-    }
-
-    @Override
-    public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(getContext());
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.skyBlue));
-
-    }
-    @OnClick(R.id.avatar)
-    public void onClickHeadPro(){
-        Intent intent=new Intent(getActivity(), Homepage.class);
-        startActivity(intent);
-        getActivity().finish();
+        IntentActivity.intentWithoutData(getContext(),Setting.class);
     }
 
 }

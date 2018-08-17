@@ -12,7 +12,9 @@ import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Personal.Setting.Management.Account;
 import com.cartoon.tinytips.util.Adapters.Personal.Setting.Management.AccountAdapter;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
+import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,17 +63,13 @@ public class Management extends BaseActivity<ManagementPresenter> implements IMa
 
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(this);
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
     @Override
     public void initToolbar(){
-        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
-        toolbarText.setText("账号管理");
+        RevampToolbar.setBack(back);
+        RevampToolbar.setText(toolbarText,new String("账号管理"));
     }
 
     @Override
@@ -89,19 +87,12 @@ public class Management extends BaseActivity<ManagementPresenter> implements IMa
 
     @Override
     public void onBackPressed(){
-        intentToSetting();
+        IntentActivity.intentWithoutData(this,Setting.class);
     }
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        intentToSetting();
-    }
-
-    @Override
-    public void intentToSetting(){
-        Intent intent=new Intent(this, Setting.class);
-        startActivity(intent);
-        finish();
+        IntentActivity.intentWithoutData(this,Setting.class);
     }
 
 }

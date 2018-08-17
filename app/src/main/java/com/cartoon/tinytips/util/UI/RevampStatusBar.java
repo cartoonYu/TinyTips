@@ -1,24 +1,17 @@
 package com.cartoon.tinytips.util.UI;
 
 import android.content.Context;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+
+import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class RevampStatusBar {
-    public static int getStatusBar(Context context){
-        //获取状态栏高度
-        int statusBarHeight = -1;
-        //获取status_bar_height资源的ID
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            //根据资源ID获取响应的尺寸值
-            statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
-        }
-        return statusBarHeight;
-    }
     public static boolean MIUISetStatusBarLightMode(Window window, boolean dark) {
         boolean result = false;
         if (window != null) {
@@ -66,5 +59,24 @@ public class RevampStatusBar {
             }
         }
         return result;
+    }
+    public static void revampStatusBar(View statusBar, int color){
+        //修改状态栏颜色
+        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
+        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
+        params.height= RevampStatusBar.getStatusBar(TinyTipsApplication.getContext());
+        statusBar.setLayoutParams(params);
+        statusBar.setBackgroundColor(TinyTipsApplication.getContext().getResources().getColor(color));
+    }
+    private static int getStatusBar(Context context){
+        //获取状态栏高度
+        int statusBarHeight = -1;
+        //获取status_bar_height资源的ID
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return statusBarHeight;
     }
 }

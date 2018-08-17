@@ -4,15 +4,16 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
-import com.cartoon.tinytips.util.UI.FragmentConstant;
+import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
+import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,32 +63,21 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     }
 
-    @Override
-    public void intentMain(){
-        Intent intent=new Intent(this, Main.class);
-        intent.putExtra("main", FragmentConstant.personal);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     public void onBackPressed(){
-        intentMain();
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
     }
 
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(this);
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
     @Override
     public void initToolbar(){
-        back.setBackground(getResources().getDrawable(R.mipmap.personal_detail_back));
-        toolbarText.setText("我的收藏");
+        RevampToolbar.setBack(back);
+        RevampToolbar.setText(toolbarText,new String("我的收藏"));
     }
 
     @Override
@@ -107,7 +97,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        intentMain();
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
     }
 
 }

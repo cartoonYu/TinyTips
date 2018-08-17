@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
@@ -12,7 +11,8 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.Note;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
-import com.cartoon.tinytips.util.UI.FragmentConstant;
+import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.ArrayList;
@@ -61,16 +61,12 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @Override
     public void onBackPressed(){
-        intentToMain();
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
     }
 
     @Override
     public void revampStatusBar(){
-        RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
-        params.width=RelativeLayout.LayoutParams.MATCH_PARENT;
-        params.height= RevampStatusBar.getStatusBar(this);
-        statusBar.setLayoutParams(params);
-        statusBar.setBackgroundColor(getResources().getColor(R.color.white));
+        RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
 
@@ -87,17 +83,9 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
         note.setAdapter(adapter);
     }
 
-    @Override
-    public void intentToMain(){
-        Intent intent=new Intent(this, Main.class);
-        intent.putExtra("main", FragmentConstant.personal);
-        startActivity(intent);
-        finish();
-    }
-
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        intentToMain();
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
     }
 
 }
