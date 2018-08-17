@@ -6,6 +6,7 @@ import android.view.View;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
@@ -15,6 +16,8 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @BindView(R.id.statusBar)
     View statusBar;
+
+    private int flag;    //用于判断跳转到主页显示的fragment
 
     @Override
     protected AddNotePresenter initPresent(){
@@ -33,7 +36,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @Override
     protected void onPrepare(){
-
+        flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.homePage);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithoutData(this,Main.class);
+        IntentActivity.intentWithData(this,Main.class,"main",flag);
     }
 
 }
