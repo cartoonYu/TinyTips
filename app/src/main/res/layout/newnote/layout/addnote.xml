@@ -18,10 +18,59 @@
     </include>
 
     <LinearLayout
+        android:id="@+id/addnote_addtipsbar"
         android:layout_below="@id/addnoteToolbar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/white">
 
+        <Button
+            android:id="@+id/addnote_addtips"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标签"
+            android:textColor="#989898"
+            android:background="@drawable/hone_buttom_coners_bg"/>
     </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/addnote_addtitlebar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/addnote_addtipsbar"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="点此输入标题"
+            android:textSize="22sp"
+            android:background="@color/white"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/addnote_addtitlebar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <EditText
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="12sp"
+            android:hint="点此输入内容"
+            android:background="@color/white"/>
+    </ScrollView>
 </RelativeLayout>

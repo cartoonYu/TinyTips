@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论消息"
+                android:text="关注消息"
                 android:textSize="18sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论消息"
+                android:text="收到的赞"
                 android:textSize="18sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/detail_bg">
+
+    <include layout="@layout/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/authorityStatusBar"/>
+
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/authorityStatusBar"
+        android:id = "@+id/authorityToolbar">
+    </include>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/authority_public"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/authorityToolbar"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/select_public"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/select"/>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公开"
+            android:textColor="@color/txcolor"
+            android:textSize="18sp"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        android:id="@+id/authority_private"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/authority_public"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/select_private"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="仅自己可见"
+            android:textColor="@color/txcolor"
+            android:textSize="18sp"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

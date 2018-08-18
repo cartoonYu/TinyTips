@@ -1,9 +1,9 @@
-package com.cartoon.tinytips.NewNote;
+package com.cartoon.tinytips.Message.SystemMessage;
 
-interface IAddNote {
+interface ISystemMessage {
     interface View{
         void revampStatusBar();   //沉浸式任务栏
-        void revampToolbar();     //修改toolbar
+        void revampToolbar();
     }
     interface Presenter{
 
