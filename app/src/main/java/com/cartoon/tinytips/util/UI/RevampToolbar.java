@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.util.UI;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
@@ -16,4 +17,6 @@ public class RevampToolbar {
         //设置toolbar正中的标题
         text.setText(title);
     }
+
+
 }
