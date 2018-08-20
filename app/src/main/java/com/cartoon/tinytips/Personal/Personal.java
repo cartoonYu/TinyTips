@@ -55,39 +55,44 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.skyBlue);
     }
 
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
         IntentActivity.intentWithoutData(getContext(),Homepage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
         IntentActivity.intentWithoutData(getContext(),MyNote.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
         IntentActivity.intentWithoutData(getContext(),Detail.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.collect_Personal)
     public void onClickCollect(){
         IntentActivity.intentWithoutData(getContext(),Collect.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
         IntentActivity.intentWithoutData(getContext(),Homepage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.setting_Personal)
     public void onClickSetting(){
         IntentActivity.intentWithoutData(getContext(),Setting.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
 }

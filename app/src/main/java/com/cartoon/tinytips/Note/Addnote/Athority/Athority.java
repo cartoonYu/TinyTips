@@ -1,15 +1,12 @@
-package com.cartoon.tinytips.NewNote.AddNote_Athority;
+package com.cartoon.tinytips.Note.Addnote.Athority;
 
-import android.annotation.SuppressLint;
-import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.NewNote.AddNote;
+import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
@@ -18,6 +15,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class Athority extends BaseActivity<AthorityPresenter> implements IAthority.View {
+
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -51,8 +49,7 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
         revampToolbar();
     }
 
-    @Override
-    public void revampToolbar(){
+    private void revampToolbar(){
         RevampToolbar.setText(toolbarText,new String("选择可见范围"));
     }
 
@@ -60,8 +57,7 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     protected void onPrepare(){
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampToolbar.setBack(back);
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
@@ -69,18 +65,23 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
         IntentActivity.intentWithoutData(this,AddNote.class);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.authority_public)
     public void OnClickPublic(){
         select_public.setImageResource(R.drawable.select);
         select_private.setImageResource(R.mipmap.white);
-        IntentActivity.intentWithData(this,AddNote.class,"公开",1);}
+        IntentActivity.intentWithData(this,AddNote.class,"公开",1);
+        IntentActivity.finishActivity(this);
+    }
 
 
     @OnClick(R.id.authority_private)
     public void OnClickPrivate(){
         select_public.setImageResource(R.mipmap.white);
         select_private.setImageResource(R.drawable.select);
-        IntentActivity.intentWithData(this,AddNote.class,"私密",2);}
+        IntentActivity.intentWithData(this,AddNote.class,"私密",2);
+        IntentActivity.finishActivity(this);
+    }
 }

@@ -43,15 +43,14 @@ public class CommentMessage extends BaseActivity<CommentMessagePresenter> implem
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);
+        IntentActivity.finishActivity(this);
     }
 
-    @Override
-    public void revampStatusBar() {
+    private void revampStatusBar() {
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void revampToolbar(){
+    private void revampToolbar(){
         RevampToolbar.setText(toolbarText,new String("评论消息"));
     }
 }

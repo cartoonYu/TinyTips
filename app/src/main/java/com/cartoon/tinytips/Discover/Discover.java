@@ -63,20 +63,17 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
 
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void removeUnderLine() {
+    private void removeUnderLine() {
         if (search != null) {
             search.setBackgroundColor(Color.TRANSPARENT);
         }
     }
 
-    @Override
-    public void recyclerList() {
+    private void recyclerList() {
         for (Major one : major ){
             MJList.add(one);
         }

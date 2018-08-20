@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
 import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicStateAdapter;
+import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
 
@@ -52,7 +54,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.personal_mynote_item, parent, false);
-        return new ViewHolder(view);
+        ViewHolder holder=new ViewHolder(view);
+        return holder;
     }
 
     @Override

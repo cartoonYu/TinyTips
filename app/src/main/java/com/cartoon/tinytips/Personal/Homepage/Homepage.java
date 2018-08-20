@@ -83,15 +83,16 @@ public class Homepage extends BaseActivity<HomepagePresenter> implements IHomepa
     @OnClick(R.id.personal_homepage_back)
     public void clickBack(){
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.finishActivity(this);
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.skyBlue);
     }
 

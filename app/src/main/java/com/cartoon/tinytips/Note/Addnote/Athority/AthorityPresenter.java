@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.NewNote.AddNote_Athority;
+package com.cartoon.tinytips.Note.Addnote.Athority;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 

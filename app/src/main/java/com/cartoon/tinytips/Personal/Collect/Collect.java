@@ -67,15 +67,14 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.finishActivity(this);
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void initToolbar(){
+    private void initToolbar(){
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("我的收藏"));
     }
@@ -98,6 +97,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
-    }
+        IntentActivity.finishActivity(this);
+}
 
 }

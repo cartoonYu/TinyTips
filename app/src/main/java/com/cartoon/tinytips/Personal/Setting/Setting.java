@@ -53,13 +53,13 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
     }
 
-    @Override
-    public void revampStatusBar(){
+
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void initToolbar(){
+
+    private void initToolbar(){
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("设置"));
     }
@@ -68,16 +68,19 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.personal_setting_management)
     public void onClickManagement(){
         IntentActivity.intentWithoutData(this,Management.class);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.personal_setting_security)
     public void onClickSecurity(){
         IntentActivity.intentWithoutData(this,Security.class);
+        IntentActivity.finishActivity(this);
     }
 
 }

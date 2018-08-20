@@ -47,13 +47,12 @@ public class Message extends BaseFragment<MessagePresenter> implements IMessage.
     protected void onPrepare(){
 
     }
-    @Override
-    public void revampStatusBar(){
+
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void revampToolbar(){
+    private void revampToolbar(){
         RevampToolbar.setText(toolbarText,new String("消息"));
     }
 
@@ -61,21 +60,25 @@ public class Message extends BaseFragment<MessagePresenter> implements IMessage.
     @OnClick(R.id.systemMassage)
     public void onClickSystemMessage(){
         IntentActivity.intentWithoutData(getContext(),SystemMessage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.commentMassage)
     public void onClickcommentMessage(){
         IntentActivity.intentWithoutData(getContext(),CommentMessage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.flowingMassage)
     public void onClickFlowingMessage(){
         IntentActivity.intentWithoutData(getContext(),FlowingMessage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.favoriteMassage)
     public void onClickFavoriteMessage(){
         IntentActivity.intentWithoutData(getContext(),FavoriteMessage.class);
+        IntentActivity.finishActivity(getActivity());
     }
 
 }

@@ -1,6 +1,5 @@
 package com.cartoon.tinytips.Main;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,7 +9,7 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
 import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.Message.Message;
-import com.cartoon.tinytips.NewNote.AddNote;
+import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.FragmentConstant;
@@ -40,10 +39,12 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     protected MainPresenter initPresent(){
         return new MainPresenter(this);
     }
+
     @Override
     protected int getLayout(){
         return R.layout.main;
     }
+
     @Override
     protected void initView(){
         pressdrawables=new ArrayList<>();
@@ -56,6 +57,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         Drawable top=getResources().getDrawable(pressdrawables.get(flag));
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
+
     @Override
     protected void onPrepare(){
         unPressdrawables=new ArrayList<>();
@@ -69,30 +71,35 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         switchFragment(flag);
 
     }
+
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
         setBottomBarDrawable(FragmentConstant.homePage,R.mipmap.bottombar_homepage_press);
         switchFragment(FragmentConstant.homePage);
     }
+
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
         setBottomBarDrawable(FragmentConstant.message,R.mipmap.bottombar_message_press);
         switchFragment(FragmentConstant.message);
     }
+
     @OnClick(R.id.mainAddNote)
     public void clickAddNote(){
         //点击新增
         switchFragment(FragmentConstant.addNote);
 
     }
+
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
         setBottomBarDrawable(FragmentConstant.discover,R.mipmap.bottombar_discover_press);
         switchFragment(FragmentConstant.discover);
     }
+
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
@@ -100,8 +107,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         switchFragment(FragmentConstant.personal);
     }
 
-    @Override
-    public void setBottomBarDrawable(int flag,int drawable) {
+
+    private void setBottomBarDrawable(int flag,int drawable) {
         for(int i=0;i<unPressdrawables.size();i++){
             if(i!=2){
                 Drawable temp=getResources().getDrawable(unPressdrawables.get(i));
@@ -111,8 +118,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         Drawable top=getResources().getDrawable(drawable);
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
-    @Override
-    public void switchFragment(int flag){
+
+    private void switchFragment(int flag){
         if(flag!=FragmentConstant.defaultFragment&&flag!=FragmentConstant.addNote){
             this.flag=flag;
         }
@@ -136,6 +143,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
             }
             case FragmentConstant.addNote:{
                 IntentActivity.intentWithData(this,AddNote.class,"addNote",this.flag);
+                IntentActivity.finishActivity(this);
                 break;
             }
             case FragmentConstant.discover:{

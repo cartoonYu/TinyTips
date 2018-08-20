@@ -1,7 +1,6 @@
-package com.cartoon.tinytips.NewNote;
+package com.cartoon.tinytips.Note.Addnote;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
-import com.cartoon.tinytips.BaseFragmentPresenter;
 
 public class AddNotePresenter extends BaseActivityPresenter<AddNote> implements IAddNote.Presenter {
     private IAddNote.View view;

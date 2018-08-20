@@ -1,16 +1,12 @@
-package com.cartoon.tinytips.NewNote;
+package com.cartoon.tinytips.Note.Addnote;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
-import com.cartoon.tinytips.NewNote.AddNote_Athority.Athority;
+import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -19,8 +15,6 @@ import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.View {
 
@@ -59,8 +53,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         revampToolbar();
     }
 
-    @Override
-    public void revampToolbar(){
+    private void revampToolbar(){
         RevampToolbar.setText(toolbarText,new String("新建笔记"));
     }
 
@@ -69,8 +62,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.homePage);
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampToolbar.setBack(back);
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
         toolbarMenu.setText("完成");
@@ -80,11 +72,13 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,"main",flag);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.changeAthority)
     public void onClickAthority(){
         IntentActivity.intentWithoutData(this,Athority.class);
+        IntentActivity.finishActivity(this);
     }
 
 }

@@ -68,13 +68,12 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
     protected void onPrepare(){
 
     }
-    @Override
-    public void revampStatusBar(){
+
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void cardPage(){
+    private void cardPage(){
         mAdapter = new HomeFragmentAdapter(this.getChildFragmentManager());
         bindViews();
         rb_recommend.setChecked(true);

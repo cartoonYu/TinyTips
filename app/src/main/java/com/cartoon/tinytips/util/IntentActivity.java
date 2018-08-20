@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import java.io.Serializable;
+
 /**
  * 功能：根据调用的方法以及参数的不同跳转活动
  */
@@ -41,13 +43,18 @@ public class IntentActivity{
      * context为开始的活动，des为目标活动,data为控制fragment显示的变量
      * @param context
      * @param des
-     * @param obj
+     * @param data
      */
-    public static void intentWithBean(Context context,Class<?> des,Object obj){
+    public static void intentWithBean(Context context,Class<?> des,Serializable data){
 
     }
 
-    /**
+    public static void finishActivity(Context context){
+        Activity activity=(Activity)context;
+        activity.finish();
+    }
+
+   /**
      * 返回活动跳转中intent携带的整型数值
      * @param context
      * @param str
@@ -62,20 +69,20 @@ public class IntentActivity{
 
 
     /**
-     * 返回活动跳转中intent携带的bean对象
+     * 返回活动跳转中intent携带的数据类对象
      * @param context
      * @param str
-     * @param defaultData
      * @return
      */
-    public static Object getIntentData(Context context,String str,Object defaultData){
-        return null;
+    public static Serializable getIntentData(Context context, String str){
+        Activity activity=(Activity)context;
+        intent=activity.getIntent();
+        intent.getStringExtra(str);
+        return intent.getSerializableExtra(str);
     }
 
     private static void intent(Context context,Intent intent){
         context.startActivity(intent);
-        Activity activity=(Activity)context;
-        activity.finish();
     }
 
 }

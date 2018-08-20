@@ -61,13 +61,11 @@ public class Management extends BaseActivity<ManagementPresenter> implements IMa
 
     }
 
-    @Override
-    public void revampStatusBar(){
+    private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    @Override
-    public void initToolbar(){
+    private void initToolbar(){
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("账号管理"));
     }
@@ -88,11 +86,13 @@ public class Management extends BaseActivity<ManagementPresenter> implements IMa
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithoutData(this,Setting.class);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
         IntentActivity.intentWithoutData(this,Setting.class);
+        IntentActivity.finishActivity(this);
     }
 
 }
