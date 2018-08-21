@@ -12,6 +12,7 @@ import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class FlowingMessage extends BaseActivity<FlowingMessagePresenter> implements IFlowingMessage.View {
     @BindView(R.id.toolbarText)
@@ -19,6 +20,9 @@ public class FlowingMessage extends BaseActivity<FlowingMessagePresenter> implem
 
     @BindView(R.id.statusBar)
     View statusBar;
+
+    @BindView(R.id.toolbarBack)
+    TextView back;
 
     @Override
     protected FlowingMessagePresenter initPresent() {
@@ -32,6 +36,7 @@ public class FlowingMessage extends BaseActivity<FlowingMessagePresenter> implem
 
     @Override
     protected void initView() {
+        RevampToolbar.setBack(back);
         revampStatusBar();
         revampToolbar();
     }
@@ -40,6 +45,12 @@ public class FlowingMessage extends BaseActivity<FlowingMessagePresenter> implem
     protected void onPrepare() {
 
     }
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);
+        IntentActivity.finishActivity(this);
+    }
+
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);

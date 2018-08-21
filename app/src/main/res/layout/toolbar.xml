@@ -24,24 +24,6 @@
                 android:gravity="center|bottom"
                 android:id="@+id/toolbarText"/>
 
-            <RelativeLayout
-                android:id="@+id/toolbar_menubutton_bg"
-                android:layout_toRightOf="@id/toolbarText"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="60dp">
-
-                <TextView
-                    android:id="@+id/toolbarMenu"
-                    android:gravity="center"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"/>
-            </RelativeLayout>
 
         </RelativeLayout>
 

@@ -12,6 +12,7 @@ import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class SystemMessage extends BaseActivity<SystemMessagePresenter> implements ISystemMessage.View {
     @BindView(R.id.toolbarText)
@@ -19,6 +20,10 @@ public class SystemMessage extends BaseActivity<SystemMessagePresenter> implemen
 
     @BindView(R.id.statusBar)
     View statusBar;
+
+    @BindView(R.id.toolbarBack)
+    TextView back;
+
 
     @Override
     protected SystemMessagePresenter initPresent() {
@@ -32,6 +37,7 @@ public class SystemMessage extends BaseActivity<SystemMessagePresenter> implemen
 
     @Override
     protected void initView() {
+        RevampToolbar.setBack(back);
         revampStatusBar();
         revampToolbar();
     }
@@ -40,6 +46,13 @@ public class SystemMessage extends BaseActivity<SystemMessagePresenter> implemen
     protected void onPrepare() {
 
     }
+
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);
+        IntentActivity.finishActivity(this);
+    }
+
     @Override
     public void onBackPressed(){
         IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);

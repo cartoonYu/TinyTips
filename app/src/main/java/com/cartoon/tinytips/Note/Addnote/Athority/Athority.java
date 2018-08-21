@@ -31,7 +31,7 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     @BindView(R.id.select_private)
     ImageView select_private;
 
-    String athority;
+    private int athority;
 
     @Override
     protected AthorityPresenter initPresent(){
@@ -55,6 +55,20 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
 
     @Override
     protected void onPrepare(){
+        athority = IntentActivity.getIntentData(this,"add_athority",athority);
+        switch (athority){
+            case 1 : {
+                select_public.setImageResource(R.drawable.select);
+                select_private.setImageResource(R.mipmap.white);
+                break;
+            }
+
+            case 2 : {
+                select_public.setImageResource(R.mipmap.white);
+                select_private.setImageResource(R.drawable.select);
+                break;
+            }
+        }
     }
 
     private void revampStatusBar(){
@@ -72,7 +86,7 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     public void OnClickPublic(){
         select_public.setImageResource(R.drawable.select);
         select_private.setImageResource(R.mipmap.white);
-        IntentActivity.intentWithData(this,AddNote.class,"公开",1);
+        IntentActivity.intentWithData(this,AddNote.class,"athority",1);
         IntentActivity.finishActivity(this);
     }
 
@@ -81,7 +95,7 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     public void OnClickPrivate(){
         select_public.setImageResource(R.mipmap.white);
         select_private.setImageResource(R.drawable.select);
-        IntentActivity.intentWithData(this,AddNote.class,"私密",2);
+        IntentActivity.intentWithData(this,AddNote.class,"athority",2);
         IntentActivity.finishActivity(this);
     }
 }

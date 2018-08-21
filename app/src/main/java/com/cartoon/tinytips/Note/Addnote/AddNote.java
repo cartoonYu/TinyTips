@@ -1,8 +1,10 @@
 package com.cartoon.tinytips.Note.Addnote;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
@@ -21,18 +23,20 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @BindView(R.id.statusBar)
     View statusBar;
 
-    @BindView(R.id.toolbarText)
+    @BindView(R.id.addnote_toolbarText)
     TextView toolbarText;
 
-    @BindView(R.id.toolbarMenu)
+    @BindView(R.id.addnote_toolbarMenu)
     TextView toolbarMenu;
 
-    @BindView(R.id.toolbarBack)
+    @BindView(R.id.addnote_toolbarBack)
     TextView back;
 
-    @BindView(R.id.toolbar_menubutton_bg)
+    @BindView(R.id.addnote_toolbar_menubutton_bg)
     RelativeLayout menubutton;
 
+    @BindView(R.id.changeAthority)
+    Button changeAthority;
     private int flag;    //用于判断跳转到主页显示的fragment
     private int selectAthority;
     private String athority;
@@ -60,6 +64,18 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @Override
     protected void onPrepare(){
         flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.homePage);
+        selectAthority = IntentActivity.getIntentData(this,"athority",selectAthority);
+        switch (selectAthority){
+            case 1 : {
+                changeAthority.setText("公开");
+                break;
+            }
+
+            case 2 : {
+                changeAthority.setText("私密");
+                break;
+            }
+        }
     }
 
     private void revampStatusBar(){
@@ -67,6 +83,18 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
         toolbarMenu.setText("完成");
         menubutton.setBackground(getDrawable(R.mipmap.menu_button));
+    }
+
+    @OnClick(R.id.addnote_toolbar_menubutton_bg)
+    protected void onClickmenubutton(){
+        IntentActivity.intentWithData(this,Main.class,"main",flag);
+        IntentActivity.finishActivity(this);
+    }
+
+    @OnClick(R.id.addnote_toolbarBack)
+    protected void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,"main",flag);
+        IntentActivity.finishActivity(this);
     }
 
     @Override
@@ -77,7 +105,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @OnClick(R.id.changeAthority)
     public void onClickAthority(){
-        IntentActivity.intentWithoutData(this,Athority.class);
+        IntentActivity.intentWithData(this,Athority.class,"add_athority",selectAthority);
         IntentActivity.finishActivity(this);
     }
 

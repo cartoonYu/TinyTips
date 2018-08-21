@@ -15,7 +15,11 @@
         android:theme="@style/AppTheme" >
 
         <activity android:name=".Main.Main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".Note.Addnote.Athority.Athority"/>
@@ -24,13 +28,7 @@
         <activity android:name=".Message.FavoriteMessage.FavoriteMessage"/>
         <activity android:name=".Message.SystemMessage.SystemMessage"/>
         <activity android:name=".Note.Addnote.AddNote"/>
-        <activity android:name=".Note.Details.NoteDetail">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Note.Details.NoteDetail"/>
         <activity android:name=".Personal.MyNote.MyNote"/>
         <activity android:name=".Personal.Detail.Detail"/>
         <activity android:name=".Personal.Collect.Collect"/>

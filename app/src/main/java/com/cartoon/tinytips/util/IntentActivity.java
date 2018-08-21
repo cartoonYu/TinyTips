@@ -68,6 +68,7 @@ public class IntentActivity{
     }
 
 
+
     /**
      * 返回活动跳转中intent携带的数据类对象
      * @param context

@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:id="@+id/addnoteStatusBar"/>
 
-    <include layout="@layout/toolbar"
+    <include layout="@layout/addnote_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/addnoteStatusBar"
