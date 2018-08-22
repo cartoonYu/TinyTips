@@ -12,6 +12,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class RevampStatusBar {
+
+    /**
+     * 适配MIUI状态栏
+     * @param window
+     * @param dark
+     * @return
+     */
     public static boolean MIUISetStatusBarLightMode(Window window, boolean dark) {
         boolean result = false;
         if (window != null) {
@@ -33,6 +40,13 @@ public class RevampStatusBar {
         }
         return result;
     }
+
+    /**
+     * 适配Flyme系统的状态栏
+     * @param window
+     * @param dark
+     * @return
+     */
     public static boolean FlymeSetStatusBarLightMode(Window window, boolean dark) {
         boolean result = false;
         if (window != null) {
@@ -60,6 +74,12 @@ public class RevampStatusBar {
         }
         return result;
     }
+
+    /**
+     * 根据传入的color动态改变状态栏颜色
+     * @param statusBar
+     * @param color
+     */
     public static void revampStatusBar(View statusBar, int color){
         //修改状态栏颜色
         RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)statusBar.getLayoutParams();
@@ -68,6 +88,12 @@ public class RevampStatusBar {
         statusBar.setLayoutParams(params);
         statusBar.setBackgroundColor(TinyTipsApplication.getContext().getResources().getColor(color));
     }
+
+    /**
+     * 获取状态栏高度
+     * @param context
+     * @return
+     */
     private static int getStatusBar(Context context){
         //获取状态栏高度
         int statusBarHeight = -1;

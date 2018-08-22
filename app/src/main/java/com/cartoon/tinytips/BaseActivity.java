@@ -39,8 +39,8 @@ public abstract class BaseActivity<T extends BaseActivityPresenter> extends AppC
 
     protected abstract T initPresent();      //为presenter添加view弱引用
     protected abstract int getLayout();       //为活动添加页面
-    protected abstract void initView();      //组件初始化
-    protected abstract void onPrepare();     //对组件进行初始化操作
+    protected abstract void initView();      //UI组件初始化
+    protected abstract void onPrepare();     //对组件事件进行处理
 
     @Override
     public void onDestroy(){

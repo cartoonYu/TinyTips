@@ -38,7 +38,9 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @BindView(R.id.changeAthority)
     Button changeAthority;
+
     private int flag;    //用于判断跳转到主页显示的fragment
+
     private int selectAthority;
     private String athority;
 

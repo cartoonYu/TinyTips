@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".Main.Main" >
+        <activity android:name=".Register.Register"/>
+        <activity android:name=".Login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +24,19 @@
         </activity>
 
         <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
-        <activity android:name=".Note.Addnote.Athority.Athority"/>
+        <activity android:name=".Main.Main" >
+
+        </activity>
+
         <activity android:name=".Message.CommentMessage.CommentMessage"/>
         <activity android:name=".Message.FlowingMessage.FlowingMessage"/>
         <activity android:name=".Message.FavoriteMessage.FavoriteMessage"/>
         <activity android:name=".Message.SystemMessage.SystemMessage"/>
+
         <activity android:name=".Note.Addnote.AddNote"/>
+        <activity android:name=".Note.Addnote.Athority.Athority"/>
         <activity android:name=".Note.Details.NoteDetail"/>
+
         <activity android:name=".Personal.MyNote.MyNote"/>
         <activity android:name=".Personal.Detail.Detail"/>
         <activity android:name=".Personal.Collect.Collect"/>
