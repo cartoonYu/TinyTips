@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
+import com.cartoon.tinytips.Note.Addnote.NoteTips.NoteTips;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -64,18 +65,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @Override
     protected void onPrepare(){
         flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.homePage);
-        selectAthority = IntentActivity.getIntentData(this,"athority",selectAthority);
-        switch (selectAthority){
-            case 1 : {
-                changeAthority.setText("公开");
-                break;
-            }
-
-            case 2 : {
-                changeAthority.setText("私密");
-                break;
-            }
-        }
+        setAthority();
     }
 
     private void revampStatusBar(){
@@ -108,5 +98,34 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         IntentActivity.intentWithData(this,Athority.class,"add_athority",selectAthority);
         IntentActivity.finishActivity(this);
     }
+
+    @OnClick(R.id.addnote_addtips)
+    public void onClickTips(){
+        IntentActivity.intentWithoutData(this,NoteTips.class);
+        IntentActivity.finishActivity(this);
+    }
+
+    /**
+     * 设置权限页的显示
+     */
+    private void setAthority(){
+        selectAthority = IntentActivity.getIntentData(this,"athority",selectAthority);
+        switch (selectAthority){
+            case 1 : {
+                changeAthority.setText("公开");
+                break;
+            }
+
+            case 2 : {
+                changeAthority.setText("私密");
+                break;
+            }
+        }
+    }
+
+    private void setTips(){
+
+    }
+
 
 }

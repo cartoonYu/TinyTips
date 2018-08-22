@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
         <activity android:name=".Note.Addnote.Athority.Athority"/>
         <activity android:name=".Message.CommentMessage.CommentMessage"/>
         <activity android:name=".Message.FlowingMessage.FlowingMessage"/>

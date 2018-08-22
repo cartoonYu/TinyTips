@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
@@ -80,6 +81,11 @@ public class Athority extends BaseActivity<AthorityPresenter> implements IAthori
     public void onClickBack(){
         IntentActivity.intentWithoutData(this,AddNote.class);
         IntentActivity.finishActivity(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        IntentActivity.intentWithoutData(this,AddNote.class);
     }
 
     @OnClick(R.id.authority_public)
