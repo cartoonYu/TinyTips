@@ -11,6 +11,7 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
 import com.cartoon.tinytips.Note.Addnote.NoteTips.NoteTips;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -39,10 +40,12 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @BindView(R.id.changeAthority)
     Button changeAthority;
 
+    @BindView(R.id.addnote_addtips)
+    Button addnote_addtips;
     private int flag;    //用于判断跳转到主页显示的fragment
-
     private int selectAthority;
-    private String athority;
+    private int tips;
+    private String tip;
 
     @Override
     protected AddNotePresenter initPresent(){
@@ -58,6 +61,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     protected void initView(){
         revampStatusBar();
         revampToolbar();
+        setTips();
     }
 
     private void revampToolbar(){
@@ -126,8 +130,19 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     }
 
     private void setTips(){
-
+        TipsItem[] major = {new TipsItem("选择标签"),new TipsItem("IT互联网"), new TipsItem("经济/管理"),
+                new TipsItem("电子/通信"), new TipsItem("政治/法律"),
+                new TipsItem("轨道/交通"), new TipsItem("艺术/设计"),
+                new TipsItem("机械/自动化"), new TipsItem("汉语言/文学"),
+                new TipsItem("建筑学"), new TipsItem("外语"),
+                new TipsItem("物理/材料"), new TipsItem("化学/环境"),
+                new TipsItem("数学"), new TipsItem("纺织/服装")};
+       tips = IntentActivity.getIntentData(this,"NoteTips",tips);
+       if (tips != 0){
+           tips = tips + 1;
+       }
+       tip = major[tips].getTipsname();
+       Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
+       addnote_addtips.setText(tip);
     }
-
-
 }

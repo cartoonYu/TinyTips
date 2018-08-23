@@ -4,10 +4,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsAdapter;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -54,10 +56,12 @@ public class NoteTips extends BaseActivity<NoteTipsPresenter> implements INoteTi
     protected void initView() {
         revampStatusBar();
         revampToolbar();
+
     }
 
     @Override
     protected void onPrepare() {
+
         initTips();
     }
 
@@ -97,7 +101,17 @@ public class NoteTips extends BaseActivity<NoteTipsPresenter> implements INoteTi
         recyclerView.setLayoutManager(layoutManager);
         adapter = new TipsAdapter(TList);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new IOnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int postion) {
+                IntentActivity.intentWithData(NoteTips.this,AddNote.class,"NoteTips",postion);
+                IntentActivity.finishActivity(NoteTips.this);
+            }
+        });
     }
+
+
 
 
 }

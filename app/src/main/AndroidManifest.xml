@@ -36,7 +36,9 @@
         <activity android:name=".Note.Addnote.AddNote"/>
         <activity android:name=".Note.Addnote.Athority.Athority"/>
         <activity android:name=".Note.Details.NoteDetail"/>
-
+        <activity android:name=".Note.Comment.Comment"/>
+        <activity android:name=".Note.ShareNote.ShareNote"/>
+		
         <activity android:name=".Personal.MyNote.MyNote"/>
         <activity android:name=".Personal.Detail.Detail"/>
         <activity android:name=".Personal.Collect.Collect"/>

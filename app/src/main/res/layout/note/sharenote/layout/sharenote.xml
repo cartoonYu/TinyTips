@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/sharenoteStatusBar"/>
+
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sharenoteStatusBar"
+        android:id = "@+id/sharenoteToolbar">
+    </include>
+
+    <RelativeLayout
+        android:layout_below="@+id/sharenoteToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/shareNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="没有没什么分享心得呢？点此输入"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:id="@+id/sharecontentbar"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="60dp"
+            android:layout_below="@id/shareNote"
+            android:background="@drawable/hone_buttom_coners_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@"
+                android:textSize="16sp"
+                android:textColor="@color/txcolor"/>
+            <TextView
+                android:id="@+id/share_name"
+                android:layout_toRightOf="@id/at"
+                android:layout_marginLeft="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昵称"
+                android:textSize="16sp"
+                android:textColor="@color/txcolor"/>
+
+            <TextView
+                android:id="@+id/share_notetitle"
+                android:layout_below="@id/at"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="标题"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/share_notecontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_notetitle"
+                android:text="内容......................................................................"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <Button
+                android:id="@+id/share_athority"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_width="60dp"
+                android:layout_height="24dp"
+                android:background="@drawable/menu_button"
+                android:text="公开"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="3dp"
+                android:layout_width="60dp"
+                android:layout_height="24dp"
+                android:background="@drawable/menu_button"
+                android:text="完成"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/detail_bg">
+
+    <RelativeLayout
+        android:id="@+id/comment_userdetail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:src="@drawable/nav_icon"
+            android:id="@+id/comment_avatar"/>
+
+        <TextView
+            android:id="@+id/comment_name"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/comment_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:textColor="@color/txcolor"/>
+
+        <TextView
+            android:id="@+id/comment_time"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/comment_avatar"
+            android:layout_below="@id/comment_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3小时前"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/comment_userdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/comment_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="评论内容"/>
+    </RelativeLayout>
+</RelativeLayout>

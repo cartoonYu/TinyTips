@@ -27,6 +27,8 @@ android {
                             'src/main/res/layout/note',
                             'src/main/res/layout/note/detail',
                             'src/main/res/layout/note/newnote',
+                            'src/main/res/layout/note/sharenote',
+                            'src/main/res/layout/note/comment',
                             'src/main/res/layout/personal',
                             'src/main/res/layout/personal/mynote',
                             'src/main/res/layout/personal/detail',
