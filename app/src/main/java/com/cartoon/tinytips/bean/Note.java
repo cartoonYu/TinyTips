@@ -1,138 +1,84 @@
 package com.cartoon.tinytips.bean;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class Note {
-    private String title;      //标题
-    private String date;         //日期
+
+    private long id;       //主键，笔记编号，用于关联用户
+
+    private long userId;     //外键
+
+    private String title;     //标题
+
+    private String wordDetails;    //文字性内容
+
+    private String photoDetails;   //图片性内容
+
     private String author;     //作者
-    /* private String wordDetails;     //文字性笔记内容，长度不确定*/
-    private String imageDetails;    //图片性笔记内容，长度不确定
 
-    private String details;
-    private String[] classify;       //分类，最多3个
-    private boolean isCollect;      //是否收藏
+    private String date;       //时间
 
-    private boolean isShare;        //是否允许分享
-    private long pageView;         //浏览量
-    private long comment;           //评论量
-    private long pointPraise;      //点赞量
-    private long pointDislike;     //点灭量
-    private List<Comment> list;    //评论
+    private List<String> tag;     //标签
 
-    public Note(String title, String date, String author, String imageDetails,String details, String[] classify, boolean isCollect) {
-        this.title=title;
-        this.date=date;
-        this.author=author;
-        this.imageDetails=imageDetails;
-        this.details=details;
-        this.classify=new String[3];
-        this.classify=classify;
-        this.isCollect=isCollect;
+    public Note(){
+        Random rId=new Random(50);
+        id=(rId.nextLong()*1000);
+        Random rUserId=new Random(60);
+        userId=(rUserId.nextLong()*1000);
+        Date date=new Date();
+        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        this.date=df.format(date);
     }
 
-    public void setPointDislike(long pointDislike) {
-        this.pointDislike = pointDislike;
+    public long getId() {
+        return id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setPointPraise(long pointPraise) {
-        this.pointPraise = pointPraise;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public boolean isCollect() {
-        return isCollect;
-    }
-
-    public boolean isShare() {
-        return isShare;
-    }
-
-    public List<Comment> getList() {
-        return list;
-    }
-
-    public long getPageView() {
-        return pageView;
-    }
-
-    public long getPointDislike() {
-        return pointDislike;
-    }
-
-    public long getPointPraise() {
-        return pointPraise;
-    }
-
-    public String getImageDetails() {
-        return imageDetails;
+    public long getUserId() {
+        return userId;
     }
 
     public String getTitle() {
         return title;
     }
 
-
-    public String[] getClassify() {
-        return classify;
+    public String getWordDetails() {
+        return wordDetails;
     }
 
-    public void setClassify(String[] classify) {
-        this.classify = classify;
+    public String getPhotoDetails() {
+        return photoDetails;
     }
 
-    public void setCollect(boolean collect) {
-        isCollect = collect;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setImageDetails(String imageDetails) {
-        this.imageDetails = imageDetails;
-    }
-
-    public void setList(List<Comment> list) {
-        this.list = list;
-    }
-
-    public void setPageView(long pageView) {
-        this.pageView = pageView;
-    }
-
-    public void setShare(boolean share) {
-        isShare = share;
+    public List<String> getTag() {
+        return tag;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setComment(long comment) {
-        this.comment = comment;
+    public void setWordDetails(String wordDetails) {
+        this.wordDetails = wordDetails;
     }
 
-    public long getComment() {
-        return comment;
+    public void setPhotoDetails(String photoDetails) {
+        this.photoDetails = photoDetails;
     }
 
-    public String getDetails() {
-        return details;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setTag(List<String> tag) {
+        this.tag = tag;
     }
+
 }

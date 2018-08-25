@@ -1,51 +1,66 @@
 package com.cartoon.tinytips.bean;
 
-import java.util.Date;
+import java.util.List;
 
 public class Comment {
-    private String nickName;  //昵称
-    private String content;   //评论内容
-    private int pointPraise;  //点赞
-    private Date date;           //时间
-    private int pointDislike; //点灭
 
-    public String getNickName() {
-        return nickName;
+    private int like;    //点赞数
+
+    private int comment;   //评论数
+
+    private int collect;    //收藏数
+
+    private int forward;     //转发数
+
+    private long noteId;    //笔记ID，外键
+
+    private List<String> tag;   //公开标签
+
+    public int getCollect() {
+        return collect;
     }
 
-    public String getContent() {
-        return content;
+    public int getComment() {
+        return comment;
     }
 
-    public int getPointPraise() {
-        return pointPraise;
+    public int getForward() {
+        return forward;
     }
 
-    public Date getDate() {
-        return date;
+    public int getLike() {
+        return like;
     }
 
-    public int getPointDislike() {
-        return pointDislike;
+    public long getNoteId() {
+        return noteId;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public List<String> getTag() {
+        return tag;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTag(List<String> tag) {
+        this.tag = tag;
     }
 
-    public void setPointPraise(int pointPraise) {
-        this.pointPraise = pointPraise;
+    public void setCollect(int collect) {
+        this.collect = collect;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setComment(int comment) {
+        this.comment = comment;
     }
 
-    public void setPointDislike(int pointDislike) {
-        this.pointDislike = pointDislike;
+    public void setForward(int forward) {
+        this.forward = forward;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public void setNoteId(long noteId) {
+        this.noteId = noteId;
     }
 }

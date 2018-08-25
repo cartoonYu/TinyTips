@@ -16,16 +16,16 @@
 
         <activity android:name=".Register.Register"/>
         <activity android:name=".Login.Login">
+
+        </activity>
+
+        <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
+        <activity android:name=".Main.Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
-        <activity android:name=".Main.Main" >
-
         </activity>
 
         <activity android:name=".Message.CommentMessage.CommentMessage"/>
