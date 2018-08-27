@@ -27,6 +27,13 @@
             android:iconifiedByDefault="false"
             android:background="#f2f2f2"/>
 
+        <!-- 为SearchView定义自动补齐的ListView-->
+        <ListView
+            android:id="@+id/lv"
+            android:layout_below="@id/search"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

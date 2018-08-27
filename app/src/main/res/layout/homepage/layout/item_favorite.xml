@@ -132,7 +132,7 @@
             android:layout_toStartOf="@+id/Cl">
 
             <Button
-                android:id="@+id/Fnums_item_favorite"
+                android:id="@+id/Cnums_item_favorite"
                 android:layout_marginLeft="15dp"
                 android:layout_width="21dp"
                 android:layout_height="21dp"
@@ -146,7 +146,7 @@
                 android:id="@+id/Fitem_numofcollection"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@id/Fnums_item_favorite"
+                android:layout_toRightOf="@id/Cnums_item_favorite"
                 android:gravity="center"
                 android:text="0" />
         </RelativeLayout>
