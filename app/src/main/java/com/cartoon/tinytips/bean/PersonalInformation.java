@@ -1,11 +1,15 @@
 package com.cartoon.tinytips.bean;
 
+import android.graphics.Bitmap;
+
 import java.util.List;
 import java.util.Random;
 
 public class PersonalInformation {
 
-    private String headPortrait;  //头像
+    private Bitmap headPortrait;  //头像
+
+    private String headPortraitPath;   //头像的存储路径
 
     private String nickName;  //昵称
 
@@ -52,7 +56,7 @@ public class PersonalInformation {
         return account;
     }
 
-    public String getHeadPortrait() {
+    public Bitmap getHeadPortrait() {
         return headPortrait;
     }
 
@@ -80,7 +84,7 @@ public class PersonalInformation {
         this.account = account;
     }
 
-    public void setHeadPortrait(String headPortrait) {
+    public void setHeadPortrait(Bitmap headPortrait) {
         this.headPortrait = headPortrait;
     }
 
@@ -114,6 +118,14 @@ public class PersonalInformation {
 
     public void setSex(boolean sex) {
         this.sex = sex;
+    }
+
+    public void setHeadPortraitPath(String path){
+        this.headPortraitPath=path;
+    }
+
+    private String getHeadPortraitPath(){
+        return headPortraitPath;
     }
 
 }

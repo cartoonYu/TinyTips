@@ -9,6 +9,7 @@ import java.io.Serializable;
 /**
  * 功能：根据调用的方法以及参数的不同跳转活动
  */
+
 public class IntentActivity{
 
     private static Intent intent;

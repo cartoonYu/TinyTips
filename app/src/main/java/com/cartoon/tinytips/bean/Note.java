@@ -19,18 +19,17 @@ public class Note {
 
     private String author;     //作者
 
-    private String date;       //时间
+    private Date date;       //时间
 
     private List<String> tag;     //标签
 
     public Note(){
+        //时间的赋值
         Random rId=new Random(50);
         id=(rId.nextLong()*1000);
         Random rUserId=new Random(60);
         userId=(rUserId.nextLong()*1000);
-        Date date=new Date();
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        this.date=df.format(date);
+        this.date=new Date();
     }
 
     public long getId() {

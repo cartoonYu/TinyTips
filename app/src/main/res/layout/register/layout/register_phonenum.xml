@@ -22,5 +22,5 @@
         android:hint="请输入手机号码/邮箱"
         android:textSize="16sp"
         android:textColor="@color/black"
-        android:id="@+id/register_phoneNum"/>
+        android:id="@+id/register_account"/>
 </RelativeLayout>

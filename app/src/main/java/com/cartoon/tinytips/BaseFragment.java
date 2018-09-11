@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -40,6 +41,7 @@ public abstract class BaseFragment<T extends BaseFragmentPresenter> extends Frag
     protected abstract int getLayout();       //为活动添加页面
     protected abstract void initView();      //实例化组件
     protected abstract void onPrepare();     //对组件进行初始化操作
+
     @Override
     public void onDestroyView(){
         super.onDestroyView();

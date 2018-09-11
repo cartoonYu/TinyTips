@@ -49,6 +49,5 @@
         android:layout_marginTop="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        layout="@layout/register_register"
-        android:id="@+id/password"/>
+        layout="@layout/register_register" />
 </RelativeLayout>

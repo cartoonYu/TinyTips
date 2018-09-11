@@ -1,11 +1,13 @@
 package com.cartoon.tinytips.Personal;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
@@ -52,7 +54,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     protected void onPrepare(){
-
+        presenter.initData();
     }
 
     private void revampStatusBar(){
@@ -95,4 +97,8 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         IntentActivity.finishActivity(getActivity());
     }
 
+    @Override
+    public void setHeadPro(Bitmap headPro){
+        this.headPro.setImageBitmap(headPro);
+    }
 }
