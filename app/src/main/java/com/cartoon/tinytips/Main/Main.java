@@ -23,6 +23,8 @@ import butterknife.OnClick;
 
 public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
+    private FragmentConstant constant;
+
     private int flag;     //决定切换之前显示的fragment
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
@@ -48,12 +50,13 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @Override
     protected void initView(){
         pressdrawables=new ArrayList<>();
+        constant=FragmentConstant.getConstant();
         pressdrawables.add(R.mipmap.bottombar_homepage_press);
         pressdrawables.add(R.mipmap.bottombar_message_press);
         pressdrawables.add(R.mipmap.bottombar_addnote);
         pressdrawables.add(R.mipmap.bottombar_discover_press);
         pressdrawables.add(R.mipmap.bottombar_personal_press);
-        flag= IntentActivity.getIntentData(this,new String("main"), FragmentConstant.homePage);
+        flag= IntentActivity.getIntentData(this,new String("main"), constant.getHomePage());
         Drawable top=getResources().getDrawable(pressdrawables.get(flag));
         bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
@@ -67,7 +70,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         unPressdrawables.add(R.mipmap.bottombar_discover_unpress);
         unPressdrawables.add(R.mipmap.bottombar_personal_unpress);
         fragment=R.id.mainFragement;
-        switchFragment(FragmentConstant.defaultFragment);
+        switchFragment(constant.getDefaultFragment());
         switchFragment(flag);
 
     }
@@ -75,36 +78,36 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
-        setBottomBarDrawable(FragmentConstant.homePage,R.mipmap.bottombar_homepage_press);
-        switchFragment(FragmentConstant.homePage);
+        setBottomBarDrawable(constant.getHomePage(),R.mipmap.bottombar_homepage_press);
+        switchFragment(constant.getHomePage());
     }
 
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
-        setBottomBarDrawable(FragmentConstant.message,R.mipmap.bottombar_message_press);
-        switchFragment(FragmentConstant.message);
+        setBottomBarDrawable(constant.getMessage(),R.mipmap.bottombar_message_press);
+        switchFragment(constant.getMessage());
     }
 
     @OnClick(R.id.mainAddNote)
     public void clickAddNote(){
         //点击新增
-        switchFragment(FragmentConstant.addNote);
+        switchFragment(constant.getAddNote());
 
     }
 
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
-        setBottomBarDrawable(FragmentConstant.discover,R.mipmap.bottombar_discover_press);
-        switchFragment(FragmentConstant.discover);
+        setBottomBarDrawable(constant.getDiscover(),R.mipmap.bottombar_discover_press);
+        switchFragment(constant.getDiscover());
     }
 
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        setBottomBarDrawable(FragmentConstant.personal,R.mipmap.bottombar_personal_press);
-        switchFragment(FragmentConstant.personal);
+        setBottomBarDrawable(constant.getPersonal(),R.mipmap.bottombar_personal_press);
+        switchFragment(constant.getPersonal());
     }
 
 
@@ -120,38 +123,39 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     }
 
     private void switchFragment(int flag){
-        if(flag!=FragmentConstant.defaultFragment&&flag!=FragmentConstant.addNote){
+        if(flag!=constant.getDefaultFragment()&&flag!=constant.getAddNote()){
             this.flag=flag;
         }
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
+        int[] se=new int[6];
         switch (flag){
-            case FragmentConstant.defaultFragment:{
+            case 0:{
                 Homepage homepage=new Homepage();
                 transaction.add(fragment,homepage);
                 break;
             }
-            case FragmentConstant.homePage:{
+            case 1:{
                 Homepage homepage=new Homepage();
                 transaction.replace(fragment,homepage);
                 break;
             }
-            case FragmentConstant.message:{
+            case 2:{
                 Message message=new Message();
                 transaction.replace(fragment,message);
                 break;
             }
-            case FragmentConstant.addNote:{
+            case 3:{
                 IntentActivity.intentWithData(this,AddNote.class,"addNote",this.flag);
                 IntentActivity.finishActivity(this);
                 break;
             }
-            case FragmentConstant.discover:{
+            case 4:{
                 Discover discover=new Discover();
                 transaction.replace(fragment,discover);
                 break;
             }
-            case FragmentConstant.personal:{
+            case 5:{
                 Personal personal=new Personal();
                 transaction.replace(fragment,personal);
                 break;

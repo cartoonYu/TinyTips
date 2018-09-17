@@ -50,7 +50,7 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
     }
 
 
@@ -67,7 +67,7 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 

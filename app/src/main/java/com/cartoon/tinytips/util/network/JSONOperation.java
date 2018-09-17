@@ -19,9 +19,6 @@ public class JSONOperation {
 
     private static volatile JSONOperation operation;
 
-    private JSONOperation(){
-    }
-
     public static JSONOperation getInstance(){
         if(JudgeEmpty.isEmpty(operation)){
             synchronized (JSONOperation.class){
@@ -32,7 +29,6 @@ public class JSONOperation {
         }
         return operation;
     }
-
 
     /**
      * 将传入的comment转换成json文件
@@ -210,4 +206,29 @@ public class JSONOperation {
         }
     }
 
+    /**
+     * 获取传入json文件中的结果,用于解析post数据到服务器中返回的json文件
+     * @param object
+     * @return
+     */
+    public String getResultFromJSON(JSONObject object){
+        String result=new String();
+        if(JudgeEmpty.isEmpty(object)){
+            return null;
+        }
+        else{
+            try{
+                if(object.get("result") instanceof String){
+                    result=(String) object.get("result");
+                }
+            }catch(JSONException e){
+                Log.e("jsonObjectException","将json文件转换personalInformation出现错误");
+                e.printStackTrace();
+            }
+            return result;
+        }
+    }
+
+    private JSONOperation(){
+    }
 }

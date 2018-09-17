@@ -66,7 +66,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
@@ -96,7 +96,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
 }
 

@@ -1,10 +1,11 @@
 package com.cartoon.tinytips.Register;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.network.HttpConnection;
+import com.cartoon.tinytips.util.network.JSONOperation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +15,8 @@ class RegisterModel implements IRegister.Model {
     private String authCode;   //验证码
 
     private PersonalInformation information;
+
+    private String result;
 
 
     @Override
@@ -41,11 +44,18 @@ class RegisterModel implements IRegister.Model {
             e.printStackTrace();
         }
         String url=new String("http://192.168.31.29:8080/TinyTipsWEB/Test");
-        HttpConnection connection= HttpConnection.getConnection();
-        connection.sendData(url,"POST",object);
-
-        if(connection.getResult()){
-            callBack.onSuccess("edqedwfwef");
+        HttpConnection httpConnection=HttpConnection.getHttpConnection();
+        httpConnection.sendData(url,"POST",object);
+        Thread thread=new Thread(httpConnection);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        JSONObject result=httpConnection.getResult();
+        if(JudgeEmpty.isNotEmpty(result)){
+            ShowToast.shortToast(JSONOperation.getInstance().getResultFromJSON(object));
         }
     }
 }

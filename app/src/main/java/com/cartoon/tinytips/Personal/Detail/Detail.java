@@ -49,7 +49,7 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
@@ -64,7 +64,7 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 

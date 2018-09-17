@@ -82,13 +82,13 @@ public class Homepage extends BaseActivity<HomepagePresenter> implements IHomepa
 
     @OnClick(R.id.personal_homepage_back)
     public void clickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 

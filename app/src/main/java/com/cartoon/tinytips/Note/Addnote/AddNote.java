@@ -70,7 +70,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @Override
     protected void onPrepare(){
-        flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.homePage);
+        flag= IntentActivity.getIntentData(this,"addNote",FragmentConstant.getConstant().getHomePage());
         setAthority();
     }
 

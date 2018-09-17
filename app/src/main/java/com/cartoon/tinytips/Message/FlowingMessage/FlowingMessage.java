@@ -47,13 +47,13 @@ public class FlowingMessage extends BaseActivity<FlowingMessagePresenter> implem
     }
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);
+        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.getConstant().getMessage());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.message);
+        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.getConstant().getMessage());
         IntentActivity.finishActivity(this);
     }
 

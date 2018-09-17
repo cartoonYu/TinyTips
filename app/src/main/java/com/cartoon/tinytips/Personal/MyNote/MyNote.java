@@ -61,7 +61,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
@@ -85,7 +85,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.personal);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
