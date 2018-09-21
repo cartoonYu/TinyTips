@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,10 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
 import com.cartoon.tinytips.Note.Comment.Comment;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 
@@ -42,6 +45,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         TextView NumOfCollectoins;
         TextView NumOfShares;
         TextView time;
+        de.hdodenhof.circleimageview.CircleImageView Fitem_avatar;
+        RelativeLayout body_item_favorite;
         Button favoritenums_item_favorite;
         Button commuitenums_item_favorite;
         Button Cnums_item_favorite;
@@ -64,6 +69,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             commuitenums_item_favorite= (Button)view.findViewById(R.id.commuitenums_item_favorite);
             Cnums_item_favorite= (Button)view.findViewById(R.id.Cnums_item_favorite);
             sharenums_item_favorite= (Button)view.findViewById(R.id.sharenums_item_favorite);
+            body_item_favorite = (RelativeLayout)view.findViewById(R.id.body_item_favorite);
         }
 
 
@@ -72,6 +78,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.Fitem_avatar:{
+                IntentActivity.intentWithoutData(getContext(),DynamicState.class);
+                break;
+            }
+
+            case R.id.Fitem_username:{
+                IntentActivity.intentWithoutData(getContext(),DynamicState.class);
+                break;
+            }
+            case R.id.body_item_favorite:{
+                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
+                break;
+            }
             case R.id.favoritenums_item_favorite:{
                 Button favoritenums_item_favorite;
                 favoritenums_item_favorite = (Button)view.findViewById(R.id.favoritenums_item_favorite);
