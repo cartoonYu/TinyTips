@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2">
+
+    <RelativeLayout
+        android:id="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/mainHomepage"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_homepage_unpress"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="首页"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/mainMessage"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/mainHomepage"
+            android:layout_weight="1"
+            android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_message_unpress"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="消息"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/mainAddNote"
+            android:layout_width="72dp"
+            android:layout_height="46dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/newnote"
+            android:paddingTop="11dp" />
+
+        <Button
+            android:id="@+id/mainDiscover"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/mainPersonal"
+            android:layout_weight="1"
+            android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_discover_unpress"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="发现"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/mainPersonal"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:background="@drawable/bottombar"
+            android:drawableTop="@mipmap/bottombar_personal_unpress"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="我的"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/mainFragement"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottombar"/>
+
+</RelativeLayout>

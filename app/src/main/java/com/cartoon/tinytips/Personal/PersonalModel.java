@@ -1,26 +1,28 @@
 package com.cartoon.tinytips.Personal;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+
+import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.PersonalInformation;
-import com.cartoon.tinytips.util.JudgeObjectIsEmpty;
+import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 
-/**
- * Created by cartoon on 2018/3/6.
- *在getPersonalInformation函数中赋值给information完成功能
- */
-
-class PersonalModel implements IPersonal.Model{
+class PersonalModel implements IPersonal.Model {
 
     @Override
     public void getPersonalInformation(ValueCallBack<PersonalInformation> callBack){
         PersonalInformation information=new PersonalInformation();
-        if(JudgeObjectIsEmpty.isNotEmpty(information.getNickName())
-                ||JudgeObjectIsEmpty.isNotEmpty(information.getSignature())
-                ||JudgeObjectIsEmpty.isNotEmpty(information.getHeadPortrait())){
-            callBack.onSuccess(information);
+        Bitmap headPro=BitmapFactory.decodeResource(TinyTipsApplication.getContext().getResources(), R.mipmap.back_black);
+        if(JudgeEmpty.isEmpty(headPro)){
+
         }
         else{
-            callBack.onFail("获取个人信息失败，请重试");
+            information.setHeadPortrait(headPro);
+            callBack.onSuccess(information);
         }
     }
 }

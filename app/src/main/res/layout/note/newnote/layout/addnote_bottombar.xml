@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/ctc"
+        android:layout_width="90dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/changTextColor"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ctc"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="35dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/cts"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/ctc" >
+
+        <Button
+            android:id="@+id/changeTextSize"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:background="@drawable/cts"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="32dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/aI"
+        android:layout_toRightOf="@id/cts"
+        android:layout_width="90dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/addImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ai"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="35dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_toRightOf="@id/aI"
+        android:layout_width="90dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/changeAthority"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="@drawable/select_bg"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="公开"/>
+
+    </LinearLayout>
+</RelativeLayout>

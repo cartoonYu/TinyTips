@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/statusbar"
+        android:id="@+id/personal_homepage_statusBar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/personal_homepage_statusBar"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/skyBlue" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/skyBlue"
+                android:src="@mipmap/back_white"
+                android:id="@+id/personal_homepage_back"/>
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="110dp"
+                layout="@layout/personal_homepage_information"
+                android:id="@+id/personal_homepage_information"/>
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/personal_homepage_information"
+                layout="@layout/personal_homepage_dynamicstate"/>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

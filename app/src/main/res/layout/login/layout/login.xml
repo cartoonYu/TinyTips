@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        layout="@layout/statusbar"
+        android:id="@+id/statusBar"/>
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statusBar"
+        android:layout_marginTop="120dp"
+        layout="@layout/login_information"
+        android:id="@+id/information"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="95dp"
+        android:text="立即注册"
+        android:textColor="@color/skyBlue"
+        android:layout_below="@id/information"
+        android:id="@+id/login_register"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/information"
+        android:layout_marginLeft="55dp"
+        android:layout_toRightOf="@id/login_register"
+        android:layout_marginTop="10dp"
+        android:text="找回密码"
+        android:textColor="#8E8E8E"
+        android:id="@+id/login_findPassword"/>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_findPassword"
+        android:layout_marginTop="40dp"
+        layout="@layout/login_anotherlogin"/>
+</RelativeLayout>

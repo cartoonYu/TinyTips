@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        layout="@layout/statusbar"
+        android:id="@+id/statusbar"/>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/statusbar"
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        layout="@layout/note_detail_detail"
+        android:id="@+id/detail"/>
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/note_detail_bottombar"/>
+</RelativeLayout>

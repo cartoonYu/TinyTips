@@ -1,8 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cartoon.tinytips">
+    package="com.cartoon.tinytips" >
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,46 +12,44 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/actionBarTheme" >
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.cartoon.tinytips.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path" />
-        </provider>
+        android:theme="@style/AppTheme" >
 
-        <activity android:name=".Main.Main"
-            android:launchMode="singleTask">
+        <activity android:name=".Register.Register">
+
+        </activity>
+
+        <activity android:name=".Login.Login">
+
+        </activity>
+
+        <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
+        <activity android:name=".Main.Main" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".HomePage.AddNote.AddNote"
-            android:launchMode="singleTask"/>
-        <activity android:name=".HomePage.Details.Details"
-            android:launchMode="singleTask"/>
-        <activity android:name=".HomePage.Details.Revamp.DetailsRevamp"
-            android:launchMode="singleTask"/>
+        <activity android:name=".Message.CommentMessage.CommentMessage"/>
+        <activity android:name=".Message.FlowingMessage.FlowingMessage"/>
+        <activity android:name=".Message.FavoriteMessage.FavoriteMessage"/>
+        <activity android:name=".Message.SystemMessage.SystemMessage"/>
 
-        <activity android:name=".Personal.Profile.Profile"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampSchool.ProfileSchool"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampResume.ProfileResume"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Profile.RevampSignature.ProfileSignature"
-            android:launchMode="singleTask"/>
+        <activity android:name=".Note.Addnote.AddNote"/>
+        <activity android:name=".Note.Addnote.Athority.Athority"/>
+        <activity android:name=".Note.Details.NoteDetail"/>
+        <activity android:name=".Note.Comment.Comment"/>
+        <activity android:name=".Note.ShareNote.ShareNote"/>
+		
+        <activity android:name=".Personal.MyNote.MyNote"/>
+        <activity android:name=".Personal.Detail.Detail"/>
+        <activity android:name=".Personal.Collect.Collect"/>
+        <activity android:name=".Personal.Homepage.Homepage"/>
+        <activity android:name=".Personal.Setting.Setting"/>
+        <activity android:name=".Personal.Setting.Security.Security"/>
+        <activity android:name=".Personal.Setting.Management.Management"/>
 
-        <activity android:name=".Personal.Security.Security"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Collect.Collect"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Personal.Collect.Details.CollectDetails"
-            android:launchMode="singleTask"/>
     </application>
+
 </manifest>

@@ -1,26 +1,22 @@
 package com.cartoon.tinytips.Personal;
 
-import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.data.PersonalInformation;
+import android.graphics.Bitmap;
 
-/**
- * Created by cartoon on 2018/2/4.
- * Personal的公共接口
- * View类接入IPersonal.view，Presenter类接入IPersonal.Presenter
- * 在内部接口定义方法，在接入类中重写方法实现功能
- */
+import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.PersonalInformation;
 
 interface IPersonal {
+
     interface View{
-        void showToast(String code);
-        void initHeadPortrait(String str);
-        void initNickName(String str);
-        void initSignature(String str);
+        void setHeadPro(Bitmap headPro);   //设置头像
     }
+
     interface Presenter{
-        void initData();
+        void initData();    //初始化页面数据
     }
+
     interface Model{
-        void getPersonalInformation(ValueCallBack<PersonalInformation> callBack);
+        void getPersonalInformation(ValueCallBack<PersonalInformation> callBack);   //获取个人信息
     }
+
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/detail_bg">
+    <include layout="@layout/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/contentStatusBar"/>
+
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contentStatusBar"
+        android:id = "@+id/contentToolbar">
+    </include>
+
+    <TextView
+        android:layout_below="@id/contentToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="暂无消息"
+        android:gravity="center"/>
+</RelativeLayout>

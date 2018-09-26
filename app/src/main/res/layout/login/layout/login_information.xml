@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:drawableLeft="@mipmap/login_account"
+        android:drawablePadding="10dp"
+        android:hint="请输入账号/邮箱/手机号码"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:id="@+id/login_account"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_account"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:drawableLeft="@mipmap/login_password"
+        android:drawablePadding="10dp"
+        android:hint="请输入密码"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:id="@+id/login_password"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/login_password"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/login_login"
+        android:id="@+id/login_login">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="登录"
+            android:textColor="#cfeffa"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</RelativeLayout>

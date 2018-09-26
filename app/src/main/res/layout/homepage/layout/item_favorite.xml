@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="130dp"
+    android:background="@color/detail_bg">
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/head_item_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Fitem_avatar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="1dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:src="@drawable/nav_icon" />
+
+        <TextView
+            android:id="@+id/Fitem_username"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/Fitem_avatar"
+            android:text="@string/username"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Fitem_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="时间"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body_item_favorite"
+        android:layout_below="@+id/head_item_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/Fitem_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="标题"
+            android:textColor="@color/txcolor"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/Fitem_content"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/Fitem_title"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="内容"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/body_item_favorite"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
+
+            <Button
+                android:id="@+id/favoritenums_item_favorite"
+                android:layout_marginLeft="15dp"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/favourit"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Fitem_numoffavorite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/favoritenums_item_favorite"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
+
+            <Button
+                android:id="@+id/commuitenums_item_favorite"
+                android:layout_marginLeft="15dp"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/peresonal"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Fitem_numofrecommend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/commuitenums_item_favorite"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
+
+            <Button
+                android:id="@+id/Cnums_item_favorite"
+                android:layout_marginLeft="15dp"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/mycollection"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Fitem_numofcollection"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/Cnums_item_favorite"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
+
+            <Button
+                android:id="@+id/sharenums_item_favorite"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/share"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/Fitem_numofshare"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/sharenums_item_favorite"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

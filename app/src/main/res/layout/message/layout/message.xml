@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/messageStatusBar"/>
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageStatusBar"
+        android:id="@+id/messageToolBar"/>
+
+    <RelativeLayout
+        android:layout_marginTop="71dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/detail_bg">
+
+        <LinearLayout
+            android:id="@+id/systemMassage"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/systemmassage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统消息"
+                android:textSize="18sp"
+                android:textColor="@color/txcolor"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/lead" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/commentMassage"
+            android:layout_below="@id/systemMassage"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/commentmassage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评论消息"
+                android:textSize="18sp"
+                android:textColor="@color/txcolor"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/lead" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/flowingMassage"
+            android:layout_below="@id/commentMassage"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/flowingmassage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关注消息"
+                android:textSize="18sp"
+                android:textColor="@color/txcolor"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/lead" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/favoriteMassage"
+            android:layout_below="@id/flowingMassage"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/favoritemassage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收到的赞"
+                android:textSize="18sp"
+                android:textColor="@color/txcolor"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/lead" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
