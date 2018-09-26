@@ -128,34 +128,33 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         }
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
-        int[] se=new int[6];
         switch (flag){
-            case 0:{
+            case -1:{
                 Homepage homepage=new Homepage();
                 transaction.add(fragment,homepage);
                 break;
             }
-            case 1:{
+            case 0:{
                 Homepage homepage=new Homepage();
                 transaction.replace(fragment,homepage);
                 break;
             }
-            case 2:{
+            case 1:{
                 Message message=new Message();
                 transaction.replace(fragment,message);
                 break;
             }
-            case 3:{
+            case 2:{
                 IntentActivity.intentWithData(this,AddNote.class,"addNote",this.flag);
                 IntentActivity.finishActivity(this);
                 break;
             }
-            case 4:{
+            case 3:{
                 Discover discover=new Discover();
                 transaction.replace(fragment,discover);
                 break;
             }
-            case 5:{
+            case 4:{
                 Personal personal=new Personal();
                 transaction.replace(fragment,personal);
                 break;
