@@ -18,6 +18,8 @@ public class HttpConstant {
 
     private String URL_PersonalInformation;   //个人信息
 
+    private String URL_Test;
+
     private static volatile HttpConstant constant;
 
     private HttpConstant(){
@@ -26,6 +28,7 @@ public class HttpConstant {
         URL_CommentDetails=new StringBuilder(address).append("CommentDetailsServlet").toString();
         URL_Note=new StringBuilder(address).append("NoteServlet").toString();
         URL_PersonalInformation=new StringBuilder(address).append("PersonalInformationServlet").toString();
+        URL_Test=new StringBuilder(address).append("Test").toString();
     }
 
     public static HttpConstant getConstant(){
@@ -55,4 +58,7 @@ public class HttpConstant {
         return URL_PersonalInformation;
     }
 
+    public String getURL_Test() {
+        return URL_Test;
+    }
 }

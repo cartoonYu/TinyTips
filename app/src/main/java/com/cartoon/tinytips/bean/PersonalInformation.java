@@ -2,10 +2,11 @@ package com.cartoon.tinytips.bean;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class PersonalInformation {
+public class PersonalInformation implements Serializable{
 
     private Bitmap headPortrait;  //头像
 

@@ -5,6 +5,7 @@ import com.cartoon.tinytips.bean.PersonalInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.network.HttpConnection;
+import com.cartoon.tinytips.util.network.HttpConstant;
 import com.cartoon.tinytips.util.network.JSONOperation;
 
 import org.json.JSONException;
@@ -43,7 +44,7 @@ class RegisterModel implements IRegister.Model {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url=new String("http://192.168.31.29:8080/TinyTipsWEB/Test");
+        String url= HttpConstant.getConstant().getURL_Test();
         HttpConnection httpConnection=HttpConnection.getHttpConnection();
         httpConnection.sendData(url,"POST",object);
         Thread thread=new Thread(httpConnection);

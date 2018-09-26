@@ -41,8 +41,9 @@ public class FragmentConstant {
     }
 
     public static FragmentConstant getConstant(){
+
         if(JudgeEmpty.isEmpty(constant)){
-            synchronized (constant){
+            synchronized (FragmentConstant.class){
                 if(JudgeEmpty.isEmpty(constant)){
                     constant=new FragmentConstant();
                 }

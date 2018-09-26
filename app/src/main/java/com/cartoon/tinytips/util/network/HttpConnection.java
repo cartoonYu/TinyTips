@@ -66,11 +66,11 @@ public class HttpConnection implements Runnable{
     @Override
     public void run(){
         getURLConnection(url,method);
-        Log.d("asd","asd");
         if(JudgeEmpty.isNotEmpty(urlConnection)) {
             getOutputStream(urlConnection);
             if (JudgeEmpty.isNotEmpty(outputStream)) {
                 try{
+
                     String temp=object.toString();
                     outputStream.write(temp.getBytes());
                     outputStream.close();

@@ -1,11 +1,12 @@
 package com.cartoon.tinytips.bean;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class Note {
+public class Note implements Serializable{
 
     private long id;       //主键，笔记编号，用于关联用户
 

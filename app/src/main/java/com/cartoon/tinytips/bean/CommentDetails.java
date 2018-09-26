@@ -1,8 +1,9 @@
 package com.cartoon.tinytips.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CommentDetails {
+public class CommentDetails implements Serializable{
 
     private String nickName;    //昵称，主键，个人信息外键
 
