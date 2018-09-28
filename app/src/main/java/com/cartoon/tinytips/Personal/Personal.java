@@ -25,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View {
 
     @BindView(R.id.detail_Personal)
-    LinearLayout detail;
+    RelativeLayout detail;
 
     @BindView(R.id.statusBar)
     View statusBar;
