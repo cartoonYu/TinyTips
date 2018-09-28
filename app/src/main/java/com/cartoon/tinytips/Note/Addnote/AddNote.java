@@ -137,12 +137,10 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
                 new TipsItem("建筑学"), new TipsItem("外语"),
                 new TipsItem("物理/材料"), new TipsItem("化学/环境"),
                 new TipsItem("数学"), new TipsItem("纺织/服装")};
-       tips = IntentActivity.getIntentData(this,"NoteTips",tips);
-       if (tips != 0){
-           tips = tips + 1;
-       }
-       tip = major[tips].getTipsname();
-       Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
-       addnote_addtips.setText(tip);
+         tips = IntentActivity.getIntentData(this,"NoteTips",tips);
+         tips = tips + 1;
+         tip = major[tips].getTipsname();
+         Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
+         addnote_addtips.setText(tip);
     }
 }

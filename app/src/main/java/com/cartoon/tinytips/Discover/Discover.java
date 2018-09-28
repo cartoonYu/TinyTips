@@ -21,13 +21,13 @@ import butterknife.BindView;
 
 public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscover.View{
 
-    private Major[] major = {new Major("IT互联网", R.drawable.apple), new Major("经济/管理", R.drawable.apple),
-            new Major("电子/通信", R.drawable.apple), new Major("政治/法律", R.drawable.apple),
-            new Major("轨道/交通", R.drawable.apple), new Major("艺术/设计", R.drawable.apple),
-            new Major("机械/自动化", R.drawable.apple), new Major("汉语言/文学", R.drawable.apple),
-            new Major("建筑学", R.drawable.apple), new Major("外语", R.drawable.apple),
-            new Major("物理/材料", R.drawable.apple), new Major("化学/环境", R.drawable.apple),
-            new Major("数学", R.drawable.apple), new Major("纺织/服装", R.drawable.apple)};
+    private Major[] major = {new Major("IT互联网", R.drawable.ithlw), new Major("经济/管理", R.drawable.jjgl),
+            new Major("电子/通信", R.drawable.dztx), new Major("政治/法律", R.drawable.zzfl),
+            new Major("轨道/交通", R.drawable.gdjt), new Major("艺术/设计", R.drawable.yssj),
+            new Major("机械/自动化", R.drawable.jxzdh), new Major("汉语言/文学", R.drawable.hyywx),
+            new Major("建筑学", R.drawable.jzx), new Major("外语", R.drawable.wy),
+            new Major("物理/材料", R.drawable.wlcl), new Major("化学/环境", R.drawable.hxhj),
+            new Major("数学", R.drawable.sx), new Major("纺织/服装", R.drawable.fzfz)};
 
     private List<Major> MJList = new ArrayList<>();
 
