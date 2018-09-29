@@ -31,7 +31,6 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
             super(view);
             cardView = (CardView) view;
             majorImage = (ImageView) view.findViewById(R.id.class_image);
-            majorName = (TextView) view.findViewById(R.id.class_name);
         }
     }
 
@@ -51,7 +50,6 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);
-        holder.majorName.setText(major.getName());
         Glide.with(mContext).load(major.getImageId()).into(holder.majorImage);
     }
 

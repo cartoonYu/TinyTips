@@ -105,7 +105,7 @@ public class NoteTips extends BaseActivity<NoteTipsPresenter> implements INoteTi
 
             @Override
             public void onItemClick(View view, int postion) {
-                IntentActivity.intentWithData(NoteTips.this,AddNote.class,"NoteTips",postion);
+                IntentActivity.intentWithData(NoteTips.this,AddNote.class,"NoteTips",postion + 1);
                 IntentActivity.finishActivity(NoteTips.this);
             }
         });
