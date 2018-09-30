@@ -1,9 +1,13 @@
 package com.cartoon.tinytips.Main;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
@@ -18,6 +22,7 @@ import com.cartoon.tinytips.util.IntentActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 
@@ -29,13 +34,33 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
-    private List<Integer> unPressdrawables;      //底部栏五个默认按钮图标
-    private List<Integer> pressdrawables;      //底部栏五个默认按钮已按图标
-
-
-
     @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
-    List<Button> bottomBar;
+    List<RelativeLayout> bottomBar;
+
+    @BindView(R.id.mainHomepageP)
+    ImageView mainHomepageP;
+
+    @BindView(R.id.mainDiscoverP)
+    ImageView mainDiscoverP;
+
+    @BindView(R.id.mainMessageP)
+    ImageView mainMessageP;
+
+    @BindView(R.id.mainPersonalP)
+    ImageView mainPersonalP;
+
+    @BindView(R.id.mainHomepageT)
+    TextView mainHomepageT;
+
+    @BindView(R.id.mainMessageT)
+    TextView mainMessageT;
+
+    @BindView(R.id.mainDiscoverT)
+    TextView mainDiscoverT;
+
+    @BindView(R.id.mainPersonalT)
+    TextView mainPersonalT;
+
 
     @Override
     protected MainPresenter initPresent(){
@@ -49,47 +74,48 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     @Override
     protected void initView(){
-        pressdrawables=new ArrayList<>();
         constant=FragmentConstant.getConstant();
-        pressdrawables.add(R.mipmap.bottombar_homepage_press);
-        pressdrawables.add(R.mipmap.bottombar_message_press);
-        pressdrawables.add(R.mipmap.bottombar_addnote);
-        pressdrawables.add(R.mipmap.bottombar_discover_press);
-        pressdrawables.add(R.mipmap.bottombar_personal_press);
+        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
+        mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
         flag= IntentActivity.getIntentData(this,new String("main"), constant.getHomePage());
-        Drawable top=getResources().getDrawable(pressdrawables.get(flag));
-        bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
     }
 
     @Override
     protected void onPrepare(){
-        unPressdrawables=new ArrayList<>();
-        unPressdrawables.add(R.mipmap.bottombar_homepage_unpress);
-        unPressdrawables.add(R.mipmap.bottombar_message_unpress);
-        unPressdrawables.add(R.mipmap.bottombar_addnote);
-        unPressdrawables.add(R.mipmap.bottombar_discover_unpress);
-        unPressdrawables.add(R.mipmap.bottombar_personal_unpress);
         fragment=R.id.mainFragement;
         switchFragment(constant.getDefaultFragment());
         switchFragment(flag);
-
     }
 
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
-        setBottomBarDrawable(constant.getHomePage(),R.mipmap.bottombar_homepage_press);
+        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
+        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+        mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
+        mainMessageT.setTextColor(Color.BLACK);
+        mainDiscoverT.setTextColor(Color.BLACK);
+        mainPersonalT.setTextColor(Color.BLACK);
         switchFragment(constant.getHomePage());
     }
 
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
-        setBottomBarDrawable(constant.getMessage(),R.mipmap.bottombar_message_press);
+        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+        mainMessageP.setImageResource(R.mipmap.bottombar_message_press);
+        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+        mainHomepageT.setTextColor(Color.BLACK);
+        mainMessageT.setTextColor(Color.parseColor("#7ae1f7"));
+        mainDiscoverT.setTextColor(Color.BLACK);
+        mainPersonalT.setTextColor(Color.BLACK);
         switchFragment(constant.getMessage());
     }
 
-    @OnClick(R.id.mainAddNote)
+    @OnClick(R.id.mainAddNoteB)
     public void clickAddNote(){
         //点击新增
         switchFragment(constant.getAddNote());
@@ -99,28 +125,32 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
-        setBottomBarDrawable(constant.getDiscover(),R.mipmap.bottombar_discover_press);
+        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_press);
+        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+        mainHomepageT.setTextColor(Color.BLACK);
+        mainMessageT.setTextColor(Color.BLACK);
+        mainDiscoverT.setTextColor(Color.parseColor("#7ae1f7"));
+        mainPersonalT.setTextColor(Color.BLACK);
         switchFragment(constant.getDiscover());
     }
 
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        setBottomBarDrawable(constant.getPersonal(),R.mipmap.bottombar_personal_press);
+        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_press);
+        mainHomepageT.setTextColor(Color.BLACK);
+        mainMessageT.setTextColor(Color.BLACK);
+        mainDiscoverT.setTextColor(Color.BLACK);
+        mainPersonalT.setTextColor(Color.parseColor("#7ae1f7"));
         switchFragment(constant.getPersonal());
     }
 
 
-    private void setBottomBarDrawable(int flag,int drawable) {
-        for(int i=0;i<unPressdrawables.size();i++){
-            if(i!=2){
-                Drawable temp=getResources().getDrawable(unPressdrawables.get(i));
-                bottomBar.get(i).setCompoundDrawablesWithIntrinsicBounds(null,temp,null,null);
-            }
-        }
-        Drawable top=getResources().getDrawable(drawable);
-        bottomBar.get(flag).setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
-    }
 
     private void switchFragment(int flag){
         if(flag!=constant.getDefaultFragment()&&flag!=constant.getAddNote()){

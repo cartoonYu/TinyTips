@@ -23,7 +23,7 @@ public class HttpConstant {
     private static volatile HttpConstant constant;
 
     private HttpConstant(){
-        address=new String("http://192.168.31.29:8080/TinyTipsWEB");
+        address=new String("http://192.168.31.29:8080/TinyTipsWEB/");
         URL_Comment=new StringBuilder(address).append("CommentServlet").toString();
         URL_CommentDetails=new StringBuilder(address).append("CommentDetailsServlet").toString();
         URL_Note=new StringBuilder(address).append("NoteServlet").toString();
