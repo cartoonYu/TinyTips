@@ -39,9 +39,6 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
     @BindView(R.id.statusBar)
     View statusBar;
 
-    @BindView(R.id.search)
-    View search;
-
     @Override
     protected DiscoverPresenter initPresent(){
         return new DiscoverPresenter(this);
@@ -55,7 +52,6 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
     @Override
     protected void initView(){
         revampStatusBar();
-        removeUnderLine();
         recyclerList();
 
     }
@@ -69,22 +65,6 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
 
-    private void removeUnderLine() {
-        if (search != null) {
-            try {        //--拿到字节码
-                Class<?> argClass = search.getClass();
-                //--指定某个私有属性,mSearchPlate是搜索框父布局的名字
-                Field ownField = argClass.getDeclaredField("mSearchPlate");
-                //--暴力反射,只有暴力反射才能拿到私有属性
-                ownField.setAccessible(true);
-                View mView = (View) ownField.get(search);
-                //--设置背景
-                mView.setBackgroundColor(Color.TRANSPARENT);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     private void recyclerList() {
         for (Major one : major ){

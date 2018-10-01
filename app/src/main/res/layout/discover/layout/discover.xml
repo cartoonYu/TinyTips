@@ -13,27 +13,30 @@
         android:id="@+id/searchbar"
         android:layout_below="@id/discoverStatusBar"
         android:layout_width="340dp"
-        android:layout_height="22dp"
+        android:layout_height="26dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/coners_bg">
 
-        <SearchView
-            android:id="@+id/search"
-            android:layout_marginLeft="-20dp"
+        <ImageView
+            android:id="@+id/discover_seachP"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:src="@mipmap/personal_mynote_search"/>
+        
+        <EditText
+            android:layout_toRightOf="@id/discover_seachP"
             android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginTop="3dp"
-            android:iconifiedByDefault="false"
-            android:background="#f2f2f2"/>
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@color/after3"
+            android:hint="搜索"
+            android:textSize="14sp"/>
 
-        <!-- 为SearchView定义自动补齐的ListView-->
-        <ListView
-            android:id="@+id/lv"
-            android:layout_below="@id/search"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
