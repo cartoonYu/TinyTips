@@ -5,7 +5,12 @@ interface ICollect {
 
         void initCollect();     //初始化收藏列表
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

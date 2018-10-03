@@ -4,7 +4,12 @@ interface IComment {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

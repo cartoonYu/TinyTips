@@ -10,4 +10,7 @@ interface INoteDetail {
 
     }
 
+    interface Model{
+
+    }
 }

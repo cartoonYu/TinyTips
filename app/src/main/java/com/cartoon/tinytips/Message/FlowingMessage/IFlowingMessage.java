@@ -7,4 +7,7 @@ interface IFlowingMessage {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

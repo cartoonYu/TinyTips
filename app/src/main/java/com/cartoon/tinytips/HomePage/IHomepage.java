@@ -7,4 +7,8 @@ interface IHomepage {
     interface Presenter{
 
     }
+
+    interface Model{
+
+    }
 }

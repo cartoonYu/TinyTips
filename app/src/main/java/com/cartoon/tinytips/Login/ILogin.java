@@ -10,4 +10,7 @@ interface ILogin {
 
     }
 
+    interface Model{
+
+    }
 }

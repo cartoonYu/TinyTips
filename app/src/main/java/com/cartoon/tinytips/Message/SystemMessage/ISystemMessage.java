@@ -7,4 +7,7 @@ interface ISystemMessage {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

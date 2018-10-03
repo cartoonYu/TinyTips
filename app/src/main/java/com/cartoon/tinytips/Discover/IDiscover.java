@@ -4,7 +4,12 @@ interface IDiscover {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

@@ -4,7 +4,12 @@ interface IHot {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

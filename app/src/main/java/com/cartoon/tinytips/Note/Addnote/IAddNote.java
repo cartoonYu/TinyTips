@@ -4,7 +4,12 @@ interface IAddNote {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

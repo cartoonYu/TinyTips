@@ -6,11 +6,16 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
 
     private IDetail.View view;
 
+    private IDetail.Model model;
+
+
     public DetailPresenter(IDetail.View view){
         this.view=view;
+        this.model = new DetailModel();
     }
     @Override
     protected void deleteView(){
-        view=null;
+        view = null;
+        model = null;
     }
 }

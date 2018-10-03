@@ -4,7 +4,12 @@ interface IDetail {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

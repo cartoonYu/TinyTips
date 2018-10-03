@@ -4,7 +4,12 @@ public interface IMain {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

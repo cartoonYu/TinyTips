@@ -7,4 +7,8 @@ interface IShareNote {
     interface Presenter{
 
     }
+
+    interface Model{
+
+    }
 }

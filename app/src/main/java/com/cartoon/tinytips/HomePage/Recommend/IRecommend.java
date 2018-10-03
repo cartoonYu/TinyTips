@@ -7,4 +7,8 @@ interface IRecommend {
     interface Presenter{
 
     }
+
+    interface Model{
+
+    }
 }

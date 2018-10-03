@@ -1,17 +1,14 @@
 package com.cartoon.tinytips.Personal;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
-import com.cartoon.tinytips.Personal.Homepage.Homepage;
+import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.MyNote.MyNote;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
@@ -63,7 +60,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
-        IntentActivity.intentWithoutData(getContext(),Homepage.class);
+        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
         IntentActivity.finishActivity(getActivity());
     }
 
@@ -87,7 +84,7 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
-        IntentActivity.intentWithoutData(getContext(),Homepage.class);
+        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
         IntentActivity.finishActivity(getActivity());
     }
 

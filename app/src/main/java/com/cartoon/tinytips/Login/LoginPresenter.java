@@ -6,13 +6,17 @@ class LoginPresenter extends BaseActivityPresenter<Login> implements ILogin.Pres
 
     private ILogin.View view;
 
+    private ILogin.Model model;
+
     public LoginPresenter(ILogin.View view){
         this.view=view;
+        this.model = new LoginModel();
     }
 
     @Override
     protected void deleteView(){
         view=null;
+        model = null;
     }
 
 }

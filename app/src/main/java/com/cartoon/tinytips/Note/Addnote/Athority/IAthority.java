@@ -4,7 +4,12 @@ interface IAthority {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

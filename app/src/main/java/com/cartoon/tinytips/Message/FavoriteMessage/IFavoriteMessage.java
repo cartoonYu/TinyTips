@@ -7,4 +7,7 @@ interface IFavoriteMessage {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

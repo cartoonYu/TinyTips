@@ -4,7 +4,12 @@ interface ISetting {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

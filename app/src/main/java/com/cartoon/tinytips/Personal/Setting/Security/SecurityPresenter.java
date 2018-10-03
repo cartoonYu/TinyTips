@@ -6,13 +6,17 @@ class SecurityPresenter extends BaseActivityPresenter<Security> implements ISecu
 
     private ISecurity.View view;
 
+    private ISecurity.Model model;
+
     public SecurityPresenter(ISecurity.View view){
-        this.view=view;
+        this.view = view;
+        this.model = new SecurityModel();
     }
 
     @Override
     public void deleteView(){
-        view=null;
+        view = null;
+        model = null;
     }
 
 }

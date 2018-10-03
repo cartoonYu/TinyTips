@@ -7,4 +7,7 @@ interface INoteTips {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

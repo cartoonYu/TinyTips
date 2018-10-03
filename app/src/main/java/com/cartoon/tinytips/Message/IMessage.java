@@ -7,4 +7,7 @@ interface IMessage {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

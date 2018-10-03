@@ -8,11 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
-import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicStateAdapter;
-import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
 

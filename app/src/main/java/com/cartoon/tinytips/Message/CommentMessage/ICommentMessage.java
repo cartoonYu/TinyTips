@@ -7,4 +7,7 @@ interface ICommentMessage {
     interface Presenter{
 
     }
+    interface Model{
+
+    }
 }

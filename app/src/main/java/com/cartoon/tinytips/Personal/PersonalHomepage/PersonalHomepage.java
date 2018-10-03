@@ -1,6 +1,5 @@
-package com.cartoon.tinytips.Personal.Homepage;
+package com.cartoon.tinytips.Personal.PersonalHomepage;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +10,8 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicState;
-import com.cartoon.tinytips.util.Adapters.Personal.Homepage.DynamicStateAdapter;
+import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
+import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicStateAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -25,7 +24,7 @@ import butterknife.BindViews;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Homepage extends BaseActivity<HomepagePresenter> implements IHomepage.View{
+public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> implements IPersonalHomepage.View{
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -60,8 +59,8 @@ public class Homepage extends BaseActivity<HomepagePresenter> implements IHomepa
     RecyclerView dynamicState;
 
     @Override
-    protected HomepagePresenter initPresent(){
-        return new HomepagePresenter(this);
+    protected PersonalHomepagePresenter initPresent(){
+        return new PersonalHomepagePresenter(this);
     }
 
     @Override
@@ -110,5 +109,4 @@ public class Homepage extends BaseActivity<HomepagePresenter> implements IHomepa
         dynamicState.setFocusableInTouchMode(false);
         dynamicState.requestFocus();
     }
-
 }

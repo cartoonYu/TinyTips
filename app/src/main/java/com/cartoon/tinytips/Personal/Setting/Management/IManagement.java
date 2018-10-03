@@ -10,4 +10,7 @@ interface IManagement {
 
     }
 
+    interface Model{
+
+    }
 }

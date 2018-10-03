@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters.Personal.Homepage;
+package com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage;
 
 public class DynamicState {
     private String title;

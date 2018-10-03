@@ -4,7 +4,12 @@ interface ISecurity {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }

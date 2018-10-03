@@ -4,7 +4,12 @@ interface IFavorite {
     interface View{
 
     }
+
     interface Presenter{
+
+    }
+
+    interface Model{
 
     }
 }
