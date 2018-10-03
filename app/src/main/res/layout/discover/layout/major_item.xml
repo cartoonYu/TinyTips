@@ -16,6 +16,4 @@
         android:layout_height="80dp"
         android:id="@+id/class_image"/>
 
-
-
 </android.support.v7.widget.CardView>

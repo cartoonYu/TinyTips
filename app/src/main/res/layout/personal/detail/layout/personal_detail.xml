@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2">
@@ -135,52 +136,51 @@
             android:layout_below="@+id/learnfavorite_detailPersonal"
             android:background="@color/white">
 
-            <LinearLayout
+            <android.support.percent.PercentRelativeLayout
                 android:id="@+id/B1"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
                 <Button
                     android:id="@+id/b1"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="30dp"
+                    app:layout_widthPercent="40%"
+                    app:layout_heightPercent="100%"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
                 <Button
                     android:id="@+id/b2"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_toRightOf="@+id/b1"
-                    android:layout_marginLeft="60dp"
+                    app:layout_widthPercent="40%"
+                    app:layout_heightPercent="100%"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
-            </LinearLayout>
+            </android.support.percent.PercentRelativeLayout>
 
-            <LinearLayout
+            <android.support.percent.PercentRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/B1">
                 <Button
                     android:id="@+id/b3"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@id/b1"
-                    android:layout_marginLeft="30dp"
+                    app:layout_widthPercent="40%"
+                    app:layout_heightPercent="100%"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
                 <Button
                     android:id="@+id/b4"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_toRightOf="@+id/b3"
-                    android:layout_marginLeft="60dp"
+                    app:layout_widthPercent="40%"
+                    app:layout_heightPercent="100%"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
-            </LinearLayout>
+            </android.support.percent.PercentRelativeLayout>
 
 
         </RelativeLayout>
