@@ -6,29 +6,46 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.HomePage.Hot.HotItem;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
 
-public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
+import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
+
+public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> implements View.OnClickListener {
 
     private Context mContext;
 
     private List<HotItem> mHotItems;
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.HotBody:{
+                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
+                break;
+            }
+        }
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView titles;
         TextView contents;
         TextView NumOfNumOfClick;
+        RelativeLayout HotBody;
 
         public ViewHolder(View view) {
             super(view);
             titles = (TextView)view.findViewById(R.id.Hitem_title);
             contents= (TextView)view.findViewById(R.id.Hitem_content);
             NumOfNumOfClick = (TextView)view.findViewById(R.id.clicknums);
+            HotBody = (RelativeLayout) view.findViewById(R.id.HotBody);
         }
     }
 
@@ -52,7 +69,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         holder.titles.setText("" + HotItem.getTitle());
         holder.contents.setText("" + HotItem.getContent());
         holder.NumOfNumOfClick.setText("" + HotItem.getNumOfClick());
-
+        holder.HotBody.setOnClickListener(this);
     }
 
     @Override

@@ -9,7 +9,6 @@ interface IMyNote {
     }
     interface Presenter{
         void initData();   //初始化数据
-
     }
 
     interface Model{

@@ -10,14 +10,17 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.cartoon.tinytips.BaseFragment;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 
 import com.cartoon.tinytips.util.Adapters.Homepage.HomeFragmentAdapter;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepage.View,RadioGroup.OnCheckedChangeListener,ViewPager.OnPageChangeListener{
 
@@ -145,4 +148,5 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
             }
         }
     }
+
 }

@@ -100,7 +100,7 @@
                 android:layout_toStartOf="@+id/Col">
 
                 <Button
-                    android:id="@+id/Cnums_item_recommedn"
+                    android:id="@+id/Rnums_item_recommedn"
                     android:layout_marginRight="3dp"
                     android:layout_width="21dp"
                     android:layout_height="21dp"
@@ -114,7 +114,7 @@
                     android:id="@+id/Ritem_numofrecommend"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/Cnums_item_recommedn"
+                    android:layout_toRightOf="@id/Rnums_item_recommedn"
                     android:layout_marginLeft="2dp"
                     android:gravity="center"
                     android:text="0" />

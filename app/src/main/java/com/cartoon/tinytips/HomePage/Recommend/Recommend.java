@@ -5,8 +5,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.cartoon.tinytips.BaseFragment;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Homepage.HomeRecommendAdapter;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class Recommend extends BaseFragment<RecommendPresenter> implements IRecommend.View{
 
@@ -88,4 +91,5 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
     protected void onPrepare() {
 
     }
+
 }

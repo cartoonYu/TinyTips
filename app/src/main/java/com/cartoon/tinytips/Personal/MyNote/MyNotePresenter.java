@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
@@ -27,7 +29,7 @@ class MyNotePresenter extends BaseActivityPresenter<MyNote> implements IMyNote.P
         model.getMyNoteInformation(new ValueCallBack<Note>() {
             @Override
             public void onSuccess(Note note) {
-
+                Log.d("asd",note.getAuthor());
             }
 
             @Override

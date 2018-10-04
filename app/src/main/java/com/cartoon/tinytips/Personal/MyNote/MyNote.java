@@ -56,7 +56,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @Override
     protected void onPrepare(){
-
+        presenter.initData();
     }
 
     @Override
@@ -73,7 +73,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @Override
     public void initNote(){
         notes=new ArrayList<>();
-        Note n=new Note("asd","java","python","C","2018-8-14");
+        Note n=new Note("null","null","null","null","null");
         for(int i=0;i<20;i++){
             notes.add(n);
         }

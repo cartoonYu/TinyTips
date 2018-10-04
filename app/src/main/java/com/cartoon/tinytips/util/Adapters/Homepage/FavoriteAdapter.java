@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,11 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
 import com.cartoon.tinytips.Note.Comment.Comment;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.ShareNote.ShareNote;
+import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 
@@ -46,6 +50,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         Button commuitenums_item_favorite;
         Button Cnums_item_favorite;
         Button sharenums_item_favorite;
+        RelativeLayout body_item_favorite;
 
         private IOnItemClickListener mListener;
 
@@ -64,6 +69,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             commuitenums_item_favorite= (Button)view.findViewById(R.id.commuitenums_item_favorite);
             Cnums_item_favorite= (Button)view.findViewById(R.id.Cnums_item_favorite);
             sharenums_item_favorite= (Button)view.findViewById(R.id.sharenums_item_favorite);
+            body_item_favorite = (RelativeLayout)view.findViewById(R.id.body_item_favorite);
         }
 
 
@@ -96,6 +102,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 break;
             }
 
+            case R.id.body_item_favorite:{
+                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
+                break;
+            }
+
+            case R.id.Fitem_avatar:{
+                IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
+                break;
+            }
         }
     }
 
@@ -124,6 +139,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.NumOfFavoirtes.setText(""+ FavoriteItem.getNumOfFavoirte());
         holder.time.setText(""+FavoriteItem.getTime());
         holder.NumOfShares.setText(""+FavoriteItem.getNumOfShare());
+        holder.body_item_favorite.setOnClickListener(this);
+        holder.userImages.setOnClickListener(this);
         holder.favoritenums_item_favorite.setOnClickListener(this);
         holder.commuitenums_item_favorite.setOnClickListener(this);
         holder.Cnums_item_favorite.setOnClickListener(this);
