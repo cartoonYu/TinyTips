@@ -1,53 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="44dp"
     android:background="@color/gray">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="12.5dp"
-        android:layout_marginBottom="12.5dp"
-        android:text="0"
-        android:textSize="14sp"
-        android:drawableLeft="@mipmap/note_detail_like"
-        android:drawablePadding="5dp"
-        android:id="@+id/note_detail_like"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="12.5dp"
-        android:layout_marginBottom="12.5dp"
-        android:text="0"
-        android:textSize="14sp"
-        android:drawableLeft="@mipmap/note_detail_comment"
-        android:drawablePadding="5dp"
-        android:id="@+id/note_detail_comment"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/note_detail_like"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="12.5dp"
-        android:layout_marginBottom="12.5dp"
-        android:text="0"
-        android:textSize="14sp"
-        android:drawableLeft="@mipmap/note_detail_forward"
-        android:drawablePadding="5dp"
-        android:id="@+id/note_detail_forward"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/note_detail_comment"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="12.5dp"
-        android:layout_marginBottom="12.5dp"
-        android:text="0"
-        android:textSize="14sp"
-        android:drawableLeft="@mipmap/note_detail_collect"
-        android:drawablePadding="5dp"
-        android:id="@+id/note_detail_collect"/>
-</RelativeLayout>
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/note_detail_bottombarB1"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="100%">
+
+        <TextView
+            app:layout_widthPercent="60%"
+            app:layout_heightPercent="70%"
+            app:layout_marginTopPercent="30%"
+            app:layout_marginLeftPercent="25%"
+            app:layout_marginBottomPercent="30%"
+            android:text="0"
+            android:textSize="14sp"
+            android:drawableLeft="@mipmap/note_detail_like"
+            android:drawablePadding="10dp"
+            android:id="@+id/note_detail_like"/>
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/note_detail_bottombarB2"
+        android:layout_toRightOf="@id/note_detail_bottombarB1"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="100%">
+
+        <TextView
+            app:layout_widthPercent="60%"
+            app:layout_heightPercent="70%"
+            app:layout_marginTopPercent="30%"
+            app:layout_marginLeftPercent="25%"
+            app:layout_marginBottomPercent="30%"
+            android:text="0"
+            android:textSize="14sp"
+            android:drawableLeft="@mipmap/note_detail_comment"
+            android:drawablePadding="5dp"
+            android:id="@+id/note_detail_comment"/>
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/note_detail_bottombarB3"
+        android:layout_toRightOf="@id/note_detail_bottombarB2"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="100%">
+
+        <TextView
+            app:layout_widthPercent="60%"
+            app:layout_heightPercent="70%"
+            app:layout_marginTopPercent="30%"
+            app:layout_marginLeftPercent="25%"
+            app:layout_marginBottomPercent="30%"
+            android:text="0"
+            android:textSize="14sp"
+            android:drawableLeft="@mipmap/note_detail_forward"
+            android:drawablePadding="5dp"
+            android:id="@+id/note_detail_forward"/>
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/note_detail_bottombarB4"
+        android:layout_toRightOf="@id/note_detail_bottombarB3"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="100%">
+
+        <TextView
+            app:layout_widthPercent="60%"
+            app:layout_heightPercent="70%"
+            app:layout_marginTopPercent="30%"
+            app:layout_marginLeftPercent="25%"
+            app:layout_marginBottomPercent="30%"
+            android:text="0"
+            android:textSize="14sp"
+            android:drawableLeft="@mipmap/note_detail_collect"
+            android:drawablePadding="5dp"
+            android:id="@+id/note_detail_collect"/>
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -78,6 +79,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
         mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
         flag= IntentActivity.getIntentData(this,new String("main"), constant.getHomePage());
+
     }
 
     @Override
