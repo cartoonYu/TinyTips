@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2">
 
-    <android.support.percent.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -16,8 +15,8 @@
 
         <RelativeLayout
             android:id="@+id/mainHomepage"
-            app:layout_widthPercent="20%"
-            app:layout_heightPercent="100%" >
+            android:layout_width="72dp"
+            android:layout_height="match_parent" >
 
             <ImageView
                 android:id="@+id/mainHomepageP"
@@ -42,8 +41,8 @@
 
         <RelativeLayout
             android:id="@+id/mainMessage"
-            app:layout_widthPercent="20%"
-            app:layout_heightPercent="100%"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@+id/mainHomepage"
              >
 
@@ -70,24 +69,26 @@
 
         <RelativeLayout
             android:id="@+id/mainAddNote"
-            app:layout_widthPercent="20%"
-            app:layout_heightPercent="100%"
-            android:layout_width="fill_parent"
-            android:gravity="center_horizontal"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@+id/mainMessage" >
 
             <Button
                 android:id="@+id/mainAddNoteB"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:background="@mipmap/bottombar_addnote" />
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="21dp"
+                android:background="@mipmap/bottombar_addnote"
+                android:gravity="center" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/mainDiscover"
-            app:layout_widthPercent="20%"
-            app:layout_heightPercent="100%"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@+id/mainAddNote" >
 
             <ImageView
@@ -113,8 +114,8 @@
 
         <RelativeLayout
             android:id="@+id/mainPersonal"
-            app:layout_widthPercent="20%"
-            app:layout_heightPercent="100%"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@+id/mainDiscover">
 
             <ImageView
@@ -138,14 +139,12 @@
 
 
         </RelativeLayout>
-    </android.support.percent.PercentRelativeLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/mainFragement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottombar"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="-46dp" />
+        android:layout_above="@id/bottombar"/>
 
 </RelativeLayout>

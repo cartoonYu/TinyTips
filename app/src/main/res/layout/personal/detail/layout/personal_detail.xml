@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2">
@@ -81,8 +80,6 @@
                 android:src="@drawable/lead" />
         </RelativeLayout>
 
-
-
         <RelativeLayout
             android:id="@+id/produce_detailPersonal"
             android:layout_width="match_parent"
@@ -112,41 +109,13 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/registerTime_detailPersonal"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:layout_below="@+id/produce_detailPersonal">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_centerVertical="true"
-                android:text="注册时间"
-                android:textColor="#000000"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="2018-10-01" />
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/learnfavorite_detailPersonal"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="1dp"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:layout_below="@+id/registerTime_detailPersonal">
+            android:layout_below="@+id/produce_detailPersonal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -166,51 +135,52 @@
             android:layout_below="@+id/learnfavorite_detailPersonal"
             android:background="@color/white">
 
-            <android.support.percent.PercentRelativeLayout
+            <LinearLayout
                 android:id="@+id/B1"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
                 <Button
                     android:id="@+id/b1"
-                    app:layout_widthPercent="40%"
-                    app:layout_heightPercent="100%"
-                    android:layout_marginLeft="10dp"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
                 <Button
                     android:id="@+id/b2"
-                    app:layout_widthPercent="40%"
-                    app:layout_heightPercent="100%"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_toRightOf="@+id/b1"
+                    android:layout_marginLeft="60dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
-            </android.support.percent.PercentRelativeLayout>
+            </LinearLayout>
 
-            <android.support.percent.PercentRelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/B1">
                 <Button
                     android:id="@+id/b3"
-                    app:layout_widthPercent="40%"
-                    app:layout_heightPercent="100%"
-                    android:layout_marginLeft="10dp"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/b1"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
                 <Button
                     android:id="@+id/b4"
-                    app:layout_widthPercent="40%"
-                    app:layout_heightPercent="100%"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_toRightOf="@+id/b3"
+                    android:layout_marginLeft="60dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
                     android:text=" "/>
-            </android.support.percent.PercentRelativeLayout>
+            </LinearLayout>
 
 
         </RelativeLayout>

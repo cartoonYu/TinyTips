@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="130dp"
     android:background="@color/detail_bg">
 
@@ -57,7 +56,7 @@
             android:textSize="16sp"
             android:text="标题"
             android:textColor="@color/txcolor"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:id="@+id/Fitem_content"
@@ -65,19 +64,18 @@
             android:layout_below="@+id/Fitem_title"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="内容" />
+            android:text="内容"/>
 
     </RelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/body_item_favorite"
         android:background="@color/white">
 
         <RelativeLayout
-            android:id="@+id/item_favorite_b1"
-            app:layout_widthPercent="25%"
+            android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/Cl">
@@ -103,23 +101,21 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/item_favorite_b2"
+            android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:layout_toRightOf="@id/item_favorite_b1"
-            app:layout_widthPercent="25%">
+            android:layout_toStartOf="@+id/Cl">
 
             <Button
                 android:id="@+id/commuitenums_item_favorite"
+                android:layout_marginLeft="15dp"
                 android:layout_width="21dp"
                 android:layout_height="21dp"
+                android:gravity="center"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="4dp"
                 android:background="@drawable/peresonal"
-                android:gravity="center" />
+                android:layout_marginTop="4dp"/>
 
             <TextView
                 android:id="@+id/Fitem_numofrecommend"
@@ -130,11 +126,10 @@
                 android:text="0" />
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/item_favorite_b3"
-            android:layout_toRightOf="@id/item_favorite_b2"
-            app:layout_widthPercent="25%"
+            android:layout_width="90dp"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
 
             <Button
                 android:id="@+id/Cnums_item_favorite"
@@ -156,11 +151,10 @@
                 android:text="0" />
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/item_favorite_b4"
-            android:layout_toRightOf="@id/item_favorite_b3"
-            app:layout_widthPercent="25%"
+            android:layout_width="90dp"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/Cl">
 
             <Button
                 android:id="@+id/sharenums_item_favorite"
@@ -182,6 +176,6 @@
                 android:text="0" />
         </RelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
