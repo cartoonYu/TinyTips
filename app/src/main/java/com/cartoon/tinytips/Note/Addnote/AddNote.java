@@ -2,6 +2,7 @@ package com.cartoon.tinytips.Note.Addnote;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
@@ -42,6 +44,8 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @BindView(R.id.addnote_addtips)
     Button addnote_addtips;
+
+
     private int flag;    //用于判断跳转到主页显示的fragment
     private int selectAthority;
     private int tips;

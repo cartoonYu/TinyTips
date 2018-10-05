@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/detail_bg">
+    android:background="@color/white">
     <include layout="@layout/statusbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,26 +56,19 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <com.cartoon.tinytips.util.ScrollEditText
         android:id="@+id/contentbar"
         android:layout_marginTop="1dp"
         android:layout_below="@id/addnote_addtitlebar"
         android:layout_above="@id/addnote_Bottombar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
-
-        <EditText
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="12sp"
-            android:hint="点此输入内容"
-            android:background="@color/white"
-            android:overScrollMode="always"/>
-    </ScrollView>
+        android:background="@color/white"
+        android:gravity="top"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="点此输入内容"
+        android:textSize="14sp"/>
 
     <include
         layout="@layout/addnote_bottombar"

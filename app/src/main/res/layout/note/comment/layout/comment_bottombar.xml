@@ -5,7 +5,7 @@
     android:layout_height="40dp"
     android:background="@color/white">
 
-    <EditText
+    <com.cartoon.tinytips.util.ScrollEditText
         android:id="@+id/edit_comment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
