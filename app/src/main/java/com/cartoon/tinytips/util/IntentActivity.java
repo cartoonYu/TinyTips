@@ -84,6 +84,7 @@ public class IntentActivity{
     }
 
     private static void intent(Context context,Intent intent){
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
