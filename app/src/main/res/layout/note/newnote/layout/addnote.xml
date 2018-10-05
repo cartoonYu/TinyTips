@@ -60,6 +60,7 @@
         android:id="@+id/contentbar"
         android:layout_marginTop="1dp"
         android:layout_below="@id/addnote_addtitlebar"
+        android:layout_above="@id/addnote_Bottombar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -78,6 +79,7 @@
 
     <include
         layout="@layout/addnote_bottombar"
+        android:id="@+id/addnote_Bottombar"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"

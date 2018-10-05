@@ -7,16 +7,19 @@
 
     <EditText
         android:id="@+id/edit_comment"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/comment_editP"
         android:hint="发表评论"
         android:textSize="14sp"/>
 
     <ImageView
+        android:id="@+id/comment_editP"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/edit_comment"
+        android:layout_alignParentRight="true"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginRight="5dp"
         android:src="@drawable/post_comment"/>
 </RelativeLayout>

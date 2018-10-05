@@ -21,13 +21,13 @@ import butterknife.BindView;
 
 public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscover.View{
 
-    private Major[] major = {new Major(R.drawable.ithlw), new Major( R.drawable.jjgl),
-            new Major(R.drawable.dztx), new Major( R.drawable.zzfl),
-            new Major(R.drawable.gdjt), new Major(R.drawable.yssj),
-            new Major(R.drawable.jxzdh), new Major(R.drawable.hyywx),
-            new Major(R.drawable.jzx), new Major( R.drawable.wy),
-            new Major(R.drawable.wlcl), new Major(R.drawable.hxhj),
-            new Major(R.drawable.sx), new Major( R.drawable.fzfz)};
+    private Major[] major = {new Major(R.drawable.ithlw, R.drawable.jjgl),
+            new Major(R.drawable.dztx,R.drawable.zzfl),
+            new Major(R.drawable.gdjt,R.drawable.yssj),
+            new Major(R.drawable.jxzdh,R.drawable.hyywx),
+            new Major(R.drawable.jzx, R.drawable.wy),
+            new Major(R.drawable.wlcl,R.drawable.hxhj),
+            new Major(R.drawable.sx, R.drawable.fzfz), };
 
     private List<Major> MJList = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
         for (Major one : major ){
             MJList.add(one);
         }
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MajorAdapter(MJList);
         recyclerView.setAdapter(adapter);

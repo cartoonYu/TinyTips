@@ -6,9 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
+import com.cartoon.tinytips.HomePage.Favorite.Favorite;
+import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentAdapter;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
@@ -81,5 +85,11 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
         recyclerView.setLayoutManager(layoutManager);
         adapter = new CommentAdapter(CommentList);
         recyclerView.setAdapter(adapter);
+    }
+
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithoutData(this,Favorite.class);
+        IntentActivity.finishActivity(this);
     }
 }
