@@ -12,7 +12,7 @@
         android:layout_marginLeft="7.5dp"
         android:src="@mipmap/register_authcode"
         android:id="@+id/authcode"/>
-    <EditText
+    <com.cartoon.tinytips.util.UI.ScrollEditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/authcode"
@@ -20,11 +20,11 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@null"
+        android:background="@drawable/coners_bg"
         android:hint="请输入验证码"
         android:textSize="16sp"
         android:textColor="@color/black"
-        android:id="@+id/register_authCode"/>
+        android:id="@+id/register_authCode" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -3,34 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
+    <RelativeLayout
+        android:id="@+id/login_account_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="15dp"
-        android:drawableLeft="@mipmap/login_account"
-        android:drawablePadding="10dp"
-        android:hint="请输入账号/邮箱/手机号码"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:id="@+id/login_account"/>
-    <EditText
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/coners_bg">
+
+        <com.cartoon.tinytips.util.UI.ScrollEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:drawableLeft="@mipmap/login_account"
+            android:drawablePadding="10dp"
+            android:hint="请输入账号/邮箱/手机号码"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/login_account"
+            android:background="@drawable/coners_bg"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/login_password_layout"
+        android:layout_below="@id/login_account_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_account"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:drawableLeft="@mipmap/login_password"
-        android:drawablePadding="10dp"
-        android:hint="请输入密码"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:id="@+id/login_password"/>
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/coners_bg">
+
+        <com.cartoon.tinytips.util.UI.ScrollEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@mipmap/login_password"
+            android:drawablePadding="10dp"
+            android:hint="请输入密码"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/login_password"
+            android:background="@drawable/coners_bg"/>
+
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_below="@id/login_password"
+        android:layout_below="@id/login_password_layout"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"

@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util;
+package com.cartoon.tinytips.util.UI;
 
 import android.content.Context;
 import android.text.Layout;

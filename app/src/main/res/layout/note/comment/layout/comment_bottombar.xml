@@ -2,22 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="90dp"
     android:background="@color/white">
 
-    <com.cartoon.tinytips.util.ScrollEditText
-        android:id="@+id/edit_comment"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@id/comment_editP"
-        android:hint="发表评论"
-        android:textSize="14sp"/>
+        android:background="@drawable/coners_bg"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+
+        <com.cartoon.tinytips.util.UI.ScrollEditText
+            android:id="@+id/edit_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="发表评论:"
+            android:textSize="14sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="top"
+            android:background="@drawable/coners_bg"/>
+
+    </RelativeLayout>
+
 
     <ImageView
         android:id="@+id/comment_editP"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginRight="5dp"

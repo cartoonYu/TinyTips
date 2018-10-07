@@ -10,6 +10,16 @@
         android:layout_alignParentTop="true"
         layout="@layout/statusbar"
         android:id="@+id/statusBar"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_below="@id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/app_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +49,7 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_findPassword"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
         layout="@layout/login_anotherlogin"/>
 </RelativeLayout>

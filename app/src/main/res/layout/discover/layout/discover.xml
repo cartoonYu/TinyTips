@@ -27,7 +27,7 @@
             android:layout_marginLeft="3dp"
             android:src="@mipmap/personal_mynote_search"/>
         
-        <com.cartoon.tinytips.util.ScrollEditText
+        <com.cartoon.tinytips.util.UI.ScrollEditText
             android:layout_toRightOf="@id/discover_seachP"
             android:layout_width="match_parent"
             android:layout_height="20dp"

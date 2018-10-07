@@ -45,7 +45,7 @@
         android:background="@color/white"
         android:orientation="horizontal">
 
-        <EditText
+        <com.cartoon.tinytips.util.UI.ScrollEditText
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -56,7 +56,7 @@
 
     </LinearLayout>
 
-    <com.cartoon.tinytips.util.ScrollEditText
+    <com.cartoon.tinytips.util.UI.ScrollEditText
         android:id="@+id/contentbar"
         android:layout_marginTop="1dp"
         android:layout_below="@id/addnote_addtitlebar"

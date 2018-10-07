@@ -12,13 +12,13 @@
         android:layout_marginLeft="10dp"
         android:src="@mipmap/register_phonenum"
         android:id="@+id/phoneNum"/>
-    <EditText
+    <com.cartoon.tinytips.util.UI.ScrollEditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/phoneNum"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
-        android:background="@null"
+        android:background="@drawable/coners_bg"
         android:hint="请输入手机号码/邮箱"
         android:textSize="16sp"
         android:textColor="@color/black"

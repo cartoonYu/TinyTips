@@ -16,15 +16,15 @@
         android:theme="@style/AppTheme" >
 
         <activity android:name=".Register.Register">
+
+        </activity>
+
+        <activity android:name=".Login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".Login.Login">
-
         </activity>
 
         <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
@@ -40,7 +40,9 @@
         <activity android:name=".Note.Addnote.AddNote"/>
         <activity android:name=".Note.Addnote.Athority.Athority"/>
         <activity android:name=".Note.Details.NoteDetail"/>
-        <activity android:name=".Note.Comment.Comment"/>
+        <activity android:name=".Note.Comment.Comment"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
         <activity android:name=".Note.ShareNote.ShareNote"/>
 
         <activity android:name=".Personal.MyNote.MyNote"/>
