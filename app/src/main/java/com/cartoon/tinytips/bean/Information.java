@@ -2,27 +2,40 @@ package com.cartoon.tinytips.bean;
 
 import android.graphics.Bitmap;
 
-import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
 
-public class PersonalInformation implements Serializable{
+/**
+ * @author cartoon
+ * @version 1.0
+ *
+ * description
+ * 个人信息bean类
+ *
+ * notice
+ * 1.属性sex，true为男，false为女
+ * 2.属性interest转换成String以符号$进行分隔
+ */
 
-    private Bitmap headPortrait;  //头像
+public class Information {
 
-    private String headPortraitPath;   //头像的存储路径
+    private long id;      //主键，个人信息的唯一标识，自增长
 
-    private String nickName;  //昵称
-
-    private String account;   //账号
-
-    private long id;      //主键
-
-    private List<String> interesting;   //兴趣
+    private String account;   //主键，账号
 
     private String password;  //密码
 
+    private String date;     //注册时间
+
+    private Bitmap headPortrait;  //头像
+
+    private String headPortraitPath;  //头像
+
+
+    private String nickName;  //昵称
+
     private boolean sex;     //性别
+
+    private List<String> interest;   //兴趣
 
     private String school;    //高校
 
@@ -32,9 +45,8 @@ public class PersonalInformation implements Serializable{
 
     private String resume;    //个人简介
 
-    public PersonalInformation(){
-        Random rId=new Random(60);
-        id=(rId.nextLong()*1000);
+    public Information(){
+        setSex(true);
     }
 
     public long getId() {
@@ -49,8 +61,8 @@ public class PersonalInformation implements Serializable{
         return sex;
     }
 
-    public List<String> getInteresting() {
-        return interesting;
+    public List<String> getInterest() {
+        return interest;
     }
 
     public String getAccount() {
@@ -59,6 +71,10 @@ public class PersonalInformation implements Serializable{
 
     public Bitmap getHeadPortrait() {
         return headPortrait;
+    }
+
+    public String getHeadPortraitPath() {
+        return headPortraitPath;
     }
 
     public String getPassword() {
@@ -81,12 +97,20 @@ public class PersonalInformation implements Serializable{
         return resume;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setAccount(String account) {
         this.account = account;
     }
 
     public void setHeadPortrait(Bitmap headPortrait) {
         this.headPortrait = headPortrait;
+    }
+
+    public void setHeadPortraitPath(String headPortraitPath) {
+        this.headPortraitPath = headPortraitPath;
     }
 
     public void setBackground(String background) {
@@ -97,8 +121,8 @@ public class PersonalInformation implements Serializable{
         this.major = major;
     }
 
-    public void setInteresting(List<String> interesting) {
-        this.interesting = interesting;
+    public void setInterest(List<String> interest) {
+        this.interest = interest;
     }
 
     public void setNickName(String nickName) {
@@ -121,12 +145,12 @@ public class PersonalInformation implements Serializable{
         this.sex = sex;
     }
 
-    public void setHeadPortraitPath(String path){
-        this.headPortraitPath=path;
+    public String getDate() {
+        return date;
     }
 
-    private String getHeadPortraitPath(){
-        return headPortraitPath;
-    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

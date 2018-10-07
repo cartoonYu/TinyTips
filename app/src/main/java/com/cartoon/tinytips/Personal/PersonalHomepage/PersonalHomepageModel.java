@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Personal.PersonalHomepage;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 
 public class PersonalHomepageModel implements IPersonalHomepage.Model {
 
@@ -12,7 +12,7 @@ public class PersonalHomepageModel implements IPersonalHomepage.Model {
     }
 
     @Override
-    public void getHomepagePersonalInformation(ValueCallBack<PersonalInformation> callBack) {
+    public void getHomepagePersonalInformation(ValueCallBack<Information> callBack) {
 
     }
 

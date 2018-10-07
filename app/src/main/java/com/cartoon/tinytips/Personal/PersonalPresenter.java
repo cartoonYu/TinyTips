@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Personal;
 
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.ShowToast;
 
 class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPersonal.Presenter {
@@ -18,9 +18,9 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
 
     @Override
     public void initData(){
-        model.getPersonalInformation(new ValueCallBack<PersonalInformation>() {
+        model.getPersonalInformation(new ValueCallBack<Information>() {
             @Override
-            public void onSuccess(PersonalInformation personalInformation) {
+            public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
             }
 

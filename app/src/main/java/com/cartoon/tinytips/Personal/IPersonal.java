@@ -3,7 +3,7 @@ package com.cartoon.tinytips.Personal;
 import android.graphics.Bitmap;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 
 interface IPersonal {
 
@@ -16,7 +16,7 @@ interface IPersonal {
     }
 
     interface Model{
-        void getPersonalInformation(ValueCallBack<PersonalInformation> callBack);   //获取个人信息
+        void getPersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
     }
 
 }

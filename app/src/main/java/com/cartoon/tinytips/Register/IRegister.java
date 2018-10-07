@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.Register;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 
 interface IRegister {
 
@@ -19,7 +19,7 @@ interface IRegister {
     interface Model{
         void setAuthCode(String authCode);    //将验证码从presenter传递到model
         void verifyAuthCode(ValueCallBack<Boolean> callBack);    //验证验证码的真伪
-        void setInformation(PersonalInformation information);   //将账号密码从presenter传递到model
+        void setInformation(Information information);   //将账号密码从presenter传递到model
         void verifyInformation(ValueCallBack<String> callBack);  //验证账号
     }
 }

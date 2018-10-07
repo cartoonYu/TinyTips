@@ -1,29 +1,38 @@
-package com.cartoon.tinytips.util.network;
+package com.cartoon.tinytips.util.JSON;
 
 import android.util.Log;
 
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 /**
- * json文件的生成与解析
+ * @author cartoon
+ * @version 1.0
+ *
+ * description
+ * JSONObject与Java Bean的相互转化
+ *
+ * notice
+ * 1.本类为单例，对象通过调用静态方法getInstance获取
  */
 
-public class JSONOperation {
+public class JSONObjectOperation {
 
-    private static volatile JSONOperation operation;
+    private static volatile JSONObjectOperation operation;
 
-    public static JSONOperation getInstance(){
+    public static JSONObjectOperation getInstance(){
         if(JudgeEmpty.isEmpty(operation)){
-            synchronized (JSONOperation.class){
+            synchronized (JSONObjectOperation.class){
                 if(JudgeEmpty.isEmpty(operation)){
-                    operation=new JSONOperation();
+                    operation=new JSONObjectOperation();
                 }
             }
         }
@@ -163,46 +172,93 @@ public class JSONOperation {
     }
 
     /**
-     * 将传入的personalInformation转换成json文件
-     * @param personalInformation
+     * 将传入的Information转换成json文件
+     * @param information
      * @return
      */
-    public JSONObject setPersonalInformationToJSON(PersonalInformation personalInformation){
-        if(JudgeEmpty.isEmpty(personalInformation)){
+    public JSONObject setInformationToJSON(Information information,String method){
+        if(JudgeEmpty.isEmpty(information)){
             return null;
         }
         else{
-            JSONObject jsonObject=new JSONObject();
+            JSONObject result=new JSONObject();
             try{
-                jsonObject.put("personalInformation",personalInformation);
+                result.put("method",method);
+                if(information.getId()!=0){
+                    result.put("id",information.getId());
+                }
+                result.put("account",information.getAccount());
+                result.put("password",information.getPassword());
+                result.put("date",information.getDate());
+                result.put("headPortraitPath",information.getHeadPortrait());
+                result.put("nickName",information.getNickName());
+                result.put("sex",information.isSex());
+                result.put("interest",information.getInterest());
+                result.put("school",information.getSchool());
+                result.put("major",information.getMajor());
+                result.put("background",information.getBackground());
+                result.put("resume",information.getResume());
             }catch(JSONException e){
-                Log.e("jsonObjectException","将personalInformation转换json文件出现错误");
+                Log.e("jsonObjectException","将Information转换json文件出现错误");
                 e.printStackTrace();
             }
-            return jsonObject;
+            return result;
         }
     }
 
     /**
-     * 获取传入json文件中的personalInformation值
+     * 获取传入json文件中的Information值
      * @param object
      * @return
      */
-    public PersonalInformation getPersonalInnformationFromJSON(JSONObject object){
+    public Information getInformationFromJSON(JSONObject object){
         if(JudgeEmpty.isEmpty(object)){
             return null;
         }
         else{
-            PersonalInformation personalInformation=new PersonalInformation();
+            Information information=new Information();
             try{
-                if(object.get("personalInformation") instanceof PersonalInformation){
-                    personalInformation=(PersonalInformation) object.get("personalInformation");
+                if(object.has("id")){
+                    information.setId(object.getLong("id"));
+                }
+                if(object.has("account")){
+                    information.setAccount(object.getString("account"));
+                }
+                if(object.has("password")){
+                    information.setPassword(object.getString("password"));
+                }
+                if(object.has("date")){
+                    information.setDate(object.getString("date"));
+                }
+                if(object.has("headPortraitPath")){
+                    information.setHeadPortraitPath(object.getString("headPortraitPath"));
+                }
+                if(object.has("nickName")){
+                    information.setNickName(object.getString("nickName"));
+                }
+                if(object.has("sex")){
+                    information.setSex(object.getBoolean("sex"));
+                }
+                /*if(object.has("interest")){
+                    information.setInterest((List<String>) object.get("interest"));
+                }*/
+                if(object.has("school")){
+                    information.setSchool(object.getString("school"));
+                }
+                if(object.has("major")){
+                    information.setMajor(object.getString("major"));
+                }
+                if(object.has("background")){
+                    information.setBackground(object.getString("background"));
+                }
+                if(object.has("resume")){
+                    information.setResume(object.getString("resume"));
                 }
             }catch(JSONException e){
-                Log.e("jsonObjectException","将json文件转换personalInformation出现错误");
+                Log.e("jsonObjectException","将json文件转换Information出现错误");
                 e.printStackTrace();
             }
-            return personalInformation;
+            return information;
         }
     }
 
@@ -229,6 +285,6 @@ public class JSONOperation {
         }
     }
 
-    private JSONOperation(){
+    private JSONObjectOperation(){
     }
 }

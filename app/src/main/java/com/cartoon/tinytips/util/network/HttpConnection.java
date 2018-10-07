@@ -2,8 +2,10 @@ package com.cartoon.tinytips.util.network;
 
 import android.util.Log;
 
+import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +17,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HttpConnection implements Runnable{
 
@@ -32,12 +36,14 @@ public class HttpConnection implements Runnable{
 
     private InputStream inputStream;
 
-    private JSONObject object;   //服务器返回数据
+    private JSONObject object;
 
-    private StringBuffer result;
+    private JSONArray data;
+
+    private String result;
 
     private HttpConnection(){
-        result=new StringBuffer();
+        result=new String();
     }
 
     public static HttpConnection getHttpConnection(){
@@ -57,52 +63,54 @@ public class HttpConnection implements Runnable{
      * @param method 请求的方法，只能是POST
      * @param object 需要发送到服务器的数据
      */
-    public void sendData(String url,String method, JSONObject object){
+    public void sendJSONObject(String url,String method, JSONObject object){
         this.url=url;
         this.method=method;
         this.object=object;
+        List<JSONObject> temp=new ArrayList<>();
+        temp.add(object);
+        data=JSONArrayOperation.getOperation().setObjectToArray(temp);
+    }
+
+    public void sendJSONArray(String url,String method,JSONArray array){
+        this.url=url;
+        this.method=method;
+        this.data=array;
     }
 
     @Override
     public void run(){
+        StringBuffer buffer=new StringBuffer();
         getURLConnection(url,method);
         if(JudgeEmpty.isNotEmpty(urlConnection)) {
             getOutputStream(urlConnection);
             if (JudgeEmpty.isNotEmpty(outputStream)) {
                 try{
-
-                    String temp=object.toString();
+                    String temp=data.toString();
                     outputStream.write(temp.getBytes());
                     outputStream.close();
                     getInputStream(urlConnection);
                     BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
                     String line;
                     while((line=reader.readLine())!=null){
-                        Log.d("asd",line);
-                        result.append(line);
+                        buffer.append(line);
                     }
-                    Log.d("asd",result.toString());
                 }catch (IOException e){
                     e.printStackTrace();
                     Log.e("networkException",new String("写入错误"));
                 }
             }
         }
-
+        result=buffer.toString();
     }
 
     /**
      * 将服务器返回的结果转换成JSON文件返回
      * @return
      */
-    public JSONObject getResult(){
-        Log.d("asd",result.toString());
-        try {
-            return new JSONObject(result.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String getResult(){
+        Log.d("asd",result);
+        return result;
     }
 
     /**

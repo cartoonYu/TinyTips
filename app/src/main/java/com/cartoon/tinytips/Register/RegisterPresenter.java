@@ -1,14 +1,9 @@
 package com.cartoon.tinytips.Register;
 
-import android.print.PrinterId;
-
 import com.cartoon.tinytips.BaseActivityPresenter;
-import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.PersonalInformation;
-import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.ShowToast;
-import com.cartoon.tinytips.util.TinyTipsApplication;
 
 class RegisterPresenter extends BaseActivityPresenter<Register> implements IRegister.Presenter{
 
@@ -27,7 +22,7 @@ class RegisterPresenter extends BaseActivityPresenter<Register> implements IRegi
         model.verifyAuthCode(new ValueCallBack<Boolean>() {
             @Override
             public void onSuccess(Boolean aBoolean) {
-                PersonalInformation information=new PersonalInformation();
+                Information information=new Information();
                 information.setAccount(view.getAccount());
                 information.setPassword(view.getPassword());
                 model.setInformation(information);

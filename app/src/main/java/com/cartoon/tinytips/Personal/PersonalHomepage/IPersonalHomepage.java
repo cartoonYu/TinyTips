@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Personal.PersonalHomepage;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.PersonalInformation;
+import com.cartoon.tinytips.bean.Information;
 
 interface IPersonalHomepage {
     interface View{
@@ -15,6 +15,6 @@ interface IPersonalHomepage {
 
     interface Model{
         void getHomepageInformation(ValueCallBack<Note> callBack);   //获取个人笔记
-        void getHomepagePersonalInformation(ValueCallBack<PersonalInformation> callBack);   //获取个人信息
+        void getHomepagePersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
     }
 }
