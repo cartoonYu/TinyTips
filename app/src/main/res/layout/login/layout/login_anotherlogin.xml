@@ -8,18 +8,23 @@
         android:layout_height="1.5dp"
         android:background="@color/gray"
         android:layout_marginTop="10dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/layout_text"/>
     <TextView
+        android:id="@+id/layout_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="其他登录方式"
         android:textSize="14sp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
     <View
         android:layout_width="130dp"
         android:layout_height="1.5dp"
         android:background="@color/gray"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/layout_text"/>
     <RelativeLayout
         android:layout_width="62dp"
         android:layout_height="62dp"

@@ -23,8 +23,8 @@
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/statusBar"
-        android:layout_marginTop="120dp"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="50dp"
         layout="@layout/login_information"
         android:id="@+id/information"/>
     <TextView
