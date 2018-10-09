@@ -7,4 +7,6 @@
 .DS_Store
 /build
 /captures
+/src/main/assets/url_local.properties
+/src/main/assets/url_server.properties
 .externalNativeBuild

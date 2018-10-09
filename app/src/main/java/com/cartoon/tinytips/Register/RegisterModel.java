@@ -7,7 +7,9 @@ import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.ShowToast;
+import com.cartoon.tinytips.util.network.HttpConstant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class RegisterModel implements IRegister.Model {
@@ -39,10 +41,7 @@ class RegisterModel implements IRegister.Model {
         //callBack.onSuccess(new String("注册成功"));
         Information information=new Information();
         information.setNickName("cartoon");
-        information.setAccount("cartoon");
-        Information a=new Information();
-        a.setNickName("cartoon");
-        OperateInformation operate=OperateInformation.getOperate();
-        List<Information> result=operate.query(a);
+        OperateInformation op=OperateInformation.getOperate();
+        List<Information> list=op.query(information);
     }
 }

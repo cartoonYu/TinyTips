@@ -93,6 +93,7 @@ public class HttpConnection implements Runnable{
                     BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
                     String line;
                     while((line=reader.readLine())!=null){
+                        Log.d("asd",line);
                         buffer.append(line);
                     }
                 }catch (IOException e){
@@ -109,7 +110,6 @@ public class HttpConnection implements Runnable{
      * @return
      */
     public String getResult(){
-        Log.d("asd",result);
         return result;
     }
 

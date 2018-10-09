@@ -1,10 +1,11 @@
 package com.cartoon.tinytips.util.network;
 
 import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.TinyTipsApplication;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -20,27 +21,32 @@ import java.util.Properties;
 
 public class HttpConstant {
 
-    private String address;  //原始项目地址
+    private Properties properties;
 
-    private String URL_Comment;    //评论
-
-    private String URL_CommentDetails;   //评论详情
-
-    private String URL_Note;     //笔记
-
-    private String URL_Information;   //个人信息
-
-    private String URL_Text;
+    private String filePath;
 
     private static volatile HttpConstant constant;
 
     private HttpConstant(){
-        address=new String("http://192.168.31.29:8080/TinyTipsWEB/");
-        URL_Comment=new StringBuilder(address).append("Comment").toString();
-        URL_CommentDetails=new StringBuilder(address).append("CommentDetails").toString();
-        URL_Note=new StringBuilder(address).append("Note").toString();
-        URL_Information=new StringBuilder(address).append("Information").toString();
-        URL_Text=new StringBuilder(address).append("Text").toString();
+        setFilePath();
+        setProperties();
+    }
+
+    private void setProperties() {
+        InputStream stream=null;
+        properties=new Properties();
+        try {
+            stream=TinyTipsApplication.getContext().getAssets().open(filePath);
+            properties.load(stream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setFilePath() {
+        filePath=new String("url_local.properties");
     }
 
     public static HttpConstant getConstant(){
@@ -55,23 +61,24 @@ public class HttpConstant {
     }
 
     public String getURL_Comment() {
-        return URL_Comment;
+        return properties.getProperty("comment");
     }
 
     public String getURL_CommentDetails() {
-        return URL_CommentDetails;
+        return properties.getProperty("commentDetails");
     }
 
     public String getURL_Note() {
-        return URL_Note;
+        return properties.getProperty("note");
     }
 
     public String getURL_Information() {
-        return URL_Information;
+        return properties.getProperty("information");
     }
 
     public String getURL_Text() {
-        return URL_Text;
+        return properties.getProperty("text");
     }
+
 
 }
