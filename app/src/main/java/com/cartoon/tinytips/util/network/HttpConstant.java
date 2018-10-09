@@ -16,7 +16,8 @@ import java.util.Properties;
  * 服务器地址管理
  *
  * notice
- * 1.本类为单例，对象通过调用静态方法getConstant获取
+ * 1.本类为单例
+ * 2.对象通过调用静态方法getConstant获取
  */
 
 public class HttpConstant {
