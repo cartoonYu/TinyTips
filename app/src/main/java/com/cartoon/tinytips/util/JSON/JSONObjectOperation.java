@@ -28,6 +28,11 @@ public class JSONObjectOperation {
 
     private static volatile JSONObjectOperation operation;
 
+    /**
+     * 获取本类对象
+     *
+     * @return
+     */
     public static JSONObjectOperation getInstance(){
         if(JudgeEmpty.isEmpty(operation)){
             synchronized (JSONObjectOperation.class){
@@ -40,7 +45,9 @@ public class JSONObjectOperation {
     }
 
     /**
+     * 功能
      * 将传入的comment转换成json文件
+     *
      * @param comment
      * @return
      */
@@ -172,7 +179,16 @@ public class JSONObjectOperation {
     }
 
     /**
-     * 将传入的Information转换成json文件
+     * 功能
+     * 将传入的Information对象转换成json文件
+     *
+     * 使用方法
+     * 1.传入Information对象以及对数据库操作的类型
+     * 2.通过返回值获取转换的JSON文件
+     *
+     * 注意
+     * 1.传入的method必须是：add，delete，query，update
+     *
      * @param information
      * @return
      */
@@ -207,7 +223,15 @@ public class JSONObjectOperation {
     }
 
     /**
+     * 功能
      * 获取传入json文件中的Information值
+     *
+     * 使用方法
+     * 1.传入携带个人信息的JSON文件
+     * 2.通过返回值获取转换的Information对象
+     *
+     * 注意
+     *
      * @param object
      * @return
      */
@@ -263,7 +287,15 @@ public class JSONObjectOperation {
     }
 
     /**
+     * 功能
      * 获取传入json文件中的结果,用于解析post数据到服务器中返回的json文件
+     *
+     * 使用方法
+     * 1.传入携带结果的JSON文件
+     * 2.通过返回值获取结果
+     *
+     * 注意
+     *
      * @param object
      * @return
      */

@@ -38,10 +38,6 @@ class RegisterModel implements IRegister.Model {
 
     @Override
     public void verifyInformation(ValueCallBack<String> callBack){
-        //callBack.onSuccess(new String("注册成功"));
-        Information information=new Information();
-        information.setNickName("cartoon");
-        OperateInformation op=OperateInformation.getOperate();
-        List<Information> list=op.query(information);
+        callBack.onSuccess(new String("注册成功"));
     }
 }

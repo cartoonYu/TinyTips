@@ -10,10 +10,15 @@ import java.util.Properties;
 
 /**
  * @author cartoon
- * @version 1.1
+ * @version 1.2
  *
  * description
- * 服务器地址管理
+ * 1.服务器地址管理
+ * 2.数据来源为资源文件
+ *
+ * how to use
+ * 1.需要切换本地调试以及远程服务器连接，修改filePath的值
+ * 2.ip地址通过getter获取
  *
  * notice
  * 1.本类为单例
@@ -47,7 +52,7 @@ public class HttpConstant {
     }
 
     private void setFilePath() {
-        filePath=new String("url_local.properties");
+        filePath=new String("url_server.properties");
     }
 
     public static HttpConstant getConstant(){

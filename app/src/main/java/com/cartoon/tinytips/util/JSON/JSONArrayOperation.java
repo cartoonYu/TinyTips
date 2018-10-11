@@ -24,6 +24,11 @@ public class JSONArrayOperation {
 
     private static volatile JSONArrayOperation operation;
 
+    /**
+     * 获取本类对象
+     *
+     * @return
+     */
     public static JSONArrayOperation getOperation(){
         if(JudgeEmpty.isEmpty(operation)){
             synchronized (JSONArrayOperation.class){
@@ -61,7 +66,7 @@ public class JSONArrayOperation {
     /**
      * 功能
      * 将JSONObject转化成JSONArray
-     * <p>
+     *
      * 使用方法
      * 1.传入JSONObject集合
      * 2.通过返回值获取JSONArray对象
