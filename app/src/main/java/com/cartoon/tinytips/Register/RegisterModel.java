@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.Register;
 
+import android.graphics.Path;
 import android.util.Log;
 
 import com.cartoon.tinytips.ValueCallBack;
@@ -38,6 +39,14 @@ class RegisterModel implements IRegister.Model {
 
     @Override
     public void verifyInformation(ValueCallBack<String> callBack){
-        callBack.onSuccess(new String("注册成功"));
+        //callBack.onSuccess(new String("注册成功"));
+        Information information=new Information();
+        information.setAccount("dfffwfw");
+        List<String> list=new ArrayList<>();
+        list.add("grgrg");
+        list.add("hrthtrh");
+        information.setInterest(list);
+        OperateInformation op=OperateInformation.getOperate();
+        List<Information> result=op.query(information);
     }
 }

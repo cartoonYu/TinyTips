@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.bean.Operate;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
@@ -159,7 +161,6 @@ public class OperateInformation {
         Thread thread=new Thread(connection);
         thread.start();
         JSONArray array=null;
-
         try {
             thread.join();
             array=new JSONArray(connection.getResult());
