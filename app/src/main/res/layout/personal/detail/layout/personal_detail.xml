@@ -43,14 +43,23 @@
                 android:textSize="15sp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avarar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:layout_alignParentEnd="true"
+                android:layout_toLeftOf="@id/avarar_lead"
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:src="@drawable/nav_icon" />
 
+            <ImageView
+                android:id="@+id/avarar_lead"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/lead" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -72,7 +81,17 @@
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/nickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toLeftOf="@id/name_lead"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
             <ImageView
+                android:id="@+id/name_lead"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
@@ -100,8 +119,17 @@
                 android:text="简介"
                 android:textColor="#000000"
                 android:textSize="15sp" />
+            <TextView
+                android:id="@+id/Produce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toLeftOf="@id/produce_lead"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
 
             <ImageView
+                android:id="@+id/produce_lead"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
@@ -135,7 +163,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="40dp"
                 android:text="2018-10-01" />
         </RelativeLayout>
 
@@ -232,7 +260,17 @@
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/School"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toLeftOf="@id/school_lead"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
             <ImageView
+                android:id="@+id/school_lead"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
@@ -260,7 +298,17 @@
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/Major"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toLeftOf="@id/Major_lead"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
             <ImageView
+                android:id="@+id/Major_lead"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
@@ -288,7 +336,17 @@
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/Degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_toLeftOf="@id/Degree_lead"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
             <ImageView
+                android:id="@+id/Degree_lead"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"

@@ -19,7 +19,7 @@ class PersonalModel implements IPersonal.Model {
     @Override
     public void getPersonalInformation(ValueCallBack<Information> callBack){
         Information information=new Information();
-        Bitmap headPro=BitmapFactory.decodeResource(TinyTipsApplication.getContext().getResources(), R.mipmap.back_black);
+        Bitmap headPro=BitmapFactory.decodeResource(TinyTipsApplication.getContext().getResources(), R.drawable.nav_icon);
         if(JudgeEmpty.isEmpty(headPro)){
 
         }

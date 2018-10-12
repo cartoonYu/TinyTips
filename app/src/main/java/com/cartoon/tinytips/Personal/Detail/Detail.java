@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.Detail;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,6 +27,24 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
+    @BindView(R.id.nickName)
+    TextView nickName;
+
+    @BindView(R.id.Produce)
+    TextView Resume;
+
+    @BindView(R.id.School)
+    TextView School;
+
+    @BindView(R.id.Major)
+    TextView Major;
+
+    @BindView(R.id.Degree)
+    TextView Degree;
+
+    @BindView(R.id.avarar)
+    de.hdodenhof.circleimageview.CircleImageView avarar;
+
     @Override
     protected DetailPresenter initPresent(){
         return new DetailPresenter(this);
@@ -44,7 +63,7 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @Override
     protected void onPrepare(){
-
+        presenter.initData();
     }
 
     @Override
@@ -68,4 +87,33 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         IntentActivity.finishActivity(this);
     }
 
+    @Override
+    public void setHeadPro(Bitmap headPro) {
+        this.avarar.setImageBitmap(headPro);
+    }
+
+    @Override
+    public void setNickName(String name) {
+        this.nickName.setText(name);
+    }
+
+    @Override
+    public void setResume(String resume) {
+        this.Resume.setText(resume);
+    }
+
+    @Override
+    public void setSchool(String school) {
+        this.School.setText(school);
+    }
+
+    @Override
+    public void setMajor(String major) {
+        this.Major.setText(major);
+    }
+
+    @Override
+    public void setDegree(String degree) {
+        this.Degree.setText(degree);
+    }
 }

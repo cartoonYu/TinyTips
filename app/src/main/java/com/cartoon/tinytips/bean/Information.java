@@ -51,6 +51,8 @@ public class Information {
 
     private String NumOfFans;    //粉丝数量
 
+    private String Degree;  //设置学历
+
     public Information(){
         setSex(true);
     }
@@ -115,6 +117,13 @@ public class Information {
         return NumOfFans;
     }
 
+    public String getDegree() {
+        return Degree;
+    }
+
+    public void setDegree(String degree) {
+        Degree = degree;
+    }
 
     public void setNumOfNote(String numOfNote) {
         NumOfNote = numOfNote;
