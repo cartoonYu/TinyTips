@@ -22,6 +22,10 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
             @Override
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
+                view.setNotes(personalInformation.getNumOfNote());
+                view.setFans(personalInformation.getNumOfFans());
+                view.setAttentions(personalInformation.getNumOfAttentions());
+                view.setNickName(personalInformation.getNickName());
             }
 
             @Override

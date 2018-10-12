@@ -2,6 +2,7 @@ package com.cartoon.tinytips.Personal;
 
 import android.graphics.Bitmap;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,6 +34,14 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @BindView(R.id.name)
     TextView nickName;
 
+    @BindView(R.id.personal_notes)
+    Button notes;
+
+    @BindView(R.id.personal_fans)
+    Button fans;
+
+    @BindView(R.id.personal_attention)
+    Button attentions;
 
     @Override
     protected PersonalPresenter initPresent(){
@@ -97,5 +106,25 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @Override
     public void setHeadPro(Bitmap headPro){
         this.headPro.setImageBitmap(headPro);
+    }
+
+    @Override
+    public void setNotes(String notes) {
+        this.notes.setText(notes);
+    }
+
+    @Override
+    public void setAttentions(String attentions) {
+        this.attentions.setText(attentions);
+    }
+
+    @Override
+    public void setFans(String fans) {
+        this.fans.setText(fans);
+    }
+
+    @Override
+    public void setNickName(String name){
+        this.nickName.setText(name);
     }
 }

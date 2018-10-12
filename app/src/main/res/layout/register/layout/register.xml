@@ -10,10 +10,10 @@
         layout="@layout/statusbar"
         android:id="@+id/statusbar"/>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_below="@id/statusbar"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:background="@mipmap/register_delete"/>
     <include

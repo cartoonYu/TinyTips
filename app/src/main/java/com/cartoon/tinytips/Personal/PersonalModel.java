@@ -10,6 +10,11 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 
 class PersonalModel implements IPersonal.Model {
+    private String NumOfNote;
+
+    private String NumOfAttentions;
+
+    private String NumOfFans;
 
     @Override
     public void getPersonalInformation(ValueCallBack<Information> callBack){
@@ -19,7 +24,15 @@ class PersonalModel implements IPersonal.Model {
 
         }
         else{
+            NumOfAttentions = "2";
+            NumOfFans = "2";
+            NumOfNote = "2";
+
             information.setHeadPortrait(headPro);
+            information.setNumOfNote("笔记  "+NumOfNote);
+            information.setNumOfFans("粉丝  "+NumOfFans);
+            information.setNumOfAttentions("关注  "+NumOfAttentions);
+            information.setNickName("AlphaCat");
             callBack.onSuccess(information);
         }
     }

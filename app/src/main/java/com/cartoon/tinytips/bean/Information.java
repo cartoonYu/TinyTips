@@ -45,6 +45,12 @@ public class Information {
 
     private String resume;    //个人简介
 
+    private String NumOfNote;   //个人笔记数量
+
+    private String NumOfAttentions;  //关注人数量
+
+    private String NumOfFans;    //粉丝数量
+
     public Information(){
         setSex(true);
     }
@@ -95,6 +101,31 @@ public class Information {
 
     public String getResume() {
         return resume;
+    }
+
+    public String getNumOfAttentions() {
+        return NumOfAttentions;
+    }
+
+    public String getNumOfNote() {
+        return NumOfNote;
+    }
+
+    public String getNumOfFans() {
+        return NumOfFans;
+    }
+
+
+    public void setNumOfNote(String numOfNote) {
+        NumOfNote = numOfNote;
+    }
+
+    public void setNumOfFans(String numOfFans) {
+        NumOfFans = numOfFans;
+    }
+
+    public void setNumOfAttentions(String numOfAttentions) {
+        NumOfAttentions = numOfAttentions;
     }
 
     public void setId(long id) {
