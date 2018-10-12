@@ -52,7 +52,7 @@ public class HttpConstant {
     }
 
     private void setFilePath() {
-        filePath=new String("url_local.properties");
+        filePath=new String("url_server.properties");
     }
 
     public static HttpConstant getConstant(){
