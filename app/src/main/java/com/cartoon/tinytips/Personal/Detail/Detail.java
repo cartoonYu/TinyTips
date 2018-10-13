@@ -42,6 +42,9 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     @BindView(R.id.Degree)
     TextView Degree;
 
+    @BindView(R.id.personal_detail_registerData)
+    TextView registerData;
+
     @BindView(R.id.avarar)
     de.hdodenhof.circleimageview.CircleImageView avarar;
 
@@ -115,5 +118,10 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     @Override
     public void setDegree(String degree) {
         this.Degree.setText(degree);
+    }
+
+    @Override
+    public void setRegisterData(String data) {
+        this.registerData.setText(data);
     }
 }

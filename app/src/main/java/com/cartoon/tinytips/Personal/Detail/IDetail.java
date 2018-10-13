@@ -13,6 +13,7 @@ interface IDetail {
         void setSchool(String school);    //设置学习
         void setMajor(String major);      //设置专业
         void setDegree(String degree);    //设置学历
+        void setRegisterData(String data);  //设置注册日期
     }
 
     interface Presenter{

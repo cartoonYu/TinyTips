@@ -159,6 +159,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/personal_detail_registerData"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"

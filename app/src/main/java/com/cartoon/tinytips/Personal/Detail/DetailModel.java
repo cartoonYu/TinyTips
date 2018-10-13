@@ -25,6 +25,7 @@ public class DetailModel implements IDetail.Model {
             information.setSchool("五邑大学");
             information.setResume("我是简介哦");
             information.setDegree("本科");
+            information.setDate("2018-9-28");
             callBack.onSuccess(information);
         }
     }

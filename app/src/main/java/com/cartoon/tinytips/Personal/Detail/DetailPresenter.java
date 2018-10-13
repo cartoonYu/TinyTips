@@ -28,6 +28,7 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
                 view.setMajor(personalInformation.getMajor());
                 view.setResume(personalInformation.getResume());
                 view.setSchool(personalInformation.getSchool());
+                view.setRegisterData(personalInformation.getDate());
             }
 
             @Override
