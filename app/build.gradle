@@ -38,6 +38,7 @@ android {
                             'src/main/res/layout/personal/setting/management',
                             'src/main/res/layout/personal/setting/security',
                             'src/main/res/layout/register',
+                            'src/main/res/layout/start',
                             'src/main/res/layout',
                             'src/main/res'
                     ]

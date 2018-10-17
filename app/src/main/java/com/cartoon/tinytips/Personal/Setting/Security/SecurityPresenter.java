@@ -19,4 +19,8 @@ class SecurityPresenter extends BaseActivityPresenter<Security> implements ISecu
         model = null;
     }
 
+    @Override
+    public void handleChangePassword() {
+
+    }
 }

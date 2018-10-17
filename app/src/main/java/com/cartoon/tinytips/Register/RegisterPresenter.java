@@ -45,7 +45,7 @@ class RegisterPresenter extends BaseActivityPresenter<Register> implements IRegi
             public void onFail(String msg) {
                 ShowToast.shortToast(msg);
             }
-        });
+        })  ;
 
     }
 

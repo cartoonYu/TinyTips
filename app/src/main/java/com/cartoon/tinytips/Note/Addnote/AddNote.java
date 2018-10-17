@@ -1,5 +1,12 @@
 package com.cartoon.tinytips.Note.Addnote;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +18,7 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
 import com.cartoon.tinytips.Note.Addnote.NoteTips.NoteTips;
+import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.FragmentConstant;
@@ -18,11 +26,20 @@ import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
+import com.zhihu.matisse.internal.entity.CaptureStrategy;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.View {
+    private static final int REQUEST_CODE_CHOOSE = 23;//定义请求码常量
+
+    private static final int REQUEST_PERMISSION_CODE = 1;
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -115,6 +132,27 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         IntentActivity.finishActivity(this);
     }
 
+    @OnClick(R.id.addImage)
+    public void onClickAddImage(){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_PERMISSION_CODE);
+        }else{
+            Matisse.from(AddNote.this)
+                    .choose(MimeType.allOf())//图片类型
+                    .countable(true)//true:选中后显示数字;false:选中后显示对号
+                    .maxSelectable(5)//可选的最大数
+                    .capture(true)//选择照片时，是否显示拍照
+                    .captureStrategy(new CaptureStrategy(true, "com.example.a00xiaoyugmailcom.fileprovider"))//参数1 true表示拍照存储在共有目录，false表示存储在私有目录；参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
+                    .imageEngine(new GlideEngine())//图片加载引擎
+                    .forResult(REQUEST_CODE_CHOOSE);//
+        }
+    }
+
+
     /**
      * 设置权限页的显示
      */
@@ -145,5 +183,14 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
          tip = major[tips].getTipsname();
          Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
          addnote_addtips.setText(tip);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
+            List<Uri> result = Matisse.obtainResult(data);
+            Log.d("Matisse", "mSelected: " + result);
+        }
     }
 }

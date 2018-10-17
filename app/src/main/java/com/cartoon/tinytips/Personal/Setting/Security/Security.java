@@ -2,6 +2,7 @@ package com.cartoon.tinytips.Personal.Setting.Security;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.cartoon.tinytips.BaseActivity;
@@ -18,6 +19,17 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
     @BindView(R.id.statusBar)
     View statusBar;
 
+    @BindView(R.id.personal_setting_security_sendAuthCode)
+    EditText authcode;
+
+    @BindView(R.id.personal_setting_security_newPassword)
+    EditText newPassword;
+
+    @BindView(R.id.personal_setting_security_confirmPassword)
+    EditText confirmPassword;
+
+    @BindView(R.id.personal_setting_security_phoneNum)
+    EditText phoneNum;
     @Override
     protected SecurityPresenter initPresent(){
         return new SecurityPresenter(this);
@@ -54,4 +66,23 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
         IntentActivity.finishActivity(this);
     }
 
+    @Override
+    public String getPhoneNumber() {
+        return phoneNum.getText().toString();
+    }
+
+    @Override
+    public String getAuthCode(){
+        return authcode.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return newPassword.getText().toString();
+    }
+
+    @Override
+    public String getconfirmPassword() {
+        return confirmPassword.getText().toString();
+    }
 }
