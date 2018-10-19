@@ -35,6 +35,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
+
     @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
     List<RelativeLayout> bottomBar;
 
@@ -79,7 +80,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
         mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
         flag= IntentActivity.getIntentData(this,new String("main"), constant.getHomePage());
-
+        ToChangeBar(flag);
     }
 
     @Override
@@ -92,28 +93,14 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @OnClick(R.id.mainHomepage)
     public void clickHomepage(){
         //点击首页
-        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
-        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
-        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
-        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
-        mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
-        mainMessageT.setTextColor(Color.BLACK);
-        mainDiscoverT.setTextColor(Color.BLACK);
-        mainPersonalT.setTextColor(Color.BLACK);
+        ToChangeBar(0);
         switchFragment(constant.getHomePage());
     }
 
     @OnClick(R.id.mainMessage)
     public void clickMessage(){
         //点击消息
-        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
-        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
-        mainMessageP.setImageResource(R.mipmap.bottombar_message_press);
-        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
-        mainHomepageT.setTextColor(Color.BLACK);
-        mainMessageT.setTextColor(Color.parseColor("#7ae1f7"));
-        mainDiscoverT.setTextColor(Color.BLACK);
-        mainPersonalT.setTextColor(Color.BLACK);
+        ToChangeBar(1);
         switchFragment(constant.getMessage());
     }
 
@@ -127,28 +114,14 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     @OnClick(R.id.mainDiscover)
     public void clickDiscover(){
         //点击发现
-        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
-        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_press);
-        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
-        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
-        mainHomepageT.setTextColor(Color.BLACK);
-        mainMessageT.setTextColor(Color.BLACK);
-        mainDiscoverT.setTextColor(Color.parseColor("#7ae1f7"));
-        mainPersonalT.setTextColor(Color.BLACK);
+        ToChangeBar(3);
         switchFragment(constant.getDiscover());
     }
 
     @OnClick(R.id.mainPersonal)
     public void clickPersonal(){
         //点击我的
-        mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
-        mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
-        mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
-        mainPersonalP.setImageResource(R.mipmap.bottombar_personal_press);
-        mainHomepageT.setTextColor(Color.BLACK);
-        mainMessageT.setTextColor(Color.BLACK);
-        mainDiscoverT.setTextColor(Color.BLACK);
-        mainPersonalT.setTextColor(Color.parseColor("#7ae1f7"));
+        ToChangeBar(4);
         switchFragment(constant.getPersonal());
     }
 
@@ -195,4 +168,55 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         transaction.commit();
     }
 
+    private void ToChangeBar(int flag){
+        switch (flag){
+            case 0 :{
+                mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_press);
+                mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+                mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+                mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+                mainHomepageT.setTextColor(Color.parseColor("#7ae1f7"));
+                mainMessageT.setTextColor(Color.BLACK);
+                mainDiscoverT.setTextColor(Color.BLACK);
+                mainPersonalT.setTextColor(Color.BLACK);
+                break;
+            }
+
+            case 1:{
+                mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+                mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+                mainMessageP.setImageResource(R.mipmap.bottombar_message_press);
+                mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+                mainHomepageT.setTextColor(Color.BLACK);
+                mainMessageT.setTextColor(Color.parseColor("#7ae1f7"));
+                mainDiscoverT.setTextColor(Color.BLACK);
+                mainPersonalT.setTextColor(Color.BLACK);
+                break;
+            }
+
+            case 3:{
+                mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+                mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_press);
+                mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+                mainPersonalP.setImageResource(R.mipmap.bottombar_personal_unpress);
+                mainHomepageT.setTextColor(Color.BLACK);
+                mainMessageT.setTextColor(Color.BLACK);
+                mainDiscoverT.setTextColor(Color.parseColor("#7ae1f7"));
+                mainPersonalT.setTextColor(Color.BLACK);
+                break;
+            }
+
+            case 4:{
+                mainHomepageP.setImageResource(R.mipmap.bottombar_homepage_unpress);
+                mainDiscoverP.setImageResource(R.mipmap.bottombar_discover_unpress);
+                mainMessageP.setImageResource(R.mipmap.bottombar_message_unpress);
+                mainPersonalP.setImageResource(R.mipmap.bottombar_personal_press);
+                mainHomepageT.setTextColor(Color.BLACK);
+                mainMessageT.setTextColor(Color.BLACK);
+                mainDiscoverT.setTextColor(Color.BLACK);
+                mainPersonalT.setTextColor(Color.parseColor("#7ae1f7"));
+                break;
+            }
+        }
+    }
 }
