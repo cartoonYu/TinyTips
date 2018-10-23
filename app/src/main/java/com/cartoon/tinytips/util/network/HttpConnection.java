@@ -61,6 +61,7 @@ public class HttpConnection implements Runnable{
 
     private HttpConnection(){
         result=new String();
+        TIME_OUT=4000;
     }
 
     /**

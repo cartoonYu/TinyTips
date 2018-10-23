@@ -6,11 +6,13 @@ import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.util.Image.ImageOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ import java.util.List;
 public class JSONObjectOperation {
 
     private static volatile JSONObjectOperation operation;
+
+    private ImageOperation imageOperation;
 
     /**
      * 获取本类对象
@@ -207,10 +211,16 @@ public class JSONObjectOperation {
                 result.put("account",information.getAccount());
                 result.put("password",information.getPassword());
                 result.put("date",information.getDate());
-                result.put("headPortraitPath",information.getHeadPortrait());
+                if(JudgeEmpty.isNotEmpty(information.getHeadPortrait())){
+                    String resource=imageOperation.transFileToString(information.getHeadPortrait());
+                    information.setHeadPortraitResource(resource);
+                    result.put("headPortrait",information.getHeadPortraitResource());
+                }
                 result.put("nickName",information.getNickName());
                 result.put("sex",information.isSex());
-                result.put("interest",information.getInterest().toString());
+                if(JudgeEmpty.isNotEmpty(information.getInterest())){
+                    result.put("interest",information.getInterest().toString());
+                }
                 result.put("school",information.getSchool());
                 result.put("major",information.getMajor());
                 result.put("background",information.getBackground());
@@ -255,8 +265,11 @@ public class JSONObjectOperation {
                 if(object.has("date")){
                     information.setDate(object.getString("date"));
                 }
-                if(object.has("headPortraitPath")){
-                    information.setHeadPortraitPath(object.getString("headPortraitPath"));
+                if(object.has("headPortrait")){
+                    information.setHeadPortraitResource(object.getString("headPortrait"));
+                }
+                if(object.has("headPortraitName")){
+                    information.setHeadPortraitName(object.getString("headPortraitName"));
                 }
                 if(object.has("nickName")){
                     information.setNickName(object.getString("nickName"));
@@ -283,6 +296,10 @@ public class JSONObjectOperation {
             }catch(JSONException e){
                 Log.e("jsonObjectException","将json文件转换Information出现错误");
                 e.printStackTrace();
+            }
+            if(JudgeEmpty.isNotEmpty(information.getHeadPortraitResource())&&JudgeEmpty.isNotEmpty(information.getHeadPortraitName())){
+                File headPortrait=imageOperation.transStringToFile(information.getHeadPortraitResource(),information.getHeadPortraitName());
+                information.setHeadPortrait(headPortrait);
             }
             return information;
         }
@@ -341,5 +358,6 @@ public class JSONObjectOperation {
     }
 
     private JSONObjectOperation(){
+        imageOperation=ImageOperation.getOperation();
     }
 }

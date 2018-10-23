@@ -28,14 +28,11 @@
         </activity>
 
         <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
-        <activity android:name=".Main.Main" >
-
-        </activity>
+        <activity android:name=".Main.Main" />
 
         <activity android:name=".Start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

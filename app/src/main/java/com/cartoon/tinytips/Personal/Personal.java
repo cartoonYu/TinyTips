@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
@@ -15,6 +16,8 @@ import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -104,8 +107,8 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
 
     @Override
-    public void setHeadPro(Bitmap headPro){
-        this.headPro.setImageBitmap(headPro);
+    public void setHeadPro(File headPro){
+        Glide.with(this).load(headPro).into(this.headPro);
     }
 
     @Override

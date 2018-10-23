@@ -1,13 +1,13 @@
 package com.cartoon.tinytips.Personal.Detail;
 
-import android.graphics.Bitmap;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 
+import java.io.File;
+
 interface IDetail {
     interface View{
-        void setHeadPro(Bitmap headPro);   //设置头像
+        void setHeadPro(File headPro);   //设置头像
         void setNickName(String name);     //设置昵称
         void setResume(String resume);   //设置简介
         void setSchool(String school);    //设置学习

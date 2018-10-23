@@ -11,18 +11,31 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.Image.UriAndFile;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
+import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
+import com.cartoon.tinytips.util.network.HttpConnection;
+import com.cartoon.tinytips.util.network.HttpConstant;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import org.json.JSONObject;
+
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -117,18 +130,18 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         }else{
             Matisse.from(Detail.this)
                     .choose(MimeType.allOf())//图片类型
-                    .countable(true)//true:选中后显示数字;false:选中后显示对号
-                    .maxSelectable(5)//可选的最大数
+                    .countable(false)//true:选中后显示数字;false:选中后显示对号
+                    .maxSelectable(1)//可选的最大数
                     .capture(true)//选择照片时，是否显示拍照
-                    .captureStrategy(new CaptureStrategy(true, "com.example.a00xiaoyugmailcom.fileprovider"))//参数1 true表示拍照存储在共有目录，false表示存储在私有目录；参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
+                    .captureStrategy(new CaptureStrategy(true, "com.cartoon.tinytips.fileprovider"))//参数1 true表示拍照存储在共有目录，false表示存储在私有目录；参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
                     .imageEngine(new GlideEngine())//图片加载引擎
                     .forResult(REQUEST_CODE_CHOOSE);//
         }
     }
 
     @Override
-    public void setHeadPro(Bitmap headPro) {
-        this.avarar.setImageBitmap(headPro);
+    public void setHeadPro(File headPro) {
+        Glide.with(this).load(headPro).into(avarar);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.cartoon.tinytips.bean;
 
 import android.graphics.Bitmap;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -26,10 +27,11 @@ public class Information {
 
     private String date;     //注册时间
 
-    private Bitmap headPortrait;  //头像
+    private File headPortrait;  //头像
 
-    private String headPortraitPath;  //头像
+    private String headPortraitName;  //服务器中头像文件名
 
+    private String headPortraitResource;   //头像经过Base64处理后的字符串
 
     private String nickName;  //昵称
 
@@ -77,12 +79,16 @@ public class Information {
         return account;
     }
 
-    public Bitmap getHeadPortrait() {
-        return headPortrait;
+    public void setHeadPortrait(File headPortrait) {
+        this.headPortrait = headPortrait;
     }
 
-    public String getHeadPortraitPath() {
-        return headPortraitPath;
+    public String getHeadPortraitName() {
+        return headPortraitName;
+    }
+
+    public String getHeadPortraitResource() {
+        return headPortraitResource;
     }
 
     public String getPassword() {
@@ -145,12 +151,16 @@ public class Information {
         this.account = account;
     }
 
-    public void setHeadPortrait(Bitmap headPortrait) {
-        this.headPortrait = headPortrait;
+    public File getHeadPortrait() {
+        return headPortrait;
     }
 
-    public void setHeadPortraitPath(String headPortraitPath) {
-        this.headPortraitPath = headPortraitPath;
+    public void setHeadPortraitName(String headPortraitName) {
+        this.headPortraitName = headPortraitName;
+    }
+
+    public void setHeadPortraitResource(String headPortraitResource) {
+        this.headPortraitResource = headPortraitResource;
     }
 
     public void setBackground(String background) {
