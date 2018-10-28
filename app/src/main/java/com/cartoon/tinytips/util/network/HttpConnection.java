@@ -138,12 +138,14 @@ public class HttpConnection implements Runnable{
                     outputStream.write(temp.getBytes());
                     outputStream.close();
                     getInputStream(urlConnection);
-                    BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
-                    String line;
-                    while((line=reader.readLine())!=null){
-                        buffer.append(line);
+                    if(JudgeEmpty.isNotEmpty(inputStream)){
+                        BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+                        String line;
+                        while((line=reader.readLine())!=null){
+                            buffer.append(line);
+                        }
+                        inputStream.close();
                     }
-                    inputStream.close();
                 }catch (IOException e){
                     e.printStackTrace();
                     Log.e("networkException",new String("写入错误"));

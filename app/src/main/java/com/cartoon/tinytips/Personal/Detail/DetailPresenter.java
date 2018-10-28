@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.Detail;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;

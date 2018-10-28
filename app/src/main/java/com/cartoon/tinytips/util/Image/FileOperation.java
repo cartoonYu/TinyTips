@@ -1,33 +1,27 @@
 package com.cartoon.tinytips.util.Image;
 
 import android.os.Environment;
-import android.util.Base64;
-import android.util.Log;
 
 import com.cartoon.tinytips.util.Coder;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 
-public class ImageOperation {
+public class FileOperation {
 
-    private static volatile ImageOperation operation;
+    private static volatile FileOperation operation;
 
     private Coder coder;
 
-    public static ImageOperation getOperation(){
+    public static FileOperation getOperation(){
         if(JudgeEmpty.isEmpty(operation)){
-            synchronized (ImageOperation.class){
+            synchronized (FileOperation.class){
                 if(JudgeEmpty.isEmpty(operation)){
-                    operation=new ImageOperation();
+                    operation=new FileOperation();
                 }
             }
         }
@@ -94,7 +88,7 @@ public class ImageOperation {
         return result;
     }
 
-    private ImageOperation(){
+    private FileOperation(){
         coder=Coder.getCoder();
     }
 }

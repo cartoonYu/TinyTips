@@ -1,14 +1,8 @@
 package com.cartoon.tinytips.Personal.Detail;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Operate.OperateInformation;
-import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.TinyTipsApplication;
 
 import java.util.List;
 
@@ -32,10 +26,16 @@ public class DetailModel implements IDetail.Model {
             callBack.onSuccess(information);
         }*/
         Information information=new Information();
-        information.setAccount("cartoon");
+        information.setAccount("hht");
         OperateInformation op=OperateInformation.getOperate();
         List<Information> list=op.query(information);
-        Information result=list.get(0);
-        callBack.onSuccess(result);
+        if(list.isEmpty()){
+            callBack.onFail("获取个人信息错误");
+        }
+        else {
+            Information result=list.get(0);
+            callBack.onSuccess(result);
+        }
+
     }
 }

@@ -1,23 +1,14 @@
 package com.cartoon.tinytips.Register;
 
-import android.graphics.Path;
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
-import com.cartoon.tinytips.util.Image.ImageOperation;
+import com.cartoon.tinytips.util.Image.FileOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
-import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class RegisterModel implements IRegister.Model {
 
@@ -50,7 +41,6 @@ class RegisterModel implements IRegister.Model {
         information.setAccount("cartoon");
         JSONObjectOperation objectOperation=JSONObjectOperation.getInstance();
         JSONObject object=objectOperation.setInformationToJSON(information,"update");
-        Log.d("asd",object.toString());
         HttpConnection connection=HttpConnection.getHttpConnection();
         connection.sendJSONObject(HttpConstant.getConstant().getURL_Text(),"POST",object);
         Thread thread=new Thread(connection);
@@ -67,7 +57,7 @@ class RegisterModel implements IRegister.Model {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ImageOperation operation=ImageOperation.getOperation();
+        FileOperation operation=FileOperation.getOperation();
         operation.transStringToFile(n.getHeadPortraitResource(),n.getHeadPortraitName());
     }
 }

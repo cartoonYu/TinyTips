@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Path;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -179,7 +180,7 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             List<Uri> result = Matisse.obtainResult(data);
-            Log.d("Matisse", "mSelected: " + result);
         }
+
     }
 }

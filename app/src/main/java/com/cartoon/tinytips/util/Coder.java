@@ -43,8 +43,8 @@ public class Coder {
      * @return
      */
     public String encode(byte[] bytes){
-        Log.d("asd",Base64.encodeToString(bytes,Base64.DEFAULT));
-        return Base64.encodeToString(bytes,0,bytes.length,Base64.DEFAULT);
+        String result=Base64.encodeToString(bytes,0,bytes.length,Base64.DEFAULT);
+        return result.replace("\n","");
     }
 
     /**

@@ -42,7 +42,6 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
 
     public AccountAdapter(List<Account> list) {
         this.list = list;
-        Log.d("asd",this.list.get(0).getNickName());
     }
 
     @Override

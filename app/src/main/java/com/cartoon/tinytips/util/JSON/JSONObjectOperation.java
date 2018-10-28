@@ -6,7 +6,7 @@ import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.util.Image.ImageOperation;
+import com.cartoon.tinytips.util.Image.FileOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import org.json.JSONException;
@@ -31,7 +31,7 @@ public class JSONObjectOperation {
 
     private static volatile JSONObjectOperation operation;
 
-    private ImageOperation imageOperation;
+    private FileOperation fileOperation;
 
     /**
      * 获取本类对象
@@ -212,7 +212,7 @@ public class JSONObjectOperation {
                 result.put("password",information.getPassword());
                 result.put("date",information.getDate());
                 if(JudgeEmpty.isNotEmpty(information.getHeadPortrait())){
-                    String resource=imageOperation.transFileToString(information.getHeadPortrait());
+                    String resource= fileOperation.transFileToString(information.getHeadPortrait());
                     information.setHeadPortraitResource(resource);
                     result.put("headPortrait",information.getHeadPortraitResource());
                 }
@@ -298,7 +298,7 @@ public class JSONObjectOperation {
                 e.printStackTrace();
             }
             if(JudgeEmpty.isNotEmpty(information.getHeadPortraitResource())&&JudgeEmpty.isNotEmpty(information.getHeadPortraitName())){
-                File headPortrait=imageOperation.transStringToFile(information.getHeadPortraitResource(),information.getHeadPortraitName());
+                File headPortrait= fileOperation.transStringToFile(information.getHeadPortraitResource(),information.getHeadPortraitName());
                 information.setHeadPortrait(headPortrait);
             }
             return information;
@@ -358,6 +358,6 @@ public class JSONObjectOperation {
     }
 
     private JSONObjectOperation(){
-        imageOperation=ImageOperation.getOperation();
+        fileOperation =FileOperation.getOperation();
     }
 }
