@@ -1,8 +1,8 @@
 package com.cartoon.tinytips.HomePage;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RadioButton;

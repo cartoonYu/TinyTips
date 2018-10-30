@@ -25,13 +25,11 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         ImageView majorImage1;
-        ImageView majorImage2;
 
         public ViewHolder(View view) {
             super(view);
             cardView= (CardView) view;
             majorImage1 = (ImageView) view.findViewById(R.id.class_image1);
-            majorImage2 = (ImageView) view.findViewById(R.id.class_image2);
         }
     }
 
@@ -52,7 +50,6 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);
         Glide.with(mContext).load(major.getImage1Id()).into(holder.majorImage1);
-        Glide.with(mContext).load(major.getImage2Id()).into(holder.majorImage2);
     }
 
     @Override
