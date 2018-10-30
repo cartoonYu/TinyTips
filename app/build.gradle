@@ -21,6 +21,7 @@ android {
             res.srcDirs =
                     [
                             'src/main/res/layout/discover',
+                            'src/main/res/layout/discover/list',
                             'src/main/res/layout/homepage',
                             'src/main/res/layout/login',
                             'src/main/res/layout/message',

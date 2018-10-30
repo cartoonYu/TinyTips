@@ -17,7 +17,9 @@ import com.cartoon.tinytips.R;
 import java.util.Iterator;
 import java.util.List;
 
-public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> {
+import butterknife.OnClick;
+
+public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> implements View.OnClickListener{
     private Context mContext;
 
     private List<com.cartoon.tinytips.util.Adapters.Major> mMJList;
@@ -57,4 +59,12 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
         return mMJList.size();
     }
 
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.class_image1 :{
+
+            }
+        }
+    }
 }

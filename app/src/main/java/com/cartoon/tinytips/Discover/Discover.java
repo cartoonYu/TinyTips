@@ -76,7 +76,7 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
                     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                         outRect.top = convertDpToPixel(7);
                         outRect.bottom = 0;
-// top bottom left right 对应的值应该是dpi 而不是dp  dpi根据不同手机而不同
+                        // top bottom left right 对应的值应该是dpi 而不是dp  dpi根据不同手机而不同
 
                         int i = parent.getChildLayoutPosition(view) % 2;//每行2个
                         switch (i) {
