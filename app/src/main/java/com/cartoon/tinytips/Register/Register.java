@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.Register;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 

@@ -1,10 +1,9 @@
 package com.cartoon.tinytips.bean;
 
+import java.io.File;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 public class Note implements Serializable{
 
@@ -14,23 +13,19 @@ public class Note implements Serializable{
 
     private String title;     //标题
 
-    private String wordDetails;    //文字性内容
+    private List<String> wordDetails;    //文字性内容
 
-    private String photoDetails;   //图片性内容
+    private List<File> photoDetails;   //图片性内容
+
+    private Map<String,String> photoSource;   //经过Base64处理的图片,实现类为LinkedHashMap
 
     private String author;     //作者
 
-    private Date date;       //时间
+    private String date;       //时间
 
     private List<String> tag;     //标签
 
     public Note(){
-        //时间的赋值
-        Random rId=new Random(50);
-        id=(rId.nextLong()*1000);
-        Random rUserId=new Random(60);
-        userId=(rUserId.nextLong()*1000);
-        this.date=new Date();
     }
 
     public long getId() {
@@ -45,36 +40,60 @@ public class Note implements Serializable{
         return title;
     }
 
-    public String getWordDetails() {
+    public List<String> getWordDetails() {
         return wordDetails;
     }
 
-    public String getPhotoDetails() {
+    public List<File> getPhotoDetails() {
         return photoDetails;
+    }
+
+    public Map<String, String> getPhotoSource() {
+        return photoSource;
     }
 
     public String getAuthor() {
         return author;
     }
 
+    public String getDate() {
+        return date;
+    }
+
     public List<String> getTag() {
         return tag;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setWordDetails(String wordDetails) {
+    public void setWordDetails(List<String> wordDetails) {
         this.wordDetails = wordDetails;
     }
 
-    public void setPhotoDetails(String photoDetails) {
+    public void setPhotoDetails(List<File> photoDetails) {
         this.photoDetails = photoDetails;
+    }
+
+    public void setPhotoSource(Map<String, String> photoSource) {
+        this.photoSource = photoSource;
     }
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setTag(List<String> tag) {

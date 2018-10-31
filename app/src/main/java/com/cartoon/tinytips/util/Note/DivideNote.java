@@ -1,0 +1,120 @@
+package com.cartoon.tinytips.util.Note;
+
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.util.Log;
+
+import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.util.Image.FileOperation;
+import com.cartoon.tinytips.util.Image.UriAndFile;
+import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.TinyTipsApplication;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author cartoon
+ * @version 1.0
+ *
+ * description
+ * 切割合并笔记中的图片与文字
+ *
+ * how to use
+ *
+ * notice
+ *
+ */
+
+public class DivideNote {
+
+    private static volatile DivideNote divideNote;
+
+    private FileOperation fileOperation;
+
+    public static DivideNote getDivideNote(){
+        if(JudgeEmpty.isEmpty(divideNote)){
+            synchronized (DivideNote.class){
+                if(JudgeEmpty.isEmpty(divideNote)){
+                    divideNote=new DivideNote();
+                }
+            }
+        }
+        return divideNote;
+    }
+
+    /**
+     * 功能
+     * 将传入的note中的文字以及图片混编成字符串显示在editText
+     *
+     * 使用方法
+     * 1.传入笔记对象
+     * 2.通过返回值得到图文混编的字符串
+     *
+     * 注意
+     *
+     * @param note
+     * @return
+     */
+    public SpannableString transNoteToString(Note note){
+        if(JudgeEmpty.isEmpty(note)){
+            return null;
+        }
+        SpannableString result=new SpannableString("[seq][/seq]");
+        return null;
+    }
+
+    /**
+     * 功能
+     * 将图片文字混合的字符串拆分成可存储对象
+     *
+     * 使用方法
+     * 1.传入图片文字混合的字符串
+     * @param source
+     * @return
+     */
+    public Note transStringToNote(String source){
+        if(JudgeEmpty.isEmpty(source)){
+            return null;
+        }
+        Log.d("asd",source);
+        String[] str=source.split("&");
+        List<String> word=new ArrayList<>();
+        List<String> photo=new ArrayList<>();
+
+        for(int i=0;i<str.length;i++){
+            if(str[i].startsWith("content")){
+                word.add("￥￥");
+                photo.add(str[i]);
+            }
+            else {
+                word.add(str[i]);
+            }
+        }
+        List<File> files=new ArrayList<>();
+        Log.d("asd","word");
+        for(String s:word){
+            Log.d("asd",s);
+        }
+        Log.d("asd","photo");
+        for(String s:photo){
+            Log.d("asd",s);
+            Uri uri=Uri.parse(s);
+            files.add(UriAndFile.getInstance().uriToFile(uri));
+        }
+        Note note=new Note();
+        note.setPhotoDetails(files);
+        note.setWordDetails(word);
+        return note;
+    }
+
+    private DivideNote(){
+    }
+
+}

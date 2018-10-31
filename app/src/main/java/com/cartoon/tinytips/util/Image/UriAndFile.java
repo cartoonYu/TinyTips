@@ -38,6 +38,17 @@ public class UriAndFile {
         return uriAndFile;
     }
 
+    /**
+     * 功能
+     * 将Uri转换成File存储
+     *
+     * 使用方法
+     *
+     * 注意
+     *
+     * @param source
+     * @return
+     */
     public File uriToFile(Uri source){
         String path=null;
         String[] proj = { MediaStore.Images.Media.DATA };

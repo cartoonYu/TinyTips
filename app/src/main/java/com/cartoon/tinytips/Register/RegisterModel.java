@@ -1,14 +1,25 @@
 package com.cartoon.tinytips.Register;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.util.Image.FileOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
+import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 class RegisterModel implements IRegister.Model {
 
@@ -36,28 +47,6 @@ class RegisterModel implements IRegister.Model {
 
     @Override
     public void verifyInformation(ValueCallBack<String> callBack){
-        //callBack.onSuccess(new String("注册成功"));
-        Information information=new Information();
-        information.setAccount("cartoon");
-        JSONObjectOperation objectOperation=JSONObjectOperation.getInstance();
-        JSONObject object=objectOperation.setInformationToJSON(information,"update");
-        HttpConnection connection=HttpConnection.getHttpConnection();
-        connection.sendJSONObject(HttpConstant.getConstant().getURL_Text(),"POST",object);
-        Thread thread=new Thread(connection);
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Information n=null;
-        try {
-            JSONObject jsonObject=new JSONObject(connection.getResult());
-            n=objectOperation.getInformationFromJSON(jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        FileOperation operation=FileOperation.getOperation();
-        operation.transStringToFile(n.getHeadPortraitResource(),n.getHeadPortraitName());
+       callBack.onSuccess(new String("注册成功"));
     }
 }

@@ -6,6 +6,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,17 +24,23 @@ import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
 import com.cartoon.tinytips.Note.Addnote.NoteTips.NoteTips;
 import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.Image.UriAndFile;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.Note.DivideNote;
 import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
+import com.cartoon.tinytips.util.UI.ScrollEditText;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,6 +71,11 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @BindView(R.id.addnote_addtips)
     Button addnote_addtips;
+
+    @BindView(R.id.contentbar)
+    ScrollEditText editText;
+
+    private Note note;
 
 
     private int flag;    //用于判断跳转到主页显示的fragment
@@ -104,20 +119,19 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
 
     @OnClick(R.id.addnote_toolbar_menubutton_bg)
     protected void onClickmenubutton(){
-        IntentActivity.intentWithData(this,Main.class,"main",flag);
-        IntentActivity.finishActivity(this);
+        String result=editText.getText().toString();
+        note=DivideNote.getDivideNote().transStringToNote(result);
+        presenter.addNote(note);
     }
 
     @OnClick(R.id.addnote_toolbarBack)
     protected void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,"main",flag);
-        IntentActivity.finishActivity(this);
+        intentToMain();
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,"main",flag);
-        IntentActivity.finishActivity(this);
+        intentToMain();
     }
 
     @OnClick(R.id.changeAthority)
@@ -144,9 +158,9 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
             Matisse.from(AddNote.this)
                     .choose(MimeType.allOf())//图片类型
                     .countable(true)//true:选中后显示数字;false:选中后显示对号
-                    .maxSelectable(5)//可选的最大数
+                    .maxSelectable(9)//可选的最大数
                     .capture(true)//选择照片时，是否显示拍照
-                    .captureStrategy(new CaptureStrategy(true, "com.example.a00xiaoyugmailcom.fileprovider"))//参数1 true表示拍照存储在共有目录，false表示存储在私有目录；参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
+                    .captureStrategy(new CaptureStrategy(true, "com.cartoon.tinytips.fileprovider"))//参数1 true表示拍照存储在共有目录，false表示存储在私有目录；参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
                     .imageEngine(new GlideEngine())//图片加载引擎
                     .forResult(REQUEST_CODE_CHOOSE);//
         }
@@ -191,6 +205,44 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             List<Uri> result = Matisse.obtainResult(data);
             Log.d("Matisse", "mSelected: " + result);
+            addPhotoToEditText(result);
         }
+    }
+
+    private void addPhotoToEditText(List<Uri> photos){
+        if(JudgeEmpty.isEmpty(photos)){
+            return;
+        }
+        if(photos.isEmpty()){
+            return;
+        }
+        List<SpannableString> result=new ArrayList<>();
+        for(Uri photo:photos){
+            SpannableString tempString=new SpannableString("&"+photo.toString()+"&");
+            ImageSpan imageSpan=new ImageSpan(this,photo);
+            tempString.setSpan(imageSpan,0,photo.toString().length()+2,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            result.add(tempString);
+        }
+        int flag=editText.getSelectionStart();
+        Editable editable=editText.getEditableText();
+        if(flag<0||flag>=editable.length()){
+            for(SpannableString string:result){
+                editable.append("\n");
+                editable.append(string);
+            }
+            editText.setText(editable);
+        }
+        else {
+            for (SpannableString string:result){
+                editable.insert(flag,string);
+            }
+            editText.setText(editable);
+        }
+    }
+
+    @Override
+    public void intentToMain(){
+        IntentActivity.intentWithData(this,Main.class,"main",flag);
+        IntentActivity.finishActivity(this);
     }
 }

@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
-
     <application
         android:name=".util.TinyTipsApplication"
         android:allowBackup="true"
@@ -23,9 +22,8 @@
 
         </activity>
 
-        <activity android:name=".Login.Login">
+        <activity android:name=".Login.Login"/>
 
-        </activity>
 
         <activity android:name=".Note.Addnote.NoteTips.NoteTips"/>
         <activity android:name=".Main.Main" />

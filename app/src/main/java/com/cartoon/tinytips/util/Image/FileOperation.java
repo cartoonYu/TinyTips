@@ -43,11 +43,10 @@ public class FileOperation {
      */
     public String transFileToString(File file){
         byte[] bytes=null;
-        int length=0;
         try {
             FileInputStream stream=new FileInputStream(file);
             bytes=new byte[stream.available()];
-            length=stream.read(bytes);
+            stream.read(bytes);
             stream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
