@@ -23,6 +23,16 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
+    @BindView(R.id.note_detail_title)
+    TextView title;
+
+    @BindView(R.id.note_detail_detail)
+    TextView details;
+
+    @BindView(R.id.note_detail_date)
+    TextView date;
+
+
     @Override
     protected NoteDetailPresenter initPresent(){
         return new NoteDetailPresenter(this);
@@ -41,8 +51,8 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
 
     @Override
     protected void onPrepare(){
-
     }
+
 
     @OnClick(R.id.toolbarBack)
     protected void onClickBack(){

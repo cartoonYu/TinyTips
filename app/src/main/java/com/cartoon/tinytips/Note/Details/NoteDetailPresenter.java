@@ -8,6 +8,7 @@ class NoteDetailPresenter extends BaseActivityPresenter<NoteDetail> implements I
 
     private INoteDetail.Model model;
 
+
     public NoteDetailPresenter(INoteDetail.View view){
         this.view=view;
         this.model = new NoteDetailModel();

@@ -61,6 +61,22 @@ public class UriAndFile {
         return new File(path);
     }
 
+    /**
+     * 功能
+     * 将File转换成Uri存储
+     *
+     * 使用方法
+     *
+     * 注意
+     *
+     * @param file
+     * @return
+     */
+    public Uri fileToUri(File file){
+        Uri uri=Uri.fromFile(file);
+        return uri;
+    }
+
     private UriAndFile(){
     }
 }

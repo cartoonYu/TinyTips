@@ -1,7 +1,5 @@
 package com.cartoon.tinytips.bean.Operate;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Image.FileOperation;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
@@ -178,8 +176,9 @@ public class OperateNote {
                     Set<String> set=note.getPhotoSource().keySet();
                     Iterator<String> iterator=set.iterator();
                     while(iterator.hasNext()){
-                        String temp=note.getPhotoSource().get(iterator.next());
-                        files.add(fileOperation.transStringToFile(temp,iterator.next()));
+                        String fileName=iterator.next();
+                        String file=note.getPhotoSource().get(fileName);
+                        files.add(fileOperation.transStringToFile(file,fileName));
                     }
                     note.setPhotoDetails(files);
                 }

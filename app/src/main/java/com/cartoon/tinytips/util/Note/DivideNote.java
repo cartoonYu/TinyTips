@@ -1,8 +1,6 @@
 package com.cartoon.tinytips.util.Note;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
@@ -55,19 +53,44 @@ public class DivideNote {
      *
      * 使用方法
      * 1.传入笔记对象
-     * 2.通过返回值得到图文混编的字符串
+     * 2.通过返回值得到图文混编的字符串集合
      *
      * 注意
      *
      * @param note
      * @return
      */
-    public SpannableString transNoteToString(Note note){
+    public List<SpannableString> transNoteToString(Note note){
         if(JudgeEmpty.isEmpty(note)){
             return null;
         }
-        SpannableString result=new SpannableString("[seq][/seq]");
-        return null;
+        Log.d("asd",note.getPhotoDetails().toString());
+        List<Uri> uris=new ArrayList<>();
+        if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())&&!note.getPhotoDetails().isEmpty()){
+            for(File file:note.getPhotoDetails()){
+                uris.add(UriAndFile.getInstance().fileToUri(file));
+            }
+        }
+        List<String> words=note.getWordDetails();
+        List<SpannableString> result=new ArrayList<>();
+        int photoFlag=0;
+        for(String word:words){
+            SpannableString temp=null;
+            if(word.equals("￥￥")){
+                if(photoFlag<uris.size()){
+                    Uri photo=uris.get(photoFlag++);
+                    temp=new SpannableString("&"+photo.toString()+"&");
+                    ImageSpan imageSpan=new ImageSpan(TinyTipsApplication.getContext(),photo);
+                    temp.setSpan(imageSpan,0,photo.toString().length()+2,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    result.add(temp);
+                }
+            }
+            else {
+                temp=new SpannableString(word);
+                result.add(temp);
+            }
+        }
+        return result;
     }
 
     /**

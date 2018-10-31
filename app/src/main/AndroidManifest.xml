@@ -18,9 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".Register.Register">
-
-        </activity>
+        <activity android:name=".Register.Register"/>
 
         <activity android:name=".Login.Login"/>
 
@@ -42,6 +40,7 @@
         <activity android:name=".Note.Addnote.AddNote"/>
         <activity android:name=".Note.Addnote.Athority.Athority"/>
         <activity android:name=".Note.Details.NoteDetail"/>
+
         <activity android:name=".Note.Comment.Comment"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
