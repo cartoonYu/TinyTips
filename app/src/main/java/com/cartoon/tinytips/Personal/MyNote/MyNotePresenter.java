@@ -1,11 +1,11 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.ShowToast;
+
+import java.util.List;
 
 class MyNotePresenter extends BaseActivityPresenter<MyNote> implements IMyNote.Presenter{
 
@@ -26,10 +26,10 @@ class MyNotePresenter extends BaseActivityPresenter<MyNote> implements IMyNote.P
 
     @Override
     public void initData(){
-        model.getMyNoteInformation(new ValueCallBack<Note>() {
+        model.getNote(new ValueCallBack<List<Note>>() {
             @Override
-            public void onSuccess(Note note) {
-                Log.d("asd",note.getAuthor());
+            public void onSuccess(List<Note> notes) {
+                view.initNote(notes);
             }
 
             @Override

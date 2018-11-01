@@ -14,8 +14,8 @@ public class AddNoteModel implements IAddNote.Model {
         if(JudgeEmpty.isEmpty(note)){
             callBack.onFail("新建笔记失败");
         }
-        note.setAuthor("cartoon");
-        note.setTitle("Java学习指南");
+        note.setAuthor("Leo");
+        note.setUserId(12);
         if(operateNote.add(note)){
             callBack.onSuccess("新建笔记成功");
         }

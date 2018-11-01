@@ -52,7 +52,8 @@
             android:hint="点此输入标题"
             android:textSize="22sp"
             android:background="@color/white"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:id="@+id/addNote_addTitle"/>
 
     </LinearLayout>
 

@@ -2,15 +2,29 @@ package com.cartoon.tinytips.Personal.MyNote;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.Operate.OperateNote;
+import com.cartoon.tinytips.util.JudgeEmpty;
+
+import java.util.List;
 
 public class MyNoteModel implements IMyNote.Model {
+
+    private OperateNote operateNote;
+
     @Override
-    public void getMyNoteInformation(ValueCallBack<Note> callBack){
-        Note mynote = new Note();
-        if (mynote != null){
-            callBack.onFail("获取笔记失败");
-        }else {
-            callBack.onSuccess(mynote);
+    public void getNote(ValueCallBack<List<Note>> callBack){
+        Note note=new Note();
+        note.setAuthor("Leo");
+        List<Note> notes=operateNote.query(note);
+        if(JudgeEmpty.isEmpty(note)||notes.isEmpty()){
+            callBack.onFail("获取笔记信息失败");
         }
+        else {
+            callBack.onSuccess(notes);
+        }
+    }
+
+    public MyNoteModel(){
+        operateNote=OperateNote.getOperateNote();
     }
 }

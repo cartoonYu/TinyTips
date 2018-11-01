@@ -1,6 +1,5 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,13 +8,12 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Personal.MyNote.Note;
+import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -51,12 +49,12 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @Override
     protected void initView(){
         revampStatusBar();
-        initNote();
+        presenter.initData();
     }
 
     @Override
     protected void onPrepare(){
-        presenter.initData();
+
     }
 
     @Override
@@ -71,12 +69,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
 
     @Override
-    public void initNote(){
-        notes=new ArrayList<>();
-        Note n=new Note("null","null","null","null","null");
-        for(int i=0;i<20;i++){
-            notes.add(n);
-        }
+    public void initNote(List<Note> notes){
         LinearLayoutManager manager=new LinearLayoutManager(this);
         note.setLayoutManager(manager);
         adapter=new NoteAdapter(notes);

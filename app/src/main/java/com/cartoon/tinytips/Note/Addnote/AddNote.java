@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
@@ -68,6 +67,9 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @BindView(R.id.addnote_addtips)
     Button addnote_addtips;
 
+    @BindView(R.id.addNote_addTitle)
+    ScrollEditText title;
+
     @BindView(R.id.contentbar)
     ScrollEditText editText;
 
@@ -116,7 +118,14 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     @OnClick(R.id.addnote_toolbar_menubutton_bg)
     protected void onClickmenubutton(){
         String result=editText.getText().toString();
+        String title=this.title.getText().toString();
         note=DivideNote.getDivideNote().transStringToNote(result);
+        note.setTitle(title);
+        if(!tip.equals("选择标签")){
+            List<String> tag= new ArrayList<>();
+            tag.add(tip);
+            note.setTag(tag);
+        }
         presenter.addNote(note);
     }
 
@@ -191,7 +200,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
                 new TipsItem("数学"), new TipsItem("纺织/服装")};
          tips = IntentActivity.getIntentData(this,"NoteTips",tips);
          tip = major[tips].getTipsname();
-         Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
+         //Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
          addnote_addtips.setText(tip);
     }
 

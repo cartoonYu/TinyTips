@@ -22,8 +22,6 @@
             android:layout_below="@id/personal_mynote_title"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="5dp"
-            android:background="@mipmap/personal_mynote_tag"
-            android:text="标签1"
             android:textSize="14sp"
             android:gravity="center"
             android:id="@+id/personal_mynote_tag1"/>
@@ -34,8 +32,6 @@
             android:layout_toRightOf="@id/personal_mynote_tag1"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:background="@mipmap/personal_mynote_tag"
-            android:text="标签2"
             android:textSize="14sp"
             android:gravity="center"
             android:id="@+id/personal_mynote_tag2"/>
@@ -46,8 +42,6 @@
             android:layout_toRightOf="@id/personal_mynote_tag2"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:background="@mipmap/personal_mynote_tag"
-            android:text="标签3"
             android:textSize="14sp"
             android:gravity="center"
             android:id="@+id/personal_mynote_tag3"/>

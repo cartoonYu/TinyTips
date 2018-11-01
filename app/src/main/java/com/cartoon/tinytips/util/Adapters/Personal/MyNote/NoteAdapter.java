@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         }
     }
 
-    public NoteAdapter(List<Note> list) {
+    public NoteAdapter(List<com.cartoon.tinytips.bean.Note> list) {
         this.list = list;
     }
 
@@ -59,9 +61,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         Note note=list.get(position);
         holder.title.setText(note.getTitle());
         holder.date.setText(note.getDate());
-        for(int i=0;i<holder.tags.size();i++){
-            holder.tags.get(i).setText(note.getTags().get(i));
+        if(JudgeEmpty.isNotEmpty(note.getTag())){
+            for(int i=0;i<note.getTag().size();i++){
+                holder.tags.get(i).setBackground(mContext.getDrawable(R.mipmap.personal_mynote_tag));
+                holder.tags.get(i).setText(note.getTag().get(i));
+            }
         }
+
     }
 
     @Override
