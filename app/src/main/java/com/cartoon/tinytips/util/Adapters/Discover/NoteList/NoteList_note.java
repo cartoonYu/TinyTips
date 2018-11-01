@@ -5,11 +5,15 @@ public class NoteList_note {
     private String username;
     private String title;
     private String content;
-    private int NumOfFavoirte;
-    private int NumOfRecommend;
-    private int NumOfCollectoin;
+    private String NumOfFavoirte;
+    private String NumOfRecommend;
+    private String NumOfCollectoin;
 
-    public NoteList_note(int userImage, String username, String title, String content, int NumOfFavoirte, int NumOfRecommend, int NumOfCollectoin){
+
+    public NoteList_note(){
+
+    }
+    public NoteList_note(int userImage, String username, String title, String content, String NumOfFavoirte, String NumOfRecommend, String NumOfCollectoin){
         this.userImage = userImage;
         this.username = username;
         this.title = title;
@@ -35,15 +39,15 @@ public class NoteList_note {
         return content;
     }
 
-    public int getNumOfRecommend() {
+    public String getNumOfRecommend() {
         return NumOfRecommend;
     }
 
-    public int getNumOfFavoirte() {
+    public String getNumOfFavoirte() {
         return NumOfFavoirte;
     }
 
-    public int getNumOfCollectoin() {
+    public String getNumOfCollectoin() {
         return NumOfCollectoin;
     }
 
@@ -51,15 +55,15 @@ public class NoteList_note {
         this.content = content;
     }
 
-    public void setNumOfCollectoin(int numOfCollectoin) {
+    public void setNumOfCollectoin(String numOfCollectoin) {
         NumOfCollectoin = numOfCollectoin;
     }
 
-    public void setNumOfFavoirte(int numOfFavoirte) {
+    public void setNumOfFavoirte(String numOfFavoirte) {
         NumOfFavoirte = numOfFavoirte;
     }
 
-    public void setNumOfRecommend(int numOfRecommend) {
+    public void setNumOfRecommend(String numOfRecommend) {
         NumOfRecommend = numOfRecommend;
     }
 
