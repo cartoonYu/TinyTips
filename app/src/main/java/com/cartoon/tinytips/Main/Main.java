@@ -105,8 +105,16 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
             information=IntentActivity.getIntentData(this,new String("personalDetail"),information);
             Log.d("text", "datafromdetail "+information.getAccount());
         }
-        else if ((Information)getIntent().getSerializableExtra("personalDetail")==null){
-            Log.d("text", "onPrepare: "+null);
+        else if (IntentActivity.getIntentData(this,new String("personalHomepage"),information)!=null){
+
+            information=IntentActivity.getIntentData(this,new String("personalHomepage"),information);
+            Log.d("text", "datafrompersonalHomepage: "+information.getAccount());
+        }else if (IntentActivity.getIntentData(this,new String("personalCollect"),information)!=null){
+            information=IntentActivity.getIntentData(this,new String("personalCollect"),information);
+            Log.d("text", "datafrompersonalCollect: "+information.getAccount());
+        }else if (IntentActivity.getIntentData(this,new String("personalSetting"),information)!=null){
+            information=IntentActivity.getIntentData(this,new String("personalSetting"),information);
+            Log.d("text", "datafrompersonalSetting: "+information.getAccount());
         }
 
         /*Intent intent = new Intent(Main.this,Personal.class);

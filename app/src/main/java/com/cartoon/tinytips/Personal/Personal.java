@@ -77,6 +77,12 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
             Log.d("Person", "Personal " + information.getAccount());
         }else if (IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information)!=null){
             information = IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information);
+        }else if (IntentActivity.getIntentData(getActivity(),new String("personalHomepage"),information)!=null){
+            information = IntentActivity.getIntentData(getActivity(),new String("personalHomepage"),information);
+        }else if (IntentActivity.getIntentData(getActivity(),new String("personalCollect"),information)!=null){
+            information = IntentActivity.getIntentData(getActivity(),new String("personalCollect"),information);
+        }else if (IntentActivity.getIntentData(getActivity(),new String("personalSetting"),information)!=null){
+            information = IntentActivity.getIntentData(getActivity(),new String("personalSetting"),information);
         }
         presenter.initData();
     }
@@ -87,7 +93,14 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
-        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
+
+        Intent intent = new Intent(getContext(),PersonalHomepage.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        Log.d("text", "onClickHeadPro: "+information.getAccount());
+        startActivity(intent);
+
+
         IntentActivity.finishActivity(getActivity());
     }
 
@@ -113,19 +126,31 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.collect_Personal)
     public void onClickCollect(){
-        IntentActivity.intentWithoutData(getContext(),Collect.class);
+        Intent intent = new Intent(getContext(),Collect.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        Log.d("text", "collect "+information.getAccount());
+        startActivity(intent);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
-        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
+        Intent intent = new Intent(getContext(),PersonalHomepage.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        Log.d("text", "onClickDetail: "+information.getAccount());
+        startActivity(intent);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.setting_Personal)
     public void onClickSetting(){
-        IntentActivity.intentWithoutData(getContext(),Setting.class);
+        Intent intent = new Intent(getContext(),Setting.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        Log.d("text", "setting: "+information.getAccount());
+        startActivity(intent);
         IntentActivity.finishActivity(getActivity());
     }
 

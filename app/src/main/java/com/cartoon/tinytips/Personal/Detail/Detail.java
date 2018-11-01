@@ -192,4 +192,9 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         }
 
     }
+
+    @Override
+    public Information getInformation() {
+        return information;
+    }
 }

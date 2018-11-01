@@ -7,6 +7,7 @@ import java.io.File;
 
 interface IDetail {
     interface View{
+        Information getInformation();    //presenter获取information
         void setHeadPro(File headPro);   //设置头像
         void setNickName(String name);     //设置昵称
         void setResume(String resume);   //设置简介
@@ -22,5 +23,6 @@ interface IDetail {
 
     interface Model{
         void getPersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
+        void setInformation(Information information);
     }
 }

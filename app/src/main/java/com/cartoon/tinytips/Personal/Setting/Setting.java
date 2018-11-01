@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.Personal.Setting;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,6 +9,7 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Setting.Management.Management;
 import com.cartoon.tinytips.Personal.Setting.Security.Security;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -17,6 +19,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class Setting extends BaseActivity<SettingPresenter> implements ISetting.View{
+
+    Information information;
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -45,12 +49,16 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @Override
     protected void onPrepare(){
-
+        if ((Information)getIntent().getSerializableExtra("personal")!=null){
+            information = (Information)getIntent().getSerializableExtra("personal");
+            Log.d("text", "Detail: "+information.getAccount());
+        }
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalSetting"),information);
+        IntentActivity.finishActivity(this);
     }
 
 
@@ -67,7 +75,7 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalSetting"),information);
         IntentActivity.finishActivity(this);
     }
 

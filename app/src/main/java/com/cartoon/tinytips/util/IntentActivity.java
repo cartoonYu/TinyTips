@@ -86,7 +86,7 @@ public class IntentActivity{
     public static Information getIntentData(Context context,String str,Information defaultData){
         Activity activity=(Activity)context;
         intent=activity.getIntent();
-        Log.d("text", "getIntentData: "+((Information)intent.getSerializableExtra(str)).getAccount());
+//        Log.d("text", "getIntentData: "+str+((Information)intent.getSerializableExtra(str)).getAccount());
         return (Information)intent.getSerializableExtra(str);
     }
 

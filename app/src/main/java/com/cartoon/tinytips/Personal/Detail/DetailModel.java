@@ -8,6 +8,8 @@ import java.util.List;
 
 public class DetailModel implements IDetail.Model {
 
+    private Information info;
+
     @Override
     public void getPersonalInformation(ValueCallBack<Information> callBack){
         /*Information information=new Information();
@@ -25,7 +27,7 @@ public class DetailModel implements IDetail.Model {
             information.setDate("2018-9-28");
             callBack.onSuccess(information);
         }*/
-        Information information=new Information();
+       /* Information information=new Information();
         information.setAccount("hht");
         OperateInformation op=OperateInformation.getOperate();
         List<Information> list=op.query(information);
@@ -35,7 +37,17 @@ public class DetailModel implements IDetail.Model {
         else {
             Information result=list.get(0);
             callBack.onSuccess(result);
+        }*/
+        if (info!=null){
+            callBack.onSuccess(info);
+        }else {
+            callBack.onFail("获取个人信息失败");
         }
 
+    }
+
+    @Override
+    public void setInformation(Information information) {
+        info = information;
     }
 }

@@ -3,12 +3,14 @@ package com.cartoon.tinytips.Personal.Collect;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -22,6 +24,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class Collect extends BaseActivity<CollectPresenter> implements ICollect.View{
+
+    Information information;
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -60,13 +64,16 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @Override
     protected void onPrepare(){
-
+        if ((Information)getIntent().getSerializableExtra("personal")!=null){
+            information = (Information)getIntent().getSerializableExtra("personal");
+            Log.d("text", "Detail: "+information.getAccount());
+        }
     }
 
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalCollect"),information);
         IntentActivity.finishActivity(this);
     }
 
@@ -96,7 +103,8 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalCollect"),information);
         IntentActivity.finishActivity(this);
 }
 
