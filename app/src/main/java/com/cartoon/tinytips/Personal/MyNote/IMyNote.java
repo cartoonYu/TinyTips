@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 
 import java.util.List;
@@ -10,11 +11,11 @@ interface IMyNote {
         void initNote(List<Note> notes);      //初始化笔记列表
     }
     interface Presenter{
-        void initData();   //初始化数据
+        void initData(Information information);   //初始化数据
     }
 
     interface Model{
-        void getNote(ValueCallBack<List<Note>> callBack);   //获取笔记
+        void getNote(Information information,ValueCallBack<List<Note>> callBack);   //获取笔记
     }
 
 }

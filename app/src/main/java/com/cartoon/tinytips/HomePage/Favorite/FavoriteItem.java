@@ -1,54 +1,62 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
+import android.text.SpannableString;
+
+import java.io.File;
+import java.util.List;
+
 public class FavoriteItem {
-    private int  userImage;
-    private String username;
+    private File userImage;
+    private String userName;
     private String title;
-    private String content;
-    private int NumOfFavoirte;
+    private List<SpannableString> content;
+    private int NumOfFavorite;
     private int NumOfRecommend;
-    private int NumOfCollectoin;
+    private int NumOfCollection;
     private int NumOfShare;
     private String time;
 
-    public FavoriteItem(int userImage, String username, String title, String content, int NumOfFavoirte, int NumOfRecommend, int NumOfCollectoin,int NumOfShare,String time){
+    public FavoriteItem(){
+    }
+
+    public void setUserImage(File userImage) {
         this.userImage = userImage;
-        this.username = username;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
-        this.content = content;
-        this.NumOfRecommend = NumOfRecommend;
-        this.NumOfFavoirte = NumOfFavoirte;
-        this.NumOfCollectoin = NumOfCollectoin;
-        this.NumOfShare = NumOfShare;
-        this.time = time;
-    }
-
-    public String getuserName() {
-        return username;
-    }
-
-    public int getuserImage() {
-        return userImage;
-    }
-
-    public String gettitle() {
-        return title;
-    }
-
-    public String getcontent() {
-        return content;
     }
 
     public int getNumOfRecommend() {
         return NumOfRecommend;
     }
 
-    public int getNumOfFavoirte() {
-        return NumOfFavoirte;
+    public String getTitle() {
+        return title;
     }
 
-    public int getNumOfCollectoin() {
-        return NumOfCollectoin;
+    public void setContent(List<SpannableString> content) {
+        this.content = content;
+    }
+
+    public void setNumOfRecommend(int numOfRecommend) {
+        NumOfRecommend = numOfRecommend;
+    }
+
+    public File getUserImage() {
+        return userImage;
+    }
+
+    public int getNumOfCollection() {
+        return NumOfCollection;
+    }
+
+    public int getNumOfFavorite() {
+        return NumOfFavorite;
+    }
+
+    public List<SpannableString> getContent() {
+        return content;
     }
 
     public int getNumOfShare() {
@@ -58,4 +66,29 @@ public class FavoriteItem {
     public String getTime() {
         return time;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setNumOfFavorite(int numOfFavorite) {
+        NumOfFavorite = numOfFavorite;
+    }
+
+    public void setNumOfCollection(int numOfCollection) {
+        NumOfCollection = numOfCollection;
+    }
+
+    public void setNumOfShare(int numOfShare) {
+        NumOfShare = numOfShare;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 }

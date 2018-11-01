@@ -1,50 +1,75 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
+import android.text.SpannableString;
+
+import java.io.File;
+import java.util.List;
+
 public class RecommendItem {
-    private int  userImage;
+    private File userImage;
     private String username;
     private String title;
-    private String content;
-    private int NumOfFavoirte;
+    private List<SpannableString> content;
+    private int NumOfFavorite;
     private int NumOfRecommend;
-    private int NumOfCollectoin;
+    private int NumOfCollection;
 
-    public RecommendItem(int userImage, String username, String title, String content, int NumOfFavoirte, int NumOfRecommend, int NumOfCollectoin) {
+    public RecommendItem() {
+    }
+
+    public void setUserImage(File userImage) {
         this.userImage = userImage;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setContent(List<SpannableString> content) {
         this.content = content;
-        this.NumOfRecommend = NumOfRecommend;
-        this.NumOfFavoirte = NumOfFavoirte;
-        this.NumOfCollectoin = NumOfCollectoin;
     }
 
-    public String getuserName() {
-        return username;
+    public void setNumOfCollection(int numOfCollection) {
+        NumOfCollection = numOfCollection;
     }
 
-    public int getuserImage() {
+    public void setNumOfFavorite(int numOfFavorite) {
+        NumOfFavorite = numOfFavorite;
+    }
+
+    public void setNumOfRecommend(int numOfRecommend) {
+        NumOfRecommend = numOfRecommend;
+    }
+
+    public File getUserImage() {
         return userImage;
     }
 
-    public String gettitle() {
-        return title;
+    public int getNumOfFavorite() {
+        return NumOfFavorite;
     }
 
-    public String getcontent() {
+    public int getNumOfCollection() {
+        return NumOfCollection;
+    }
+
+    public List<SpannableString> getContent() {
         return content;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public int getNumOfRecommend() {
         return NumOfRecommend;
     }
 
-    public int getNumOfFavoirte() {
-        return NumOfFavoirte;
+    public String getUsername() {
+        return username;
     }
-
-    public int getNumOfCollectoin() {
-        return NumOfCollectoin;
-    }
-
 }

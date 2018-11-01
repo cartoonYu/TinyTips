@@ -23,6 +23,7 @@ interface IPersonal {
     interface Model{
         void getPersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
         void setInformation(Information information);
+        void getNoteNum(Information information,ValueCallBack<Integer> callBack);
     }
 
 }

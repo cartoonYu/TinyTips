@@ -2,6 +2,7 @@ package com.cartoon.tinytips.Personal.MyNote;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.ShowToast;
 
@@ -25,8 +26,8 @@ class MyNotePresenter extends BaseActivityPresenter<MyNote> implements IMyNote.P
     }
 
     @Override
-    public void initData(){
-        model.getNote(new ValueCallBack<List<Note>>() {
+    public void initData(Information information){
+        model.getNote(information,new ValueCallBack<List<Note>>() {
             @Override
             public void onSuccess(List<Note> notes) {
                 view.initNote(notes);

@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.util.Adapters.Personal.MyNote;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -52,7 +54,16 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.personal_mynote_item, parent, false);
-        ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position=holder.getAdapterPosition();
+                Intent intent=new Intent(mContext,NoteDetail.class);
+                intent.putExtra("note",list.get(position));
+                mContext.startActivity(intent);
+            }
+        });
         return holder;
     }
 

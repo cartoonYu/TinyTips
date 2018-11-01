@@ -3,8 +3,6 @@ package com.cartoon.tinytips.Personal.Detail;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Path;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,26 +15,16 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.FragmentConstant;
-import com.cartoon.tinytips.util.Image.UriAndFile;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
-import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
-import com.cartoon.tinytips.util.network.HttpConnection;
-import com.cartoon.tinytips.util.network.HttpConstant;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
-import org.json.JSONObject;
-
 import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,7 +36,8 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     private static final int REQUEST_PERMISSION_CODE = 1;
 
-    Information information;
+    private Information information;
+
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -108,8 +97,6 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @Override
     public void onBackPressed(){
-
-
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
         IntentActivity.finishActivity(this);
     }

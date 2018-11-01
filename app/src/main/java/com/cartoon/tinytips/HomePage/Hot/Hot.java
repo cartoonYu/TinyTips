@@ -3,6 +3,7 @@ package com.cartoon.tinytips.HomePage.Hot;
 import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Homepage.HotAdapter;
@@ -12,23 +13,12 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
 public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
-    private HotItem[] HotItems = {
-            new HotItem("213","12sadadasdasdsasdasdasdasdasdasdasdassd3",321),
-            new HotItem("213","12asdadasdsadsadasdassdasdasdassdassd3",321),
-            new HotItem("213","12asdadadasdadasdassdadsaddasd3",321),
-            new HotItem("213","12dadadasdadasdasdadadasdadasdas3",321),
-            new HotItem("213","12dadadasdadasdasdadadasdadasdas3",321),
-            new HotItem("213","12dadadasdadasdasdadadasdadasdasdadadasdadasdas3",321),
-            new HotItem("213","12dadadasdadasdasdadadasdadasdas3",321),
-            new HotItem("213","12dadadasdadasdas3",321),
-            new HotItem("213","12dadadasdadasdasdadadasdadasdas3",321),
-    };
+
     private HotAdapter adapter;
 
     private List<HotItem> HotItemList;
@@ -53,10 +43,7 @@ public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
 
     @Override
     protected void initView() {
-        HotItemList= new ArrayList<>();
-        for (HotItem one : HotItems) {
-            HotItemList.add(one);
-        }
+        presenter.initData();
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         hot_recyclerView.setLayoutManager(layoutManager);
         adapter = new HotAdapter(HotItemList);
@@ -88,4 +75,10 @@ public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
     protected void onPrepare() {
 
     }
+
+    @Override
+    public void initData(List<HotItem> hotItems){
+        this.HotItemList=hotItems;
+    }
+
 }

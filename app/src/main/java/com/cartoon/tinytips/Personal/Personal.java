@@ -2,7 +2,6 @@ package com.cartoon.tinytips.Personal;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +10,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
-import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
-import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.MyNote.MyNote;
+import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.Start.StartActivity;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -70,11 +67,9 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     protected void onPrepare(){
-
         Intent intent = getActivity().getIntent();
         if ((Information)intent.getSerializableExtra("start")!=null) {
             information = (Information) intent.getSerializableExtra("start");
-            Log.d("Person", "Personal " + information.getAccount());
         }else if (IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information)!=null){
             information = IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information);
         }else if (IntentActivity.getIntentData(getActivity(),new String("personalHomepage"),information)!=null){
@@ -106,21 +101,19 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
-        IntentActivity.intentWithoutData(getContext(),MyNote.class);
+        Intent intent = new Intent(getContext(),MyNote.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        startActivity(intent);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-
         Intent intent = new Intent(getContext(),Detail.class);                     //传递数据到MainActivity
         intent.putExtra("in","hello");
         intent.putExtra("personal",information);
-        Log.d("text", "onClickDetail: "+information.getAccount());
         startActivity(intent);
-
-
-
         IntentActivity.finishActivity(getActivity());
     }
 

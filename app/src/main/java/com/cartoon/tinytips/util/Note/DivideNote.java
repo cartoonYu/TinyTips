@@ -64,7 +64,6 @@ public class DivideNote {
         if(JudgeEmpty.isEmpty(note)){
             return null;
         }
-        Log.d("asd",note.getPhotoDetails().toString());
         List<Uri> uris=new ArrayList<>();
         if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())&&!note.getPhotoDetails().isEmpty()){
             for(File file:note.getPhotoDetails()){

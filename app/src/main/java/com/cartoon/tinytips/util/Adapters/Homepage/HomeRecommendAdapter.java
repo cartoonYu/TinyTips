@@ -1,9 +1,9 @@
 package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +19,7 @@ import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
@@ -113,18 +114,22 @@ public class HomeRecommendAdapter extends RecyclerView.Adapter<HomeRecommendAdap
     @Override
     public void onBindViewHolder(HomeRecommendAdapter.ViewHolder holder, int position) {
         RecommendItem RecommendItem = mRecommendItems.get(position);
-        holder.userNames.setText(RecommendItem.getuserName());
-        holder.titles.setText(RecommendItem.gettitle());
-        holder.contents.setText(RecommendItem.getcontent());
+        holder.userNames.setText(RecommendItem.getUsername());
+        holder.titles.setText(RecommendItem.getTitle());
+        if(JudgeEmpty.isNotEmpty(RecommendItem.getContent())&&!RecommendItem.getContent().isEmpty()){
+            for(SpannableString string:RecommendItem.getContent()){
+                holder.contents.append(string);
+            }
+        }
         holder.NumOfRecommends.setText(""+ RecommendItem.getNumOfRecommend());
-        holder.NumOfCollectoins.setText(""+ RecommendItem.getNumOfCollectoin());
-        holder.NumOfFavoirtes.setText(""+ RecommendItem.getNumOfFavoirte());
+        holder.NumOfCollectoins.setText(""+ RecommendItem.getNumOfCollection());
+        holder.NumOfFavoirtes.setText(""+ RecommendItem.getNumOfFavorite());
         holder.Recommend_itemup.setOnClickListener(this);
         holder.userImages.setOnClickListener(this);
         holder.NumOfRecommends.setOnClickListener(this);
         holder.NumOfFavoirtes.setOnClickListener(this);
         holder.NumOfCollectoins.setOnClickListener(this);
-        Glide.with(mContext).load(RecommendItem.getuserImage()).into(holder.userImages);
+        Glide.with(mContext).load(RecommendItem.getUserImage()).into(holder.userImages);
     }
 
     @Override

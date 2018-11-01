@@ -15,52 +15,54 @@
             android:layout_height="wrap_content"
             android:text="01"
             android:textColor="@color/hot1"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:id="@+id/Hitem_sequence"/>
 
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/num"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@color/white">
 
         <TextView
             android:id="@+id/Hitem_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:layout_marginLeft="15dp"
             android:text="标题"
             android:textColor="@color/txcolor"
-            android:layout_marginLeft="5dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Hitem_content"
-            android:layout_marginLeft="5dp"
-            android:layout_below="@+id/Hitem_title"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="内容"/>
+            android:layout_below="@+id/Hitem_title"
+            android:layout_marginLeft="15dp" />
 
         <TextView
             android:id="@+id/clicknums"
-            android:layout_marginLeft="5dp"
-            android:layout_below="@id/Hitem_content"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="0"
-            android:textSize="8sp"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@id/clicknums"
             android:layout_below="@id/Hitem_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="8sp" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/Hitem_content"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@id/clicknums"
+            android:gravity="center_vertical"
             android:text="次浏览"
-            android:textSize="8sp"
-            android:gravity="center_vertical"/>
+            android:textSize="10sp" />
     </RelativeLayout>
 
 </RelativeLayout>

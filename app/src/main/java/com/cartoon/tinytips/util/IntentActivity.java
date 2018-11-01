@@ -50,6 +50,7 @@ public class IntentActivity{
         intent(context,intent);
     }
 
+
     /**
      * 使用intent携带bean对象跳转活动
      * context为开始的活动，des为目标活动,data为控制fragment显示的变量

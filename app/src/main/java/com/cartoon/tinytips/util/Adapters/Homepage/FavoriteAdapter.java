@@ -10,23 +10,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
 import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
@@ -131,7 +125,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(FavoriteAdapter.ViewHolder holder, int position) {
         FavoriteItem FavoriteItem = mFavoriteItems.get(position);
-        holder.userNames.setText(FavoriteItem.getuserName());
+        /*holder.userNames.setText(FavoriteItem.getuserName());
         holder.titles.setText(FavoriteItem.gettitle());
         holder.contents.setText(FavoriteItem.getcontent());
         holder.NumOfRecommends.setText(""+ FavoriteItem.getNumOfRecommend());
@@ -145,7 +139,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.commuitenums_item_favorite.setOnClickListener(this);
         holder.Cnums_item_favorite.setOnClickListener(this);
         holder.sharenums_item_favorite.setOnClickListener(this);
-        Glide.with(mContext).load(FavoriteItem.getuserImage()).into(holder.userImages);
+        Glide.with(mContext).load(FavoriteItem.getuserImage()).into(holder.userImages);*/
     }
 
     @Override

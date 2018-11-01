@@ -1,18 +1,25 @@
 package com.cartoon.tinytips.Note.Details;
 
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.Note.DivideNote;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INoteDetail.View{
+
+    private Note note;
 
     @BindView(R.id.statusBar)
     View statusBar;
@@ -51,6 +58,16 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
 
     @Override
     protected void onPrepare(){
+        initData();
+    }
+
+    private void initData() {
+        if((Note)getIntent().getSerializableExtra("note")!=null){
+            note=(Note)getIntent().getSerializableExtra("note");
+        }
+        setTitle();
+        setDetails();
+        setDate();
     }
 
 
@@ -77,6 +94,24 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     private void initToolbar(){
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("详情"));
+    }
+
+    @Override
+    public void setTitle(){
+        this.title.setText(note.getTitle());
+    }
+
+    @Override
+    public void setDetails(){
+        List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(note);
+        for(SpannableString string:stringList){
+            this.details.append(string);
+        }
+    }
+
+    @Override
+    public void setDate(){
+        this.date.setText(note.getDate());
     }
 
 }

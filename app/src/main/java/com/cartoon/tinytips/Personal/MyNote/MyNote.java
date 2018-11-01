@@ -2,12 +2,14 @@ package com.cartoon.tinytips.Personal.MyNote;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
@@ -21,6 +23,8 @@ import butterknife.OnClick;
 
 public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.View{
 
+    private Information information;
+
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -30,8 +34,8 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
-    private List<Note> notes;
     private NoteAdapter adapter;
+
     @BindView(R.id.personal_mynote_note)
     RecyclerView note;
 
@@ -49,7 +53,11 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @Override
     protected void initView(){
         revampStatusBar();
-        presenter.initData();
+        if ((Information)getIntent().getSerializableExtra("personal")!=null){
+            information = (Information)getIntent().getSerializableExtra("personal");
+            Log.d("text", "Detail: "+information.getAccount());
+        }
+        presenter.initData(information);
     }
 
     @Override
@@ -59,7 +67,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
         IntentActivity.finishActivity(this);
     }
 
@@ -78,7 +86,7 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
         IntentActivity.finishActivity(this);
     }
 
