@@ -5,11 +5,15 @@ import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.ShowToast;
 
+import java.util.IllegalFormatCodePointException;
+
 class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPersonal.Presenter {
 
     private IPersonal.View view;
 
     private IPersonal.Model model;
+
+    Information information;
 
     public PersonalPresenter(IPersonal.View view){
         this.view=view;
@@ -18,6 +22,8 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
 
     @Override
     public void initData(){
+        saveInformation();
+        model.setInformation(information);
         model.getPersonalInformation(new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information personalInformation) {
@@ -30,11 +36,15 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
 
             @Override
             public void onFail(String msg) {
-                ShowToast.shortToast(msg);
+
+
             }
         });
     }
 
+    public void saveInformation(){
+       information = view.getInformation();
+    }
 
     @Override
     protected void deleteView(){

@@ -81,6 +81,8 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
 
     @OnClick(R.id.personal_homepage_back)
     public void clickBack(){
+
+
         IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }

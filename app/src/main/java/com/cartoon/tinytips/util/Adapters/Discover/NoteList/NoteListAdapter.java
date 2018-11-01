@@ -14,7 +14,7 @@ import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.util.Adapters.Major;
+import com.cartoon.tinytips.util.Adapters.Discover.Major;
 import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;

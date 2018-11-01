@@ -1,8 +1,9 @@
 package com.cartoon.tinytips.HomePage;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RadioButton;
@@ -69,6 +70,7 @@ public class Homepage extends BaseFragment<HomepagePresenter> implements IHomepa
 
     @Override
     protected void onPrepare(){
+    //    Intent intent =
 
     }
 

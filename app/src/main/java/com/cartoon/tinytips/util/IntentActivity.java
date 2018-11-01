@@ -3,6 +3,9 @@ package com.cartoon.tinytips.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
+import com.cartoon.tinytips.bean.Information;
 
 import java.io.Serializable;
 
@@ -39,6 +42,14 @@ public class IntentActivity{
         intent(context,intent);
     }
 
+    public static void intentWithData(Context context, Class<?> des, String str, int data, String str1, Information information){
+        intent=new Intent(context,des);
+        intent.putExtra(str, data);
+        intent.putExtra(str1,information);
+        Log.d("text", "intentWithData: "+information.getAccount());
+        intent(context,intent);
+    }
+
     /**
      * 使用intent携带bean对象跳转活动
      * context为开始的活动，des为目标活动,data为控制fragment显示的变量
@@ -46,8 +57,11 @@ public class IntentActivity{
      * @param des
      * @param data
      */
-    public static void intentWithBean(Context context,Class<?> des,Serializable data){
-
+    public static void intentWithBean(Context context,Class<?> des,String str,int data,Serializable information){
+        intent=new Intent(context,des);
+        intent.putExtra(str, data);
+        //intent.put
+        intent(context,intent);
     }
 
     public static void finishActivity(Context context){
@@ -65,7 +79,15 @@ public class IntentActivity{
     public static int getIntentData(Context context,String str,int defaultData){
         Activity activity=(Activity)context;
         intent=activity.getIntent();
+
         return intent.getIntExtra(str,defaultData);
+    }
+
+    public static Information getIntentData(Context context,String str,Information defaultData){
+        Activity activity=(Activity)context;
+        intent=activity.getIntent();
+        Log.d("text", "getIntentData: "+((Information)intent.getSerializableExtra(str)).getAccount());
+        return (Information)intent.getSerializableExtra(str);
     }
 
 
@@ -85,6 +107,7 @@ public class IntentActivity{
 
     private static void intent(Context context,Intent intent){
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Log.d("text", "intent: to main");
         context.startActivity(intent);
     }
 

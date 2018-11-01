@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters;
+package com.cartoon.tinytips.util.Adapters.Discover;
 
 public class Major{
         private int imageId;

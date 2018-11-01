@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Adapters;
+package com.cartoon.tinytips.util.Adapters.Discover;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> implements View.OnClickListener{
     private Context mContext;
 
-    private List<com.cartoon.tinytips.util.Adapters.Major> mMJList;
+    private List<com.cartoon.tinytips.util.Adapters.Discover.Major> mMJList;
 
     @Override
     public void onClick(View view) {
@@ -49,7 +49,7 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
         }
     }
 
-    public MajorAdapter(List<com.cartoon.tinytips.util.Adapters.Major> MJList) {
+    public MajorAdapter(List<com.cartoon.tinytips.util.Adapters.Discover.Major> MJList) {
         this.mMJList = MJList;
     }
 
@@ -64,7 +64,7 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);
+        com.cartoon.tinytips.util.Adapters.Discover.Major major = mMJList.get(position);
         Glide.with(mContext).load(major.getImage1Id()).into(holder.majorImage1);
         holder.majorImage1.setOnClickListener(this);
     }

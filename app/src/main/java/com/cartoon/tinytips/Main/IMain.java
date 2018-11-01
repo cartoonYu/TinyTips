@@ -1,5 +1,8 @@
 package com.cartoon.tinytips.Main;
 
+import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
+
 public interface IMain {
     interface View{
 
@@ -10,6 +13,6 @@ public interface IMain {
     }
 
     interface Model{
-
+        void getPersonalInformation(ValueCallBack<Information> callBack);
     }
 }

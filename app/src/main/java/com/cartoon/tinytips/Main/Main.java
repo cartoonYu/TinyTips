@@ -1,9 +1,11 @@
 package com.cartoon.tinytips.Main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,11 +14,14 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
+import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Homepage;
+import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
 
@@ -34,6 +39,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     private int flag;     //决定切换之前显示的fragment
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
+
+    Information information;
 
 
     @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
@@ -88,6 +95,23 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         fragment=R.id.mainFragement;
         switchFragment(constant.getDefaultFragment());
         switchFragment(flag);
+
+        information = new Information();
+        if((Information)getIntent().getSerializableExtra("start")!=null) {
+            information = (Information) getIntent().getSerializableExtra("start");
+            Log.d("text", "datafromstart "+information.getAccount());
+        }else if(IntentActivity.getIntentData(this,new String("personalDetail"),information)!=null){
+
+            information=IntentActivity.getIntentData(this,new String("personalDetail"),information);
+            Log.d("text", "datafromdetail "+information.getAccount());
+        }
+        else if ((Information)getIntent().getSerializableExtra("personalDetail")==null){
+            Log.d("text", "onPrepare: "+null);
+        }
+
+        /*Intent intent = new Intent(Main.this,Personal.class);
+        intent.putExtra("information",information);
+        Log.d("onPrepare: ",information.getAccount()+information.getPassword());*/
     }
 
     @OnClick(R.id.mainHomepage)

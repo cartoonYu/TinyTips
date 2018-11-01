@@ -1,6 +1,9 @@
 package com.cartoon.tinytips.Personal;
 
+
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -8,12 +11,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
+import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.MyNote.MyNote;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.Start.StartActivity;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
@@ -24,6 +30,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View {
+    Information information;
 
     @BindView(R.id.detail_Personal)
     RelativeLayout detail;
@@ -63,6 +70,14 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     protected void onPrepare(){
+
+        Intent intent = getActivity().getIntent();
+        if ((Information)intent.getSerializableExtra("start")!=null) {
+            information = (Information) intent.getSerializableExtra("start");
+            Log.d("Person", "Personal " + information.getAccount());
+        }else if (IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information)!=null){
+            information = IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information);
+        }
         presenter.initData();
     }
 
@@ -84,7 +99,15 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-        IntentActivity.intentWithoutData(getContext(),Detail.class);
+
+        Intent intent = new Intent(getContext(),Detail.class);                     //传递数据到MainActivity
+        intent.putExtra("in","hello");
+        intent.putExtra("personal",information);
+        Log.d("text", "onClickDetail: "+information.getAccount());
+        startActivity(intent);
+
+
+
         IntentActivity.finishActivity(getActivity());
     }
 
@@ -129,5 +152,10 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @Override
     public void setNickName(String name){
         this.nickName.setText(name);
+    }
+
+    @Override
+    public Information getInformation() {
+        return information;
     }
 }

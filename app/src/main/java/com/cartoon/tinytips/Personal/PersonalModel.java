@@ -19,8 +19,26 @@ class PersonalModel implements IPersonal.Model {
 
     private String NumOfFans;
 
+    private List<Information> list;
+
+    private Information info;
+
+    private OperateInformation operater;
+
+    public PersonalModel() {
+        operater = OperateInformation.getOperate();
+
+    }
+
     @Override
     public void getPersonalInformation(ValueCallBack<Information> callBack){
+
+        if (info!=null){
+            callBack.onSuccess(info);
+        }else {
+            callBack.onFail("获取个人信息失败");
+        }
+
         /*Information information=new Information();
         Bitmap headPro=BitmapFactory.decodeResource(TinyTipsApplication.getContext().getResources(), R.drawable.nav_icon);
         if(JudgeEmpty.isEmpty(headPro)){
@@ -37,6 +55,11 @@ class PersonalModel implements IPersonal.Model {
             information.setNickName("AlphaCat");
             callBack.onSuccess(information);
         }*/
+
+    }
+
+    public void setInformation(Information information){
+        info = information;
 
     }
 }

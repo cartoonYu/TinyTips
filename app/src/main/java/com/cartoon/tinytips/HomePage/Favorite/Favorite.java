@@ -1,12 +1,16 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.Adapters.Homepage.FavoriteAdapter;
+import com.cartoon.tinytips.util.ShowToast;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -33,6 +37,8 @@ public class Favorite extends BaseFragment<FavoritePresenter> implements IFavori
     private List<FavoriteItem> FavoriteItemList;
 
     private ClassicsHeader Classicsheader;
+
+    private Information information;
 
     @BindView(R.id.home_favorite_recyclerview)
     RecyclerView favorite_recyclerView;

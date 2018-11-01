@@ -9,8 +9,8 @@ import android.view.View;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 
-import com.cartoon.tinytips.util.Adapters.Major;
-import com.cartoon.tinytips.util.Adapters.MajorAdapter;
+import com.cartoon.tinytips.util.Adapters.Discover.Major;
+import com.cartoon.tinytips.util.Adapters.Discover.MajorAdapter;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.ArrayList;

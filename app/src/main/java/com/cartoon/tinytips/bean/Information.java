@@ -3,6 +3,7 @@ package com.cartoon.tinytips.bean;
 import android.graphics.Bitmap;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
  * 2.属性interest转换成String以符号$进行分隔
  */
 
-public class Information {
+public class Information implements Serializable {
 
     private long id;      //主键，个人信息的唯一标识，自增长
 
@@ -57,6 +58,11 @@ public class Information {
 
     public Information(){
         setSex(true);
+    }
+
+    public Information(String account, String password) {
+        this.account = account;
+        this.password = password;
     }
 
     public long getId() {
