@@ -3,6 +3,7 @@ package com.cartoon.tinytips.util.Adapters.Homepage;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
 import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
@@ -19,6 +21,7 @@ import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
@@ -125,28 +128,29 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(FavoriteAdapter.ViewHolder holder, int position) {
         FavoriteItem FavoriteItem = mFavoriteItems.get(position);
-        /*holder.userNames.setText(FavoriteItem.getuserName());
-        holder.titles.setText(FavoriteItem.gettitle());
-        holder.contents.setText(FavoriteItem.getcontent());
-        holder.NumOfRecommends.setText(""+ FavoriteItem.getNumOfRecommend());
-        holder.NumOfCollectoins.setText(""+ FavoriteItem.getNumOfCollectoin());
-        holder.NumOfFavoirtes.setText(""+ FavoriteItem.getNumOfFavoirte());
-        holder.time.setText(""+FavoriteItem.getTime());
-        holder.NumOfShares.setText(""+FavoriteItem.getNumOfShare());
+        holder.userNames.setText(FavoriteItem.getUserName());
+        holder.titles.setText(FavoriteItem.getTitle());
+        if(JudgeEmpty.isNotEmpty(FavoriteItem.getTitle())){
+            for(SpannableString string:FavoriteItem.getContent()){
+                holder.contents.append(string);
+            }
+        }
+        holder.NumOfRecommends.setText(Integer.toString(FavoriteItem.getNumOfRecommend()));
+        holder.NumOfCollectoins.setText(Integer.toString(FavoriteItem.getNumOfCollection()));
+        holder.NumOfFavoirtes.setText(Integer.toString(FavoriteItem.getNumOfFavorite()));
+        holder.time.setText(FavoriteItem.getTime());
+        holder.NumOfShares.setText(Integer.toString(FavoriteItem.getNumOfShare()));
         holder.body_item_favorite.setOnClickListener(this);
         holder.userImages.setOnClickListener(this);
         holder.favoritenums_item_favorite.setOnClickListener(this);
         holder.commuitenums_item_favorite.setOnClickListener(this);
         holder.Cnums_item_favorite.setOnClickListener(this);
         holder.sharenums_item_favorite.setOnClickListener(this);
-        Glide.with(mContext).load(FavoriteItem.getuserImage()).into(holder.userImages);*/
+        Glide.with(mContext).load(FavoriteItem.getUserImage()).into(holder.userImages);
     }
 
     @Override
     public int getItemCount() {
         return mFavoriteItems.size();
     }
-
-
-
 }

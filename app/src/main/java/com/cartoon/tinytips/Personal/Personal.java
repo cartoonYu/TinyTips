@@ -94,8 +94,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         intent.putExtra("personal",information);
         Log.d("text", "onClickHeadPro: "+information.getAccount());
         startActivity(intent);
-
-
         IntentActivity.finishActivity(getActivity());
     }
 

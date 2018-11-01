@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -76,6 +77,7 @@ public class Favorite extends BaseFragment<FavoritePresenter> implements IFavori
 
     @Override
     public void initData(List<FavoriteItem> items){
+        FavoriteItemList=new ArrayList<>();
         this.FavoriteItemList=items;
     }
 
