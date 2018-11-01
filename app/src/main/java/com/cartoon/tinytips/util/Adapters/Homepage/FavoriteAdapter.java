@@ -130,7 +130,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         FavoriteItem FavoriteItem = mFavoriteItems.get(position);
         holder.userNames.setText(FavoriteItem.getUserName());
         holder.titles.setText(FavoriteItem.getTitle());
-        if(JudgeEmpty.isNotEmpty(FavoriteItem.getTitle())){
+        if(JudgeEmpty.isNotEmpty(FavoriteItem.getContent())){
             for(SpannableString string:FavoriteItem.getContent()){
                 holder.contents.append(string);
             }

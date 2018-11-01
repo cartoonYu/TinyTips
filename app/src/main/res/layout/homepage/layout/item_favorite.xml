@@ -64,8 +64,7 @@
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/Fitem_title"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="内容"/>
+            android:layout_height="60dp" />
 
     </RelativeLayout>
 

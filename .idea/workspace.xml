@@ -2361,7 +2361,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="Nexus_5X_API_27" />
+    <property name="device.picker.selection" value="Pixel_2_API_26" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">

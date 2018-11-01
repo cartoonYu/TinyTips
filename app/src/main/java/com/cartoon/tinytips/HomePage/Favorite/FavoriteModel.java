@@ -50,7 +50,7 @@ public class FavoriteModel implements IFavorite.Model {
                 }
                 item.setUserName(temp.getAuthor());
                 item.setTitle(temp.getTitle());
-                item.setContent(DivideNote.getDivideNote().transNoteToString(note));
+                item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
                 item.setNumOfFavorite(random.nextInt(50));
                 item.setNumOfRecommend(random.nextInt(50));
                 item.setNumOfCollection(random.nextInt(50));
