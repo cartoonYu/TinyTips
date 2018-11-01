@@ -54,6 +54,7 @@
         <activity android:name=".Personal.Setting.Security.Security"/>
         <activity android:name=".Personal.Setting.Management.Management"/>
 
+        <activity android:name=".Discover.NoteList.NoteList"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.cartoon.tinytips.fileprovider"

@@ -95,8 +95,13 @@ public class Discover extends BaseFragment<DiscoverPresenter> implements IDiscov
         recyclerView.setAdapter(adapter);
       }
 
+      /**
+       * 将dp转换成dpi
+       */
     private int convertDpToPixel(int dp) {
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
         return (int) (dp * displayMetrics.density);
     }
+
+
 }

@@ -12,17 +12,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cartoon.tinytips.Discover.NoteList.NoteList;
+import com.cartoon.tinytips.Message.FavoriteMessage.FavoriteMessage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.Iterator;
 import java.util.List;
 
 import butterknife.OnClick;
 
+import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
+
 public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> implements View.OnClickListener{
     private Context mContext;
 
     private List<com.cartoon.tinytips.util.Adapters.Major> mMJList;
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.class_image1:{
+                IntentActivity.intentWithoutData(getContext(),NoteList.class);
+            }
+        }
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -52,6 +66,7 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         com.cartoon.tinytips.util.Adapters.Major major = mMJList.get(position);
         Glide.with(mContext).load(major.getImage1Id()).into(holder.majorImage1);
+        holder.majorImage1.setOnClickListener(this);
     }
 
     @Override
@@ -59,12 +74,4 @@ public class MajorAdapter extends RecyclerView.Adapter<MajorAdapter.ViewHolder> 
         return mMJList.size();
     }
 
-    @Override
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.class_image1 :{
-
-            }
-        }
-    }
 }
