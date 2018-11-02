@@ -2,7 +2,8 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,53 +25,93 @@
             android:text="时间"
             android:textSize="14sp"
             android:id="@+id/personal_homepage_dynamicState_date"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/personal_homepage_dynamicState_title"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:text="0"
-            android:textSize="12sp"
-            android:drawableLeft="@mipmap/personal_homepage_dynamicstate_like"
-            android:drawablePadding="5dp"
-            android:id="@+id/personal_homepage_dynamicState_like"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/personal_homepage_dynamicState_title"
-            android:layout_toRightOf="@id/personal_homepage_dynamicState_like"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-            android:text="0"
-            android:textSize="12sp"
-            android:drawableLeft="@mipmap/personal_homepage_dynamicstate_comment"
-            android:drawablePadding="5dp"
-            android:id="@+id/personal_homepage_dynamicState_comment"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/personal_homepage_dynamicState_title"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:text="0"
-            android:textSize="12sp"
-            android:drawableLeft="@mipmap/personal_homepage_dynamicstate_forward"
-            android:drawablePadding="5dp"
-            android:id="@+id/personal_homepage_dynamicState_forward"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/personal_homepage_dynamicState_title"
-            android:layout_toLeftOf="@id/personal_homepage_dynamicState_forward"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="80dp"
-            android:text="0"
-            android:textSize="12sp"
-            android:drawableLeft="@mipmap/personal_homepage_dynamicstate_collect"
-            android:drawablePadding="5dp"
-            android:id="@+id/personal_homepage_dynamicState_collect"/>
+       <com.zhy.android.percent.support.PercentRelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="10dp">
+
+          <RelativeLayout
+              app:layout_widthPercent="25%"
+              android:layout_height="match_parent"
+              android:layout_below="@id/personal_homepage_dynamicState_title"
+              android:id="@+id/personal_homepage_dynamicstate_like_layout">
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:layout_marginTop="10dp"
+                  android:layout_centerVertical="true"
+                  android:text="0"
+                  android:textSize="12sp"
+                  android:drawableLeft="@mipmap/personal_homepage_dynamicstate_like"
+                  android:drawablePadding="5dp"
+                  android:id="@+id/personal_homepage_dynamicState_like"/>
+          </RelativeLayout>
+
+
+           <RelativeLayout
+               app:layout_widthPercent="25%"
+               android:layout_height="match_parent"
+               android:layout_below="@id/personal_homepage_dynamicState_title"
+               android:id="@+id/personal_homepage_dynamicState_comment_layout"
+               android:layout_toRightOf="@id/personal_homepage_dynamicstate_like_layout">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"
+                   android:text="0"
+                   android:textSize="12sp"
+                   android:drawableLeft="@mipmap/personal_homepage_dynamicstate_comment"
+                   android:drawablePadding="5dp"
+                   android:id="@+id/personal_homepage_dynamicState_comment"/>
+           </RelativeLayout>
+
+
+           <RelativeLayout
+               app:layout_widthPercent="25%"
+               android:layout_height="match_parent"
+               android:layout_below="@id/personal_homepage_dynamicState_title"
+               android:id="@+id/personal_homepage_dynamicState_forward_layout"
+               android:layout_alignParentRight="true">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_centerHorizontal="true"
+                   android:text="0"
+                   android:textSize="12sp"
+                   android:drawableLeft="@mipmap/personal_homepage_dynamicstate_forward"
+                   android:drawablePadding="5dp"
+                   android:id="@+id/personal_homepage_dynamicState_forward"/>
+           </RelativeLayout>
+
+
+           <RelativeLayout
+               app:layout_widthPercent="25%"
+               android:layout_height="match_parent"
+               android:id="@+id/personal_homepage_dynamicState_collect_layout"
+               android:layout_toRightOf="@id/personal_homepage_dynamicState_comment_layout">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_centerHorizontal="true"
+                   android:text="0"
+                   android:textSize="12sp"
+                   android:drawableLeft="@mipmap/personal_homepage_dynamicstate_collect"
+                   android:drawablePadding="5dp"
+                   android:id="@+id/personal_homepage_dynamicState_collect"/>
+
+           </RelativeLayout>
+
+
+       </com.zhy.android.percent.support.PercentRelativeLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"

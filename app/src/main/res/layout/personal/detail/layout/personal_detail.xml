@@ -86,7 +86,6 @@
                 android:id="@+id/nickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="null"
                 android:layout_toLeftOf="@id/name_lead"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
@@ -124,7 +123,6 @@
                 android:id="@+id/Produce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="null"
                 android:layout_toLeftOf="@id/produce_lead"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
@@ -165,8 +163,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="40dp"
-                android:text="2018-10-01" />
+                android:layout_marginRight="40dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -266,7 +263,6 @@
                 android:id="@+id/School"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="null"
                 android:layout_toLeftOf="@id/school_lead"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
@@ -304,7 +300,6 @@
                 android:id="@+id/Major"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="null"
                 android:layout_toLeftOf="@id/Major_lead"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
@@ -342,7 +337,6 @@
                 android:id="@+id/Degree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="null"
                 android:layout_toLeftOf="@id/Degree_lead"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
