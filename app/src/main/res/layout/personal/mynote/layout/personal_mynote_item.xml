@@ -14,16 +14,15 @@
             android:layout_marginLeft="5dp"
             android:text="标题"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:id="@+id/personal_mynote_title"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="2dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="8dp"
             android:textSize="8sp"
-            android:background="@drawable/select_bg"
             android:padding="5dp"
             android:gravity="center"
             android:id="@+id/personal_mynote_tag1"/>
@@ -34,7 +33,6 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/select_bg"
             android:padding="5dp"
             android:textSize="8sp"
             android:gravity="center"
@@ -48,9 +46,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="8sp"
             android:gravity="center"
-            android:background="@drawable/select_bg"
             android:padding="5dp"
-            android:text="IT/互联网"
             android:id="@+id/personal_mynote_tag3"/>
         <TextView
             android:layout_width="wrap_content"

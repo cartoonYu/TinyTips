@@ -82,8 +82,8 @@
 
                 <TextView
                     android:id="@+id/Ritem_numofcollection"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/Conums_item_recommedn"
@@ -115,7 +115,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/Rnums_item_recommedn"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
                     android:gravity="center"
                     android:text="0" />
             </RelativeLayout>
@@ -141,8 +142,8 @@
                     android:id="@+id/Ritem_numoffavorite"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
                     android:layout_toRightOf="@id/Fnums_item_recommedn"
                     android:gravity="center"
                     android:text="0" />
