@@ -22,8 +22,8 @@
             android:hint="发表评论:"
             android:textSize="14sp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginRight="5dp"
             android:gravity="top"
             android:background="@drawable/coners_bg"/>

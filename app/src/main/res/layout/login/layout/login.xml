@@ -33,6 +33,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="95dp"
         android:text="立即注册"
+        android:textSize="12sp"
         android:textColor="@color/skyBlue"
         android:layout_below="@id/information"
         android:id="@+id/login_register"/>
@@ -45,6 +46,7 @@
         android:layout_marginTop="10dp"
         android:text="找回密码"
         android:textColor="#8E8E8E"
+        android:textSize="12sp"
         android:id="@+id/login_findPassword"/>
     <include
         android:layout_width="match_parent"

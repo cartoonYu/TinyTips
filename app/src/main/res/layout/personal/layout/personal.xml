@@ -34,7 +34,7 @@
             android:layout_below="@+id/avatar"
             android:gravity="center_horizontal|center_vertical"
             android:text="昵称"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/name"/>
 
         <com.zhy.android.percent.support.PercentRelativeLayout
@@ -91,8 +91,8 @@
 
             <ImageView
                 android:id="@+id/personallogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/peresonal" />
@@ -105,11 +105,11 @@
                 android:layout_centerVertical="true"
                 android:text="个人信息"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -128,8 +128,8 @@
 
             <ImageView
                 android:id="@+id/collectlogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/mycollection" />
@@ -142,11 +142,11 @@
                 android:layout_centerVertical="true"
                 android:text="我的收藏"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -165,8 +165,8 @@
 
             <ImageView
                 android:id="@+id/melogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/personal" />
@@ -179,11 +179,11 @@
                 android:layout_centerVertical="true"
                 android:text="我的主页"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -202,8 +202,8 @@
 
             <ImageView
                 android:id="@+id/favoritelogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/favourit" />
@@ -216,11 +216,11 @@
                 android:layout_centerVertical="true"
                 android:text="我的赞"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -239,8 +239,8 @@
 
             <ImageView
                 android:id="@+id/settinglogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/settings" />
@@ -253,11 +253,11 @@
                 android:layout_centerVertical="true"
                 android:text="设置"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"

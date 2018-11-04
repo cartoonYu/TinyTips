@@ -13,33 +13,31 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/Fitem_avatar"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="1dp"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_centerVertical="true"
             android:src="@drawable/nav_icon" />
 
         <TextView
             android:id="@+id/Fitem_username"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/Fitem_avatar"
             android:text="@string/username"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/Fitem_time"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
             android:text="时间"
-            android:gravity="center"
+            android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:textSize="16sp"/>
+            android:textSize="12sp"/>
 
     </RelativeLayout>
 
@@ -64,7 +62,8 @@
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/Fitem_title"
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:textSize="14sp"/>
 
     </RelativeLayout>
 
@@ -83,13 +82,11 @@
             <Button
                 android:id="@+id/favoritenums_item_favorite"
                 android:layout_marginLeft="15dp"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
-                android:gravity="center"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 android:background="@drawable/favourit"
-                android:layout_marginTop="4dp"/>
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:id="@+id/Fitem_numoffavorite"
@@ -97,7 +94,8 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/favoritenums_item_favorite"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textSize="12sp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -109,13 +107,11 @@
             <Button
                 android:id="@+id/commuitenums_item_favorite"
                 android:layout_marginLeft="15dp"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
-                android:gravity="center"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/peresonal"
-                android:layout_marginTop="4dp"/>
+                android:background="@drawable/peresonal" />
 
             <TextView
                 android:id="@+id/Fitem_numofrecommend"
@@ -123,7 +119,8 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/commuitenums_item_favorite"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textSize="12sp"/>
         </RelativeLayout>
         <RelativeLayout
             app:layout_widthPercent="25%"
@@ -134,13 +131,11 @@
             <Button
                 android:id="@+id/Cnums_item_favorite"
                 android:layout_marginLeft="15dp"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
-                android:gravity="center"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/mycollection"
-                android:layout_marginTop="4dp"/>
+                android:background="@drawable/mycollection" />
 
             <TextView
                 android:id="@+id/Fitem_numofcollection"
@@ -148,7 +143,8 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/Cnums_item_favorite"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textSize="12sp"/>
         </RelativeLayout>
         <RelativeLayout
             app:layout_widthPercent="25%"
@@ -158,14 +154,12 @@
 
             <Button
                 android:id="@+id/sharenums_item_favorite"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/share"
-                android:gravity="center" />
+                android:background="@drawable/share" />
 
             <TextView
                 android:id="@+id/Fitem_numofshare"
@@ -173,7 +167,8 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/sharenums_item_favorite"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textSize="12sp"/>
         </RelativeLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>

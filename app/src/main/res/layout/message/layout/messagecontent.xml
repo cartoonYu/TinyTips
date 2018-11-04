@@ -20,6 +20,7 @@
         android:layout_below="@id/contentToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textSize="14sp"
         android:text="暂无消息"
         android:gravity="center"/>
 </RelativeLayout>

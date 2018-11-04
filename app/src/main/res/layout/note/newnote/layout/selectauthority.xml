@@ -28,19 +28,19 @@
         <ImageView
             android:id="@+id/select_public"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:src="@drawable/select"/>
 
         <TextView
-            android:layout_marginTop="8dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="公开"
             android:textColor="@color/txcolor"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:background="@color/white"/>
     </LinearLayout>
 
@@ -56,18 +56,18 @@
         <ImageView
             android:id="@+id/select_private"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_gravity="center_vertical"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
 
         <TextView
-            android:layout_marginTop="8dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="仅自己可见"
             android:textColor="@color/txcolor"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:background="@color/white"/>
     </LinearLayout>
 

@@ -13,8 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/addnote_toolbarBack"/>
             <TextView
@@ -27,10 +27,9 @@
 
             <RelativeLayout
                 android:id="@+id/addnote_toolbar_menubutton_bg"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_centerVertical="true"
                 android:layout_width="60dp"
-                android:layout_height="match_parent"
+                android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp">
 
@@ -41,7 +40,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:textSize="16sp"/>
+                    android:textSize="14sp"/>
             </RelativeLayout>
 
         </RelativeLayout>

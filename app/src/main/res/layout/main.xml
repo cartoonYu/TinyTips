@@ -42,7 +42,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center_horizontal"
                     android:text="首页"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
             </RelativeLayout>
 
@@ -75,7 +75,7 @@
                    android:gravity="center_horizontal"
                    android:layout_marginTop="2dp"
                    android:text="消息"
-                   android:textSize="11sp" />
+                   android:textSize="12sp" />
 
            </RelativeLayout>
 
@@ -125,7 +125,7 @@
                    android:layout_marginTop="2dp"
                    android:gravity="center_horizontal"
                    android:text="发现"
-                   android:textSize="10sp" />
+                   android:textSize="12sp" />
 
            </RelativeLayout>
 
@@ -158,7 +158,7 @@
                    android:layout_marginTop="2dp"
                    android:gravity="center_horizontal"
                    android:text="我的"
-                   android:textSize="10sp" />
+                   android:textSize="12sp" />
 
            </RelativeLayout>
 

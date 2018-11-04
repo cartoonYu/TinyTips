@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:text="时间"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:id="@+id/personal_homepage_dynamicState_date"/>
        <com.zhy.android.percent.support.PercentRelativeLayout
            android:layout_width="match_parent"

@@ -30,7 +30,7 @@
             android:background="@color/white"
             android:hint="没有没什么分享心得呢？点此输入"
             android:layout_marginLeft="5dp"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <RelativeLayout
             android:id="@+id/sharecontentbar"
@@ -47,7 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/txcolor"/>
             <TextView
                 android:id="@+id/share_name"
@@ -56,7 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="昵称"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:layout_marginTop="1dp"
                 android:textColor="@color/txcolor"/>
 
             <TextView
@@ -66,13 +68,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="标题"
-                android:textSize="15sp"/>
+                android:textSize="16sp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"/>
             <TextView
                 android:layout_marginTop="5dp"
                 android:id="@+id/share_notecontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/share_notetitle"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="内容......................................................................"/>
         </RelativeLayout>
 

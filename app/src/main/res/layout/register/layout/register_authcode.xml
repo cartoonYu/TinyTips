@@ -22,7 +22,7 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/coners_bg"
         android:hint="请输入验证码"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/black"
         android:id="@+id/register_authCode" />
     <TextView

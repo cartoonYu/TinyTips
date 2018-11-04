@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="标题"
             android:textColor="@color/txcolor"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/NoteList_content"
@@ -33,6 +33,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:textSize="14sp"
             android:maxLines="5"
             android:text="内容" />
 
@@ -41,7 +42,7 @@
     <RelativeLayout
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/NoteList_itemup"
         android:background="@color/white"
@@ -50,11 +51,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/NoteList_avatar"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_centerVertical="true"
             android:src="@drawable/nav_icon" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/NoteList_avatar"
             android:text="@string/username"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
 
         <RelativeLayout
@@ -82,13 +82,11 @@
 
                 <ImageView
                     android:id="@+id/collection"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/mycollection"
-                    android:gravity="center" />
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/mycollection" />
 
                 <TextView
                     android:id="@+id/NoteList_numofcollection"
@@ -112,13 +110,11 @@
                 <ImageView
                     android:id="@+id/recommedn"
                     android:layout_marginRight="3dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="5dp"
                     android:background="@drawable/peresonal"
-                    android:gravity="center" />
+                    android:layout_centerVertical="true"/>
 
                 <TextView
                     android:id="@+id/NoteList_numofrecommend"
@@ -128,7 +124,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="0" />
+                    android:text="0"
+                    android:textSize="12sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -140,13 +137,11 @@
 
                 <ImageView
                     android:id="@+id/favorite"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/favourit"
-                    android:gravity="center" />
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/favourit" />
 
                 <TextView
                     android:id="@+id/NoteList_numoffavorite"
@@ -156,7 +151,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_toRightOf="@id/favorite"
                     android:gravity="center"
-                    android:text="0" />
+                    android:text="0"
+                    android:textSize="12sp"/>
             </RelativeLayout>
 
         </RelativeLayout>

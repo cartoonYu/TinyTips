@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@null"
         android:hint="请输入验证码"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:id="@+id/personal_setting_security_phoneNum"/>
     <TextView
         android:layout_width="wrap_content"

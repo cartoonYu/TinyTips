@@ -27,8 +27,8 @@
 
             <ImageView
                 android:id="@+id/ststemMlogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/systemmassage"/>
@@ -37,14 +37,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="系统消息"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -62,8 +62,8 @@
 
             <ImageView
                 android:id="@+id/commentMlogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/commentmassage"/>
@@ -72,14 +72,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="评论消息"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -97,8 +97,8 @@
 
             <ImageView
                 android:id="@+id/flowingMlogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/flowingmassage"/>
@@ -107,14 +107,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="关注消息"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -132,8 +132,8 @@
 
             <ImageView
                 android:id="@+id/favoriteMlogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/favoritemassage"/>
@@ -142,14 +142,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收到的赞"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="@color/txcolor"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"

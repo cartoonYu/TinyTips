@@ -26,13 +26,14 @@
 
         <Button
             android:id="@+id/addnote_addtips"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="标签"
             android:textColor="#989898"
+            android:textSize="14sp"
             android:background="@drawable/hone_buttom_coners_bg"/>
     </LinearLayout>
     
@@ -50,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="点此输入标题"
-            android:textSize="22sp"
+            android:textSize="16sp"
             android:background="@color/white"
             android:maxLines="1"
             android:id="@+id/addNote_addTitle"/>
@@ -69,7 +70,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:hint="点此输入内容"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     <include
         layout="@layout/addnote_bottombar"

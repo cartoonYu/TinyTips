@@ -13,7 +13,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="标题"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:id="@+id/note_detail_title"/>
         <TextView
@@ -24,6 +24,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
+            android:textSize="14sp"
             android:id="@+id/note_detail_contents"/>
         <TextView
             android:layout_width="wrap_content"
@@ -32,6 +33,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:gravity="center"
+            android:textSize="12sp"
             android:id="@+id/note_detail_tag1"/>
         <TextView
             android:layout_width="wrap_content"
@@ -41,6 +43,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
             android:gravity="center"
+            android:textSize="12sp"
             android:id="@+id/note_detail_tag2"/>
         <TextView
             android:layout_width="wrap_content"
@@ -50,6 +53,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
             android:gravity="center"
+            android:textSize="12sp"
             android:id="@+id/note_detail_tag3"/>
         <TextView
             android:layout_width="wrap_content"
@@ -59,6 +63,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
             android:text="时间"
+            android:textSize="12sp"
             android:id="@+id/note_detail_date"/>
     </RelativeLayout>
 </ScrollView>

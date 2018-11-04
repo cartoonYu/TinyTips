@@ -52,7 +52,7 @@
             android:layout_marginLeft="5dp"
             android:gravity="center"
             android:text="0"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:layout_toRightOf="@id/clicknums"
             android:gravity="center_vertical"
             android:text="次浏览"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -41,7 +41,7 @@
                 android:layout_centerVertical="true"
                 android:text="头像"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/avarar"
@@ -80,7 +80,7 @@
                 android:layout_centerVertical="true"
                 android:text="昵称"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/nickName"
@@ -88,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/name_lead"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/name_lead"
@@ -118,14 +119,15 @@
                 android:layout_centerVertical="true"
                 android:text="简介"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/Produce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/produce_lead"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/produce_lead"
@@ -155,7 +157,7 @@
                 android:layout_centerVertical="true"
                 android:text="注册时间"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/personal_detail_registerData"
@@ -163,7 +165,8 @@
                 android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="40dp" />
+                android:layout_marginRight="40dp"
+                android:textSize="14sp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -182,7 +185,7 @@
                 android:layout_centerVertical="true"
                 android:text="学习兴趣"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
         </RelativeLayout>
 
@@ -204,6 +207,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
+                    android:textSize="14sp"
                     android:text=" "/>
                 <Button
                     android:id="@+id/b2"
@@ -213,7 +217,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="14sp"/>
             </com.zhy.android.percent.support.PercentRelativeLayout>
 
             <com.zhy.android.percent.support.PercentRelativeLayout
@@ -227,7 +232,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="14sp"/>
                 <Button
                     android:id="@+id/b4"
                     app:layout_widthPercent="40%"
@@ -236,7 +242,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/add"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="14sp"/>
             </com.zhy.android.percent.support.PercentRelativeLayout>
 
 
@@ -257,7 +264,7 @@
                 android:layout_centerVertical="true"
                 android:text="学校"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/School"
@@ -265,7 +272,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/school_lead"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/school_lead"
@@ -294,7 +302,7 @@
                 android:layout_centerVertical="true"
                 android:text="专业"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/Major"
@@ -302,7 +310,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/Major_lead"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/Major_lead"
@@ -331,7 +340,7 @@
                 android:layout_centerVertical="true"
                 android:text="学历"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/Degree"
@@ -339,7 +348,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/Degree_lead"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/Degree_lead"

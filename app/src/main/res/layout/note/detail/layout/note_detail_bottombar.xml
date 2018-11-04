@@ -18,7 +18,7 @@
             app:layout_marginLeftPercent="25%"
             app:layout_marginBottomPercent="30%"
             android:text="0"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:drawableLeft="@mipmap/note_detail_like"
             android:drawablePadding="10dp"
             android:id="@+id/note_detail_like"/>
@@ -38,9 +38,9 @@
             app:layout_marginLeftPercent="25%"
             app:layout_marginBottomPercent="30%"
             android:text="0"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:drawableLeft="@mipmap/note_detail_comment"
-            android:drawablePadding="5dp"
+            android:drawablePadding="10dp"
             android:id="@+id/note_detail_comment"/>
 
     </com.zhy.android.percent.support.PercentRelativeLayout>
@@ -58,9 +58,9 @@
             app:layout_marginLeftPercent="25%"
             app:layout_marginBottomPercent="30%"
             android:text="0"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:drawableLeft="@mipmap/note_detail_forward"
-            android:drawablePadding="5dp"
+            android:drawablePadding="10dp"
             android:id="@+id/note_detail_forward"/>
 
     </com.zhy.android.percent.support.PercentRelativeLayout>
@@ -78,9 +78,9 @@
             app:layout_marginLeftPercent="25%"
             app:layout_marginBottomPercent="30%"
             android:text="0"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:drawableLeft="@mipmap/note_detail_collect"
-            android:drawablePadding="5dp"
+            android:drawablePadding="10dp"
             android:id="@+id/note_detail_collect"/>
 
     </com.zhy.android.percent.support.PercentRelativeLayout>
