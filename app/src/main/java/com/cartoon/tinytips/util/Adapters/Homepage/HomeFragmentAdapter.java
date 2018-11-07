@@ -11,6 +11,7 @@ import com.cartoon.tinytips.HomePage.Hot.Hot;
 import com.cartoon.tinytips.HomePage.Recommend.Recommend;
 
 public class HomeFragmentAdapter extends FragmentPagerAdapter {
+
     private final int PAGER_COUNT = 3;
     private Recommend myFragment1 = null;
     private Hot myFragment2 = null;

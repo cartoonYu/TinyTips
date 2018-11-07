@@ -25,6 +25,9 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> implements View.OnClickListener{
@@ -34,39 +37,54 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     private IOnItemClickListener mClickListener;
 
     static class ViewHolder extends RecyclerView.ViewHolder  {
+
+        @BindView(R.id.Fitem_avatar)
         ImageView userImages;
+
+        @BindView(R.id.Fitem_username)
         TextView userNames;
+
+        @BindView(R.id.Fitem_title)
         TextView titles;
+
+        @BindView(R.id.Fitem_content)
         TextView contents;
-        TextView NumOfFavoirtes;
+
+        @BindView(R.id.Fitem_numoffavorite)
+        TextView NumOfFavorites;
+
+        @BindView(R.id.Fitem_numofrecommend)
         TextView NumOfRecommends;
-        TextView NumOfCollectoins;
+
+        @BindView(R.id.Fitem_numofcollection)
+        TextView NumOfCollections;
+
+        @BindView(R.id.Fitem_numofshare)
         TextView NumOfShares;
+
+        @BindView(R.id.Fitem_time)
         TextView time;
+
+        @BindView(R.id.favoritenums_item_favorite)
         Button favoritenums_item_favorite;
+
+        @BindView(R.id.commuitenums_item_favorite)
         Button commuitenums_item_favorite;
+
+        @BindView(R.id.Cnums_item_favorite)
         Button Cnums_item_favorite;
+
+        @BindView(R.id.sharenums_item_favorite)
         Button sharenums_item_favorite;
+
+        @BindView(R.id.body_item_favorite)
         RelativeLayout body_item_favorite;
 
         private IOnItemClickListener mListener;
 
         public ViewHolder(View view) {
             super(view);
-            userImages = (ImageView) view.findViewById(R.id.Fitem_avatar);
-            userNames = (TextView) view.findViewById(R.id.Fitem_username);
-            titles = (TextView)view.findViewById(R.id.Fitem_title);
-            contents= (TextView)view.findViewById(R.id.Fitem_content);
-            NumOfRecommends = (TextView)view.findViewById(R.id.Fitem_numofrecommend);
-            NumOfFavoirtes = (TextView)view.findViewById(R.id.Fitem_numoffavorite);;
-            NumOfCollectoins = (TextView)view.findViewById(R.id.Fitem_numofcollection);
-            NumOfShares = (TextView)view.findViewById(R.id.Fitem_numofshare);
-            time = (TextView)view.findViewById(R.id.Fitem_time);
-            favoritenums_item_favorite = (Button)view.findViewById(R.id.favoritenums_item_favorite);
-            commuitenums_item_favorite= (Button)view.findViewById(R.id.commuitenums_item_favorite);
-            Cnums_item_favorite= (Button)view.findViewById(R.id.Cnums_item_favorite);
-            sharenums_item_favorite= (Button)view.findViewById(R.id.sharenums_item_favorite);
-            body_item_favorite = (RelativeLayout)view.findViewById(R.id.body_item_favorite);
+            ButterKnife.bind(this,view);
         }
 
 
@@ -136,8 +154,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             }
         }
         holder.NumOfRecommends.setText(Integer.toString(FavoriteItem.getNumOfRecommend()));
-        holder.NumOfCollectoins.setText(Integer.toString(FavoriteItem.getNumOfCollection()));
-        holder.NumOfFavoirtes.setText(Integer.toString(FavoriteItem.getNumOfFavorite()));
+        holder.NumOfCollections.setText(Integer.toString(FavoriteItem.getNumOfCollection()));
+        holder.NumOfFavorites.setText(Integer.toString(FavoriteItem.getNumOfFavorite()));
         holder.time.setText(FavoriteItem.getTime());
         holder.NumOfShares.setText(Integer.toString(FavoriteItem.getNumOfShare()));
         holder.body_item_favorite.setOnClickListener(this);

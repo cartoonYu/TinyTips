@@ -12,6 +12,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
@@ -49,18 +50,10 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @Override
     protected void onPrepare(){
-        if ((Information)getIntent().getSerializableExtra("personal")!=null){
-            information = (Information)getIntent().getSerializableExtra("personal");
-            Log.d("text", "Detail: "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
     }
-
-    @Override
-    public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalSetting"),information);
-        IntentActivity.finishActivity(this);
-    }
-
 
     private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
@@ -72,12 +65,6 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
         RevampToolbar.setText(toolbarText,new String("设置"));
     }
 
-
-    @OnClick(R.id.toolbarBack)
-    public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalSetting"),information);
-        IntentActivity.finishActivity(this);
-    }
 
     @OnClick(R.id.personal_setting_management)
     public void onClickManagement(){
@@ -91,4 +78,15 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
         IntentActivity.finishActivity(this);
     }
 
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
+    }
 }

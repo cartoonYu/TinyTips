@@ -23,6 +23,9 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HomeRecommendAdapter extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder> implements View.OnClickListener{
@@ -69,31 +72,43 @@ public class HomeRecommendAdapter extends RecyclerView.Adapter<HomeRecommendAdap
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.Ritem_avatar)
         ImageView userImages;
+
+        @BindView(R.id.Ritem_username)
         TextView userNames;
+
+        @BindView(R.id.Ritem_title)
         TextView titles;
+
+        @BindView(R.id.Ritem_content)
         TextView contents;
-        TextView NumOfFavoirtes;
+
+        @BindView(R.id.Ritem_numoffavorite)
+        TextView NumOfFavorites;
+
+        @BindView(R.id.Ritem_numofrecommend)
         TextView NumOfRecommends;
+
+        @BindView(R.id.Ritem_numofcollection)
         TextView NumOfCollectoins;
+
+        @BindView(R.id.Recommend_itemup)
         RelativeLayout Recommend_itemup;
+
+        @BindView(R.id.Rnums_item_recommedn)
         Button Rnums_item_recommedn;
+
+        @BindView(R.id.Conums_item_recommedn)
         Button Conums_item_recommedn;
+
+        @BindView(R.id.Fnums_item_recommedn)
         Button Fnums_item_recommedn;
 
         public ViewHolder(View view) {
             super(view);
-            userImages = (ImageView) view.findViewById(R.id.Ritem_avatar);
-            userNames = (TextView) view.findViewById(R.id.Ritem_username);
-            titles = (TextView)view.findViewById(R.id.Ritem_title);
-            contents= (TextView)view.findViewById(R.id.Ritem_content);
-            NumOfRecommends = (TextView)view.findViewById(R.id.Ritem_numofrecommend);
-            NumOfFavoirtes = (TextView)view.findViewById(R.id.Ritem_numoffavorite);;
-            NumOfCollectoins = (TextView)view.findViewById(R.id.Ritem_numofcollection);
-            Recommend_itemup = (RelativeLayout)view.findViewById(R.id.Recommend_itemup);
-            Rnums_item_recommedn = (Button)view.findViewById(R.id.Rnums_item_recommedn);
-            Conums_item_recommedn = (Button)view.findViewById(R.id.Conums_item_recommedn);
-            Fnums_item_recommedn = (Button)view.findViewById(R.id.Fnums_item_recommedn);
+            ButterKnife.bind(this,view);
         }
     }
 
@@ -123,11 +138,11 @@ public class HomeRecommendAdapter extends RecyclerView.Adapter<HomeRecommendAdap
         }
         holder.NumOfRecommends.setText(""+ RecommendItem.getNumOfRecommend());
         holder.NumOfCollectoins.setText(""+ RecommendItem.getNumOfCollection());
-        holder.NumOfFavoirtes.setText(""+ RecommendItem.getNumOfFavorite());
+        holder.NumOfFavorites.setText(""+ RecommendItem.getNumOfFavorite());
         holder.Recommend_itemup.setOnClickListener(this);
         holder.userImages.setOnClickListener(this);
         holder.NumOfRecommends.setOnClickListener(this);
-        holder.NumOfFavoirtes.setOnClickListener(this);
+        holder.NumOfFavorites.setOnClickListener(this);
         holder.NumOfCollectoins.setOnClickListener(this);
         Glide.with(mContext).load(RecommendItem.getUserImage()).into(holder.userImages);
     }

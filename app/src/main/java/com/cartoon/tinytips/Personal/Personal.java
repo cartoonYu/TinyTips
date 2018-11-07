@@ -18,6 +18,7 @@ import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.io.File;
@@ -67,17 +68,10 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     protected void onPrepare(){
-        Intent intent = getActivity().getIntent();
-        if ((Information)intent.getSerializableExtra("start")!=null) {
-            information = (Information) intent.getSerializableExtra("start");
-        }else if (IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information)!=null){
-            information = IntentActivity.getIntentData(getActivity(),new String("personalDetail"),information);
-        }else if (IntentActivity.getIntentData(getActivity(),new String("personalHomepage"),information)!=null){
-            information = IntentActivity.getIntentData(getActivity(),new String("personalHomepage"),information);
-        }else if (IntentActivity.getIntentData(getActivity(),new String("personalCollect"),information)!=null){
-            information = IntentActivity.getIntentData(getActivity(),new String("personalCollect"),information);
-        }else if (IntentActivity.getIntentData(getActivity(),new String("personalSetting"),information)!=null){
-            information = IntentActivity.getIntentData(getActivity(),new String("personalSetting"),information);
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(getContext(),"start"))){
+            information=IntentActivity.getIntentInformation(getContext(),"start");
+        }else if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(getContext(),"personal"))){
+            information=IntentActivity.getIntentInformation(getContext(),"personal");
         }
         presenter.initData();
     }
@@ -88,60 +82,37 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
-
-        Intent intent = new Intent(getContext(),PersonalHomepage.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        Log.d("text", "onClickHeadPro: "+information.getAccount());
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),PersonalHomepage.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
-        Intent intent = new Intent(getContext(),MyNote.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),MyNote.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-        Intent intent = new Intent(getContext(),Detail.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),Detail.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.collect_Personal)
     public void onClickCollect(){
-        Intent intent = new Intent(getContext(),Collect.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        Log.d("text", "collect "+information.getAccount());
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),Collect.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
-        Intent intent = new Intent(getContext(),PersonalHomepage.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        Log.d("text", "onClickDetail: "+information.getAccount());
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),PersonalHomepage.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.setting_Personal)
     public void onClickSetting(){
-        Intent intent = new Intent(getContext(),Setting.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("personal",information);
-        Log.d("text", "setting: "+information.getAccount());
-        startActivity(intent);
+        IntentActivity.intentWithData(getContext(),Setting.class,"personal",information);
         IntentActivity.finishActivity(getActivity());
     }
 

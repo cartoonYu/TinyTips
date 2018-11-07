@@ -15,9 +15,9 @@ interface IPersonalHomepage {
 
         void setSchool(String school);    //设置学习
         void setMajor(String major);      //设置专业
-        void setInterset(List<String> interest);    //设置学历
+        void setInterest(List<String> interest);    //设置学历
 
-        public Information getInformation();
+        Information getInformation();
 
     }
 

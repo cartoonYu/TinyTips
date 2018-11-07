@@ -39,7 +39,7 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
                 view.setMajor(personalInformation.getMajor());
 
                 view.setSchool(personalInformation.getSchool());
-                view.setInterset(personalInformation.getInterest());
+                view.setInterest(personalInformation.getInterest());
 
             }
 

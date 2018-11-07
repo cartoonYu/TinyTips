@@ -17,6 +17,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 import com.zhihu.matisse.Matisse;
@@ -86,19 +87,10 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @Override
     protected void onPrepare(){
-
-        if ((Information)getIntent().getSerializableExtra("personal")!=null){
-            information = (Information)getIntent().getSerializableExtra("personal");
-            Log.d("text", "Detail: "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
-
         presenter.initData();
-    }
-
-    @Override
-    public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
-        IntentActivity.finishActivity(this);
     }
 
     private void revampStatusBar(){
@@ -108,12 +100,6 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     private void initToolbar(){
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("个人信息"));
-    }
-
-    @OnClick(R.id.toolbarBack)
-    public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
-        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.avatar_detailPersonal)
@@ -183,5 +169,17 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     @Override
     public Information getInformation() {
         return information;
+    }
+
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
     }
 }

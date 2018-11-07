@@ -18,6 +18,9 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> implements View.OnClickListener {
@@ -37,19 +40,25 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> impl
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.Hitem_sequence)
         TextView sequence;
+
+        @BindView(R.id.Hitem_title)
         TextView titles;
+
+        @BindView(R.id.Hitem_content)
         TextView contents;
+
+        @BindView(R.id.clicknums)
         TextView NumOfNumOfClick;
+
+        @BindView(R.id.HotBody)
         RelativeLayout HotBody;
 
         public ViewHolder(View view) {
             super(view);
-            sequence=(TextView)view.findViewById(R.id.Hitem_sequence);
-            titles = (TextView)view.findViewById(R.id.Hitem_title);
-            contents= (TextView)view.findViewById(R.id.Hitem_content);
-            NumOfNumOfClick = (TextView)view.findViewById(R.id.clicknums);
-            HotBody = (RelativeLayout) view.findViewById(R.id.HotBody);
+            ButterKnife.bind(this,view);
         }
     }
 

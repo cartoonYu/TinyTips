@@ -24,6 +24,7 @@ import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,31 +96,12 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         fragment=R.id.mainFragement;
         switchFragment(constant.getDefaultFragment());
         switchFragment(flag);
-
         information = new Information();
-        if((Information)getIntent().getSerializableExtra("start")!=null) {
-            information = (Information) getIntent().getSerializableExtra("start");
-            Log.d("text", "datafromstart "+information.getAccount());
-        }else if(IntentActivity.getIntentData(this,new String("personalDetail"),information)!=null){
-
-            information=IntentActivity.getIntentData(this,new String("personalDetail"),information);
-            Log.d("text", "datafromdetail "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"start"))){
+            information=IntentActivity.getIntentInformation(this,"start");
+        }else if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
-        else if (IntentActivity.getIntentData(this,new String("personalHomepage"),information)!=null){
-
-            information=IntentActivity.getIntentData(this,new String("personalHomepage"),information);
-            Log.d("text", "datafrompersonalHomepage: "+information.getAccount());
-        }else if (IntentActivity.getIntentData(this,new String("personalCollect"),information)!=null){
-            information=IntentActivity.getIntentData(this,new String("personalCollect"),information);
-            Log.d("text", "datafrompersonalCollect: "+information.getAccount());
-        }else if (IntentActivity.getIntentData(this,new String("personalSetting"),information)!=null){
-            information=IntentActivity.getIntentData(this,new String("personalSetting"),information);
-            Log.d("text", "datafrompersonalSetting: "+information.getAccount());
-        }
-
-        /*Intent intent = new Intent(Main.this,Personal.class);
-        intent.putExtra("information",information);
-        Log.d("onPrepare: ",information.getAccount()+information.getPassword());*/
     }
 
     @OnClick(R.id.mainHomepage)

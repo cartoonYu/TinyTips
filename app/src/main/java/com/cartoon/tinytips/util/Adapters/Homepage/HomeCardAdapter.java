@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class HomeCardAdapter extends PagerAdapter {
+
     private ArrayList<View> viewLists;
 
     public HomeCardAdapter() {

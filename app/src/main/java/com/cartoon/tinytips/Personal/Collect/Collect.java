@@ -14,6 +14,7 @@ import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
@@ -43,8 +44,6 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     @BindView(R.id.personal_collect_collectList)
     RecyclerView collect;
 
-
-
     @Override
     protected CollectPresenter initPresent(){
         return new CollectPresenter(this);
@@ -64,17 +63,9 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @Override
     protected void onPrepare(){
-        if ((Information)getIntent().getSerializableExtra("personal")!=null){
-            information = (Information)getIntent().getSerializableExtra("personal");
-            Log.d("text", "Detail: "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
-    }
-
-
-    @Override
-    public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalCollect"),information);
-        IntentActivity.finishActivity(this);
     }
 
     private void revampStatusBar(){
@@ -103,9 +94,13 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalCollect"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
         IntentActivity.finishActivity(this);
-}
+    }
 
+    @Override
+    public void onBackPressed(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
+    }
 }

@@ -47,9 +47,6 @@ public class StartActivity  extends BaseActivity<StartActivityPresenter> impleme
                 intentToMain();
             }
         }, SPLASH_DELAY_MILLIS);
-
-
-
     }
 
     @Override
@@ -67,16 +64,9 @@ public class StartActivity  extends BaseActivity<StartActivityPresenter> impleme
     @Override
     public void intentToMain() {
         //IntentActivity.intentWithoutData(this,Main.class);
-
-
         presenter.getInformation();
-
         information = presenter.getInfo();
-        Intent intent = new Intent(StartActivity.this,Main.class);                     //传递数据到MainActivity
-        intent.putExtra("in","hello");
-        intent.putExtra("start",information);
-
-        startActivity(intent);
+        IntentActivity.intentWithData(this,Main.class,"start",information);
         IntentActivity.finishActivity(this);
     }
 

@@ -52,17 +52,9 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
         }
     }
 
-  /*  public DynamicStateAdapter(List<DynamicState> list) {
-        this.list = list;
-
-    }*/
     public DynamicStateAdapter(List<Note> list) {           //传入日记列表
         this.noteList = list;
-
     }
-
-
-
 
     @Override
     public DynamicStateAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

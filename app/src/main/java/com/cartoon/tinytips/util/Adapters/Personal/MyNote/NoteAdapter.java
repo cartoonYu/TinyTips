@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.Note.Details.NoteDetail;
+import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
@@ -26,6 +28,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     private List<Note> list;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         CardView cardView;
 
         @BindView(R.id.personal_mynote_title)
@@ -44,7 +47,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         }
     }
 
-    public NoteAdapter(List<com.cartoon.tinytips.bean.Note> list) {
+    public NoteAdapter(List<Note> list) {
         this.list = list;
     }
 
@@ -59,9 +62,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 int position=holder.getAdapterPosition();
-                Intent intent=new Intent(mContext,NoteDetail.class);
-                intent.putExtra("note",list.get(position));
-                mContext.startActivity(intent);
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",list.get(position));
             }
         });
         return holder;
@@ -78,7 +79,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
                 holder.tags.get(i).setText(note.getTag().get(i));
             }
         }
-
     }
 
     @Override

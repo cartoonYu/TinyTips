@@ -14,6 +14,7 @@ import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.List;
@@ -53,9 +54,8 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @Override
     protected void initView(){
         revampStatusBar();
-        if ((Information)getIntent().getSerializableExtra("personal")!=null){
-            information = (Information)getIntent().getSerializableExtra("personal");
-            Log.d("text", "Detail: "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
         presenter.initData(information);
     }
@@ -65,16 +65,9 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     }
 
-    @Override
-    public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
-        IntentActivity.finishActivity(this);
-    }
-
     private void revampStatusBar(){
         RevampStatusBar.revampStatusBar(statusBar,R.color.white);
     }
-
 
     @Override
     public void initNote(List<Note> notes){
@@ -86,7 +79,13 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalDetail"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.finishActivity(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
         IntentActivity.finishActivity(this);
     }
 

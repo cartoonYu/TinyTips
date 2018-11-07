@@ -18,6 +18,7 @@ import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState
 import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicStateAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.io.File;
@@ -79,13 +80,11 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
 
     @Override
     protected void initView(){
-        if ((Information)getIntent().getSerializableExtra("personal")!=null){
-            information = (Information)getIntent().getSerializableExtra("personal");
-            Log.d("text", "personalHomepage: "+information.getAccount());
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
+            information=IntentActivity.getIntentInformation(this,"personal");
         }
         presenter.initData();
         noteList=presenter.getNoteList();
-        Log.d("noteList", "getNoteList:111111 "+noteList.size());
         revampStatusBar();
         initDynamicState();
     }
@@ -98,14 +97,14 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
     @OnClick(R.id.personal_homepage_back)
     public void clickBack(){
 
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalHomepage"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
 
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personalHomepage"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
         IntentActivity.finishActivity(this);
     }
 
@@ -151,7 +150,7 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
     }
 
     @Override
-    public void setInterset(List<String> interest) {
+    public void setInterest(List<String> interest) {
         for (int i=0;i<interest.size();i++){
             this.interests.get(i).setText(interest.get(i));
         }

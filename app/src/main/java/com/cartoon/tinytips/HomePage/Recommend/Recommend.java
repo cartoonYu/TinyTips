@@ -80,7 +80,6 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
     @Override
     public void initData(List<RecommendItem> recommends){
         recommendItemList=recommends;
-        Log.d("asd",recommendItemList.size()+"");
     }
 
 }
