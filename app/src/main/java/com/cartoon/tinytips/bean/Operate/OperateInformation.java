@@ -5,7 +5,7 @@ import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.network.HttpConstant;
-import com.cartoon.tinytips.util.network.Text;
+import com.cartoon.tinytips.util.network.HttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +14,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author cartoon
+ * @version 1.3
+ *
+ * description
+ * 通过网络传输对数据库个人信息表进行增删查改操作
+ *
+ * how to use
+ * 1.通过静态方法getOperateInformation获取本类对象
+ * 2.根据相应操作执行相应的方法
+ *   add(插入个人信息)
+ *   delete(删除个人信息)
+ *   query(查询个人信息)
+ *   update(更新个人信息)
+ * 3.因网络传输以及数据库操作需要时间，
+ *   通过方法isNotFinish()判断操作是否完成（true为未完成）
+ * 4.获取结果
+ *   插入，删除，查询，更新操作通过方法isSuccess()获取操作结果
+ *   查询操作通过方法getQueryData()获取结果集合
+ *
+ * notice
+ * 1.本类无法new对象，只能通过静态方法getOperateInformation获取
+ */
+
 public class OperateInformation {
 
     private static volatile OperateInformation operateInformation;
@@ -21,6 +46,8 @@ public class OperateInformation {
     private JSONObjectOperation objectOperation;
 
     private JSONArrayOperation arrayOperation;
+
+    private HttpConnection connection;
 
     private String url;
 
@@ -31,6 +58,26 @@ public class OperateInformation {
     private boolean isSuccess;
 
     private List<Information> queryData;
+
+    /**
+     * 功能
+     * 返回本类对象，确保在程序运行的过程只有一个对象
+     *
+     * 使用方法
+     * 1.类名直接调用获取
+     *
+     * @return
+     */
+    public static OperateInformation getOperateInformation(){
+        if(JudgeEmpty.isEmpty(operateInformation)){
+            synchronized (OperateInformation.class){
+                if(JudgeEmpty.isEmpty(operateInformation)){
+                    operateInformation =new OperateInformation();
+                }
+            }
+        }
+        return operateInformation;
+    }
 
     /**
      * 功能
@@ -132,17 +179,16 @@ public class OperateInformation {
      * @return
      */
     private String sendData(JSONObject object,JSONArray array){
-        Text text=Text.getOperate();
         if(JudgeEmpty.isNotEmpty(object)){
-            text.sendJSONObject(url,method,object);
+            connection.sendJSONObject(url,method,object);
         }else if(JudgeEmpty.isNotEmpty(array)){
-            text.sendJSONArray(url,method,array);
+            connection.sendJSONArray(url,method,array);
         }
-        new Thread(text).start();
-        while (text.isRun()){
+        new Thread(connection).start();
+        while (connection.isRun()){
         }
         setNotFinish(false);
-        return text.getResult();
+        return connection.getResult();
     }
 
     /**
@@ -219,20 +265,10 @@ public class OperateInformation {
         }
     }
 
-    public static OperateInformation getOperateInformation(){
-        if(JudgeEmpty.isEmpty(operateInformation)){
-            synchronized (OperateInformation.class){
-                if(JudgeEmpty.isEmpty(operateInformation)){
-                    operateInformation =new OperateInformation();
-                }
-            }
-        }
-        return operateInformation;
-    }
-
     private OperateInformation(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
+        connection=HttpConnection.getConnection();
         url=HttpConstant.getConstant().getURL_Information();
         method="POST";
         setNotFinish(true);

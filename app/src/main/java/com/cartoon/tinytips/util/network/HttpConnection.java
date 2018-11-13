@@ -19,9 +19,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * @author cartoon
- * @version 1.1
+ * @version 1.2
  *
  * description
  * 1.使用http进行网络传输数据
@@ -34,12 +35,12 @@ import java.util.List;
  *
  * notice
  * 1.本类为单例
- * 2.对象通过调用静态方法getConstant获取
+ * 2.对象通过调用静态方法getOperate获取
  */
 
 public class HttpConnection implements Runnable{
 
-    private volatile static HttpConnection httpConnection;
+    private static volatile HttpConnection connection;
 
     private String url;   //ip地址
 
@@ -59,27 +60,8 @@ public class HttpConnection implements Runnable{
 
     private String result;
 
-    private HttpConnection(){
-        result=new String();
-        TIME_OUT=4000;
-    }
+    private boolean isRun;
 
-    /**
-     * 功能
-     * 获取本类对象
-     *
-     * @return
-     */
-    public static HttpConnection getHttpConnection(){
-        if(JudgeEmpty.isEmpty(httpConnection)){
-            synchronized (HttpConnection.class){
-                if(JudgeEmpty.isEmpty(httpConnection)){
-                    httpConnection=new HttpConnection();
-                }
-            }
-        }
-        return httpConnection;
-    }
 
     /**
      * 功能
@@ -101,6 +83,7 @@ public class HttpConnection implements Runnable{
         data=JSONArrayOperation.getOperation().setObjectToArray(temp);
     }
 
+
     /**
      * 功能
      * 客户端数据发送到服务器端
@@ -110,62 +93,46 @@ public class HttpConnection implements Runnable{
      *
      * @param url
      * @param method
-     * @param array
+     * @param data
      */
-    public void sendJSONArray(String url,String method,JSONArray array){
+    public void sendJSONArray(String url,String method,JSONArray data){
         this.url=url;
         this.method=method;
-        this.data=array;
+        this.data=data;
     }
 
-    /**
-     * 功能
-     * 网络传输数据
-     *
-     * 使用方法
-     * 1.新建线程，将本类对象传入
-     * 2.调用新建线程的run方法启动网络传输
-     */
+
     @Override
     public void run(){
-        StringBuffer buffer=new StringBuffer();
-        getURLConnection(url,method);
-        if(JudgeEmpty.isNotEmpty(urlConnection)) {
-            getOutputStream(urlConnection);
-            if (JudgeEmpty.isNotEmpty(outputStream)) {
-                try{
-                    String temp=data.toString();
-                    outputStream.write(temp.getBytes());
-                    outputStream.close();
-                    getInputStream(urlConnection);
-                    if(JudgeEmpty.isNotEmpty(inputStream)){
-                        BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
-                        String line;
-                        while((line=reader.readLine())!=null){
-                            buffer.append(line);
+        synchronized (HttpConnection.class){
+            StringBuffer buffer=new StringBuffer();
+            getURLConnection(url,method);
+            if(JudgeEmpty.isNotEmpty(urlConnection)){
+                getOutputStream(urlConnection);
+                if(JudgeEmpty.isNotEmpty(outputStream)){
+                    try{
+                        String temp=data.toString();
+                        outputStream.write(temp.getBytes());
+                        getInputStream(urlConnection);
+                        if(JudgeEmpty.isNotEmpty(inputStream)){
+                            BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+                            String line;
+                            while((line=reader.readLine())!=null){
+                                buffer.append(line);
+                            }
+
+                            inputStream.close();
                         }
-                        inputStream.close();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                        Log.e("networkException",new String("写入错误"));
                     }
-                }catch (IOException e){
-                    e.printStackTrace();
-                    Log.e("networkException",new String("写入错误"));
                 }
             }
+            result=buffer.toString();
+            urlConnection.disconnect();
+            setRun(false);
         }
-        result=buffer.toString();
-        urlConnection.disconnect();
-    }
-
-    /**
-     * 功能
-     * 将服务器返回的结果返回
-     *
-     * 使用方法
-     * 1.子线程完成后通过对象调用获取返回值
-     * @return
-     */
-    public String getResult(){
-        return result;
     }
 
     /**
@@ -176,7 +143,7 @@ public class HttpConnection implements Runnable{
      * @param method
      * @return
      */
-    private void getURLConnection(String url,String method){
+    private void getURLConnection(String url, String method){
         try{
             urlConnection=(HttpURLConnection)new URL(url).openConnection();
             urlConnection.setConnectTimeout(TIME_OUT);
@@ -221,6 +188,48 @@ public class HttpConnection implements Runnable{
             Log.e("networkException",new String("获取输入流错误"));
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 功能
+     * 将服务器返回的结果返回
+     *
+     * 使用方法
+     * 1.子线程完成后通过对象调用获取返回值
+     * @return
+     */
+    public String getResult(){
+        setRun(true);
+        return result;
+    }
+
+    public void setRun(boolean run) {
+        isRun = run;
+    }
+
+    /**
+     * 功能：检测子线程是否运行
+     * @return
+     */
+    public boolean isRun() {
+        return isRun;
+    }
+
+    public static HttpConnection getConnection(){
+        if(JudgeEmpty.isEmpty(connection)){
+            synchronized (HttpConnection.class){
+                if(JudgeEmpty.isEmpty(connection)){
+                    connection=new HttpConnection();
+                }
+            }
+        }
+        return connection;
+    }
+
+    private HttpConnection(){
+        result=new String();
+        TIME_OUT=2000;
+        setRun(true);
     }
 
 }

@@ -6,7 +6,7 @@ import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.network.HttpConstant;
-import com.cartoon.tinytips.util.network.Text;
+import com.cartoon.tinytips.util.network.HttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +20,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ *
+ * @author cartoon
+ * @version 1.3
+ *
+ * description
+ * 通过网络传输对数据库笔记表进行增删查改操作
+ *
+ * how to use
+ * 1.通过静态方法getOperateNote获取本类对象
+ * 2.根据相应操作执行相应的方法
+ *   add(插入笔记)
+ *   delete(删除笔记)
+ *   query(查询笔记)
+ *   update(更新笔记)
+ * 3.因网络传输以及数据库操作需要时间，
+ *   通过方法isNotFinish()判断操作是否完成（true为未完成）
+ * 4.获取结果
+ *   插入，删除，查询，更新操作通过方法isSuccess()获取操作结果
+ *   查询操作通过方法getQueryData()获取结果集合
+ *
+ * notice
+ * 1.本类无法new对象，只能通过静态方法getOperateNote获取
+ */
+
 public class OperateNote {
 
     private static volatile OperateNote operateNote;
@@ -30,15 +55,37 @@ public class OperateNote {
 
     private JSONArrayOperation arrayOperation;
 
-    private String url;
-
-    private String method;
-
     private boolean isNotFinish;
 
     private boolean isSuccess;
 
     private List<Note> queryData;
+
+    private HttpConnection connection;
+
+    private String url;
+
+    private String method;
+
+    /**
+     * 功能
+     * 返回本类对象，确保在程序运行的过程只有一个对象
+     *
+     * 使用方法
+     * 1.类名直接调用获取
+     *
+     * @return
+     */
+    public static OperateNote getOperateNote(){
+        if(JudgeEmpty.isEmpty(operateNote)){
+            synchronized (OperateNote.class){
+                if(JudgeEmpty.isEmpty(operateNote)){
+                    operateNote =new OperateNote();
+                }
+            }
+        }
+        return operateNote;
+    }
 
     /**
      * 功能
@@ -169,17 +216,16 @@ public class OperateNote {
      * @return
      */
     private String sendData(JSONObject object, JSONArray array){
-        Text text=Text.getOperate();
         if(JudgeEmpty.isNotEmpty(object)){
-            text.sendJSONObject(url,method,object);
+            connection.sendJSONObject(url,method,object);
         }else if(JudgeEmpty.isNotEmpty(array)){
-            text.sendJSONArray(url,method,array);
+            connection.sendJSONArray(url,method,array);
         }
-        new Thread(text).start();
-        while (text.isRun()){
+        new Thread(connection).start();
+        while (connection.isRun()){
         }
         setNotFinish(false);
-        return text.getResult();
+        return connection.getResult();
     }
 
     /**
@@ -271,24 +317,14 @@ public class OperateNote {
         }
     }
 
-    public static OperateNote getOperateNote(){
-        if(JudgeEmpty.isEmpty(operateNote)){
-            synchronized (OperateNote.class){
-                if(JudgeEmpty.isEmpty(operateNote)){
-                    operateNote =new OperateNote();
-                }
-            }
-        }
-        return operateNote;
-    }
-
     private OperateNote(){
         fileOperation=FileOperation.getOperation();
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
+        queryData=new ArrayList<>();
+        connection=HttpConnection.getConnection();
         url=HttpConstant.getConstant().getURL_Note();
         method="POST";
-        queryData=new ArrayList<>();
     }
 
 }
