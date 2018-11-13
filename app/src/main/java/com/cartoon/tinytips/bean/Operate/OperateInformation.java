@@ -1,13 +1,11 @@
 package com.cartoon.tinytips.bean.Operate;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
+import com.cartoon.tinytips.util.network.Text;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,57 +14,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author cartoon
- * @version 1.0
- *
- * description
- * 1.个人信息操作类
- * 2.本类有四个公有成员方法
- *      1）插入个人信息
- *      2）删除个人信息
- *      3）查询个人信息
- *      4）更新个人信息
- *
- * notice
- * 1.本类为单例
- * 2.对象通过调用静态方法getConstant获取
- * 3.成员方法的使用请看方法的doc
- */
-
 public class OperateInformation {
 
-    private static volatile OperateInformation operate;
+    private static volatile OperateInformation operateInformation;
 
     private JSONObjectOperation objectOperation;
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
-
     private String url;
 
     private String method;
 
-    /**
-     * 功能
-     * 获取本类对象
-     *
-     * 使用方法
-     * 1.直接调用此方法并将返回值赋值给局部变量
-     *
-     * @return
-     */
-    public static OperateInformation getOperate(){
-        if(JudgeEmpty.isEmpty(operate)){
-            synchronized (OperateInformation.class){
-                if(JudgeEmpty.isEmpty(operate)){
-                    operate=new OperateInformation();
-                }
-            }
-        }
-        return operate;
-    }
+    private boolean isNotFinish;
+
+    private boolean isSuccess;
+
+    private List<Information> queryData;
 
     /**
      * 功能
@@ -74,7 +38,7 @@ public class OperateInformation {
      *
      * 使用方法
      * 1.传入个人信息对象
-     * 2.通过返回值判断插入是否成功
+     * 2.通过方法isSuccess获取插入结果
      *
      * 注意
      * 1.传入个人信息对象必须携带账号
@@ -82,26 +46,10 @@ public class OperateInformation {
      * @param information
      * @return
      */
-    public boolean add(Information information){
+    public void add(Information information){
         JSONObject data=objectOperation.setInformationToJSON(information,"add");
-        connection.sendJSONObject(url,method,data);
-        Thread thread=new Thread(connection);
-        thread.start();
-        JSONObject object=null;
-        try {
-            thread.join();
-            object=new JSONObject(connection.getResult());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-        if(JudgeEmpty.isNotEmpty(object)){
-            if(objectOperation.getResultFromJSON(object).equals("200")){
-                return true;
-            }
-        }
-        return false;
+        String result=sendData(data,null);
+        setSuccess(result);
     }
 
     /**
@@ -110,7 +58,7 @@ public class OperateInformation {
      *
      * 使用方法
      * 1.传入个人信息对象
-     * 2.通过返回值判断插入是否成功
+     * 2.通过方法isSuccess判断删除是否成功
      *
      * 注意
      * 1.传入个人信息对象必须携带至少一个条件
@@ -118,26 +66,10 @@ public class OperateInformation {
      * @param condition
      * @return
      */
-    public boolean delete(Information condition){
+    public void delete(Information condition){
         JSONObject data=objectOperation.setInformationToJSON(condition,"delete");
-        connection.sendJSONObject(url,method,data);
-        Thread thread=new Thread(connection);
-        thread.start();
-        JSONObject object=null;
-        try {
-            thread.join();
-            object=new JSONObject(connection.getResult());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-        if(JudgeEmpty.isNotEmpty(object)){
-            if(objectOperation.getResultFromJSON(object).equals("200")){
-                return true;
-            }
-        }
-        return false;
+        String result=sendData(data,null);
+        setSuccess(result);
     }
 
     /**
@@ -146,41 +78,18 @@ public class OperateInformation {
      *
      * 使用方法
      * 1.传入个人信息对象
-     * 2.通过返回值索取数据
      *
      * 注意
      * 1.传入个人信息对象必须携带至少一个条件
-     * 2.返回值使用前必须先进行非空判断
+     * 2.通过方法getQueryData获取返回的个人信息集合
      *
      * @param condition
      * @return
      */
-    public List<Information> query(Information condition){
+    public void query(Information condition){
         JSONObject data=objectOperation.setInformationToJSON(condition,"query");
-        connection.sendJSONObject(url,method,data);
-        Thread thread=new Thread(connection);
-        thread.start();
-        JSONArray array=null;
-        try {
-            thread.join();
-            array=new JSONArray(connection.getResult());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        List<Information> result=new ArrayList<>();
-        List<JSONObject> temp=null;
-        if(JudgeEmpty.isNotEmpty(array)){
-            temp=arrayOperation.getObjectsFromArray(array);
-        }
-        if(JudgeEmpty.isNotEmpty(temp)){
-            for(JSONObject object:temp){
-                result.add(objectOperation.getInformationFromJSON(object));
-            }
-        }
-        return result;
+        String result=sendData(data,null);
+        setQueryData(result);
     }
 
     /**
@@ -198,42 +107,135 @@ public class OperateInformation {
      * @param newInformation
      * @return
      */
-    public boolean update(Information oldInformation,Information newInformation){
+    public void update(Information oldInformation,Information newInformation){
         JSONObject condition=objectOperation.setInformationToJSON(oldInformation,"update");
         JSONObject data=objectOperation.setInformationToJSON(newInformation,"update");
         List<JSONObject> temp=new ArrayList<>();
         temp.add(condition);
         temp.add(data);
         JSONArray array=arrayOperation.setObjectToArray(temp);
-        connection.sendJSONArray(url,method,array);
-        Thread thread=new Thread(connection);
-        thread.start();
+        String result=sendData(null,array);
+        setSuccess(result);
+    }
+
+    /**
+     * 功能
+     * 调用网络连接工具类发送数据
+     *
+     * 使用方法
+     *
+     * 注意
+     * 1.两个形参中必须有一个为null
+     *
+     * @param object
+     * @param array
+     * @return
+     */
+    private String sendData(JSONObject object,JSONArray array){
+        Text text=Text.getOperate();
+        if(JudgeEmpty.isNotEmpty(object)){
+            text.sendJSONObject(url,method,object);
+        }else if(JudgeEmpty.isNotEmpty(array)){
+            text.sendJSONArray(url,method,array);
+        }
+        new Thread(text).start();
+        while (text.isRun()){
+        }
+        setNotFinish(false);
+        return text.getResult();
+    }
+
+    /**
+     * 功能
+     * 判断网络传输是否完成
+     *
+     * @return
+     */
+    public boolean isNotFinish() {
+        return isNotFinish;
+    }
+
+    /**
+     * 获取插入，删除，更新数据是否成功
+     * @return
+     */
+    public boolean isSuccess() {
+        setNotFinish(true);
+        return isSuccess;
+    }
+
+    /**
+     * 获取查询的结果
+     *
+     * @return
+     */
+    public List<Information> getQueryData() {
+        setNotFinish(true);
+        return queryData;
+    }
+
+    private void setNotFinish(boolean notFinish) {
+        isNotFinish = notFinish;
+    }
+
+    private void setSuccess(String result) {
         JSONObject object=null;
         try {
-            thread.join();
-            object=new JSONObject(connection.getResult());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e){
+            object=new JSONObject(result);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         if(JudgeEmpty.isNotEmpty(object)){
             if(objectOperation.getResultFromJSON(object).equals("200")){
-                return true;
+                isSuccess=true;
+            }
+            else {
+                isSuccess=false;
             }
         }
-        return false;
     }
 
     /**
-     * 构造方法
+     * 功能
+     * 将服务器返回的查询数据转换成集合形式输出
+     *
+     * @param result
      */
+    private void setQueryData(String result) {
+        JSONArray array=null;
+        try {
+            array=new JSONArray(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        List<JSONObject> temp=null;
+        if(JudgeEmpty.isNotEmpty(array)){
+            temp=arrayOperation.getObjectsFromArray(array);
+        }
+        if(JudgeEmpty.isNotEmpty(temp)){
+            for(JSONObject object:temp){
+                queryData.add(objectOperation.getInformationFromJSON(object));
+            }
+        }
+    }
+
+    public static OperateInformation getOperateInformation(){
+        if(JudgeEmpty.isEmpty(operateInformation)){
+            synchronized (OperateInformation.class){
+                if(JudgeEmpty.isEmpty(operateInformation)){
+                    operateInformation =new OperateInformation();
+                }
+            }
+        }
+        return operateInformation;
+    }
+
     private OperateInformation(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getHttpConnection();
         url=HttpConstant.getConstant().getURL_Information();
         method="POST";
+        setNotFinish(true);
+        queryData=new ArrayList<>();
     }
-
 }

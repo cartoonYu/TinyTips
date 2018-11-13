@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Image;
+package com.cartoon.tinytips.util.file;
 
 import android.database.Cursor;
 import android.net.Uri;

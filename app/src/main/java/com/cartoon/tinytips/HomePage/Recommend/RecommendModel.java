@@ -5,8 +5,8 @@ import android.util.Log;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
+import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.Note.DivideNote;
 
@@ -28,8 +28,16 @@ public class RecommendModel implements IRecommend.Model {
     public void initData(ValueCallBack<List<RecommendItem>> callBack){
         Note note=new Note();
         Information information=new Information();
-        List<Note> notes=operateNote.query(note);
-        List<Information> informations=operateInformation.query(information);
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        List<Note> notes= operateNote.getQueryData();
+        operateInformation.query(information);
+        while(operateInformation.isNotFinish()){
+
+        }
+        List<Information> informations= operateInformation.getQueryData();
         List<RecommendItem> result=new ArrayList<>();
         Random random=new Random();
         if(JudgeEmpty.isEmpty(notes)||notes.isEmpty()){
@@ -67,7 +75,7 @@ public class RecommendModel implements IRecommend.Model {
     }
 
     public RecommendModel(){
-        operateNote=OperateNote.getOperateNote();
-        operateInformation=OperateInformation.getOperate();
+        operateNote =OperateNote.getOperateNote();
+        operateInformation =OperateInformation.getOperateInformation();
     }
 }

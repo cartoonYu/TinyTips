@@ -3,7 +3,6 @@ package com.cartoon.tinytips.Personal;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
@@ -21,13 +20,11 @@ class PersonalModel implements IPersonal.Model {
 
     private Information info;
 
-    private OperateInformation operateInformation;
 
     private OperateNote operateNote;
 
     public PersonalModel() {
-        operateInformation = OperateInformation.getOperate();
-        operateNote=OperateNote.getOperateNote();
+        operateNote =OperateNote.getOperateNote();
     }
 
     @Override
@@ -46,7 +43,11 @@ class PersonalModel implements IPersonal.Model {
         }
         Note note=new Note();
         note.setAuthor(information.getNickName());
-        List<Note> notes=operateNote.query(note);
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        List<Note> notes= operateNote.getQueryData();
         if(JudgeEmpty.isNotEmpty(notes)){
             callBack.onSuccess(notes.size());
         }

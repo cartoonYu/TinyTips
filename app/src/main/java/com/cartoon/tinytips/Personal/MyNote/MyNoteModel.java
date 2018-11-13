@@ -16,7 +16,11 @@ public class MyNoteModel implements IMyNote.Model {
     public void getNote(Information information,ValueCallBack<List<Note>> callBack){
         Note note=new Note();
         note.setAuthor(information.getNickName());
-        List<Note> notes=operateNote.query(note);
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        List<Note> notes= operateNote.getQueryData();
         if(JudgeEmpty.isEmpty(note)||notes.isEmpty()){
             callBack.onFail("获取笔记信息失败");
         }
@@ -26,6 +30,6 @@ public class MyNoteModel implements IMyNote.Model {
     }
 
     public MyNoteModel(){
-        operateNote=OperateNote.getOperateNote();
+        operateNote =OperateNote.getOperateNote();
     }
 }

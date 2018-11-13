@@ -22,7 +22,11 @@ public class HotModel implements IHot.Model {
     @Override
     public void initData(ValueCallBack<List<HotItem>> callBack){
         Note note=new Note();
-        List<Note> list=operateNote.query(note);
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        List<Note> list= operateNote.getQueryData();
         List<HotItem> items=new ArrayList<>();
         if(JudgeEmpty.isEmpty(list)||list.isEmpty()){
             callBack.onFail("获取笔记信息错误");
@@ -49,6 +53,6 @@ public class HotModel implements IHot.Model {
 
     public HotModel(){
         flag=0;
-        operateNote=OperateNote.getOperateNote();
+        operateNote =OperateNote.getOperateNote();
     }
 }

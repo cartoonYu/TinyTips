@@ -7,8 +7,8 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.util.Image.FileOperation;
-import com.cartoon.tinytips.util.Image.UriAndFile;
+import com.cartoon.tinytips.util.file.FileOperation;
+import com.cartoon.tinytips.util.file.UriAndFile;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 

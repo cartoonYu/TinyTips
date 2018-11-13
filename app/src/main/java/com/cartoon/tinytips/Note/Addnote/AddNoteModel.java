@@ -16,7 +16,11 @@ public class AddNoteModel implements IAddNote.Model {
         }
         note.setAuthor("Leo");
         note.setUserId(12);
-        if(operateNote.add(note)){
+        operateNote.add(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        if(operateNote.isSuccess()){
             callBack.onSuccess("新建笔记成功");
         }
         else {
@@ -25,6 +29,6 @@ public class AddNoteModel implements IAddNote.Model {
     }
 
     public AddNoteModel(){
-        operateNote=OperateNote.getOperateNote();
+        operateNote =OperateNote.getOperateNote();
     }
 }

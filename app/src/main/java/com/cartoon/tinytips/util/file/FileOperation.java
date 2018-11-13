@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.util.Image;
+package com.cartoon.tinytips.util.file;
 
 import android.os.Environment;
 
@@ -68,12 +68,12 @@ public class FileOperation {
      * 1.传入的字符串必须经过Base64处理
      *
      * @param file
-     * @param imageName
+     * @param fileName
      * @return
      */
-    public File transStringToFile(String file,String imageName){
+    public File transStringToFile(String file,String fileName){
         byte[] bytes=coder.decode(file);
-        File result=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+imageName);
+        File result=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+fileName);
         try {
             FileOutputStream stream=new FileOutputStream(result);
             stream.write(bytes,0,bytes.length);

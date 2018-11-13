@@ -8,7 +8,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="CMakeSettings">
@@ -18,64 +18,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1e4e04e-1fc4-4c7f-bd99-c58947e0786d" name="Default" comment="add icon">
-      <change afterPath="$PROJECT_DIR$/app/debug/app-debug.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/debug/output.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/hone_buttom_coners_bg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/hone_buttom_coners_bg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/personal_homepage_coners.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/personal_homepage_coners.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_hot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_hot.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_anotherlogin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_anotherlogin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_information.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_information.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/message/layout/message.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/message/layout/message.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/message/layout/messagecontent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/message/layout/messagecontent.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/comment_bottombar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/comment_bottombar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/commentitem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/commentitem.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_bottombar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_bottombar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_bottombar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_bottombar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/selectauthority.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/selectauthority.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note/sharenote/layout/sharenote.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note/sharenote/layout/sharenote.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/detail/layout/personal_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/detail/layout/personal_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_information.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_information.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/layout/personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/layout/personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/personal_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/personal_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_logout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_logout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_management.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_management.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_security.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_account_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_account_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_add.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_logout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_logout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_authcode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_authcode.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_confirmpassword.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_confirmpassword.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_newpassword.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_newpassword.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_phonenumber.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_phonenumber.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_authcode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_authcode.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_phonenum.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_phonenum.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_register.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Hot/HotModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Hot/HotModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Login/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Login/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Detail/DetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Detail/DetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepageModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/IStartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/IStartActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Image/FileOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/file/FileOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Image/UriAndFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/file/UriAndFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/IntentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/IntentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/JSON/JSONObjectOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/JSON/JSONObjectOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Note/DivideNote.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Note/DivideNote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/HttpConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/HttpConnection.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -98,129 +78,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="personal_homepage_dynamicstate_item.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate_item.xml">
+      <file leaf-file-name="OperateNote.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+            <state relative-caret-position="312">
+              <caret line="277" column="51" selection-start-line="277" selection-start-column="51" selection-end-line="277" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#add#0;class#Operate#0" />
+                <element signature="method#handleNote#0;class#Operate#0" />
+                <element signature="method#sendData#0;class#Operate#0" />
+                <element signature="e#4005#4006#0" expanded="true" />
+                <element signature="e#4039#4040#0" expanded="true" />
+                <element signature="e#4393#4394#0" expanded="true" />
+                <element signature="e#4432#4433#0" expanded="true" />
+                <element signature="method#setSuccess#0;class#Operate#0" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_recommend.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml">
+      <file leaf-file-name="MyNoteModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNoteModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="250">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#821#822#0" expanded="true" />
+                <element signature="e#877#878#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="personal_mynote_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_item.xml">
+      <file leaf-file-name="PersonalHomepageModel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepageModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+            <state relative-caret-position="175">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#1459#1460#0" expanded="true" />
+                <element signature="e#1481#1482#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="personal_homepage_information.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_information.xml">
+      <file leaf-file-name="NoteDetailModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetailModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+            <state relative-caret-position="75">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list.xml">
+      <file leaf-file-name="AddNoteModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNoteModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state />
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="major_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/layout/major_item.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state />
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="discover.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/layout/discover.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state />
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_favorite.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_favorite.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="166" column="48" selection-start-line="166" selection-start-column="48" selection-end-line="166" selection-end-column="48" />
+            <state relative-caret-position="275">
+              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+              <folding>
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#786#787#0" expanded="true" />
+              </folding>
             </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="personal_collect_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_hot.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_hot.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="591">
-              <caret line="60" column="43" lean-forward="true" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="C:\Users\Leo\.gradle\wrapper\dists\gradle-4.6-all\bcst21l2brirad8k2ben1letg\gradle-4.6" />
+        <entry key="$PROJECT_DIR$" value="C:\Users\cartoon\.gradle\wrapper\dists\gradle-4.6-all\bcst21l2brirad8k2ben1letg\gradle-4.6" />
       </map>
     </option>
     <option name="myGradleVersions">
@@ -2476,43 +2418,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_authcode.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_password.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_phonenum.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/register/layout/register_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_about.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_logout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_management.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_security.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/personal_setting.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_logout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_account_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_add.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_authcode.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_confirmpassword.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_newpassword.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_phonenumber.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/setting/security/layout/security_toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/layout/personal.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/personal_homepage_coners.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_information.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/detail/layout/personal_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/hone_buttom_coners_bg.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/sharenote/layout/sharenote.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_bottombar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/selectauthority.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_bottombar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/comment_bottombar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/commentitem.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/message/layout/message.xml" />
@@ -2524,20 +2429,76 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_favorite.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/Main.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Personal.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Collect/Collect.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Detail/Detail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNote.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/IPersonalHomepage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepagePresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/Recommend.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Setting/Setting.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/MyNote/NoteAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/PersonalHomepage/DynamicStateAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeCardAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeFragmentAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/FavoriteAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HotAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/file/FileOperation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/IntentActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/IStartActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/HttpConnection.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/Text.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/MainModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Login/LoginModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateInformation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Hot/HotModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/Operate.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNoteModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNoteModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetailModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepageModel.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-3" />
-    <option name="y" value="206" />
+    <option name="x" value="61" />
+    <option name="y" value="357" />
     <option name="width" value="1935" />
     <option name="height" value="880" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TinyTips" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2554,12 +2515,6 @@
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
               <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="debug" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2575,7 +2530,7 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2584,7 +2539,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2594,7 +2548,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2605,7 +2558,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="cartoon" type="462c0819:PsiDirectoryNode" />
-              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2617,7 +2569,43 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="cartoon" type="462c0819:PsiDirectoryNode" />
               <item name="tinytips" type="462c0819:PsiDirectoryNode" />
-              <item name="Note" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
+              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
+              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+              <item name="Operate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
+              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
+              <item name="HomePage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2642,7 +2630,31 @@
               <item name="cartoon" type="462c0819:PsiDirectoryNode" />
               <item name="tinytips" type="462c0819:PsiDirectoryNode" />
               <item name="Personal" type="462c0819:PsiDirectoryNode" />
-              <item name="PersonalHomepage" type="462c0819:PsiDirectoryNode" />
+              <item name="Detail" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
+              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
+              <item name="Register" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
+              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
+              <item name="Start" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
@@ -2667,187 +2679,17 @@
               <item name="cartoon" type="462c0819:PsiDirectoryNode" />
               <item name="tinytips" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
-              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
-              <item name="Personal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="cartoon" type="462c0819:PsiDirectoryNode" />
-              <item name="tinytips" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
-              <item name="Personal" type="462c0819:PsiDirectoryNode" />
-              <item name="PersonalHomepage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="discover" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="discover" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="discover" type="462c0819:PsiDirectoryNode" />
-              <item name="list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="discover" type="462c0819:PsiDirectoryNode" />
-              <item name="list" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="personal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="personal" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="personal" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="personal" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TinyTips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TinyTips" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="personal" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="Nexus_5X_API_27" />
+    <property name="device.picker.selection" value="Pixel_2_API_26" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -3001,11 +2843,19 @@
       <option name="project" value="LOCAL" />
       <updated>1541167165296</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="change Intent Activity function">
+      <created>1541586800977</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541586800977</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -3013,32 +2863,93 @@
       <window_info id="Image Layers" order="2" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32881" />
-      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.32995737" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49946696" weight="0.19465241" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Logcat" order="7" weight="0.32810867" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.27272728" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.33019853" />
+      <window_info anchor="bottom" id="Statistic" order="8" weight="0.32941177" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.21390374" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.25561497" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.3291536" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.32995737" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3291536" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Build" order="7" weight="0.21818182" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Captures" order="7" weight="0.25" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Android Profiler" order="9" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="right" id="Preview" order="7" visible="true" weight="0.32995737" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="11" visible="true" weight="0.30481285" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="right" id="Gradle" order="9" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="10" />
+      <window_info anchor="right" id="Theme Preview" order="11" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" />
-    </layout>
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -3046,493 +2957,444 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add icon" />
     <MESSAGE value="change layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="change layout" />
+    <MESSAGE value="change Intent Activity function" />
+    <option name="LAST_COMMIT_MESSAGE" value="change Intent Activity function" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNote.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="159" column="36" lean-forward="true" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/statusbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_account_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_logout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management_add.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/management/layout/personal_setting_management.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_security.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/setting_about.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/setting/layout/personal_setting.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_toolbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/layout/personal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="94" column="44" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/personal_homepage_coners.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        <state relative-caret-position="546">
+          <caret line="250" column="44" lean-forward="true" selection-start-line="250" selection-start-column="44" selection-end-line="250" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/detail/layout/personal_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="842">
-          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/hone_buttom_coners_bg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="351">
+          <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/sharenote/layout/sharenote.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Collect/Collect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="974">
-          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+        <state relative-caret-position="337">
+          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Personal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+        <state relative-caret-position="-624">
+          <caret line="75" column="29" lean-forward="true" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_bottombar.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Detail/Detail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+        <state relative-caret-position="337">
+          <caret line="89" column="47" selection-start-line="89" selection-start-column="47" selection-end-line="89" selection-end-column="47" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/addnote_toolbar.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNote.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="763">
+          <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/selectauthority.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/IPersonalHomepage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+        <state relative-caret-position="300">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/tips.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepagePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/newnote/layout/tips_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        <state relative-caret-position="740">
+          <caret line="38" column="62" lean-forward="true" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_detail.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        <state relative-caret-position="326">
+          <caret line="86" column="41" lean-forward="true" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail_bottombar.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Setting/Setting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        <state relative-caret-position="-224">
+          <caret line="64" column="60" lean-forward="true" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/detail/layout/note_detail.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Setting/Security/Security.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        <state relative-caret-position="375">
+          <caret line="27" column="61" lean-forward="true" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/comment_bottombar.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Setting/Management/Management.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state relative-caret-position="400">
+          <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/commentitem.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/Collect/CollectAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="52" column="17" lean-forward="true" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+        <state relative-caret-position="400">
+          <caret line="46" column="38" lean-forward="true" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note/comment/layout/comment.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeCardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/message/layout/message.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
+        <state relative-caret-position="125">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/message/layout/messagecontent.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeFragmentAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="-685">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login/layout/login.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/MyNote/NoteAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        <state relative-caret-position="313">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_anotherlogin.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Personal/PersonalHomepage/DynamicStateAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        <state relative-caret-position="1500">
+          <caret line="78" column="83" selection-start-line="78" selection-start-column="83" selection-end-line="78" selection-end-column="83" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login/layout/login_information.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        <state relative-caret-position="290">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/home_favorite.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/home_hot.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/homepage.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/list/layout/list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/layout/major_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/discover/layout/discover.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_hot.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="60" column="43" lean-forward="true" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_favorite.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="556">
-          <caret line="166" column="48" selection-start-line="166" selection-start-column="48" selection-end-line="166" selection-end-column="48" />
+          <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/collect/layout/personal_collect_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/FavoriteAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+        <state relative-caret-position="375">
+          <caret line="85" column="24" lean-forward="true" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/mynote/layout/personal_mynote_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HotAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        <state relative-caret-position="565">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_information.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Information.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="303">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/personal/homepage/layout/personal_homepage_dynamicstate_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+        <state relative-caret-position="575">
+          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/JSON/JSONObjectOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="376" column="24" lean-forward="true" selection-start-line="376" selection-start-column="24" selection-end-line="376" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/file/FileOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/HttpConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/Recommend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/JSON/JSONArrayOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/HttpConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3968#3969#0" expanded="true" />
+            <element signature="e#3997#3998#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/IStartActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/IntentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#intentWithoutData#0;class#IntentActivity#0" />
+            <element signature="method#intentWithData#0;class#IntentActivity#0" />
+            <element signature="method#intentWithData#1;class#IntentActivity#0" />
+            <element signature="method#finishActivity#0;class#IntentActivity#0" />
+            <element signature="method#getIntentInformation#0;class#IntentActivity#0" />
+            <element signature="method#intent#0;class#IntentActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="44" column="43" lean-forward="true" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+          <folding>
+            <element signature="e#1548#1549#0" expanded="true" />
+            <element signature="method#onRequestPermissionsResult#0;class#StartActivity#0" />
+            <element signature="e#2245#2246#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="162" column="7" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Start/StartActivityModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Detail/DetailModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Main/MainModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Login/LoginModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/network/Text.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#sendJSONObject#0;class#Text#0" />
+            <element signature="method#sendJSONArray#0;class#Text#0" />
+            <element signature="method#run#0;class#Text#0" />
+            <element signature="method#getURLConnection#0;class#Text#0" />
+            <element signature="method#getOutputStream#0;class#Text#0" />
+            <element signature="method#getInputStream#0;class#Text#0" />
+            <element signature="method#getResult#0;class#Text#0" />
+            <element signature="method#getOperate#0;class#Text#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="33" column="48" lean-forward="true" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Hot/HotModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="235" column="60" selection-start-line="235" selection-start-column="60" selection-end-line="235" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="277" column="42" lean-forward="true" selection-start-line="277" selection-start-column="42" selection-end-line="277" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add#0;class#Operate#0" />
+            <element signature="method#handleNote#0;class#Operate#0" />
+            <element signature="method#sendData#0;class#Operate#0" />
+            <element signature="e#4005#4006#0" expanded="true" />
+            <element signature="e#4039#4040#0" expanded="true" />
+            <element signature="e#4393#4394#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
+            <element signature="method#setSuccess#0;class#Operate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/MyNote/MyNoteModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Addnote/AddNoteModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Note/Details/NoteDetailModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/bean/Operate/OperateNote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="277" column="51" selection-start-line="277" selection-start-column="51" selection-end-line="277" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add#0;class#Operate#0" />
+            <element signature="method#handleNote#0;class#Operate#0" />
+            <element signature="method#sendData#0;class#Operate#0" />
+            <element signature="e#4005#4006#0" expanded="true" />
+            <element signature="e#4039#4040#0" expanded="true" />
+            <element signature="e#4393#4394#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
+            <element signature="method#setSuccess#0;class#Operate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/PersonalHomepage/PersonalHomepageModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#1459#1460#0" expanded="true" />
+            <element signature="e#1481#1482#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

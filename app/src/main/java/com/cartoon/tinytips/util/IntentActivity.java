@@ -3,7 +3,6 @@ package com.cartoon.tinytips.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;

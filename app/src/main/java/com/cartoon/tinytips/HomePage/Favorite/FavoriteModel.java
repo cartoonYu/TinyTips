@@ -3,8 +3,8 @@ package com.cartoon.tinytips.HomePage.Favorite;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
+import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.Note.DivideNote;
 
@@ -26,8 +26,16 @@ public class FavoriteModel implements IFavorite.Model {
     public void initData(ValueCallBack<List<FavoriteItem>> callBack){
         Note note=new Note();
         Information information=new Information();
-        List<Note> notes=operateNote.query(note);
-        List<Information> list=operateInformation.query(information);
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        List<Note> notes= operateNote.getQueryData();
+        operateInformation.query(information);
+        while(operateInformation.isNotFinish()){
+
+        }
+        List<Information> list= operateInformation.getQueryData();
         List<FavoriteItem> result=new ArrayList<>();
         Random random=new Random();
         Set<Note> noteSet=new HashSet<>();
@@ -69,7 +77,7 @@ public class FavoriteModel implements IFavorite.Model {
     }
 
     public FavoriteModel(){
-        operateInformation=OperateInformation.getOperate();
-        operateNote=OperateNote.getOperateNote();
+        operateInformation =OperateInformation.getOperateInformation();
+        operateNote =OperateNote.getOperateNote();
     }
 }

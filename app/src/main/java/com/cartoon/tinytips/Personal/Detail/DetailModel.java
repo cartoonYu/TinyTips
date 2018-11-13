@@ -2,9 +2,6 @@ package com.cartoon.tinytips.Personal.Detail;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
-
-import java.util.List;
 
 public class DetailModel implements IDetail.Model {
 
@@ -29,7 +26,7 @@ public class DetailModel implements IDetail.Model {
         }*/
        /* Information information=new Information();
         information.setAccount("hht");
-        OperateInformation op=OperateInformation.getOperate();
+        OperateInformation op=OperateInformation.getOperateInformation();
         List<Information> list=op.query(information);
         if(list.isEmpty()){
             callBack.onFail("获取个人信息错误");

@@ -42,11 +42,12 @@ public class StartActivity  extends BaseActivity<StartActivityPresenter> impleme
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
-        new Handler().postDelayed(new Runnable() {
+        new Handler().post(new Runnable() {
+            @Override
             public void run() {
-                intentToMain();
+                presenter.getInformation();
             }
-        }, SPLASH_DELAY_MILLIS);
+        });
     }
 
     @Override
@@ -63,10 +64,13 @@ public class StartActivity  extends BaseActivity<StartActivityPresenter> impleme
 
     @Override
     public void intentToMain() {
-        //IntentActivity.intentWithoutData(this,Main.class);
-        presenter.getInformation();
         information = presenter.getInfo();
         IntentActivity.intentWithData(this,Main.class,"start",information);
+        IntentActivity.finishActivity(this);
+    }
+
+    @Override
+    public void finishActivity() {
         IntentActivity.finishActivity(this);
     }
 

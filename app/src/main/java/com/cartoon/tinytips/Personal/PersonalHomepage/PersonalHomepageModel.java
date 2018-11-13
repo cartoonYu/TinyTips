@@ -1,11 +1,8 @@
 package com.cartoon.tinytips.Personal.PersonalHomepage;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 
 import java.util.List;
@@ -13,9 +10,13 @@ import java.util.List;
 public class PersonalHomepageModel implements IPersonalHomepage.Model {
 
     private Information information;
+
     private Note queryCondition;
+
     private List<Note> noteList;
-    private OperateNote operater;
+
+    private OperateNote operateNote;
+
     @Override
     public void getHomepageInformation(ValueCallBack<Note> callBack) {
 
@@ -40,13 +41,19 @@ public class PersonalHomepageModel implements IPersonalHomepage.Model {
     public void getNoteList(ValueCallBack<List<Note>> valueCallBack) {
         queryCondition = new Note();
         queryCondition.setAuthor(information.getNickName());
-        operater = OperateNote.getOperateNote();
-        noteList = operater.query(queryCondition);
+        operateNote.query(queryCondition);
+        while (operateNote.isNotFinish()){
 
+        }
+        noteList= operateNote.getQueryData();
         if (noteList!=null){
             valueCallBack.onSuccess(noteList);
         }else{
             valueCallBack.onFail("获取笔记信息失败");
         }
+    }
+
+    public PersonalHomepageModel(){
+        operateNote =OperateNote.getOperateNote();
     }
 }

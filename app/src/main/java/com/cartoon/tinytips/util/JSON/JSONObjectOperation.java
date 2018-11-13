@@ -6,7 +6,7 @@ import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.util.Image.FileOperation;
+import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import org.json.JSONException;
@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

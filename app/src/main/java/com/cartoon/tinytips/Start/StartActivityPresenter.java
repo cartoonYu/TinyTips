@@ -4,6 +4,7 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.Main.IMain;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
 
 public class StartActivityPresenter extends BaseActivityPresenter<StartActivity> implements IStartActivity.Presenter {
@@ -31,15 +32,15 @@ public class StartActivityPresenter extends BaseActivityPresenter<StartActivity>
             @Override
             public void onSuccess(Information information) {
                 info = information;
-                //ShowToast.shortToast("成功啦");
+                view.intentToMain();
             }
 
             @Override
             public void onFail(String msg) {
                 ShowToast.shortToast(msg);
                 info = null;
+                view.finishActivity();
             }
-
         });
 
 
