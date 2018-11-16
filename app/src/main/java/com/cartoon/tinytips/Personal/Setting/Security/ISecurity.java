@@ -8,7 +8,7 @@ interface ISecurity {
         String getPhoneNumber();
         String getAuthCode();   //获取验证码
         String getPassword();  //获取密码
-        String getconfirmPassword(); //二次获取密码
+        String getConfirmPassword(); //二次获取密码
     }
 
     interface Presenter{

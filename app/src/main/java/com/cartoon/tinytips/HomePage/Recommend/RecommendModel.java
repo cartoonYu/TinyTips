@@ -40,7 +40,7 @@ public class RecommendModel implements IRecommend.Model {
         List<Information> informations= operateInformation.getQueryData();
         List<RecommendItem> result=new ArrayList<>();
         Random random=new Random();
-        if(JudgeEmpty.isEmpty(notes)||notes.isEmpty()){
+        if(notes.isEmpty()){
             callBack.onFail("获取信息失败");
         }
         else {
@@ -69,7 +69,6 @@ public class RecommendModel implements IRecommend.Model {
                 item.setNumOfRecommend(random.nextInt(100));
                 result.add(item);
             }
-            Log.d("asd",result.size()+"");
             callBack.onSuccess(result);
         }
     }

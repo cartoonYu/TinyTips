@@ -28,16 +28,12 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
 
     @Override
     public void initData(){
-        saveInformation();
-        model.setInformation(information);
-        model.getHomepagePersonalInformation(new ValueCallBack<Information>() {
+        model.getInformation(new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
                 view.setNickName(personalInformation.getNickName());
-
                 view.setMajor(personalInformation.getMajor());
-
                 view.setSchool(personalInformation.getSchool());
                 view.setInterest(personalInformation.getInterest());
 
@@ -49,7 +45,6 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
             }
         });
     }
-    public void saveInformation(){information = view.getInformation();}
 
     public List<Note> getNoteList(){
         model.getNoteList(new ValueCallBack<List<Note>>() {

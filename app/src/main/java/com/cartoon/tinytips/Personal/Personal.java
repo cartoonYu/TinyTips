@@ -17,6 +17,7 @@ import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -28,7 +29,6 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Personal extends BaseFragment<PersonalPresenter> implements IPersonal.View {
-    Information information;
 
     @BindView(R.id.detail_Personal)
     RelativeLayout detail;
@@ -68,11 +68,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     protected void onPrepare(){
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(getContext(),"start"))){
-            information=IntentActivity.getIntentInformation(getContext(),"start");
-        }else if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(getContext(),"personal"))){
-            information=IntentActivity.getIntentInformation(getContext(),"personal");
-        }
         presenter.initData();
     }
 
@@ -82,37 +77,37 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
-        IntentActivity.intentWithData(getContext(),PersonalHomepage.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
-        IntentActivity.intentWithData(getContext(),MyNote.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),MyNote.class);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.detail_Personal)
     public void onClickDetail(){
-        IntentActivity.intentWithData(getContext(),Detail.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),Detail.class);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.collect_Personal)
     public void onClickCollect(){
-        IntentActivity.intentWithData(getContext(),Collect.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),Collect.class);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
-        IntentActivity.intentWithData(getContext(),PersonalHomepage.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
         IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.setting_Personal)
     public void onClickSetting(){
-        IntentActivity.intentWithData(getContext(),Setting.class,"personal",information);
+        IntentActivity.intentWithoutData(getContext(),Setting.class);
         IntentActivity.finishActivity(getActivity());
     }
 
@@ -122,8 +117,9 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
 
     @Override
-    public void setNotes(String notes) {
-        this.notes.setText(notes);
+    public void setNotes(Integer notes) {
+        String temp=new String("笔记  ").concat(Integer.toString(notes));
+        this.notes.setText(temp);
     }
 
     @Override
@@ -141,8 +137,4 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
         this.nickName.setText(name);
     }
 
-    @Override
-    public Information getInformation() {
-        return information;
-    }
 }

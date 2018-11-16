@@ -8,17 +8,15 @@ import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
 
 public class StartActivityPresenter extends BaseActivityPresenter<StartActivity> implements IStartActivity.Presenter {
+
     private IStartActivity.View view;
 
     protected IStartActivity.Model model;
 
     private Information info;
 
-
-
     @Override
     protected void deleteView() {
-
     }
 
     public StartActivityPresenter(IStartActivity.View view){
@@ -26,28 +24,23 @@ public class StartActivityPresenter extends BaseActivityPresenter<StartActivity>
         this.model=new StartActivityModel();
     }
 
+    @Override
     public void getInformation(){   //从数据库获取个人信息
 
         model.getPersonalInformation(new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information information) {
                 info = information;
-                view.intentToMain();
+                view.intentToMain(information);
             }
 
             @Override
             public void onFail(String msg) {
                 ShowToast.shortToast(msg);
-                info = null;
-                view.finishActivity();
+                view.intentToLogin();
             }
         });
 
-
-
     }
 
-    public Information getInfo(){             //返回个人信息给页面
-        return info;
-    }
 }

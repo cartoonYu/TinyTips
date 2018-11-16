@@ -24,8 +24,6 @@ import butterknife.OnClick;
 
 public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.View{
 
-    private Information information;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -54,15 +52,11 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @Override
     protected void initView(){
         revampStatusBar();
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
-        presenter.initData(information);
     }
 
     @Override
     protected void onPrepare(){
-
+        presenter.initData();
     }
 
     private void revampStatusBar(){
@@ -79,13 +73,13 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 

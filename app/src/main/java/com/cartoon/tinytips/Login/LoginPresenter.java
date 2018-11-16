@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Login;
 
+import android.content.SharedPreferences;
+
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
@@ -11,32 +13,41 @@ class LoginPresenter extends BaseActivityPresenter<Login> implements ILogin.Pres
 
     private ILogin.Model model;
 
-    private Information info;
-
     public LoginPresenter(ILogin.View view){
         this.view=view;
         this.model = new LoginModel();
     }
 
-    public Information getInformation(){   //从数据库获取个人信息
-
-        /*model.getPersonalInformation(new ValueCallBack<Information>() {
+    @Override
+    public void checkInformation(String account, String password) {
+        if(account.equals("")&&password.equals("")){
+            ShowToast.shortToast("请输入账号以及密码");
+            return;
+        }
+        if(account.equals("")){
+            ShowToast.shortToast("请输入账号");
+            return;
+        }
+        if (password.equals("")){
+            ShowToast.shortToast("请输入密码");
+            return;
+        }
+        Information information=new Information();
+        information.setAccount(account);
+        information.setPassword(password);
+        model.checkInformation(information, new ValueCallBack<String>() {
             @Override
-            public void onSuccess(Information information) {
-                info = information;
-                ShowToast.shortToast("成功啦");
+            public void onSuccess(String s) {
+                ShowToast.shortToast(s);
+                view.intentToMain();
             }
 
             @Override
             public void onFail(String msg) {
                 ShowToast.shortToast(msg);
             }
-        });*/
-
-        return info;
-
+        });
     }
-
 
     @Override
     protected void deleteView(){

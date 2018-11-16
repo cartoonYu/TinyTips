@@ -2,8 +2,10 @@ package com.cartoon.tinytips.Personal.MyNote;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
@@ -12,16 +14,18 @@ public class MyNoteModel implements IMyNote.Model {
 
     private OperateNote operateNote;
 
+    private Information information;
+
     @Override
-    public void getNote(Information information,ValueCallBack<List<Note>> callBack){
+    public void getNote(ValueCallBack<List<Note>> callBack){
         Note note=new Note();
-        note.setAuthor(information.getNickName());
+        note.setUserId(information.getId());
         operateNote.query(note);
         while (operateNote.isNotFinish()){
 
         }
         List<Note> notes= operateNote.getQueryData();
-        if(JudgeEmpty.isEmpty(note)||notes.isEmpty()){
+        if(notes.isEmpty()){
             callBack.onFail("获取笔记信息失败");
         }
         else {
@@ -31,5 +35,6 @@ public class MyNoteModel implements IMyNote.Model {
 
     public MyNoteModel(){
         operateNote =OperateNote.getOperateNote();
+        information=LocalInformation.getLocalInformation().query();
     }
 }

@@ -12,12 +12,9 @@ interface IPersonalHomepage {
         void initDynamicState();    //初始化动态列表
         void setHeadPro(File headPro);   //设置头像
         void setNickName(String name);     //设置昵称
-
         void setSchool(String school);    //设置学习
         void setMajor(String major);      //设置专业
         void setInterest(List<String> interest);    //设置学历
-
-        Information getInformation();
 
     }
 
@@ -26,9 +23,7 @@ interface IPersonalHomepage {
     }
 
     interface Model{
-        void getHomepageInformation(ValueCallBack<Note> callBack);   //获取个人笔记
-        void getHomepagePersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
-        void setInformation(Information information);
-        void getNoteList(ValueCallBack<List<Note>> valueCallBack);
+        void getInformation(ValueCallBack<Information> callBack);   //获取个人信息
+        void getNoteList(ValueCallBack<List<Note>> callBack);
     }
 }

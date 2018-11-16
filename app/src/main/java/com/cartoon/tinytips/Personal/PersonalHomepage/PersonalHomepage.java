@@ -33,8 +33,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> implements IPersonalHomepage.View{
 
-    Information information;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -80,9 +78,6 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
 
     @Override
     protected void initView(){
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
         presenter.initData();
         noteList=presenter.getNoteList();
         revampStatusBar();
@@ -96,15 +91,13 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
 
     @OnClick(R.id.personal_homepage_back)
     public void clickBack(){
-
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
-
+        IntentActivity.intentWithData(this,Main.class,"main",FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,"main",FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
@@ -115,7 +108,6 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
     @Override
     public void initDynamicState(){
         dynamicStateList=new ArrayList<>();
-
 
         DynamicState state=new DynamicState("asd","2018-8-11",2,3,4,5);
         for(int i=0;i<20;i++){
@@ -156,8 +148,4 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
         }
     }
 
-    @Override
-    public Information getInformation() {
-        return information;
-    }
 }

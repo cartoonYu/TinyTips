@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.cartoon.tinytips.BaseActivity;
+import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
@@ -16,11 +17,10 @@ import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
 
-public class StartActivity  extends BaseActivity<StartActivityPresenter> implements IStartActivity.View {
+public class StartActivity extends BaseActivity<StartActivityPresenter> implements IStartActivity.View {
 
     private final long SPLASH_DELAY_MILLIS = 2000;
     private static final String TAG ="QuizActivity";
-    Information information;
 
     @Override
     protected StartActivityPresenter initPresent() {
@@ -63,14 +63,14 @@ public class StartActivity  extends BaseActivity<StartActivityPresenter> impleme
     }
 
     @Override
-    public void intentToMain() {
-        information = presenter.getInfo();
-        IntentActivity.intentWithData(this,Main.class,"start",information);
+    public void intentToMain(Information information) {
+        IntentActivity.intentWithoutData(this,Main.class);
         IntentActivity.finishActivity(this);
     }
 
     @Override
-    public void finishActivity() {
+    public void intentToLogin() {
+        IntentActivity.intentWithoutData(this,Login.class);
         IntentActivity.finishActivity(this);
     }
 

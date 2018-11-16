@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.bean.Operate;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
@@ -285,6 +287,10 @@ public class OperateNote {
      * @param result
      */
     private void setQueryData(String result) {
+        queryData.clear();
+        if(result.equals("[]")){
+            return;
+        }
         JSONArray array=null;
         try {
             array=new JSONArray(result);

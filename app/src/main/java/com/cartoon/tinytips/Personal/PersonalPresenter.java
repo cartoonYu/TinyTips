@@ -20,13 +20,10 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
 
     @Override
     public void initData(){
-        saveInformation();
-        model.setInformation(information);
         model.getPersonalInformation(new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
-                view.setNotes(personalInformation.getNumOfNote());
                 getNoteNum();
                 view.setFans("粉丝  5");
                 view.setAttentions("关注  20");
@@ -40,10 +37,6 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
         });
     }
 
-    public void saveInformation(){
-       information = view.getInformation();
-    }
-
     @Override
     protected void deleteView(){
         view=null;
@@ -55,14 +48,15 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
      * 统计该用户的笔记数量
      */
     private void getNoteNum(){
-        model.getNoteNum(information, new ValueCallBack<Integer>() {
+        model.getNoteNum(new ValueCallBack<Integer>() {
             @Override
             public void onSuccess(Integer integer) {
-                view.setNotes("笔记  "+integer);
+                view.setNotes(integer);
             }
 
             @Override
             public void onFail(String msg) {
+                view.setNotes(0);
                 ShowToast.shortToast(msg);
             }
         });

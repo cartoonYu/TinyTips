@@ -12,7 +12,6 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
     private IDetail.View view;
 
     private IDetail.Model model;
-    Information information;
 
     public DetailPresenter(IDetail.View view){
         this.view=view;
@@ -21,9 +20,7 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
 
     @Override
     public void initData() {
-        saveInformation();
-        model.setInformation(information);
-        model.getPersonalInformation(new ValueCallBack<Information>() {
+        model.getInformation(new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
@@ -40,10 +37,6 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
                 ShowToast.shortToast(msg);
             }
         });
-    }
-
-    public void saveInformation(){
-        information = view.getInformation();
     }
 
     @Override

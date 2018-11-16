@@ -41,9 +41,6 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
 
     private int fragment;               //将底部栏上的FrameLayout抽象成成员变量
 
-    Information information;
-
-
     @BindViews({R.id.mainHomepage,R.id.mainMessage,R.id.mainAddNote,R.id.mainDiscover,R.id.mainPersonal})
     List<RelativeLayout> bottomBar;
 
@@ -96,12 +93,6 @@ public class Main extends BaseActivity<MainPresenter> implements IMain.View{
         fragment=R.id.mainFragement;
         switchFragment(constant.getDefaultFragment());
         switchFragment(flag);
-        information = new Information();
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"start"))){
-            information=IntentActivity.getIntentInformation(this,"start");
-        }else if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
     }
 
     @OnClick(R.id.mainHomepage)

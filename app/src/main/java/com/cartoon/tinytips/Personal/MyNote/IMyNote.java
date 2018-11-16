@@ -11,11 +11,11 @@ interface IMyNote {
         void initNote(List<Note> notes);      //初始化笔记列表
     }
     interface Presenter{
-        void initData(Information information);   //初始化数据
+        void initData();   //初始化数据
     }
 
     interface Model{
-        void getNote(Information information,ValueCallBack<List<Note>> callBack);   //获取笔记
+        void getNote(ValueCallBack<List<Note>> callBack);   //获取笔记
     }
 
 }

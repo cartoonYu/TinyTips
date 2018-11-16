@@ -8,9 +8,8 @@ import java.io.File;
 interface IPersonal {
 
     interface View{
-        Information getInformation();    //presenter获取information
         void setHeadPro(File headPro);   //设置头像
-        void setNotes(String notes);       //设置笔记数据
+        void setNotes(Integer notes);       //设置笔记数据
         void setAttentions(String attentions);  //设置关注数据
         void setFans(String fans);   //设置粉丝数据
         void setNickName(String name);  //设置用户昵称
@@ -22,8 +21,7 @@ interface IPersonal {
 
     interface Model{
         void getPersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
-        void setInformation(Information information);
-        void getNoteNum(Information information,ValueCallBack<Integer> callBack);
+        void getNoteNum(ValueCallBack<Integer> callBack);
     }
 
 }

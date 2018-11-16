@@ -6,14 +6,14 @@ import com.cartoon.tinytips.bean.Information;
 interface ILogin {
 
     interface View{
-
+        void intentToMain();
     }
 
     interface Presenter{
-
+        void checkInformation(String account,String password);
     }
 
     interface Model{
-        void getPersonalInformation(ValueCallBack<Information> callBack);
+        void checkInformation(Information information,ValueCallBack<String> callBack);
     }
 }

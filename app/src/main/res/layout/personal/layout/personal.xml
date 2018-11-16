@@ -48,7 +48,6 @@
                 app:layout_widthPercent="32%"
                 app:layout_heightPercent="100%"
                 android:background="#7ae1f7"
-                android:text="笔记 0"
                 android:textSize="14sp"
                 android:id="@+id/personal_notes"/>
 
@@ -56,7 +55,7 @@
                 app:layout_widthPercent="36%"
                 app:layout_heightPercent="100%"
                 android:background="#7ae1f7"
-                android:text="关注 0"
+                android:text="关注 "
                 android:textSize="14sp"
                 android:layout_toRightOf="@id/personal_notes"
                 android:id="@+id/personal_attention"/>
@@ -66,7 +65,7 @@
                 app:layout_heightPercent="100%"
                 android:layout_toRightOf="@id/personal_attention"
                 android:background="#7ae1f7"
-                android:text="粉丝 0"
+                android:text="粉丝 "
                 android:textSize="14sp"
                 android:id="@+id/personal_fans"/>
 

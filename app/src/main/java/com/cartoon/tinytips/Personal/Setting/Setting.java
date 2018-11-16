@@ -21,8 +21,6 @@ import butterknife.OnClick;
 
 public class Setting extends BaseActivity<SettingPresenter> implements ISetting.View{
 
-    Information information;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -50,9 +48,6 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @Override
     protected void onPrepare(){
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
     }
 
     private void revampStatusBar(){
@@ -80,13 +75,13 @@ public class Setting extends BaseActivity<SettingPresenter> implements ISetting.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,"main",FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,"main",FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 }

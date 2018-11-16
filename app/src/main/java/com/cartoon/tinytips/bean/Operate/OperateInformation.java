@@ -33,7 +33,7 @@ import java.util.List;
  *   通过方法isNotFinish()判断操作是否完成（true为未完成）
  * 4.获取结果
  *   插入，删除，查询，更新操作通过方法isSuccess()获取操作结果
- *   查询操作通过方法getQueryData()获取结果集合
+ *   查询操作通过方法getQueryData()获取结果集合(若list为空，则查询失败)
  *
  * notice
  * 1.本类无法new对象，只能通过静态方法getOperateInformation获取
@@ -248,6 +248,10 @@ public class OperateInformation {
      * @param result
      */
     private void setQueryData(String result) {
+        queryData.clear();
+        if(result.equals("[]")){
+            return;
+        }
         JSONArray array=null;
         try {
             array=new JSONArray(result);

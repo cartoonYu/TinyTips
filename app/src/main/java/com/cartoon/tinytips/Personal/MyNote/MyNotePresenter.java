@@ -26,8 +26,8 @@ class MyNotePresenter extends BaseActivityPresenter<MyNote> implements IMyNote.P
     }
 
     @Override
-    public void initData(Information information){
-        model.getNote(information,new ValueCallBack<List<Note>>() {
+    public void initData(){
+        model.getNote(new ValueCallBack<List<Note>>() {
             @Override
             public void onSuccess(List<Note> notes) {
                 view.initNote(notes);

@@ -37,8 +37,6 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     private static final int REQUEST_PERMISSION_CODE = 1;
 
-    private Information information;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -87,9 +85,6 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @Override
     protected void onPrepare(){
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
         presenter.initData();
     }
 
@@ -166,20 +161,15 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     }
 
-    @Override
-    public Information getInformation() {
-        return information;
-    }
-
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 }

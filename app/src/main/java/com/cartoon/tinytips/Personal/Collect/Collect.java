@@ -26,8 +26,6 @@ import butterknife.OnClick;
 
 public class Collect extends BaseActivity<CollectPresenter> implements ICollect.View{
 
-    Information information;
-
     @BindView(R.id.statusBar)
     View statusBar;
 
@@ -36,7 +34,6 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @BindView(R.id.toolbarText)
     TextView toolbarText;
-
 
     private List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collectList;
     private CollectAdapter collectAdapter;
@@ -63,9 +60,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @Override
     protected void onPrepare(){
-        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentInformation(this,"personal"))){
-            information=IntentActivity.getIntentInformation(this,"personal");
-        }
+
     }
 
     private void revampStatusBar(){
@@ -94,13 +89,13 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal(),new String("personal"),information);
+        IntentActivity.intentWithData(this,Main.class,new String("main"),FragmentConstant.getConstant().getPersonal());
         IntentActivity.finishActivity(this);
     }
 }

@@ -82,7 +82,7 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
     }
 
     @Override
-    public String getconfirmPassword() {
+    public String getConfirmPassword() {
         return confirmPassword.getText().toString();
     }
 }
