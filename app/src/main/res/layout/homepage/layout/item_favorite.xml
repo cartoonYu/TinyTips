@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="130dp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@color/detail_bg">
 
     <RelativeLayout
@@ -45,7 +45,7 @@
         android:id="@+id/body_item_favorite"
         android:layout_below="@+id/head_item_favorite"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@color/white">
 
         <TextView
@@ -61,15 +61,26 @@
             android:id="@+id/Fitem_content"
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/Fitem_title"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textSize="14sp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:textSize="14sp"
+            android:maxLines="4"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/Fitem_title"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/tou"
+            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="25dp"
         android:layout_below="@id/body_item_favorite"
         android:background="@color/white">
 
@@ -172,5 +183,4 @@
         </RelativeLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
-
 </RelativeLayout>

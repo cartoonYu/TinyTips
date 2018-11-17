@@ -49,4 +49,8 @@ public abstract class BaseFragment<T extends BaseFragmentPresenter> extends Frag
         presenter=null;
         unbinder.unbind();
     }
+
+    public View getView(){
+        return view;
+    }
 }

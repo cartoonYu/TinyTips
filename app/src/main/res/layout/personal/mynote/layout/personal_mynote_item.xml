@@ -4,6 +4,7 @@
     android:layout_height="75dp"
     android:layout_marginTop="1dp"
     android:background="@color/white">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,6 +17,16 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:id="@+id/personal_mynote_title"/>
+
+        <ImageView
+            android:id="@+id/personal_mynote_delete"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/recycle"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,9 +62,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/personal_mynote_title"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
             android:text="2018-7-8"
             android:textSize="12sp"

@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

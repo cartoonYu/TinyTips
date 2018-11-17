@@ -65,6 +65,8 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentNote(this,"note"))){
             note=IntentActivity.getIntentNote(this,"note");
         }
+        note = new Note();
+        note.setTitle("asd");
         setTitle();
         setDetails();
         setDate();
