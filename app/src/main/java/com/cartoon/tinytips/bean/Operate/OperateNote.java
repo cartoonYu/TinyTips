@@ -51,6 +51,8 @@ public class OperateNote {
 
     private static volatile OperateNote operateNote;
 
+    public OperateComment operateComment;
+
     private FileOperation fileOperation;
 
     private JSONObjectOperation objectOperation;
@@ -118,7 +120,6 @@ public class OperateNote {
      * 2.通过返回值判断删除是否成功
      *
      * 注意
-     * 1.传入笔记对象必须携带至少一个条件
      *
      * @param condition
      * @return
@@ -139,8 +140,7 @@ public class OperateNote {
      * 2.通过返回值索取数据
      *
      * 注意
-     * 1.传入笔记对象必须携带至少一个条件
-     * 2.返回值使用前必须先进行非空判断
+     * 1.返回值使用前必须先进行非空判断
      *
      * @param condition
      * @return
@@ -324,6 +324,7 @@ public class OperateNote {
     }
 
     private OperateNote(){
+        operateComment=OperateComment.getOperateComment();
         fileOperation=FileOperation.getOperation();
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();

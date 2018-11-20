@@ -116,7 +116,7 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
     }
 
     @OnClick(R.id.addnote_toolbar_menubutton_bg)
-    protected void onClickmenubutton(){
+    protected void onClickMenuButton(){
         String result=editText.getText().toString();
         String title=this.title.getText().toString();
         note=DivideNote.getDivideNote().transStringToNote(result);

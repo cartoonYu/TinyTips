@@ -18,6 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.System.out;
+
 /**
  * @author cartoon
  * @version 1.0
@@ -56,21 +58,40 @@ public class JSONObjectOperation {
      * 将传入的comment转换成json文件
      *
      * @param comment
+     * @param method
      * @return
      */
-    public JSONObject setCommentToJSON(Comment comment){
+    public JSONObject setCommentToJSON(Comment comment,String method){
         if(JudgeEmpty.isEmpty(comment)){
             return null;
         }
         else{
-            JSONObject jsonObject=new JSONObject();
+            JSONObject result=new JSONObject();
             try{
-                jsonObject.put("comment",comment);
+                result.put("method",method);
+                if(comment.getNoteId()!=0){
+                    result.put("noteId",comment.getNoteId());
+                }
+                if(JudgeEmpty.isNotEmpty(comment.getTag())){
+                    result.put("tag",comment.getTag().toString());
+                }
+                if(comment.getLike()!=0){
+                    result.put("like",comment.getLike());
+                }
+                if(comment.getComment()!=0){
+                    result.put("comment",comment.getComment());
+                }
+                if(comment.getCollect()!=0){
+                    result.put("collect",comment.getCollect());
+                }
+                if(comment.getForward()!=0){
+                    result.put("forward",comment.getForward());
+                }
             }catch(JSONException e){
-                Log.e("jsonObjectException","将comment转换json文件出现错误");
+                Log.d("jsonObjectException","jsonObjectException:将comment转换json文件出现错误");
                 e.printStackTrace();
             }
-            return jsonObject;
+            return result;
         }
     }
 
@@ -86,11 +107,36 @@ public class JSONObjectOperation {
         else{
             Comment comment=new Comment();
             try{
-                if(object.get("comment") instanceof Comment){
-                    comment=(Comment)object.get("comment");
+                if(object.has("noteId")){
+                    comment.setNoteId(object.getLong("noteId"));
+                }
+                if(object.has("tag")){
+                    String temp=object.getString("tag");
+                    comment.setTag(changeStringToList(temp));
+                }
+                if(object.has("like")){
+                    if(object.getInt("like")!=0){
+                        comment.setLike(object.getInt("like"));
+                    }
+                }
+
+                if(object.has("comment")){
+                    if(object.getInt("comment")!=0){
+                        comment.setComment(object.getInt("comment"));
+                    }
+                }
+                if(object.has("collect")){
+                    if(object.getInt("collect")!=0){
+                        comment.setCollect(object.getInt("collect"));
+                    }
+                }
+                if(object.has("forward")){
+                    if(object.getInt("forward")!=0){
+                        comment.setForward(object.getInt("forward"));
+                    }
                 }
             }catch(JSONException e){
-                Log.e("jsonObjectException","将json文件转换commentDetails出现错误");
+                Log.d("jsonObjectException","jsonObjectException:将json文件转换commentDetails出现错误");
                 e.printStackTrace();
             }
             return comment;

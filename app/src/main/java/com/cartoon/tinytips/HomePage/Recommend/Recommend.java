@@ -8,12 +8,14 @@ import android.util.Log;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Homepage.HomeRecommendAdapter;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,9 +49,11 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
         presenter.initData();
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(layoutManager);
+        if(JudgeEmpty.isEmpty(recommendItemList)){
+            recommendItemList=new ArrayList<>();
+        }
         adapter = new HomeRecommendAdapter(recommendItemList);
         recyclerView.setAdapter(adapter);
-
         RecommendRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {

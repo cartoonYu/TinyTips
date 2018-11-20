@@ -22,12 +22,12 @@ class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPers
     public void initData(){
         model.getPersonalInformation(new ValueCallBack<Information>() {
             @Override
-            public void onSuccess(Information personalInformation) {
-                view.setHeadPro(personalInformation.getHeadPortrait());
+            public void onSuccess(Information Information) {
+                view.setHeadPro(Information.getHeadPortrait());
                 getNoteNum();
-                view.setFans("粉丝  5");
-                view.setAttentions("关注  20");
-                view.setNickName(personalInformation.getNickName());
+                view.setFans(5);
+                view.setAttentions(20);
+                view.setNickName(Information.getNickName());
             }
 
             @Override

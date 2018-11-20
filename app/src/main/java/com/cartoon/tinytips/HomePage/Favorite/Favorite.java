@@ -8,6 +8,7 @@ import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.Adapters.Homepage.FavoriteAdapter;
+import com.cartoon.tinytips.util.JudgeEmpty;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -50,6 +51,9 @@ public class Favorite extends BaseFragment<FavoritePresenter> implements IFavori
         presenter.initData();
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         favorite_recyclerView.setLayoutManager(layoutManager);
+        if(JudgeEmpty.isEmpty(FavoriteItemList)){
+            FavoriteItemList=new ArrayList<>();
+        }
         adapter = new FavoriteAdapter(FavoriteItemList);
         favorite_recyclerView.setAdapter(adapter);
 

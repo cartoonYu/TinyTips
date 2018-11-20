@@ -10,8 +10,8 @@ interface IPersonal {
     interface View{
         void setHeadPro(File headPro);   //设置头像
         void setNotes(Integer notes);       //设置笔记数据
-        void setAttentions(String attentions);  //设置关注数据
-        void setFans(String fans);   //设置粉丝数据
+        void setAttentions(Integer attentions);  //设置关注数据
+        void setFans(Integer fans);   //设置粉丝数据
         void setNickName(String name);  //设置用户昵称
     }
 

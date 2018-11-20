@@ -64,4 +64,11 @@ public class Comment implements Serializable{
     public void setNoteId(long noteId) {
         this.noteId = noteId;
     }
+
+    public Comment(){
+        setLike(0);
+        setCollect(0);
+        setComment(0);
+        setForward(0);
+    }
 }
