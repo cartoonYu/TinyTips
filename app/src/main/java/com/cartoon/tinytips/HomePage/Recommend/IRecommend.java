@@ -4,7 +4,8 @@ import com.cartoon.tinytips.ValueCallBack;
 
 import java.util.List;
 
-interface IRecommend {
+public interface IRecommend {
+
     interface View{
         void initData(List<RecommendItem> recommendItems);
     }
@@ -14,5 +15,6 @@ interface IRecommend {
 
     interface Model{
         void initData(ValueCallBack<List<RecommendItem>> callBack);
+        void addFavorites(RecommendItem item,ValueCallBack<String> callBack);
     }
 }

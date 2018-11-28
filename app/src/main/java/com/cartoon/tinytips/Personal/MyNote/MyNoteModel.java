@@ -7,6 +7,9 @@ import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.ShowToast;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -30,6 +33,24 @@ public class MyNoteModel implements IMyNote.Model {
         }
         else {
             callBack.onSuccess(notes);
+        }
+    }
+
+    @Override
+    public void deleteNote(Note note, ValueCallBack<String> callBack) {
+        if(JudgeEmpty.isEmpty(note)){
+            callBack.onFail("系统错误，请重试");
+            return;
+        }
+        operateNote.delete(note);
+        while (operateNote.isNotFinish()){
+            ShowToast.shortToast("正在删除中");
+        }
+        if(operateNote.isSuccess()){
+            callBack.onSuccess("删除成功");
+        }
+        else {
+            callBack.onFail("删除失败，请重试");
         }
     }
 

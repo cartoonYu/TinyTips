@@ -57,21 +57,32 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     }
 
     @Override
+    public void setTitle(){
+        this.title.setText(note.getTitle());
+    }
+
+    @Override
+    public void setDetails(){
+        List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(note);
+        for(SpannableString string:stringList){
+            this.details.append(string);
+        }
+    }
+
+    @Override
     protected void onPrepare(){
         initData();
     }
 
-   private void initData() {
+    private void initData() {
         if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentNote(this,"note"))){
             note=IntentActivity.getIntentNote(this,"note");
         }
         note = new Note();
-        note.setTitle("asd");
         setTitle();
         setDetails();
         setDate();
     }
-
 
     @OnClick(R.id.toolbarBack)
     protected void onClickBack(){
@@ -93,22 +104,9 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     /**
      * 修改toolbar显示
      */
-    private void initToolbar(){
+    private void initToolbar() {
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("详情"));
-    }
-
-    @Override
-    public void setTitle(){
-        this.title.setText(note.getTitle());
-    }
-
-    @Override
-    public void setDetails(){
-      List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(note);
-        for(SpannableString string:stringList){
-            this.details.append(string);
-        }
     }
 
     @Override
