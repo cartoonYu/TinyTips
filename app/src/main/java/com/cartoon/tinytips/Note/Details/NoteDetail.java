@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.Note.Details;
 
 import android.text.SpannableString;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -78,7 +79,6 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentNote(this,"note"))){
             note=IntentActivity.getIntentNote(this,"note");
         }
-        note = new Note();
         setTitle();
         setDetails();
         setDate();

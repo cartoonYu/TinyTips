@@ -42,12 +42,9 @@ public class StartActivity extends BaseActivity<StartActivityPresenter> implemen
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                presenter.getInformation();
-            }
-        });
+        else {
+            presenter.getInformation();
+        }
     }
 
     @Override
@@ -56,6 +53,11 @@ public class StartActivity extends BaseActivity<StartActivityPresenter> implemen
             case 1:{
                 if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
                     ShowToast.shortToast("允许权限");
+                    presenter.getInformation();
+                }
+                else {
+                    ShowToast.shortToast("未允许权限");
+                    IntentActivity.finishActivity(this);
                 }
                 break;
             }

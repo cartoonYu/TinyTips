@@ -36,8 +36,7 @@ import butterknife.ButterKnife;
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HomeRecommendAdapter
-        extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder>
-        implements View.OnClickListener{
+        extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder> {
 
     private Context mContext;
 
@@ -45,44 +44,6 @@ public class HomeRecommendAdapter
 
     private IRecommend.Model model;
 
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.Recommend_itemup:{
-                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
-                break;
-            }
-
-            case R.id.Ritem_avatar:{
-                IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
-                break;
-            }
-
-
-
-            case R.id.homePageRecommendComment:{
-                //评论
-                IntentActivity.intentWithoutData(getContext(),Comment.class);
-                break;
-            }
-
-            case R.id.homePageRecommendLike:{
-                //赞
-
-                break;
-            }
-
-            case R.id.homePageRecommendCollect:{
-                //收藏
-                Button Ronums_item_recommedn;
-                Ronums_item_recommedn= (Button)view.findViewById(R.id.homePageRecommendCollect);
-                Ronums_item_recommedn.setBackgroundResource(R.drawable.mycollection_press);
-                break;
-            }
-
-        }
-    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -144,6 +105,7 @@ public class HomeRecommendAdapter
             @Override
             public void onClick(View v) {
                 RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",item.getNote());
             }
         });
         holder.like.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +132,7 @@ public class HomeRecommendAdapter
         holder.collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("asdf","qwe"+holder.getAdapterPosition());
+
             }
         });
         return holder;
@@ -192,11 +154,6 @@ public class HomeRecommendAdapter
         holder.collectNum.setText(""+recommendItem.getNumOfCollection());
         holder.commentNum.setText(""+recommendItem.getNumOfRecommend());
         holder.likeNum.setText(""+recommendItem.getNumOfFavorite());
-        holder.Recommend_itemup.setOnClickListener(this);
-        holder.userImages.setOnClickListener(this);
-        //holder.like.setOnClickListener(this);
-        holder.comment.setOnClickListener(this);
-        //holder.collect.setOnClickListener(this);
         Glide.with(mContext).load(recommendItem.getUserImage()).into(holder.userImages);
     }
 
