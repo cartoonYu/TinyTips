@@ -95,6 +95,9 @@ public class HomeRecommendAdapter
         @BindView(R.id.Ritem_title)
         TextView titles;
 
+        @BindView(R.id.recommend_item_image)
+        ImageView noteImage;
+
         @BindView(R.id.Ritem_content)
         TextView contents;
 
@@ -177,13 +180,15 @@ public class HomeRecommendAdapter
     @Override
     public void onBindViewHolder(HomeRecommendAdapter.ViewHolder holder, int position) {
         RecommendItem recommendItem = mRecommendItems.get(position);
-        holder.userNames.setText(recommendItem.getUsername());
-        holder.titles.setText(recommendItem.getTitle());
-        if(JudgeEmpty.isNotEmpty(recommendItem.getContent())&&!recommendItem.getContent().isEmpty()){
-            for(SpannableString string:recommendItem.getContent()){
-                holder.contents.append(string);
+        Note note=recommendItem.getNote();
+        holder.userNames.setText(note.getAuthor());
+        holder.titles.setText(note.getTitle());
+        if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())){
+            if(!note.getPhotoDetails().isEmpty()){
+                Glide.with(mContext).load(note.getPhotoDetails().get(0)).into(holder.noteImage);
             }
         }
+        holder.contents.setText(note.getWordDetails().get(0));
         holder.collectNum.setText(""+recommendItem.getNumOfCollection());
         holder.commentNum.setText(""+recommendItem.getNumOfRecommend());
         holder.likeNum.setText(""+recommendItem.getNumOfFavorite());

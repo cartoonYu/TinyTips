@@ -1,7 +1,5 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.Information;
@@ -10,7 +8,6 @@ import com.cartoon.tinytips.bean.Operate.OperateComment;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.Note.DivideNote;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,8 +63,7 @@ public class RecommendModel implements IRecommend.Model {
                     item.setUserImage(file);
                 }
                 item.setUsername(temp.getAuthor());
-                item.setTitle(temp.getTitle());
-                item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
+                item.setNote(temp);
                 operateComment.query(temp.getId());
                 while(operateComment.isNotFinish()){
 
@@ -103,9 +99,7 @@ public class RecommendModel implements IRecommend.Model {
      * @return
      */
     private Note getNoteFromItem(RecommendItem item){
-        Note note=new Note();
-        note.setAuthor(item.getUsername());
-        note.setTitle(item.getTitle());
+        Note note=item.getNote();
         operateNote.query(note);
         while (operateNote.isNotFinish()){
 
