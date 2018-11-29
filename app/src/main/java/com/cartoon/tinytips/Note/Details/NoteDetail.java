@@ -65,11 +65,6 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentNote(this,"note"))){
             note=IntentActivity.getIntentNote(this,"note");
         }
-        note = new Note();
-        note.setTitle("asd");
-        setTitle();
-        setDetails();
-        setDate();
     }
 
 
@@ -99,21 +94,21 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     }
 
     @Override
-    public void setTitle(){
+    public void setTitle(String title){
         this.title.setText(note.getTitle());
     }
 
     @Override
-    public void setDetails(){
-      List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(note);
+    public void setDetails(Note notedetail){
+      List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(notedetail);
         for(SpannableString string:stringList){
             this.details.append(string);
         }
     }
 
     @Override
-    public void setDate(){
-        this.date.setText(note.getDate());
+    public void setDate(String date){
+        this.date.setText(date);
     }
 
 }
