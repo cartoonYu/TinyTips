@@ -108,7 +108,6 @@ public class DivideNote {
         if(JudgeEmpty.isEmpty(source)){
             return null;
         }
-        Log.d("asd",source);
         String[] str=source.split("&");
         List<String> word=new ArrayList<>();
         List<String> photo=new ArrayList<>();
@@ -123,11 +122,9 @@ public class DivideNote {
             }
         }
         List<File> files=new ArrayList<>();
-        Log.d("asd","word");
         for(String s:word){
             Log.d("asd",s);
         }
-        Log.d("asd","photo");
         for(String s:photo){
             Log.d("asd",s);
             Uri uri=Uri.parse(s);

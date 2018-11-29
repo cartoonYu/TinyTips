@@ -88,7 +88,7 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     /**
      * 修改toolbar显示
      */
-    private void initToolbar(){
+    private void initToolbar() {
         RevampToolbar.setBack(back);
         RevampToolbar.setText(toolbarText,new String("详情"));
     }

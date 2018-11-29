@@ -42,8 +42,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/apple"/>
+            android:layout_marginLeft="5dp" />
 
     </RelativeLayout>
 
@@ -87,7 +86,7 @@
                 android:layout_alignParentTop="true">
 
                 <Button
-                    android:id="@+id/Conums_item_recommedn"
+                    android:id="@+id/homePageRecommendCollect"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_centerVertical="true"
@@ -95,13 +94,13 @@
                     android:background="@drawable/mycollection" />
 
                 <TextView
-                    android:id="@+id/Ritem_numofcollection"
+                    android:id="@+id/homePageRecommendCollectNum"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/Conums_item_recommedn"
+                    android:layout_toRightOf="@id/homePageRecommendCollect"
                     android:gravity="center"
                     android:text="0" />
             </RelativeLayout>
@@ -115,7 +114,7 @@
                 android:layout_toStartOf="@+id/Col">
 
                 <Button
-                    android:id="@+id/Rnums_item_recommedn"
+                    android:id="@+id/homePageRecommendComment"
                     android:layout_marginRight="3dp"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
@@ -124,10 +123,10 @@
                     android:background="@drawable/peresonal" />
 
                 <TextView
-                    android:id="@+id/Ritem_numofrecommend"
+                    android:id="@+id/homePageRecommendCommentNum"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/Rnums_item_recommedn"
+                    android:layout_toRightOf="@id/homePageRecommendComment"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:textSize="12sp"
@@ -143,7 +142,7 @@
                 android:layout_toStartOf="@+id/Cl">
 
                 <Button
-                    android:id="@+id/Fnums_item_recommedn"
+                    android:id="@+id/homePageRecommendLike"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_centerVertical="true"
@@ -151,13 +150,13 @@
                     android:background="@drawable/favourit" />
 
                 <TextView
-                    android:id="@+id/Ritem_numoffavorite"
+                    android:id="@+id/homePageRecommendLikeNum"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:textSize="12sp"
-                    android:layout_toRightOf="@id/Fnums_item_recommedn"
+                    android:layout_toRightOf="@id/homePageRecommendLike"
                     android:gravity="center"
                     android:text="0" />
             </RelativeLayout>

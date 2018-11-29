@@ -14,11 +14,15 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Personal.Detail.Detail;
+import com.cartoon.tinytips.Personal.MyNote.IMyNote;
+import com.cartoon.tinytips.Personal.MyNote.MyNoteModel;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 
@@ -27,11 +31,14 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
+
     private Context mContext;
 
     private List<Note> list;
 
     private IOnItemClickListener mClickListener;
+
+    private IMyNote.Model model;
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -72,6 +79,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     public NoteAdapter(List<Note> list) {
         this.list = list;
+        this.model=new MyNoteModel();
     }
 
     @Override
@@ -98,7 +106,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                int position=holder.getAdapterPosition();
+                                model.deleteNote(list.get(position), new ValueCallBack<String>() {
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        ShowToast.shortToast(s);
+                                    }
 
+                                    @Override
+                                    public void onFail(String msg) {
+                                        ShowToast.shortToast(msg);
+                                    }
+                                });
                             }
                         });
                 builder.setNegativeButton("取消",//这个string是设置右边按钮的文字
@@ -115,6 +134,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         return holder;
     }
     public void setOnItemClickListener(IOnItemClickListener listener) {this.mClickListener = listener;}
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Note note=list.get(position);

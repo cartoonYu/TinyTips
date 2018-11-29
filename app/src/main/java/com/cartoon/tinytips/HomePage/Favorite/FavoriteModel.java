@@ -1,8 +1,10 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.Operate.OperateComment;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.bean.Operate.OperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -21,6 +23,8 @@ public class FavoriteModel implements IFavorite.Model {
     private OperateInformation operateInformation;
 
     private OperateNote operateNote;
+
+    private OperateComment operateComment;
 
     @Override
     public void initData(ValueCallBack<List<FavoriteItem>> callBack){
@@ -59,10 +63,15 @@ public class FavoriteModel implements IFavorite.Model {
                 item.setUserName(temp.getAuthor());
                 item.setTitle(temp.getTitle());
                 item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
-                item.setNumOfFavorite(random.nextInt(50));
-                item.setNumOfRecommend(random.nextInt(50));
-                item.setNumOfCollection(random.nextInt(50));
-                item.setNumOfShare(random.nextInt(50));
+                operateComment.query(temp.getId());
+                while(operateComment.isNotFinish()){
+
+                }
+                Comment comment=operateComment.getQueryData();
+                item.setNumOfFavorite(comment.getLike());
+                item.setNumOfRecommend(comment.getComment());
+                item.setNumOfCollection(comment.getCollect());
+                item.setNumOfShare(comment.getForward());
                 item.setTime(temp.getDate());
                 result.add(item);
             }
@@ -79,5 +88,6 @@ public class FavoriteModel implements IFavorite.Model {
     public FavoriteModel(){
         operateInformation =OperateInformation.getOperateInformation();
         operateNote =OperateNote.getOperateNote();
+        operateComment=OperateComment.getOperateComment();
     }
 }
