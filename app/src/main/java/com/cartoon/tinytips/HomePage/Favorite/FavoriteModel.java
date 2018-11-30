@@ -3,6 +3,7 @@ package com.cartoon.tinytips.HomePage.Favorite;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Operate.OperateComment;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
@@ -49,7 +50,7 @@ public class FavoriteModel implements IFavorite.Model {
         Iterator<Note> iterator=noteSet.iterator();
         while(iterator.hasNext()){
             Note temp=iterator.next();
-            if(!temp.getAuthor().equals("Leo")){
+            if(!temp.getAuthor().equals(LocalInformation.getLocalInformation().query().getNickName())){
                 FavoriteItem item=new FavoriteItem();
                 File file=null;
                 for(Information t:list){
@@ -61,8 +62,7 @@ public class FavoriteModel implements IFavorite.Model {
                     item.setUserImage(file);
                 }
                 item.setUserName(temp.getAuthor());
-                item.setTitle(temp.getTitle());
-                item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
+                item.setNote(temp);
                 operateComment.query(temp.getId());
                 while(operateComment.isNotFinish()){
 
@@ -72,7 +72,7 @@ public class FavoriteModel implements IFavorite.Model {
                 item.setNumOfRecommend(comment.getComment());
                 item.setNumOfCollection(comment.getCollect());
                 item.setNumOfShare(comment.getForward());
-                item.setTime(temp.getDate());
+                item.setTime(temp.getDate().substring(0,temp.getDate().length()-8));
                 result.add(item);
             }
         }

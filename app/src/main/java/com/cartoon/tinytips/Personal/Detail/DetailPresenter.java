@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.util.ShowToast;
 
 class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.Presenter{
@@ -25,12 +26,14 @@ class DetailPresenter extends BaseActivityPresenter<Detail> implements IDetail.P
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
                 view.setNickName(personalInformation.getNickName());
-                view.setDegree(personalInformation.getDegree());
+                view.setDegree(personalInformation.getBackground());
                 view.setMajor(personalInformation.getMajor());
                 view.setResume(personalInformation.getResume());
                 view.setSchool(personalInformation.getSchool());
                 view.setRegisterData(personalInformation.getDate());
+                view.setInterest(personalInformation.getInterest());
             }
+
 
             @Override
             public void onFail(String msg) {

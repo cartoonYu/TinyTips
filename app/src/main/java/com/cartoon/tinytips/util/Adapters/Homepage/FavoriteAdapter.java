@@ -19,6 +19,7 @@ import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -30,11 +31,11 @@ import butterknife.ButterKnife;
 
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
-public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> implements View.OnClickListener{
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder>{
+
     private Context mContext;
 
     private List<FavoriteItem> mFavoriteItems;
-    private IOnItemClickListener mClickListener;
 
     static class ViewHolder extends RecyclerView.ViewHolder  {
 
@@ -49,6 +50,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
         @BindView(R.id.Fitem_content)
         TextView contents;
+
+        @BindView(R.id.homePageFavoriteImage)
+        ImageView image;
 
         @BindView(R.id.Fitem_numoffavorite)
         TextView NumOfFavorites;
@@ -80,8 +84,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         @BindView(R.id.body_item_favorite)
         RelativeLayout body_item_favorite;
 
-        private IOnItemClickListener mListener;
-
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -90,80 +92,48 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.favoritenums_item_favorite:{
-                Button favoritenums_item_favorite;
-                favoritenums_item_favorite = (Button)view.findViewById(R.id.favoritenums_item_favorite);
-                favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);
-                break;
-            }
-
-            case R.id.commuitenums_item_favorite:{
-                IntentActivity.intentWithoutData(getContext(),Comment.class);
-                break;
-            }
-
-            case R.id.Cnums_item_favorite:{
-                Button Cnums_item_favorite;
-                Cnums_item_favorite= (Button)view.findViewById(R.id.Cnums_item_favorite);
-                Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
-                break;
-            }
-
-            case R.id.sharenums_item_favorite:{
-                IntentActivity.intentWithoutData(getContext(),ShareNote.class);
-                break;
-            }
-
-            case R.id.body_item_favorite:{
-                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
-                break;
-            }
-
-            case R.id.Fitem_avatar:{
-                IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
-                break;
-            }
-        }
-    }
-
     public FavoriteAdapter(List<FavoriteItem> mFavoriteItem) {
         this.mFavoriteItems = mFavoriteItem;
     }
 
     @Override
-    public FavoriteAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_favorite, parent, false);
-        return new FavoriteAdapter.ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+        holder.body_item_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position=holder.getAdapterPosition();
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",mFavoriteItems.get(position).getNote());
+            }
+        });
+        return holder;
     }
 
     @NonNull
     @Override
     public void onBindViewHolder(FavoriteAdapter.ViewHolder holder, int position) {
         FavoriteItem FavoriteItem = mFavoriteItems.get(position);
-        holder.userNames.setText(FavoriteItem.getUserName());
-        holder.titles.setText(FavoriteItem.getTitle());
-        if(JudgeEmpty.isNotEmpty(FavoriteItem.getContent())){
-            for(SpannableString string:FavoriteItem.getContent()){
-                holder.contents.append(string);
+        Note note=FavoriteItem.getNote();
+        holder.userNames.setText(note.getAuthor());
+        holder.titles.setText(note.getTitle());
+        if(!note.getWordDetails().isEmpty()){
+            holder.contents.setText(note.getWordDetails().get(0));
+        }
+        if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())){
+            if(!note.getPhotoDetails().isEmpty()){
+                Glide.with(mContext).load(note.getPhotoDetails().get(0)).into(holder.image);
             }
         }
+
         holder.NumOfRecommends.setText(Integer.toString(FavoriteItem.getNumOfRecommend()));
         holder.NumOfCollections.setText(Integer.toString(FavoriteItem.getNumOfCollection()));
         holder.NumOfFavorites.setText(Integer.toString(FavoriteItem.getNumOfFavorite()));
         holder.time.setText(FavoriteItem.getTime());
         holder.NumOfShares.setText(Integer.toString(FavoriteItem.getNumOfShare()));
-        holder.body_item_favorite.setOnClickListener(this);
-        holder.userImages.setOnClickListener(this);
-        holder.favoritenums_item_favorite.setOnClickListener(this);
-        holder.commuitenums_item_favorite.setOnClickListener(this);
-        holder.Cnums_item_favorite.setOnClickListener(this);
-        holder.sharenums_item_favorite.setOnClickListener(this);
         Glide.with(mContext).load(FavoriteItem.getUserImage()).into(holder.userImages);
     }
 

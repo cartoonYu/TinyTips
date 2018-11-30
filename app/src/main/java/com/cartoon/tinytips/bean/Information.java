@@ -54,7 +54,6 @@ public class Information implements Serializable {
 
     private String NumOfFans;    //粉丝数量
 
-    private String Degree;  //设置学历
 
     public Information(){
         setSex(true);
@@ -127,14 +126,6 @@ public class Information implements Serializable {
 
     public String getNumOfFans() {
         return NumOfFans;
-    }
-
-    public String getDegree() {
-        return Degree;
-    }
-
-    public void setDegree(String degree) {
-        Degree = degree;
     }
 
     public void setNumOfNote(String numOfNote) {

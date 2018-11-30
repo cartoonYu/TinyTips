@@ -73,8 +73,8 @@
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/tou"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:id="@+id/homePageFavoriteImage"/>
 
     </RelativeLayout>
 

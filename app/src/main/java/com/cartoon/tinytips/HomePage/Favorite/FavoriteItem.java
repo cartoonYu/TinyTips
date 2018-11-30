@@ -2,14 +2,15 @@ package com.cartoon.tinytips.HomePage.Favorite;
 
 import android.text.SpannableString;
 
+import com.cartoon.tinytips.bean.Note;
+
 import java.io.File;
 import java.util.List;
 
 public class FavoriteItem {
     private File userImage;
     private String userName;
-    private String title;
-    private List<SpannableString> content;
+    private Note note;
     private int NumOfFavorite;
     private int NumOfRecommend;
     private int NumOfCollection;
@@ -23,20 +24,16 @@ public class FavoriteItem {
         this.userImage = userImage;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNote(Note note) {
+        this.note = note;
+    }
+
+    public Note getNote() {
+        return note;
     }
 
     public int getNumOfRecommend() {
         return NumOfRecommend;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setContent(List<SpannableString> content) {
-        this.content = content;
     }
 
     public void setNumOfRecommend(int numOfRecommend) {
@@ -53,10 +50,6 @@ public class FavoriteItem {
 
     public int getNumOfFavorite() {
         return NumOfFavorite;
-    }
-
-    public List<SpannableString> getContent() {
-        return content;
     }
 
     public int getNumOfShare() {
