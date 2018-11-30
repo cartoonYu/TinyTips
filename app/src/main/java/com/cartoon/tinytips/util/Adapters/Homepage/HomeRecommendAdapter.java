@@ -12,9 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Recommend.IRecommend;
+import com.cartoon.tinytips.HomePage.Recommend.Recommend;
 import com.cartoon.tinytips.HomePage.Recommend.RecommendItem;
 import com.cartoon.tinytips.HomePage.Recommend.RecommendModel;
 import com.cartoon.tinytips.Note.Comment.Comment;
@@ -108,6 +110,29 @@ public class HomeRecommendAdapter
                 IntentActivity.intentWithData(mContext,NoteDetail.class,"note",item.getNote());
             }
         });
+        holder.collect.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                ShowToast.shortToast("sdfsadfadfasdf");
+                holder.collect.setBackgroundResource(R.drawable.mycollection_press);
+                final int num = new Integer(holder.collectNum.getText().toString());
+                RecommendItem item = mRecommendItems.get(holder.getAdapterPosition());
+                item.setNumOfCollection(num+1);
+                model.addFavorites(item, new String("collect"), new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        holder.collectNum.setText(Integer.toString(num+1));
+                        ShowToast.shortToast(s);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +140,7 @@ public class HomeRecommendAdapter
                 final int num=new Integer(holder.likeNum.getText().toString());
                 RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
                 item.setNumOfFavorite(num+1);
-                model.addFavorites(item, new ValueCallBack<String>() {
+                model.addFavorites(item,new String("like"), new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
                         holder.likeNum.setText(Integer.toString(num+1));

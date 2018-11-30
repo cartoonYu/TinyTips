@@ -14,15 +14,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
+import com.cartoon.tinytips.HomePage.Favorite.FavoriteModel;
+import com.cartoon.tinytips.HomePage.Favorite.IFavorite;
 import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 
@@ -37,6 +41,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     private List<FavoriteItem> mFavoriteItems;
 
+    private IFavorite.Model model;
     static class ViewHolder extends RecyclerView.ViewHolder  {
 
         @BindView(R.id.Fitem_avatar)
@@ -94,6 +99,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     public FavoriteAdapter(List<FavoriteItem> mFavoriteItem) {
         this.mFavoriteItems = mFavoriteItem;
+        model = new FavoriteModel();
     }
 
     @Override
@@ -115,8 +121,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     @NonNull
     @Override
-    public void onBindViewHolder(FavoriteAdapter.ViewHolder holder, int position) {
-        FavoriteItem FavoriteItem = mFavoriteItems.get(position);
+    public void onBindViewHolder(final FavoriteAdapter.ViewHolder holder, final int position) {
+        final FavoriteItem FavoriteItem = mFavoriteItems.get(position);
         Note note=FavoriteItem.getNote();
         holder.userNames.setText(note.getAuthor());
         holder.titles.setText(note.getTitle());
@@ -135,6 +141,48 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.time.setText(FavoriteItem.getTime());
         holder.NumOfShares.setText(Integer.toString(FavoriteItem.getNumOfShare()));
         Glide.with(mContext).load(FavoriteItem.getUserImage()).into(holder.userImages);
+        holder.Cnums_item_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
+                final int num = new Integer(holder.NumOfCollections.getText().toString());
+                FavoriteItem item = mFavoriteItems.get(holder.getAdapterPosition());
+                item.setNumOfCollection(num+1);
+                model.addFavorites(item, new String("collect"), new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        holder.NumOfCollections.setText(Integer.toString(num+1));
+                        ShowToast.shortToast(s);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.favoritenums_item_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);
+                final int num = new Integer(holder.NumOfFavorites.getText().toString());
+                FavoriteItem item = mFavoriteItems.get(holder.getAdapterPosition());
+                item.setNumOfFavorite(num+1);
+                model.addFavorites(item,new String("like"),new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        holder.NumOfFavorites.setText(Integer.toString(num+1));
+                        ShowToast.shortToast(s);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
     }
 
     @Override

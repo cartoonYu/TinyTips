@@ -79,17 +79,26 @@ public class RecommendModel implements IRecommend.Model {
     }
 
     @Override
-    public void addFavorites(RecommendItem item, ValueCallBack<String> callBack) {
+    public void addFavorites(RecommendItem item,String operate, ValueCallBack<String> callBack) {
         Comment comment=new Comment();
         Note note=getNoteFromItem(item);
         comment.setNoteId(note.getId());
         comment.setLike(item.getNumOfFavorite());
-        if(sendData(comment.getNoteId(),"like",comment.getLike())){
-            callBack.onSuccess("操作成功");
-        }
-        else {
-            callBack.onFail("操作失败");
-        }
+        comment.setCollect(item.getNumOfCollection());
+        if (operate.equals("like")) {
+            if (sendData(comment.getNoteId(), "like", comment.getLike())) {
+                callBack.onSuccess("操作成功");
+            } else {
+                callBack.onFail("操作失败");
+            }
+        }else if (operate.equals("collect")){
+            if (sendData(comment.getNoteId(),"collect",comment.getCollect())){
+                callBack.onSuccess("操作成功");
+            }else {
+                  callBack.onFail("操作失败");
+            }
+            }
+
     }
 
     /**
