@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.Information;

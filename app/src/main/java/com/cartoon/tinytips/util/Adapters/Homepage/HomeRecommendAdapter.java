@@ -137,13 +137,12 @@ public class HomeRecommendAdapter
             @Override
             public void onClick(View v) {
                 holder.like.setBackgroundResource(R.drawable.favorite_press);
-                final int num=new Integer(holder.likeNum.getText().toString());
-                RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                item.setNumOfFavorite(num+1);
+                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                item.setNumOfFavorite(item.getNumOfFavorite()+1);
                 model.addFavorites(item,new String("like"), new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        holder.likeNum.setText(Integer.toString(num+1));
+                        holder.likeNum.setText(Integer.toString(item.getNumOfFavorite()));
                         ShowToast.shortToast(s);
                     }
 
