@@ -114,7 +114,7 @@ public class HomeRecommendAdapter
 
             @Override
             public void onClick(View view) {
-                ShowToast.shortToast("sdfsadfadfasdf");
+
                 holder.collect.setBackgroundResource(R.drawable.mycollection_press);
                 final int num = new Integer(holder.collectNum.getText().toString());
                 RecommendItem item = mRecommendItems.get(holder.getAdapterPosition());
@@ -154,12 +154,7 @@ public class HomeRecommendAdapter
                 });
             }
         });
-        holder.collect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         return holder;
     }
 

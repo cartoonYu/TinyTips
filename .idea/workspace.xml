@@ -20,26 +20,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1e4e04e-1fc4-4c7f-bd99-c58947e0786d" name="Default" comment="add icon">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+    <list default="true" id="e1e4e04e-1fc4-4c7f-bd99-c58947e0786d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/FavoriteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/IFavorite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Favorite/IFavorite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/IRecommend.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/IRecommend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Personal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/Personal/Personal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/FavoriteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/FavoriteAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -108,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeRecommendAdapter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeRecommendAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+            <state relative-caret-position="796">
+              <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
               <folding>
                 <element signature="e#3572#4555#0" expanded="true" />
                 <element signature="e#4554#4555#0" expanded="true" />
@@ -121,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecommendModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecommendModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            <state relative-caret-position="362">
+              <caret line="88" column="22" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -136,8 +118,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="88" column="60" lean-forward="true" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="60" />
+            <state relative-caret-position="138">
+              <caret line="88" column="61" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -2815,7 +2797,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542381760988</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add icon">
+      <created>1543592037846</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1543592037846</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2829,7 +2818,7 @@
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.502021" side_tool="true" weight="0.77351916" />
-      <window_info anchor="right" id="Preview" order="7" weight="0.40743735" />
+      <window_info anchor="right" id="Preview" order="7" weight="0.25707355" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" weight="0.17931035" />
       <window_info anchor="bottom" id="Terminal" order="12" />
@@ -2837,7 +2826,7 @@
       <window_info id="Captures" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2279709" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29668552" />
       <window_info anchor="bottom" id="Gradle View" order="14" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.0" />
       <window_info anchor="right" id="Gradle" order="5" />
@@ -2932,12 +2921,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add icon" />
     <MESSAGE value="change layout" />
     <MESSAGE value="change Intent Activity function" />
     <MESSAGE value="add annotation for database operate class" />
     <MESSAGE value="add local Information support and fix some network error" />
-    <option name="LAST_COMMIT_MESSAGE" value="add local Information support and fix some network error" />
+    <MESSAGE value="add icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="add icon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3286,16 +3275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="88" column="60" lean-forward="true" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/IRecommend.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -3303,21 +3282,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="88" column="22" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/homepage/layout/item_recommend.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="88" column="61" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/util/Adapters/Homepage/HomeRecommendAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+        <state relative-caret-position="796">
+          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
           <folding>
             <element signature="e#3572#4555#0" expanded="true" />
             <element signature="e#4554#4555#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cartoon/tinytips/HomePage/Recommend/RecommendModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
         </state>
       </provider>
     </entry>
