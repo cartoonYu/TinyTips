@@ -9,6 +9,7 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Default_many;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentAdapter;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -54,7 +55,6 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     protected void initView(){
         revampStatusBar();
         initToolbar();
-        recyclerList();
     }
 
     @Override
@@ -71,13 +71,12 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
         RevampToolbar.setText(toolbarText,new String("评论"));
     }
 
-    private void recyclerList() {
-        CommentItem[] commentItems = {
-                new CommentItem(R.drawable.apple,"asd","asd","3小时前"),
-                new CommentItem(R.drawable.apple,"asd","asd","3小时前"),
-                new CommentItem(R.drawable.apple,"asd","asd","3小时前"),
-                new CommentItem(R.drawable.apple,"asd","asd","3小时前"),
-                new CommentItem(R.drawable.apple,"asd","asd","3小时前")};
+    public void recyclerList(ArrayList<CommentItem> commentItems) {
+       if(commentItems.isEmpty()){
+           //增加默认Item，防止空指针
+           commentItems.add(new Default_many().getCommentItem());
+       }
+
         for (CommentItem one : commentItems ){
             CommentList.add(one);
         }

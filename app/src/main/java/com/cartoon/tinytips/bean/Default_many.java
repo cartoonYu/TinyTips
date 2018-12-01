@@ -1,5 +1,8 @@
 package com.cartoon.tinytips.bean;
 
+import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,11 @@ public class Default_many {
         tags.add(" ");
         note.setTag(tags);
         return note;
+    }
+
+    public CommentItem getCommentItem(){
+        CommentItem commentItem = new CommentItem(R.drawable.apple," ","网络错误，请重新刷新"," ");
+        return  commentItem;
     }
 
 }
