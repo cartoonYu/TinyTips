@@ -1,8 +1,11 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Operate.OperateComment;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
@@ -49,7 +52,7 @@ public class FavoriteModel implements IFavorite.Model {
         Iterator<Note> iterator=noteSet.iterator();
         while(iterator.hasNext()){
             Note temp=iterator.next();
-            if(!temp.getAuthor().equals("Leo")){
+            if(!temp.getAuthor().equals(LocalInformation.getLocalInformation().query().getNickName())){
                 FavoriteItem item=new FavoriteItem();
                 File file=null;
                 for(Information t:list){
@@ -61,8 +64,7 @@ public class FavoriteModel implements IFavorite.Model {
                     item.setUserImage(file);
                 }
                 item.setUserName(temp.getAuthor());
-                item.setTitle(temp.getTitle());
-                item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
+                item.setNote(temp);
                 operateComment.query(temp.getId());
                 while(operateComment.isNotFinish()){
 
@@ -72,7 +74,7 @@ public class FavoriteModel implements IFavorite.Model {
                 item.setNumOfRecommend(comment.getComment());
                 item.setNumOfCollection(comment.getCollect());
                 item.setNumOfShare(comment.getForward());
-                item.setTime(temp.getDate());
+                item.setTime(temp.getDate().substring(0,temp.getDate().length()-8));
                 result.add(item);
             }
         }
@@ -83,6 +85,50 @@ public class FavoriteModel implements IFavorite.Model {
             callBack.onSuccess(result);
         }
 
+    }
+
+    @Override
+    public void addFavorites(FavoriteItem item,String operate,ValueCallBack<String> callBack) {
+        Comment comment = new Comment();
+        Note note = getNoteFromItem(item);
+        comment.setNoteId(note.getId());
+        comment.setLike(item.getNumOfFavorite());
+        comment.setCollect(item.getNumOfCollection());
+        if (operate.equals("like")) {
+            if (sendData(comment.getNoteId(), "like", comment.getLike())) {
+                callBack.onSuccess("操作成功");
+            } else {
+                callBack.onFail("操作失败");
+            }
+        }else if (operate.equals("collect")){
+           if (sendData(comment.getNoteId(),"collect",comment.getCollect())){
+               callBack.onSuccess("操作成功");
+           }else {
+               callBack.onFail("操作失败");
+           }
+        }
+
+    }
+
+    private boolean sendData(long noteId,String name,int data){
+        operateComment.update(noteId,name,data);
+        while (operateComment.isNotFinish()){
+
+        }
+        if(operateComment.isSuccess()){
+            return true;
+        }
+        return false;
+    }
+
+    private Note getNoteFromItem(FavoriteItem item){
+        Note note=item.getNote();
+        operateNote.query(note);
+        while (operateNote.isNotFinish()){
+
+        }
+        note=operateNote.getQueryData().get(0);
+        return note;
     }
 
     public FavoriteModel(){

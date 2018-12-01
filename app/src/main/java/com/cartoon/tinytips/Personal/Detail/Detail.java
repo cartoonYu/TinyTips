@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -29,6 +30,7 @@ import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.OnClick;
 
 public class Detail extends BaseActivity<DetailPresenter> implements IDetail.View{
@@ -63,6 +65,9 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
 
     @BindView(R.id.personal_detail_registerData)
     TextView registerData;
+
+    @BindViews({R.id.personal_detail_interest1,R.id.personal_detail_interest2,R.id.personal_detail_interest3,R.id.personal_detail_interest4})
+    List<Button> interests;
 
     @BindView(R.id.avarar)
     de.hdodenhof.circleimageview.CircleImageView avarar;
@@ -150,6 +155,14 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
     @Override
     public void setRegisterData(String data) {
         this.registerData.setText(data);
+    }
+
+    @Override
+    public void setInterest(List<String> interests) {
+        for(int i=0,length=interests.size();i<length;i++){
+            this.interests.get(i).setBackgroundColor(getResources().getColor(R.color.white));
+            this.interests.get(i).setText(interests.get(i));
+        }
     }
 
     @Override

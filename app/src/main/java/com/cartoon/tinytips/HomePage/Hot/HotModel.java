@@ -41,8 +41,7 @@ public class HotModel implements IHot.Model {
             while(iterator.hasNext()){
                 Note temp=iterator.next();
                 HotItem item=new HotItem();
-                item.setTitle(temp.getTitle());
-                item.setContent(DivideNote.getDivideNote().transNoteToString(temp));
+                item.setNote(temp);
                 item.setSequence(flag++);
                 item.setNumOfClick(random.nextInt(100));
                 items.add(item);

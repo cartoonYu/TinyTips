@@ -35,11 +35,10 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
-    private NoteAdapter adapter;
-
     @BindView(R.id.personal_mynote_note)
     RecyclerView note;
 
+    private NoteAdapter adapter;
 
     @Override
     protected MyNotePresenter initPresent(){

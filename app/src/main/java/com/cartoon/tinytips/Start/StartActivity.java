@@ -19,7 +19,7 @@ import com.cartoon.tinytips.util.ShowToast;
 
 public class StartActivity extends BaseActivity<StartActivityPresenter> implements IStartActivity.View {
 
-    private final long SPLASH_DELAY_MILLIS = 2000;
+    private final long SPLASH_DELAY_MILLIS = 1500;
     private static final String TAG ="QuizActivity";
 
     @Override
@@ -42,12 +42,14 @@ public class StartActivity extends BaseActivity<StartActivityPresenter> implemen
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                presenter.getInformation();
-            }
-        });
+        else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    presenter.getInformation();
+                }
+            },SPLASH_DELAY_MILLIS);
+        }
     }
 
     @Override
@@ -56,6 +58,11 @@ public class StartActivity extends BaseActivity<StartActivityPresenter> implemen
             case 1:{
                 if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
                     ShowToast.shortToast("允许权限");
+                    presenter.getInformation();
+                }
+                else {
+                    ShowToast.shortToast("未允许权限");
+                    IntentActivity.finishActivity(this);
                 }
                 break;
             }
@@ -77,19 +84,16 @@ public class StartActivity extends BaseActivity<StartActivityPresenter> implemen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onDestroy:");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop: ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "onPause: ");
     }
 }
 

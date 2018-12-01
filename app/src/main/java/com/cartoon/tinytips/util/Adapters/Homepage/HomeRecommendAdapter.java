@@ -12,9 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Recommend.IRecommend;
+import com.cartoon.tinytips.HomePage.Recommend.Recommend;
 import com.cartoon.tinytips.HomePage.Recommend.RecommendItem;
 import com.cartoon.tinytips.HomePage.Recommend.RecommendModel;
 import com.cartoon.tinytips.Note.Comment.Comment;
@@ -36,8 +38,7 @@ import butterknife.ButterKnife;
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HomeRecommendAdapter
-        extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder>
-        implements View.OnClickListener{
+        extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder> {
 
     private Context mContext;
 
@@ -45,44 +46,6 @@ public class HomeRecommendAdapter
 
     private IRecommend.Model model;
 
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.Recommend_itemup:{
-                IntentActivity.intentWithoutData(getContext(),NoteDetail.class);
-                break;
-            }
-
-            case R.id.Ritem_avatar:{
-                IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
-                break;
-            }
-
-
-
-            case R.id.homePageRecommendComment:{
-                //评论
-                IntentActivity.intentWithoutData(getContext(),Comment.class);
-                break;
-            }
-
-            case R.id.homePageRecommendLike:{
-                //赞
-
-                break;
-            }
-
-            case R.id.homePageRecommendCollect:{
-                //收藏
-                Button Ronums_item_recommedn;
-                Ronums_item_recommedn= (Button)view.findViewById(R.id.homePageRecommendCollect);
-                Ronums_item_recommedn.setBackgroundResource(R.drawable.mycollection_press);
-                break;
-            }
-
-        }
-    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -144,19 +107,22 @@ public class HomeRecommendAdapter
             @Override
             public void onClick(View v) {
                 RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",item.getNote());
             }
         });
-        holder.like.setOnClickListener(new View.OnClickListener() {
+        holder.collect.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-                holder.like.setBackgroundResource(R.drawable.favorite_press);
-                final int num=new Integer(holder.likeNum.getText().toString());
-                RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                item.setNumOfFavorite(num+1);
-                model.addFavorites(item, new ValueCallBack<String>() {
+            public void onClick(View view) {
+
+                holder.collect.setBackgroundResource(R.drawable.mycollection_press);
+                final int num = new Integer(holder.collectNum.getText().toString());
+                RecommendItem item = mRecommendItems.get(holder.getAdapterPosition());
+                item.setNumOfCollection(num+1);
+                model.addFavorites(item, new String("collect"), new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        holder.likeNum.setText(Integer.toString(num+1));
+                        holder.collectNum.setText(Integer.toString(num+1));
                         ShowToast.shortToast(s);
                     }
 
@@ -167,12 +133,27 @@ public class HomeRecommendAdapter
                 });
             }
         });
-        holder.collect.setOnClickListener(new View.OnClickListener() {
+        holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("asdf","qwe"+holder.getAdapterPosition());
+                holder.like.setBackgroundResource(R.drawable.favorite_press);
+                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                item.setNumOfFavorite(item.getNumOfFavorite()+1);
+                model.addFavorites(item,new String("like"), new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        holder.likeNum.setText(Integer.toString(item.getNumOfFavorite()));
+                        ShowToast.shortToast(s);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
             }
         });
+
         return holder;
     }
 
@@ -192,11 +173,6 @@ public class HomeRecommendAdapter
         holder.collectNum.setText(""+recommendItem.getNumOfCollection());
         holder.commentNum.setText(""+recommendItem.getNumOfRecommend());
         holder.likeNum.setText(""+recommendItem.getNumOfFavorite());
-        holder.Recommend_itemup.setOnClickListener(this);
-        holder.userImages.setOnClickListener(this);
-        //holder.like.setOnClickListener(this);
-        holder.comment.setOnClickListener(this);
-        //holder.collect.setOnClickListener(this);
         Glide.with(mContext).load(recommendItem.getUserImage()).into(holder.userImages);
     }
 

@@ -2,6 +2,7 @@ package com.cartoon.tinytips.bean.Local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -117,12 +118,19 @@ public class LocalInformation {
      * @return
      */
     private List<String> changeStringToList(String source,String regex){
-        List<String> list=new ArrayList<>();
-        String[] temp=source.split(regex);
-        for(String s:temp){
-            list.add(s);
+        List<String> result=new ArrayList<>();
+        if(JudgeEmpty.isEmpty(source)){
+            return result;
         }
-        return list;
+        int index=source.indexOf(regex);
+        int length;
+        while(index!=-1){
+            result.add(source.substring(0,index));
+            length=source.length();
+            source=source.substring(index+1,length);
+            index=source.indexOf(regex);
+        }
+        return result;
     }
 
     public static LocalInformation getLocalInformation(){

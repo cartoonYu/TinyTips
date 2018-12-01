@@ -118,17 +118,20 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
 
     @Override
     public void setNotes(Integer notes) {
-        this.notes.append(Integer.toString(notes));
+        //this.notes.append(Integer.toString(notes));
+        this.notes.setText("笔记  "+Integer.toString(notes));
     }
 
     @Override
     public void setAttentions(Integer attentions) {
-        this.attentions.append(Integer.toString(attentions));
+        //this.attentions.append(Integer.toString(attentions));
+        this.attentions.setText("关注  "+Integer.toString(attentions));
     }
 
     @Override
     public void setFans(Integer fans) {
-        this.fans.append(Integer.toString(fans));
+
+        this.fans.setText("粉丝  "+Integer.toString(fans));
     }
 
     @Override

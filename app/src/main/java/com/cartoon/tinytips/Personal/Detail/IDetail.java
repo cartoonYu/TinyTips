@@ -4,6 +4,7 @@ import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 
 import java.io.File;
+import java.util.List;
 
 interface IDetail {
     interface View{
@@ -14,6 +15,7 @@ interface IDetail {
         void setMajor(String major);      //设置专业
         void setDegree(String degree);    //设置学历
         void setRegisterData(String data);  //设置注册日期
+        void setInterest(List<String> interests);  //设置兴趣
     }
 
     interface Presenter{

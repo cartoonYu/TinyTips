@@ -15,6 +15,6 @@ public interface IRecommend {
 
     interface Model{
         void initData(ValueCallBack<List<RecommendItem>> callBack);
-        void addFavorites(RecommendItem item,ValueCallBack<String> callBack);
+        void addFavorites(RecommendItem item,String operate,ValueCallBack<String> callBack);
     }
 }
