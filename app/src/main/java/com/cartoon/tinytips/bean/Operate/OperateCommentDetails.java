@@ -259,6 +259,7 @@ public class OperateCommentDetails {
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
         connection=HttpConnection.getConnection();
+        queryData=new ArrayList<>();
         url=HttpConstant.getConstant().getURL_CommentDetails();
         method="POST";
         setNotFinish(true);

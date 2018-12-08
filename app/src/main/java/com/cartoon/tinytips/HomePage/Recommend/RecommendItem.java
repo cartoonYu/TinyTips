@@ -6,20 +6,17 @@ import com.cartoon.tinytips.bean.Note;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 public class RecommendItem {
 
     private File userImage;
 
-    private String username;
-
     private Note note;
 
-    private int NumOfFavorite;
+    private Map<String,Boolean> isClick;
 
-    private int NumOfRecommend;
-
-    private int NumOfCollection;
+    private Map<String,Integer> numOfSocial;
 
     public RecommendItem() {
     }
@@ -28,40 +25,16 @@ public class RecommendItem {
         this.userImage = userImage;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setIsClick(Map<String, Boolean> isClick) {
+        this.isClick = isClick;
     }
 
-    public void setNumOfCollection(int numOfCollection) {
-        NumOfCollection = numOfCollection;
-    }
-
-    public void setNumOfFavorite(int numOfFavorite) {
-        NumOfFavorite = numOfFavorite;
-    }
-
-    public void setNumOfRecommend(int numOfRecommend) {
-        NumOfRecommend = numOfRecommend;
+    public void setNumOfSocial(Map<String, Integer> numOfSocial) {
+        this.numOfSocial = numOfSocial;
     }
 
     public File getUserImage() {
         return userImage;
-    }
-
-    public int getNumOfFavorite() {
-        return NumOfFavorite;
-    }
-
-    public int getNumOfCollection() {
-        return NumOfCollection;
-    }
-
-    public int getNumOfRecommend() {
-        return NumOfRecommend;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public Note getNote() {
@@ -70,6 +43,14 @@ public class RecommendItem {
 
     public void setNote(Note note) {
         this.note = note;
+    }
+
+    public Map<String, Boolean> getIsClick() {
+        return isClick;
+    }
+
+    public Map<String, Integer> getNumOfSocial() {
+        return numOfSocial;
     }
 }
 

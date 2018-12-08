@@ -51,8 +51,6 @@ public class OperateNote {
 
     private static volatile OperateNote operateNote;
 
-    public OperateComment operateComment;
-
     private FileOperation fileOperation;
 
     private JSONObjectOperation objectOperation;
@@ -324,7 +322,6 @@ public class OperateNote {
     }
 
     private OperateNote(){
-        operateComment=OperateComment.getOperateComment();
         fileOperation=FileOperation.getOperation();
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();

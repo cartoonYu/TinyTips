@@ -31,6 +31,7 @@ import com.cartoon.tinytips.util.Note.DivideNote;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -111,21 +112,21 @@ public class HomeRecommendAdapter
             }
         });
         holder.collect.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View view) {
-
-                holder.collect.setBackgroundResource(R.drawable.mycollection_press);
-                final int num = new Integer(holder.collectNum.getText().toString());
-                RecommendItem item = mRecommendItems.get(holder.getAdapterPosition());
-                item.setNumOfCollection(num+1);
-                model.addFavorites(item, new String("collect"), new ValueCallBack<String>() {
+            public void onClick(View v) {
+                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                model.clickItem(item,new String("Collect"),new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        holder.collectNum.setText(Integer.toString(num+1));
+                        notifyDataSetChanged();
                         ShowToast.shortToast(s);
+                        if(item.getIsClick().get("Collect")){
+                            holder.collect.setBackgroundResource(R.drawable.mycollection_press);
+                        }
+                        else {
+                            holder.collect.setBackgroundResource(R.drawable.mycollection);
+                        }
                     }
-
                     @Override
                     public void onFail(String msg) {
                         ShowToast.shortToast(msg);
@@ -136,16 +137,19 @@ public class HomeRecommendAdapter
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.like.setBackgroundResource(R.drawable.favorite_press);
                 final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                item.setNumOfFavorite(item.getNumOfFavorite()+1);
-                model.addFavorites(item,new String("like"), new ValueCallBack<String>() {
+                model.clickItem(item,new String("Like"),new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        holder.likeNum.setText(Integer.toString(item.getNumOfFavorite()));
+                        notifyDataSetChanged();
                         ShowToast.shortToast(s);
+                        if(item.getIsClick().get("Like")){
+                            holder.like.setBackgroundResource(R.drawable.favorite_press);
+                        }
+                        else {
+                            holder.like.setBackgroundResource(R.drawable.favourit);
+                        }
                     }
-
                     @Override
                     public void onFail(String msg) {
                         ShowToast.shortToast(msg);
@@ -162,6 +166,8 @@ public class HomeRecommendAdapter
     public void onBindViewHolder(HomeRecommendAdapter.ViewHolder holder, int position) {
         RecommendItem recommendItem = mRecommendItems.get(position);
         Note note=recommendItem.getNote();
+        Map<String,Boolean> isClick=recommendItem.getIsClick();
+        Map<String,Integer> numOfSocial=recommendItem.getNumOfSocial();
         holder.userNames.setText(note.getAuthor());
         holder.titles.setText(note.getTitle());
         if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())){
@@ -169,10 +175,16 @@ public class HomeRecommendAdapter
                 Glide.with(mContext).load(note.getPhotoDetails().get(0)).into(holder.noteImage);
             }
         }
+        if(isClick.get("Like")){
+            holder.like.setBackgroundResource(R.drawable.favorite_press);
+        }
+        if(isClick.get("Collect")){
+            holder.collect.setBackgroundResource(R.drawable.mycollection_press);
+        }
         holder.contents.setText(note.getWordDetails().get(0));
-        holder.collectNum.setText(""+recommendItem.getNumOfCollection());
-        holder.commentNum.setText(""+recommendItem.getNumOfRecommend());
-        holder.likeNum.setText(""+recommendItem.getNumOfFavorite());
+        holder.collectNum.setText(numOfSocial.get("Collect").toString());
+        holder.commentNum.setText(numOfSocial.get("Comment").toString());
+        holder.likeNum.setText(numOfSocial.get("Like").toString());
         Glide.with(mContext).load(recommendItem.getUserImage()).into(holder.userImages);
     }
 

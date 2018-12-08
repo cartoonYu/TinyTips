@@ -1,22 +1,24 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Comment;
+import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateComment;
+import com.cartoon.tinytips.bean.Operate.OperateCommentDetails;
 import com.cartoon.tinytips.bean.Operate.OperateNote;
 import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.Social;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 import java.util.Set;
 
 public class RecommendModel implements IRecommend.Model {
@@ -25,7 +27,11 @@ public class RecommendModel implements IRecommend.Model {
 
     private OperateInformation operateInformation;
 
-    private OperateComment operateComment;
+    private OperateSocial operateSocial;
+
+    private OperateCommentDetails operateCommentDetails;
+
+    private Information localInformation;
 
     @Override
     public void initData(ValueCallBack<List<RecommendItem>> callBack){
@@ -42,7 +48,6 @@ public class RecommendModel implements IRecommend.Model {
         }
         List<Information> informations= operateInformation.getQueryData();
         List<RecommendItem> result=new ArrayList<>();
-        Random random=new Random();
         if(notes.isEmpty()){
             callBack.onFail("获取信息失败");
         }
@@ -64,16 +69,55 @@ public class RecommendModel implements IRecommend.Model {
                 if(JudgeEmpty.isNotEmpty(file)){
                     item.setUserImage(file);
                 }
-                item.setUsername(temp.getAuthor());
                 item.setNote(temp);
-                operateComment.query(temp.getId());
-                while(operateComment.isNotFinish()){
+
+                Map<String,Boolean> isClick=new HashMap<>();
+                Map<String,Integer> numOfSocial=new HashMap<>();
+
+                Social social=new Social();
+                social.setNoteId(temp.getId());
+
+                social.setType("Collect");
+                operateSocial.query(social);
+                while (operateSocial.isNotFinish()){
 
                 }
-                Comment comment=operateComment.getQueryData();
-                item.setNumOfFavorite(comment.getLike());
-                item.setNumOfCollection(comment.getComment());
-                item.setNumOfRecommend(comment.getCollect());
+                List<Social> socials=operateSocial.getQueryData();
+                isClick.put(social.getType(),false);
+                for(Social s:socials){
+                    if(s.getUserId()==localInformation.getId()){
+                        isClick.put(social.getType(),true);
+                        break;
+                    }
+                }
+                numOfSocial.put(social.getType(),socials.size());
+
+                social.setType("Like");
+                operateSocial.query(social);
+                while (operateSocial.isNotFinish()){
+
+                }
+                socials=operateSocial.getQueryData();
+                isClick.put(social.getType(),false);
+                for(Social s:socials){
+                    if(s.getUserId()==localInformation.getId()){
+                        isClick.put(social.getType(),true);
+                        break;
+                    }
+                }
+                numOfSocial.put(social.getType(),socials.size());
+
+                CommentDetails details=new CommentDetails();
+                details.setUserId(temp.getUserId());
+                details.setNoteId(temp.getId());
+                operateCommentDetails.query(details);
+                while (operateCommentDetails.isNotFinish()){
+
+                }
+                numOfSocial.put("Comment",operateCommentDetails.getQueryData().size());
+
+                item.setIsClick(isClick);
+                item.setNumOfSocial(numOfSocial);
                 result.add(item);
             }
             callBack.onSuccess(result);
@@ -81,58 +125,47 @@ public class RecommendModel implements IRecommend.Model {
     }
 
     @Override
-    public void addFavorites(RecommendItem item,String operate, ValueCallBack<String> callBack) {
-        Comment comment=new Comment();
-        Note note=getNoteFromItem(item);
-        comment.setNoteId(note.getId());
-        comment.setLike(item.getNumOfFavorite());
-        comment.setCollect(item.getNumOfCollection());
-        if (operate.equals("like")) {
-            if (sendData(comment.getNoteId(), "like", comment.getLike())) {
-                callBack.onSuccess("操作成功");
-            } else {
-                callBack.onFail("操作失败");
+    public void clickItem(RecommendItem item,String type,ValueCallBack<String> callBack) {
+        Social social=new Social();
+        social.setNoteId(item.getNote().getId());
+        social.setType(type);
+        social.setUserId(localInformation.getId());
+        Map<String,Boolean> map=item.getIsClick();
+        Boolean isClick=map.get(type);
+        if(isClick){
+            operateSocial.delete(social);
+            while (operateSocial.isNotFinish()){
             }
-        }else if (operate.equals("collect")){
-            if (sendData(comment.getNoteId(),"collect",comment.getCollect())){
-                callBack.onSuccess("操作成功");
-            }else {
-                  callBack.onFail("操作失败");
+            if(operateSocial.isSuccess()){
+                map.put(type,false);
+                item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)-1);
+                callBack.onSuccess(type+":取消成功");
             }
+            else {
+                callBack.onFail(type+":取消失败");
             }
-
-    }
-
-    /**
-     * 功能
-     * 将页面中的子项转换成Comment对象进行数据库操作
-     * @param item
-     * @return
-     */
-    private Note getNoteFromItem(RecommendItem item){
-        Note note=item.getNote();
-        operateNote.query(note);
-        while (operateNote.isNotFinish()){
-
         }
-        note=operateNote.getQueryData().get(0);
-        return note;
-    }
-
-    private boolean sendData(long noteId,String name,int data){
-        operateComment.update(noteId,name,data);
-        while (operateComment.isNotFinish()){
-
+        else {
+            operateSocial.add(social);
+            while (operateSocial.isNotFinish()){
+            }
+            if(operateSocial.isSuccess()){
+                item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)+1);
+                map.put(type,true);
+                callBack.onSuccess(type+":成功");
+            }
+            else {
+                callBack.onFail(type+":失败");
+            }
         }
-        if(operateComment.isSuccess()){
-            return true;
-        }
-        return false;
+        item.setIsClick(map);
     }
 
     public RecommendModel(){
         operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
-        operateComment=OperateComment.getOperateComment();
+        operateSocial=OperateSocial.getOperateSocial();
+        operateCommentDetails=OperateCommentDetails.getCommentDetails();
+        localInformation=LocalInformation.getLocalInformation().query();
     }
 }

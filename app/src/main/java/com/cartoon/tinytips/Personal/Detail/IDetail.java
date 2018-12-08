@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.Personal.Detail;
 
+import android.net.Uri;
+
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 
@@ -20,9 +22,12 @@ interface IDetail {
 
     interface Presenter{
         void initData();    //初始化页面数据
+        void revampHeadPro(Uri source);   //修改头像
+        void resume(String resume);
     }
 
     interface Model{
         void getInformation(ValueCallBack<Information> callBack);   //获取个人信息
+        void revampInformation(Information information,ValueCallBack<String> callBack);
     }
 }

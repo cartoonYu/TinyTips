@@ -4,8 +4,10 @@ import android.util.Log;
 
 import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Social;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
@@ -51,6 +53,66 @@ public class JSONObjectOperation {
             }
         }
         return operation;
+    }
+
+    /**
+     * 将传入的social转换成json文件
+     * @param social
+     * @return
+     */
+    public JSONObject setSocialToJSON(Social social,String method){
+        if(JudgeEmpty.isEmpty(social)){
+            return null;
+        }
+        JSONObject result=new JSONObject();
+        try {
+            result.put("method",method);
+            if(social.getUserId()!=0){
+                result.put("userId",social.getUserId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getType())){
+                result.put("type",social.getType());
+            }
+            if(social.getNoteId()!=0){
+                result.put("noteId",social.getNoteId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getDate())){
+                result.put("date",social.getDate());
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+            Log.d("jsonObjectException","将Social转换成JSON文件发生错误");
+        }
+        return result;
+    }
+
+    /**
+     * 将传入的json文件转化成Social
+     * @param object
+     * @return
+     */
+    public Social getSocialFromJSON(JSONObject object){
+        if(JudgeEmpty.isEmpty(object)){
+            return null;
+        }
+        Social social=new Social();
+        try {
+            if(object.has("type")){
+                social.setType(object.getString("type"));
+            }
+            if(object.has("userId")){
+                social.setUserId(object.getLong("userId"));
+            }
+            if(object.has("noteId")){
+                social.setNoteId(object.getLong("noteId"));
+            }
+            if(object.has("date")){
+                social.setDate(object.getString("date"));
+            }
+        }catch (JSONException e){
+            Log.d("jsonObjectException","将JSON文件转换成Social发生错误");
+        }
+        return social;
     }
 
     /**
