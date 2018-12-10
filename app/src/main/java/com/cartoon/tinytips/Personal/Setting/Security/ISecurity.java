@@ -9,6 +9,7 @@ interface ISecurity {
         String getAuthCode();   //获取验证码
         String getPassword();  //获取密码
         String getConfirmPassword(); //二次获取密码
+        void intentToSetting();
     }
 
     interface Presenter{
@@ -16,7 +17,7 @@ interface ISecurity {
     }
 
     interface Model{
-        void getPersonalInformation(ValueCallBack<Information> callBack);   //获取个人信息
+        void changePassword(String phone,String authCode,String password,String confirmPassword,ValueCallBack<String> callBack);
         void verifyAuthCode(ValueCallBack<Boolean> callBack);
     }
 }
