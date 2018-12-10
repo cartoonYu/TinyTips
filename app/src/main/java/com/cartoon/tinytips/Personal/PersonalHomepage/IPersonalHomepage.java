@@ -3,13 +3,14 @@ package com.cartoon.tinytips.Personal.PersonalHomepage;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
 
 import java.io.File;
 import java.util.List;
 
 interface IPersonalHomepage {
     interface View{
-        void initDynamicState();    //初始化动态列表
+        void initDynamicState(List<DynamicState> list);    //初始化动态列表
         void setHeadPro(File headPro);   //设置头像
         void setNickName(String name);     //设置昵称
         void setSchool(String school);    //设置学习
@@ -19,11 +20,12 @@ interface IPersonalHomepage {
     }
 
     interface Presenter{
-        void initData();   //初始化数据
+        void initInformation(Information information);   //初始化个人信息
+        void initDynamicState();
     }
 
     interface Model{
-        void getInformation(ValueCallBack<Information> callBack);   //获取个人信息
-        void getNoteList(ValueCallBack<List<Note>> callBack);
+        void getInformation(Information information,ValueCallBack<Information> callBack);   //获取个人信息
+        void getDynamicStateList(ValueCallBack<List<DynamicState>> callBack);
     }
 }

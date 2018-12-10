@@ -108,7 +108,6 @@ public class RecommendModel implements IRecommend.Model {
                 numOfSocial.put(social.getType(),socials.size());
 
                 CommentDetails details=new CommentDetails();
-                details.setUserId(temp.getUserId());
                 details.setNoteId(temp.getId());
                 operateCommentDetails.query(details);
                 while (operateCommentDetails.isNotFinish()){
@@ -159,6 +158,29 @@ public class RecommendModel implements IRecommend.Model {
             }
         }
         item.setIsClick(map);
+    }
+
+    /**
+     * 功能
+     * 处理点击用户头像或呢称的数据
+     *
+     * 使用方法
+     * 1.传入带有用户id或呢称的个人信息对象
+     * @param information
+     * @param callBack
+     */
+    @Override
+    public void clickUser(Information information, ValueCallBack<Information> callBack) {
+        operateInformation.query(information);
+        while (operateInformation.isNotFinish()){
+        }
+        Information result=operateInformation.getQueryData().get(0);
+        if(JudgeEmpty.isEmpty(result)){
+            callBack.onFail("网络错误");
+        }
+        else {
+            callBack.onSuccess(result);
+        }
     }
 
     public RecommendModel(){

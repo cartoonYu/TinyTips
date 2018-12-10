@@ -37,7 +37,7 @@ public class MyNoteModel implements IMyNote.Model {
     }
 
     @Override
-    public void deleteNote(Note note, ValueCallBack<String> callBack) {
+    public void deleteNote(List<Note> list,Note note, ValueCallBack<String> callBack) {
         if(JudgeEmpty.isEmpty(note)){
             callBack.onFail("系统错误，请重试");
             return;
@@ -47,6 +47,7 @@ public class MyNoteModel implements IMyNote.Model {
             ShowToast.shortToast("正在删除中");
         }
         if(operateNote.isSuccess()){
+            list.remove(note);
             callBack.onSuccess("删除成功");
         }
         else {

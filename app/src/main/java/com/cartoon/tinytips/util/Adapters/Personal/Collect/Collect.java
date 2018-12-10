@@ -1,50 +1,49 @@
 package com.cartoon.tinytips.util.Adapters.Personal.Collect;
 
-import android.graphics.drawable.Drawable;
+import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Note;
+
+import java.util.Map;
 
 public class Collect {
-    private String title;
-    private Drawable headPro;
-    private String nickName;
-    private int like;
-    private int comment;
-    private int collect;
-    private int forward;
 
-    public Collect(String title,Drawable headPro,String nickName,int like,int comment,int collect,int forward){
-        this.title=title;
-        this.headPro=headPro;
-        this.nickName=nickName;
-        this.like=like;
-        this.comment=comment;
-        this.collect=collect;
-        this.forward=forward;
-    }
-    public String getTitle() {
-        return title;
+    private Note note;
+
+    private Information information;
+
+    private Map<String,Integer> social;
+
+    private Map<String,Boolean> isClick;
+
+    public void setNote(Note note) {
+        this.note = note;
     }
 
-    public Drawable getHeadPro() {
-        return headPro;
+    public Note getNote() {
+        return note;
     }
 
-    public String getNickName() {
-        return nickName;
+    public void setSocial(Map<String, Integer> social) {
+        this.social = social;
     }
 
-    public int getLike() {
-        return like;
+    public Map<String, Integer> getSocial() {
+        return social;
     }
 
-    public int getComment() {
-        return comment;
+    public Map<String, Boolean> getIsClick() {
+        return isClick;
     }
 
-    public int getCollect() {
-        return collect;
+    public void setIsClick(Map<String, Boolean> isClick) {
+        this.isClick = isClick;
     }
 
-    public int getForward() {
-        return forward;
+    public void setInformation(Information information) {
+        this.information = information;
+    }
+
+    public Information getInformation() {
+        return information;
     }
 }

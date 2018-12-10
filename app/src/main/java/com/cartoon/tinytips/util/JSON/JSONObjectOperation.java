@@ -2,7 +2,6 @@ package com.cartoon.tinytips.util.JSON;
 
 import android.util.Log;
 
-import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
@@ -113,96 +112,6 @@ public class JSONObjectOperation {
             Log.d("jsonObjectException","将JSON文件转换成Social发生错误");
         }
         return social;
-    }
-
-    /**
-     * 功能
-     * 将传入的comment转换成json文件
-     *
-     * @param comment
-     * @param method
-     * @return
-     */
-    public JSONObject setCommentToJSON(Comment comment,String method){
-        if(JudgeEmpty.isEmpty(comment)){
-            return null;
-        }
-        else{
-            JSONObject result=new JSONObject();
-            try{
-                result.put("method",method);
-                if(comment.getNoteId()!=0){
-                    result.put("noteId",comment.getNoteId());
-                }
-                if(JudgeEmpty.isNotEmpty(comment.getTag())){
-                    result.put("tag",comment.getTag().toString());
-                }
-                if(comment.getLike()!=0){
-                    result.put("like",comment.getLike());
-                }
-                if(comment.getComment()!=0){
-                    result.put("comment",comment.getComment());
-                }
-                if(comment.getCollect()!=0){
-                    result.put("collect",comment.getCollect());
-                }
-                if(comment.getForward()!=0){
-                    result.put("forward",comment.getForward());
-                }
-            }catch(JSONException e){
-                Log.d("jsonObjectException","jsonObjectException:将comment转换json文件出现错误");
-                e.printStackTrace();
-            }
-            return result;
-        }
-    }
-
-    /**
-     * 获取传入json文件中的comment值
-     * @param object
-     * @return
-     */
-    public Comment getCommentFromJSON(JSONObject object){
-        if(JudgeEmpty.isEmpty(object)){
-            return null;
-        }
-        else{
-            Comment comment=new Comment();
-            try{
-                if(object.has("noteId")){
-                    comment.setNoteId(object.getLong("noteId"));
-                }
-                if(object.has("tag")){
-                    String temp=object.getString("tag");
-                    comment.setTag(changeStringToList(temp));
-                }
-                if(object.has("like")){
-                    if(object.getInt("like")!=0){
-                        comment.setLike(object.getInt("like"));
-                    }
-                }
-
-                if(object.has("comment")){
-                    if(object.getInt("comment")!=0){
-                        comment.setComment(object.getInt("comment"));
-                    }
-                }
-                if(object.has("collect")){
-                    if(object.getInt("collect")!=0){
-                        comment.setCollect(object.getInt("collect"));
-                    }
-                }
-                if(object.has("forward")){
-                    if(object.getInt("forward")!=0){
-                        comment.setForward(object.getInt("forward"));
-                    }
-                }
-            }catch(JSONException e){
-                Log.d("jsonObjectException","jsonObjectException:将json文件转换commentDetails出现错误");
-                e.printStackTrace();
-            }
-            return comment;
-        }
     }
 
     /**

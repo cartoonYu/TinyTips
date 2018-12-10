@@ -16,7 +16,7 @@ public interface IMyNote {
 
     interface Model{
         void getNote(ValueCallBack<List<Note>> callBack);   //获取笔记
-        void deleteNote(Note note,ValueCallBack<String> callBack);
+        void deleteNote(List<Note> list,Note note,ValueCallBack<String> callBack);
     }
 
 }

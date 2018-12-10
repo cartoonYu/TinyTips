@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.content.Context;
+import android.icu.text.IDNA;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -22,6 +23,7 @@ import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -120,6 +122,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.Cnums_item_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //收藏按钮点击事件
                 final FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
                 model.onClickItem(item, "Collect", new ValueCallBack<String>() {
                     @Override
@@ -144,6 +147,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.favoritenums_item_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //点赞按钮点击事件
                 final FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
                 model.onClickItem(item, "Like", new ValueCallBack<String>() {
                     @Override
@@ -156,6 +160,46 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                         else {
                             holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favourit);
                         }
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.userImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //头像点击事件
+                FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.userNames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //昵称点击事件
+                FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
                     }
 
                     @Override

@@ -10,14 +10,17 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapter.ViewHolder>{
+
     private Context mContext;
 
     private List<DynamicState> list;
@@ -52,8 +55,8 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
         }
     }
 
-    public DynamicStateAdapter(List<Note> list) {           //传入日记列表
-        this.noteList = list;
+    public DynamicStateAdapter(List<DynamicState> list) {           //传入日记列表
+        this.list = list;
     }
 
     @Override
@@ -67,25 +70,29 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
 
     @Override
     public void onBindViewHolder(DynamicStateAdapter.ViewHolder holder, int position) {
-        //DynamicState state=list.get(position);
-        Note note = noteList.get(position);           //
-        //holder.title.setText(state.getTitle());
-        holder.title.setText(note.getTitle());        //
-        //holder.date.setText(state.getDate());
-        holder.date.setText(note.getDate());            //
-        //holder.like.setText(new StringBuilder("").append(state.getLike()).toString());
-        holder.like.setText(new StringBuffer("").append(new Random().nextInt(20)).toString());   //
-        //holder.comment.setText(new StringBuilder("").append(state.getComment()).toString());
-        holder.comment.setText(new StringBuffer("").append(new Random().nextInt(30)).toString());   //
-        //holder.collect.setText(new StringBuilder("").append(state.getCollect()).toString());
-        holder.collect.setText(new StringBuffer("").append(new Random().nextInt(10)).toString());       //
-        //holder.forward.setText(new StringBuilder("").append(state.getForward()).toString());
-        holder.forward.setText(new StringBuffer("").append(new Random().nextInt(18)).toString());
+
+        DynamicState state=list.get(position);
+        Note note = state.getNote();
+        Map<String,Integer> numOfSocial=state.getNumOfSocial();
+        Map<String,Boolean> isClick=state.getIsClick();
+
+        holder.title.setText(note.getTitle());
+        holder.date.setText(note.getDate());
+        holder.like.setText(Integer.toString(numOfSocial.get("Like")));
+        holder.comment.setText(Integer.toString(numOfSocial.get("Comment")));
+        holder.collect.setText(Integer.toString(numOfSocial.get("Collect")));
+
+        if(isClick.get("Like")){
+            holder.like.setCompoundDrawablesWithIntrinsicBounds(mContext.getDrawable(R.drawable.favorite_press),null,null,null);
+        }
+        if(isClick.get("Collect")){
+            holder.collect.setCompoundDrawablesWithIntrinsicBounds(mContext.getDrawable(R.drawable.mycollection_press),null,null,null);
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        //return list.size();
-        return noteList.size();
+        return list.size();
     }
 }

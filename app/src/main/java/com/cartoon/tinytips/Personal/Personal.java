@@ -78,7 +78,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @OnClick(R.id.avatar)
     public void onClickHeadPro(){
         IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
-        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.personal_notes)
@@ -102,7 +101,6 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @OnClick(R.id.mine_Personal)
     public void onClickHomepage(){
         IntentActivity.intentWithoutData(getContext(),PersonalHomepage.class);
-        IntentActivity.finishActivity(getActivity());
     }
 
     @OnClick(R.id.setting_Personal)

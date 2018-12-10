@@ -24,6 +24,7 @@ import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -35,6 +36,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
@@ -114,6 +116,7 @@ public class HomeRecommendAdapter
         holder.collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //收藏按钮点击事件
                 final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
                 model.clickItem(item,new String("Collect"),new ValueCallBack<String>() {
                     @Override
@@ -137,6 +140,7 @@ public class HomeRecommendAdapter
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //点赞按钮点击事件
                 final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
                 model.clickItem(item,new String("Like"),new ValueCallBack<String>() {
                     @Override
@@ -157,7 +161,54 @@ public class HomeRecommendAdapter
                 });
             }
         });
+        holder.userImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //头像点击事件
+                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
+                    }
 
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.userNames.setOnClickListener(new View.OnClickListener() {
+            //昵称点击事件
+            @Override
+            public void onClick(View v) {
+                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //评论点击事件
+                RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,Comment.class,"note",item.getNote());
+            }
+        });
         return holder;
     }
 

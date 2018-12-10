@@ -66,10 +66,6 @@ public class HttpConstant {
         return constant;
     }
 
-    public String getURL_Comment() {
-        return properties.getProperty("comment");
-    }
-
     public String getURL_CommentDetails() {
         return properties.getProperty("commentDetails");
     }
