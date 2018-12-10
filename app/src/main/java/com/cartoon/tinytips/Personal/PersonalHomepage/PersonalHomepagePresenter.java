@@ -6,6 +6,7 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
@@ -27,8 +28,8 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
     }
 
     @Override
-    public void initData(){
-        model.getInformation(new ValueCallBack<Information>() {
+    public void initInformation(Information information){
+        model.getInformation(information,new ValueCallBack<Information>() {
             @Override
             public void onSuccess(Information personalInformation) {
                 view.setHeadPro(personalInformation.getHeadPortrait());
@@ -46,11 +47,12 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
         });
     }
 
-    public List<Note> getNoteList(){
-        model.getNoteList(new ValueCallBack<List<Note>>() {
+    @Override
+    public void initDynamicState() {
+        model.getDynamicStateList(new ValueCallBack<List<DynamicState>>() {
             @Override
-            public void onSuccess(List<Note> notes) {
-                noteList = notes;
+            public void onSuccess(List<DynamicState> dynamicStateList) {
+                view.initDynamicState(dynamicStateList);
             }
 
             @Override
@@ -58,8 +60,6 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
                 ShowToast.shortToast(msg);
             }
         });
-
-        return noteList;
     }
 
 }

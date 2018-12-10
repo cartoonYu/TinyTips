@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.bean.Operate;
 
-import com.cartoon.tinytips.bean.CommentDetails;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Social;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -15,17 +15,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 拆分形参传进的CommentDetails，传递给数据库操作层
- * @author cartoon
- * @version 1.0
- */
+public class OperateSocial {
 
-public class OperateCommentDetails {
-
-    private static volatile OperateCommentDetails commentDetails;
-
-    private OperateInformation operateInformation;
+    private static volatile OperateSocial operateSocial;
 
     private JSONObjectOperation objectOperation;
 
@@ -41,112 +33,67 @@ public class OperateCommentDetails {
 
     private boolean isSuccess;
 
-    private List<CommentDetails> queryData;
+    private List<Social> queryData;
+
 
     /**
      * 功能
-     * 返回本类对象，确保在程序运行的过程只有一个对象
+     * 插入社区信息
      *
      * 使用方法
-     * 1.类名直接调用获取
-     *
-     * @return
-     */
-    public static OperateCommentDetails getCommentDetails(){
-        if(JudgeEmpty.isEmpty(commentDetails)){
-            synchronized (OperateCommentDetails.class){
-                if(JudgeEmpty.isEmpty(commentDetails)){
-                    commentDetails=new OperateCommentDetails();
-                }
-            }
-        }
-        return commentDetails;
-    }
-
-    /**
-     * 功能
-     * 插入评论信息
-     *
-     * 使用方法
-     * 1.传入评论信息对象
+     * 1.传入社区对象
      * 2.通过方法isSuccess获取插入结果
      *
      * 注意
-     * 1.传入评论对象必须携带笔记ID，用户ID，评论详情
+     * 1.传入社区对象必须携带笔记ID以及用户ID
      *
-     * @param details
+     * @param social
      * @return
      */
-    public void add(CommentDetails details){
-        JSONObject data=objectOperation.setCommentDetailsToJSON(details,"add");
-        String result=sendData(data,null);
+    public void add(Social social){
+        JSONObject data=objectOperation.setSocialToJSON(social,"add");
+        String result=sendData(data);
         setSuccess(result);
     }
 
     /**
      * 功能
-     * 删除评论信息
+     * 删除个人信息
      *
      * 使用方法
-     * 1.传入评论对象
+     * 1.传入社区对象
      * 2.通过方法isSuccess判断删除是否成功
      *
      * 注意
-     * 1.传入评论对象必须携带笔记ID，用户ID，评论详情
+     * 1.传入社区对象必须携带至少一个条件
      *
-     * @param details
+     * @param condition
      * @return
      */
-    public void delete(CommentDetails details){
-        JSONObject data=objectOperation.setCommentDetailsToJSON(details,"delete");
-        String result=sendData(data,null);
+    public void delete(Social condition){
+        JSONObject data=objectOperation.setSocialToJSON(condition,"delete");
+        String result=sendData(data);
         setSuccess(result);
     }
 
     /**
      * 功能
-     * 查询评论信息
+     * 查询社区信息
      *
      * 使用方法
-     * 1.传入评论信息对象
+     * 1.传入社区对象
      *
      * 注意
-     * 1.传入评论信息对象必须携带至少一个条件
+     * 1.传入社区对象必须携带至少一个条件
      * 2.通过方法getQueryData获取返回的个人信息集合
      *
      * @param condition
      * @return
      */
-    public void query(CommentDetails condition){
-        JSONObject data=objectOperation.setCommentDetailsToJSON(condition,"query");
-        String result=sendData(data,null);
+    public void query(Social condition){
+        JSONObject data=objectOperation.setSocialToJSON(condition,"query");
+        String result=sendData(data);
         setQueryData(result);
-    }
-
-    /**
-     * 功能
-     * 更新评论信息
-     *
-     * 使用方法
-     * 1.传入原有评论信息以及修改后的评论信息
-     * 2.通过返回值判断更新是否成功
-     *
-     * 注意
-     * 1.传入的两个评论信息必须笔记ID以及用户ID都一致
-     *
-     * @param oldDetails
-     * @param newDetails
-     * @return
-     */
-    public void update(CommentDetails oldDetails,CommentDetails newDetails){
-        JSONObject condition=objectOperation.setCommentDetailsToJSON(oldDetails,"update");
-        JSONObject data=objectOperation.setCommentDetailsToJSON(newDetails,"update");
-        List<JSONObject> temp=new ArrayList<>();
-        temp.add(condition);
-        temp.add(data);
-        JSONArray array=arrayOperation.setObjectToArray(temp);
-        String result=sendData(null,array);
-        setSuccess(result);
     }
 
     /**
@@ -155,18 +102,12 @@ public class OperateCommentDetails {
      *
      * 使用方法
      *
-     * 注意
-     * 1.两个形参中必须有一个为null
-     *
      * @param object
-     * @param array
      * @return
      */
-    private String sendData(JSONObject object,JSONArray array){
+    private String sendData(JSONObject object){
         if(JudgeEmpty.isNotEmpty(object)){
             connection.sendJSONObject(url,method,object);
-        }else if(JudgeEmpty.isNotEmpty(array)){
-            connection.sendJSONArray(url,method,array);
         }
         new Thread(connection).start();
         while (connection.isRun()){
@@ -192,16 +133,6 @@ public class OperateCommentDetails {
     public boolean isSuccess() {
         setNotFinish(true);
         return isSuccess;
-    }
-
-    /**
-     * 获取查询的结果
-     *
-     * @return
-     */
-    public List<CommentDetails> getQueryData(){
-        setNotFinish(true);
-        return queryData;
     }
 
     private void setNotFinish(boolean notFinish) {
@@ -248,20 +179,39 @@ public class OperateCommentDetails {
         }
         if(JudgeEmpty.isNotEmpty(temp)){
             for(JSONObject object:temp){
-                CommentDetails details=objectOperation.getCommentDetailsFromJSON(object);
-                queryData.add(details);
+                queryData.add(objectOperation.getSocialFromJSON(object));
             }
         }
     }
 
-    private OperateCommentDetails(){
-        operateInformation=OperateInformation.getOperateInformation();
+    /**
+     * 获取查询的结果
+     *
+     * @return
+     */
+    public List<Social> getQueryData() {
+        setNotFinish(true);
+        return queryData;
+    }
+
+    private OperateSocial(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
         connection=HttpConnection.getConnection();
-        queryData=new ArrayList<>();
-        url=HttpConstant.getConstant().getURL_CommentDetails();
+        url=HttpConstant.getConstant().getURL_Social();
         method="POST";
+        queryData=new ArrayList<>();
         setNotFinish(true);
+    }
+
+    public static OperateSocial getOperateSocial(){
+        if(JudgeEmpty.isEmpty(operateSocial)){
+            synchronized (OperateSocial.class){
+                if(JudgeEmpty.isEmpty(operateSocial)){
+                    operateSocial=new OperateSocial();
+                }
+            }
+        }
+        return operateSocial;
     }
 }

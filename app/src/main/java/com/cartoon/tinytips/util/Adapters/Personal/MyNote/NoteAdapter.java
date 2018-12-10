@@ -107,9 +107,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 int position=holder.getAdapterPosition();
-                                model.deleteNote(list.get(position), new ValueCallBack<String>() {
+                                model.deleteNote(list,list.get(position), new ValueCallBack<String>() {
                                     @Override
                                     public void onSuccess(String s) {
+                                        notifyDataSetChanged();
                                         ShowToast.shortToast(s);
                                     }
 
@@ -126,7 +127,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
-
                 AlertDialog dialog=builder.create();
                 dialog.show();
             }

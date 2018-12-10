@@ -2,10 +2,11 @@ package com.cartoon.tinytips.util.JSON;
 
 import android.util.Log;
 
-import com.cartoon.tinytips.bean.Comment;
 import com.cartoon.tinytips.bean.CommentDetails;
+import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.Social;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
@@ -54,93 +55,63 @@ public class JSONObjectOperation {
     }
 
     /**
-     * 功能
-     * 将传入的comment转换成json文件
-     *
-     * @param comment
-     * @param method
+     * 将传入的social转换成json文件
+     * @param social
      * @return
      */
-    public JSONObject setCommentToJSON(Comment comment,String method){
-        if(JudgeEmpty.isEmpty(comment)){
+    public JSONObject setSocialToJSON(Social social,String method){
+        if(JudgeEmpty.isEmpty(social)){
             return null;
         }
-        else{
-            JSONObject result=new JSONObject();
-            try{
-                result.put("method",method);
-                if(comment.getNoteId()!=0){
-                    result.put("noteId",comment.getNoteId());
-                }
-                if(JudgeEmpty.isNotEmpty(comment.getTag())){
-                    result.put("tag",comment.getTag().toString());
-                }
-                if(comment.getLike()!=0){
-                    result.put("like",comment.getLike());
-                }
-                if(comment.getComment()!=0){
-                    result.put("comment",comment.getComment());
-                }
-                if(comment.getCollect()!=0){
-                    result.put("collect",comment.getCollect());
-                }
-                if(comment.getForward()!=0){
-                    result.put("forward",comment.getForward());
-                }
-            }catch(JSONException e){
-                Log.d("jsonObjectException","jsonObjectException:将comment转换json文件出现错误");
-                e.printStackTrace();
+        JSONObject result=new JSONObject();
+        try {
+            result.put("method",method);
+            if(social.getUserId()!=0){
+                result.put("userId",social.getUserId());
             }
-            return result;
+            if(JudgeEmpty.isNotEmpty(social.getType())){
+                result.put("type",social.getType());
+            }
+            if(social.getNoteId()!=0){
+                result.put("noteId",social.getNoteId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getDate())){
+                result.put("date",social.getDate());
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+            Log.d("jsonObjectException","将Social转换成JSON文件发生错误");
         }
+        return result;
     }
 
     /**
-     * 获取传入json文件中的comment值
+     * 将传入的json文件转化成Social
      * @param object
      * @return
      */
-    public Comment getCommentFromJSON(JSONObject object){
+    public Social getSocialFromJSON(JSONObject object){
         if(JudgeEmpty.isEmpty(object)){
             return null;
         }
-        else{
-            Comment comment=new Comment();
-            try{
-                if(object.has("noteId")){
-                    comment.setNoteId(object.getLong("noteId"));
-                }
-                if(object.has("tag")){
-                    String temp=object.getString("tag");
-                    comment.setTag(changeStringToList(temp));
-                }
-                if(object.has("like")){
-                    if(object.getInt("like")!=0){
-                        comment.setLike(object.getInt("like"));
-                    }
-                }
-
-                if(object.has("comment")){
-                    if(object.getInt("comment")!=0){
-                        comment.setComment(object.getInt("comment"));
-                    }
-                }
-                if(object.has("collect")){
-                    if(object.getInt("collect")!=0){
-                        comment.setCollect(object.getInt("collect"));
-                    }
-                }
-                if(object.has("forward")){
-                    if(object.getInt("forward")!=0){
-                        comment.setForward(object.getInt("forward"));
-                    }
-                }
-            }catch(JSONException e){
-                Log.d("jsonObjectException","jsonObjectException:将json文件转换commentDetails出现错误");
-                e.printStackTrace();
+        Social social=new Social();
+        try {
+            if(object.has("type")){
+                social.setType(object.getString("type"));
             }
-            return comment;
+            if(object.has("userId")){
+                social.setUserId(object.getLong("userId"));
+            }
+            if(object.has("noteId")){
+                social.setNoteId(object.getLong("noteId"));
+            }
+            if(object.has("date")){
+                social.setDate(object.getString("date"));
+            }
+        }catch (JSONException e){
+            Log.d("jsonObjectException","将JSON文件转换成Social发生错误");
         }
+        return social;
     }
 
     /**

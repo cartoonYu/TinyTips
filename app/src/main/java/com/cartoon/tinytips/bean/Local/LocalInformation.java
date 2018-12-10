@@ -56,6 +56,33 @@ public class LocalInformation {
 
     /**
      * 功能
+     * 更新本地数据文件的个人信息
+     * @param information
+     * @return
+     */
+    public boolean update(Information information){
+        if(JudgeEmpty.isEmpty(information)){
+            return false;
+        }
+        editor.putString("headPortraitName",information.getHeadPortraitName());
+        editor.putString("headPortraitResource",information.getHeadPortraitResource());
+        editor.putString("password",information.getPassword());
+        editor.putString("account",information.getAccount());
+        editor.putString("nickName",information.getNickName());
+        editor.putBoolean("sex",information.isSex());
+        if(JudgeEmpty.isNotEmpty(information.getInterest())){
+            editor.putString("interest",changeListToString(information.getInterest(),"$"));
+        }
+        editor.putString("school",information.getSchool());
+        editor.putString("major",information.getMajor());
+        editor.putString("background",information.getBackground());
+        editor.putString("resume",information.getResume());
+        editor.apply();
+        return true;
+    }
+
+    /**
+     * 功能
      * 从本地数据文件中读取用户的个人信息
      *
      * @return

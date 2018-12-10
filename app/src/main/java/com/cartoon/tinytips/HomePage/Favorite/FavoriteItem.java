@@ -1,87 +1,53 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
-import android.text.SpannableString;
-
 import com.cartoon.tinytips.bean.Note;
 
 import java.io.File;
-import java.util.List;
+import java.util.Map;
 
 public class FavoriteItem {
+
     private File userImage;
-    private String userName;
+
     private Note note;
-    private int NumOfFavorite;
-    private int NumOfRecommend;
-    private int NumOfCollection;
-    private int NumOfShare;
-    private String time;
+
+    private Map<String,Integer> numOfSocial;
+
+    private Map<String,Boolean> isClick;
 
     public FavoriteItem(){
-    }
-
-    public void setUserImage(File userImage) {
-        this.userImage = userImage;
-    }
-
-    public void setNote(Note note) {
-        this.note = note;
-    }
-
-    public Note getNote() {
-        return note;
-    }
-
-    public int getNumOfRecommend() {
-        return NumOfRecommend;
-    }
-
-    public void setNumOfRecommend(int numOfRecommend) {
-        NumOfRecommend = numOfRecommend;
     }
 
     public File getUserImage() {
         return userImage;
     }
 
-    public int getNumOfCollection() {
-        return NumOfCollection;
+    public void setUserImage(File userImage) {
+        this.userImage = userImage;
     }
 
-    public int getNumOfFavorite() {
-        return NumOfFavorite;
+    public Map<String, Integer> getNumOfSocial() {
+        return numOfSocial;
     }
 
-    public int getNumOfShare() {
-        return NumOfShare;
+    public void setNumOfSocial(Map<String, Integer> numOfSocial) {
+        this.numOfSocial = numOfSocial;
     }
 
-    public String getTime() {
-        return time;
+    public Map<String, Boolean> getIsClick() {
+        return isClick;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setIsClick(Map<String, Boolean> isClick) {
+        this.isClick = isClick;
     }
 
-    public void setNumOfFavorite(int numOfFavorite) {
-        NumOfFavorite = numOfFavorite;
+    public Note getNote() {
+        return note;
     }
 
-    public void setNumOfCollection(int numOfCollection) {
-        NumOfCollection = numOfCollection;
-    }
-
-    public void setNumOfShare(int numOfShare) {
-        NumOfShare = numOfShare;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNote(Note note) {
+        this.note = note;
     }
 
 }

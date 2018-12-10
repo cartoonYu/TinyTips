@@ -55,7 +55,7 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     protected void initView(){
         revampStatusBar();
         initToolbar();
-        initCollect();
+        presenter.initData();
     }
 
     @Override
@@ -73,14 +73,8 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     }
 
     @Override
-    public void initCollect(){
-        collectList=new ArrayList<>();
-        com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect c
-                =new com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect
-                ("asd",getResources().getDrawable(R.drawable.nav_icon),"cartoon",1,2,3,4);
-        for(int i=0;i<20;i++){
-            collectList.add(c);
-        }
+    public void initCollect(List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collects){
+        collectList=collects;
         LinearLayoutManager manager=new LinearLayoutManager(this);
         collect.setLayoutManager(manager);
         collectAdapter=new CollectAdapter(collectList);

@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.content.Context;
+import android.icu.text.IDNA;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -22,6 +23,7 @@ import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.bean.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -29,6 +31,7 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -116,16 +119,114 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 IntentActivity.intentWithData(mContext,NoteDetail.class,"note",mFavoriteItems.get(position).getNote());
             }
         });
+        holder.Cnums_item_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //收藏按钮点击事件
+                final FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                model.onClickItem(item, "Collect", new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        notifyDataSetChanged();
+                        ShowToast.shortToast(s);
+                        if(item.getIsClick().get("Collect")){
+                            holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
+                        }
+                        else {
+                            holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+
+                    }
+                });
+            }
+        });
+        holder.favoritenums_item_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点赞按钮点击事件
+                final FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                model.onClickItem(item, "Like", new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        notifyDataSetChanged();
+                        ShowToast.shortToast(s);
+                        if(item.getIsClick().get("Like")){
+                            holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);
+                        }
+                        else {
+                            holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favourit);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.userImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //头像点击事件
+                FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.userNames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //昵称点击事件
+                FavoriteItem item=mFavoriteItems.get(holder.getAdapterPosition());
+                Information information=new Information();
+                information.setNickName(item.getNote().getAuthor());
+                model.clickUser(information, new ValueCallBack<Information>() {
+                    @Override
+                    public void onSuccess(Information information) {
+                        IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
         return holder;
     }
 
     @NonNull
     @Override
     public void onBindViewHolder(final FavoriteAdapter.ViewHolder holder, final int position) {
-        final FavoriteItem FavoriteItem = mFavoriteItems.get(position);
-        Note note=FavoriteItem.getNote();
+        final FavoriteItem favoriteItem = mFavoriteItems.get(position);
+        Note note=favoriteItem.getNote();
+        Map<String,Boolean> isClick=favoriteItem.getIsClick();
+        Map<String,Integer> numOfSocial=favoriteItem.getNumOfSocial();
         holder.userNames.setText(note.getAuthor());
         holder.titles.setText(note.getTitle());
+        if(isClick.get("Like")){
+            holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);
+        }
+        if(isClick.get("Collect")){
+            holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
+        }
         if(!note.getWordDetails().isEmpty()){
             holder.contents.setText(note.getWordDetails().get(0));
         }
@@ -134,55 +235,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 Glide.with(mContext).load(note.getPhotoDetails().get(0)).into(holder.image);
             }
         }
-
-        holder.NumOfRecommends.setText(Integer.toString(FavoriteItem.getNumOfRecommend()));
-        holder.NumOfCollections.setText(Integer.toString(FavoriteItem.getNumOfCollection()));
-        holder.NumOfFavorites.setText(Integer.toString(FavoriteItem.getNumOfFavorite()));
-        holder.time.setText(FavoriteItem.getTime());
-        holder.NumOfShares.setText(Integer.toString(FavoriteItem.getNumOfShare()));
-        Glide.with(mContext).load(FavoriteItem.getUserImage()).into(holder.userImages);
-        holder.Cnums_item_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
-                final int num = new Integer(holder.NumOfCollections.getText().toString());
-                FavoriteItem item = mFavoriteItems.get(holder.getAdapterPosition());
-                item.setNumOfCollection(num+1);
-                model.addFavorites(item, new String("collect"), new ValueCallBack<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        holder.NumOfCollections.setText(Integer.toString(num+1));
-                        ShowToast.shortToast(s);
-                    }
-
-                    @Override
-                    public void onFail(String msg) {
-                        ShowToast.shortToast(msg);
-                    }
-                });
-            }
-        });
-        holder.favoritenums_item_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);
-                final int num = new Integer(holder.NumOfFavorites.getText().toString());
-                FavoriteItem item = mFavoriteItems.get(holder.getAdapterPosition());
-                item.setNumOfFavorite(num+1);
-                model.addFavorites(item,new String("like"),new ValueCallBack<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        holder.NumOfFavorites.setText(Integer.toString(num+1));
-                        ShowToast.shortToast(s);
-                    }
-
-                    @Override
-                    public void onFail(String msg) {
-                        ShowToast.shortToast(msg);
-                    }
-                });
-            }
-        });
+        holder.NumOfCollections.setText(Integer.toString(numOfSocial.get("Collect")));
+        holder.NumOfFavorites.setText(Integer.toString(numOfSocial.get("Like")));
+        holder.time.setText(note.getDate());
+        Glide.with(mContext).load(favoriteItem.getUserImage()).into(holder.userImages);
     }
 
     @Override

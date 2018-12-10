@@ -1,44 +1,41 @@
 package com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage;
 
+import com.cartoon.tinytips.bean.Note;
+
+import java.util.Map;
+
 public class DynamicState {
-    private String title;
-    private String date;
-    private int like;
-    private int comment;
-    private int collect;
-    private int forward;
 
-    public DynamicState(String title,String date,int like,int comment,int collect,int forward){
-        this.title=title;
-        this.date=date;
-        this.like=like;
-        this.comment=comment;
-        this.collect=collect;
-        this.forward=forward;
+    private Note note;
+    private Map<String,Integer> numOfSocial;
+    private Map<String,Boolean> isClick;
+
+    public DynamicState(){
+
     }
 
-    public int getCollect() {
-        return collect;
+    public void setNote(Note note) {
+        this.note = note;
     }
 
-    public int getComment() {
-        return comment;
+    public Note getNote() {
+        return note;
     }
 
-    public int getForward() {
-        return forward;
+    public void setIsClick(Map<String, Boolean> isClick) {
+        this.isClick = isClick;
     }
 
-    public int getLike() {
-        return like;
+    public Map<String, Boolean> getIsClick() {
+        return isClick;
     }
 
-    public String getTitle() {
-        return title;
+
+    public void setNumOfSocial(Map<String, Integer> numOfSocial) {
+        this.numOfSocial = numOfSocial;
     }
 
-    public String getDate() {
-        return date;
+    public Map<String, Integer> getNumOfSocial() {
+        return numOfSocial;
     }
-
 }

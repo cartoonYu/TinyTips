@@ -11,6 +11,7 @@ import com.cartoon.tinytips.util.UI.RevampToolbar;
 import butterknife.BindView;
 
 public class ShareNote extends BaseActivity<ShareNotePresenter> implements IShareNote.View {
+
     @BindView(R.id.statusBar)
     View statusBar;
 

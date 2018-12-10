@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -170,7 +171,13 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             List<Uri> result = Matisse.obtainResult(data);
+            presenter.revampHeadPro(result.get(0));
         }
+    }
+
+    @OnClick(R.id.name_detailPersonal)
+    public void revampResume(){
+        //简介点击事件
 
     }
 
