@@ -11,16 +11,16 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:src="@mipmap/register_phonenum"
-        android:id="@+id/phoneNum"/>
+        android:id="@+id/nickName"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@id/phoneNum"
+        android:layout_toRightOf="@id/nickName"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:background="@drawable/coners_bg"
-        android:hint="请输入手机号码/邮箱"
+        android:hint="请输入昵称"
         android:textSize="14sp"
         android:textColor="@color/black"
-        android:id="@+id/register_account"/>
+        android:id="@+id/register_nickName"/>
 </RelativeLayout>

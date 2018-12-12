@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.Note.Details.NoteDetail;
+import com.cartoon.tinytips.Note.RevampNote.RevampNote;
 import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.Personal.MyNote.IMyNote;
 import com.cartoon.tinytips.Personal.MyNote.MyNoteModel;
@@ -53,7 +54,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         @BindViews({R.id.personal_mynote_tag1,R.id.personal_mynote_tag2,R.id.personal_mynote_tag3})
         List<TextView> tags;
 
+        @BindView(R.id.personal_mynote_delete)
         ImageView delete;
+
+        @BindView(R.id.personal_mynote_revamp)
+        ImageView revamp;
 
         private IOnItemClickListener mListener;
 
@@ -63,7 +68,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             itemView.setOnClickListener(this);
             ButterKnife.bind(this,view);
             cardView = (CardView) view;
-            delete = (ImageView)view.findViewById(R.id.personal_mynote_delete);
         }
 
         @Override
@@ -131,6 +135,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                 dialog.show();
             }
         });
+        holder.revamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Note note=list.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,RevampNote.class,"note",note);
+            }
+        });
+
         return holder;
     }
     public void setOnItemClickListener(IOnItemClickListener listener) {this.mClickListener = listener;}

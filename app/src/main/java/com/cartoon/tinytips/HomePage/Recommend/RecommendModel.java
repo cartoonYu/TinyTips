@@ -127,16 +127,14 @@ public class RecommendModel implements IRecommend.Model {
     public void clickItem(RecommendItem item,String type,ValueCallBack<String> callBack) {
         Social social=new Social();
         social.setNoteId(item.getNote().getId());
-        social.setType(type);
         social.setUserId(localInformation.getId());
-        Map<String,Boolean> map=item.getIsClick();
-        Boolean isClick=map.get(type);
-        if(isClick){
+        social.setType(type);
+        if(item.getIsClick().get(type)){
             operateSocial.delete(social);
             while (operateSocial.isNotFinish()){
             }
             if(operateSocial.isSuccess()){
-                map.put(type,false);
+                item.getIsClick().put(type,false);
                 item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)-1);
                 callBack.onSuccess(type+":取消成功");
             }
@@ -150,14 +148,14 @@ public class RecommendModel implements IRecommend.Model {
             }
             if(operateSocial.isSuccess()){
                 item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)+1);
-                map.put(type,true);
+                item.getIsClick().put(type,true);
                 callBack.onSuccess(type+":成功");
             }
             else {
                 callBack.onFail(type+":失败");
             }
         }
-        item.setIsClick(map);
+
     }
 
     /**

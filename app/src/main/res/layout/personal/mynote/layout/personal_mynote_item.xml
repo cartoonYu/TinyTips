@@ -27,6 +27,15 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/recycle"/>
 
+        <ImageView
+            android:id="@+id/personal_mynote_revamp"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_toLeftOf="@id/personal_mynote_delete"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/revamp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

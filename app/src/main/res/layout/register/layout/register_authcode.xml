@@ -12,7 +12,7 @@
         android:layout_marginLeft="7.5dp"
         android:src="@mipmap/register_authcode"
         android:id="@+id/authcode"/>
-    <com.cartoon.tinytips.util.UI.ScrollEditText
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/authcode"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Personal.Setting.Setting;
@@ -19,8 +20,14 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
     @BindView(R.id.statusBar)
     View statusBar;
 
+    @BindView(R.id.personal_setting_security_phoneNum)
+    EditText phoneNum;      //电话号码
+
+    @BindView(R.id.personal_setting_security_authCode)
+    EditText authCode;     //验证码
+
     @BindView(R.id.personal_setting_security_sendAuthCode)
-    EditText authcode;
+    TextView sendAuthCode;    //发送验证码按钮
 
     @BindView(R.id.personal_setting_security_newPassword)
     EditText newPassword;
@@ -28,8 +35,6 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
     @BindView(R.id.personal_setting_security_confirmPassword)
     EditText confirmPassword;
 
-    @BindView(R.id.personal_setting_security_phoneNum)
-    EditText phoneNum;
     @Override
     protected SecurityPresenter initPresent(){
         return new SecurityPresenter(this);
@@ -42,12 +47,24 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
 
     @Override
     protected void initView(){
-
+        revampStatusBar();
     }
+
 
     @Override
     protected void onPrepare(){
 
+    }
+
+    @OnClick(R.id.personal_setting_security_sendAuthCode)
+    public void sendAuthCode(){
+        //发送验证码按钮点击事件
+    }
+
+    @OnClick(R.id.personal_setting_security_finish)
+    public void revampPassword(){
+        //完成按钮点击事件
+        presenter.handleChangePassword();
     }
 
     private void revampStatusBar(){
@@ -56,12 +73,16 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
 
     @Override
     public void onBackPressed(){
-        IntentActivity.intentWithoutData(this,Setting.class);
-        IntentActivity.finishActivity(this);
+        intentToSetting();
     }
 
     @OnClick(R.id.toolbarBack)
     public void onClickBack(){
+        intentToSetting();
+    }
+
+    @Override
+    public void intentToSetting() {
         IntentActivity.intentWithoutData(this,Setting.class);
         IntentActivity.finishActivity(this);
     }
@@ -73,7 +94,7 @@ public class Security extends BaseActivity<SecurityPresenter> implements ISecuri
 
     @Override
     public String getAuthCode(){
-        return authcode.getText().toString();
+        return authCode.getText().toString();
     }
 
     @Override
