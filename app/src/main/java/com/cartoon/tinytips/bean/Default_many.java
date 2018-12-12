@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.bean;
 
+import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 

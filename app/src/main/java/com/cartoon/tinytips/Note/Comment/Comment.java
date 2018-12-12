@@ -41,7 +41,7 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     @BindView(R.id.edit_comment)
     TextView editComment;
 
-
+    private ArrayList<CommentItem> commentArraylist;
 
     private List<CommentItem> commentList;
 
@@ -82,10 +82,12 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     }
 
     @Override
-    public void addComment(CommentItem item) {
+    public void addComment(CommentItem list) {
         editComment.setText("");
-        commentList.add(item);
+        commentList.add(list);
         adapter.notifyDataSetChanged();
+        adapter.notifyItemChanged(commentList.size(),list);
+        Log.d("AAAAAA",commentList.size()+"aaaaa");
     }
 
 
@@ -106,6 +108,7 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     @Override
     public void recyclerList(List<CommentItem> list) {
         commentList=list;
+        Log.d("AAAAAA",commentList.size()+"");
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new CommentAdapter(commentList);
