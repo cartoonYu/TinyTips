@@ -8,24 +8,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:id="@+id/addnoteStatusBar"/>
-
-    <include layout="@layout/addnote_toolbar"
+        android:id="@+id/revampNoteStatusBar"/>
+    <include layout="@layout/revampnote_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addnoteStatusBar"
-        android:id = "@+id/addnoteToolbar">
-    </include>
-
+        android:layout_below="@id/revampNoteStatusBar"
+        android:id = "@+id/revampNoteToolbar"/>
     <LinearLayout
-        android:id="@+id/addnote_addtipsbar"
-        android:layout_below="@id/addnoteToolbar"
+        android:id="@+id/revampNote_addTipsBar"
+        android:layout_below="@id/revampNoteToolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/white">
 
         <Button
-            android:id="@+id/addnote_addtips"
+            android:id="@+id/revampNote_addTips"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
             android:layout_marginLeft="10dp"
@@ -36,12 +33,12 @@
             android:textSize="14sp"
             android:background="@drawable/hone_buttom_coners_bg"/>
     </LinearLayout>
-    
+
     <LinearLayout
-        android:id="@+id/addnote_addtitlebar"
+        android:id="@+id/revampNote_addTitleBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/addnote_addtipsbar"
+        android:layout_below="@id/revampNote_addTipsBar"
         android:layout_marginTop="1dp"
         android:background="@color/white"
         android:orientation="horizontal">
@@ -55,14 +52,13 @@
             android:background="@color/white"
             android:maxLines="1"
             android:id="@+id/addNote_addTitle"/>
-
     </LinearLayout>
 
     <com.cartoon.tinytips.util.UI.ScrollEditText
         android:id="@+id/contentbar"
         android:layout_marginTop="1dp"
-        android:layout_below="@id/addnote_addtitlebar"
-        android:layout_above="@id/addnote_BottomBar"
+        android:layout_below="@id/revampNote_addTitleBar"
+        android:layout_above="@id/revampNote_BottomBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -73,12 +69,10 @@
         android:textSize="14sp"/>
 
     <include
-        layout="@layout/addnote_bottombar"
-        android:id="@+id/addnote_BottomBar"
+        layout="@layout/revampnote_bottombar"
+        android:id="@+id/revampNote_BottomBar"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
-
-
 </RelativeLayout>

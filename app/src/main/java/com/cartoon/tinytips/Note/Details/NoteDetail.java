@@ -15,6 +15,7 @@ import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +41,18 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
 
     @BindView(R.id.note_detail_date)
     TextView date;
+
+    @BindView(R.id.note_detail_like)
+    TextView like;
+
+    @BindView(R.id.note_detail_comment)
+    TextView comment;
+
+    @BindView(R.id.note_detail_forward)
+    TextView forward;
+
+    @BindView(R.id.note_detail_collect)
+    TextView collect;
 
     @Override
     protected NoteDetailPresenter initPresent(){
@@ -71,6 +84,48 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     }
 
     @Override
+    public void setLike(int num) {
+        like.setText(Integer.toString(num));
+    }
+
+    @Override
+    public void setComment(int num) {
+        comment.setText(Integer.toString(num));
+    }
+
+    @Override
+    public void setForward(int num) {
+        forward.setText(Integer.toString(num));
+    }
+
+    @Override
+    public void setCollect(int num) {
+        collect.setText(Integer.toString(num));
+    }
+
+    @Override
+    public void setLike(boolean isClick) {
+        if(isClick){
+            like.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.favorite_press),null,null,null);
+        }
+    }
+
+    @Override
+    public void setComment(boolean isClick) {
+        comment.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.commentmassage),null,null,null);
+    }
+
+    @Override
+    public void setForward(boolean isClick) {
+
+    }
+
+    @Override
+    public void setCollect(boolean isClick) {
+        collect.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.mycollection_press),null,null,null);
+    }
+
+    @Override
     protected void onPrepare(){
         initData();
     }
@@ -82,6 +137,7 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         setTitle();
         setDetails();
         setDate();
+        presenter.initSocial(note);
     }
 
     @OnClick(R.id.toolbarBack)

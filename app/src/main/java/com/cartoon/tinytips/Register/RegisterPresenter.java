@@ -1,9 +1,16 @@
 package com.cartoon.tinytips.Register;
 
+import android.icu.text.IDNA;
+
 import com.cartoon.tinytips.BaseActivityPresenter;
+import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
+import com.cartoon.tinytips.util.file.ImageOperation;
+
+import java.util.ArrayList;
 
 class RegisterPresenter extends BaseActivityPresenter<Register> implements IRegister.Presenter{
 
@@ -17,36 +24,29 @@ class RegisterPresenter extends BaseActivityPresenter<Register> implements IRegi
     }
 
     @Override
-    public void handleRegister(){
-        model.setAuthCode(view.getAuthCode());
-        model.verifyAuthCode(new ValueCallBack<Boolean>() {
+    public void handleRegister() {
+        Information information=new Information();
+        information.setAccount(view.getAccount());
+        information.setPassword(view.getPassword());
+        information.setNickName(view.nickName());
+        information.setHeadPortrait(ImageOperation.getImageOperation().defaultImage(R.drawable.apple,"defaultHeadpro.jpg"));
+        information.setInterest(new ArrayList<String>());
+        information.setSchool("xx大学");
+        information.setMajor("xx专业");
+        information.setBackground("本科");
+        information.setResume("");
+        model.register(information, new ValueCallBack<String>() {
             @Override
-            public void onSuccess(Boolean aBoolean) {
-                Information information=new Information();
-                information.setAccount(view.getAccount());
-                information.setPassword(view.getPassword());
-                model.setInformation(information);
-                model.verifyInformation(new ValueCallBack<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        ShowToast.shortToast(s);
-                        view.intentToMain();
-                    }
-
-                    @Override
-                    public void onFail(String msg) {
-                        ShowToast.shortToast(msg);
-                    }
-
-                });
+            public void onSuccess(String s) {
+                ShowToast.shortToast(s);
+                view.intentToMain();
             }
 
             @Override
             public void onFail(String msg) {
                 ShowToast.shortToast(msg);
             }
-        })  ;
-
+        });
     }
 
     @Override

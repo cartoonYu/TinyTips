@@ -15,7 +15,8 @@
         android:layout_below="@id/statusbar"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:background="@mipmap/register_delete"/>
+        android:background="@mipmap/register_delete"
+        android:id="@+id/register_back"/>
     <include
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -40,12 +41,21 @@
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        layout="@layout/register_nickname"
+        android:id="@+id/nickName"/>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/nickName"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         layout="@layout/register_password"
         android:id="@+id/password"/>
     <include
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/authcode"
+        android:layout_below="@id/password"
         android:layout_marginTop="120dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

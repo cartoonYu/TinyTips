@@ -200,7 +200,6 @@ public class AddNote extends BaseActivity<AddNotePresenter> implements IAddNote.
                 new TipsItem("数学"), new TipsItem("纺织/服装")};
          tips = IntentActivity.getIntentData(this,"NoteTips",tips);
          tip = major[tips].getTipsname();
-         //Toast.makeText(this, tips+"asd", Toast.LENGTH_SHORT).show();
          addnote_addtips.setText(tip);
     }
 

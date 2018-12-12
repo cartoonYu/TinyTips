@@ -1,12 +1,15 @@
 package com.cartoon.tinytips.Register;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.cartoon.tinytips.BaseActivity;
+import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
@@ -29,6 +32,9 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
 
     @BindView(R.id.register_authCode)
     EditText authCode;    //验证码
+
+    @BindView(R.id.register_nickName)
+    EditText nickName;
 
     @BindView(R.id.register_password)
     EditText password;    //密码
@@ -68,6 +74,12 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
         //点击发送验证码按钮
     }
 
+    @OnClick(R.id.register_back)
+    public void onClickBack(){
+        IntentActivity.intentWithoutData(this,Login.class);
+        IntentActivity.finishActivity(this);
+    }
+
     @Override
     public String getAccount(){
         return account.getText().toString();
@@ -81,6 +93,11 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     @Override
     public String getPassword(){
         return password.getText().toString();
+    }
+
+    @Override
+    public String nickName() {
+        return nickName.getText().toString();
     }
 
     @Override

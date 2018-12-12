@@ -50,7 +50,7 @@ class PersonalModel implements IPersonal.Model {
             ShowToast.shortToast("获取笔记信息中");
         }
         List<Note> notes= operateNote.getQueryData();
-        if(notes.isEmpty()){
+        if(JudgeEmpty.isEmpty(notes)){
             callBack.onFail("获取笔记信息失败");
         }
         else {
