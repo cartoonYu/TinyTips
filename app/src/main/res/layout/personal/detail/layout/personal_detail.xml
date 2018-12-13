@@ -86,19 +86,10 @@
                 android:id="@+id/nickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/name_lead"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"/>
-
-            <ImageView
-                android:id="@+id/name_lead"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/lead" />
+                android:layout_marginRight="40dp"
+                android:textSize="14sp"/>
         </RelativeLayout>
 
 

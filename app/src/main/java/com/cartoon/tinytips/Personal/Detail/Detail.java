@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
+import com.cartoon.tinytips.Personal.Detail.Revamp.RevampInformation;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
@@ -175,10 +176,33 @@ public class Detail extends BaseActivity<DetailPresenter> implements IDetail.Vie
         }
     }
 
-    @OnClick(R.id.name_detailPersonal)
+    @OnClick(R.id.produce_detailPersonal)
     public void revampResume(){
         //简介点击事件
+        intentToRevampInformation("resume");
+    }
 
+    @OnClick(R.id.school_detailPersonal)
+    public void revampSchool(){
+        //学校点击事件
+        intentToRevampInformation("school");
+    }
+
+    @OnClick(R.id.major_detailPersonal)
+    public void revampMajor(){
+        //专业点击事件
+        intentToRevampInformation("major");
+    }
+
+    @OnClick(R.id.degree_detailPersonal)
+    public void revampDegree(){
+        //学历点击事件
+        intentToRevampInformation("degree");
+    }
+
+    private void intentToRevampInformation(String type){
+        IntentActivity.intentWithData(this,RevampInformation.class,"RevampType",type);
+        IntentActivity.finishActivity(this);
     }
 
     @OnClick(R.id.toolbarBack)

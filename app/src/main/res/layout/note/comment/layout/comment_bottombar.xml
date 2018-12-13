@@ -15,7 +15,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp">
 
-        <com.cartoon.tinytips.util.UI.ScrollEditText
+        <EditText
             android:id="@+id/edit_comment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

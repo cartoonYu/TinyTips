@@ -34,6 +34,7 @@ android {
                             'src/main/res/layout/personal',
                             'src/main/res/layout/personal/mynote',
                             'src/main/res/layout/personal/detail',
+                            'src/main/res/layout/personal/detail/revamp',
                             'src/main/res/layout/personal/homepage',
                             'src/main/res/layout/personal/collect',
                             'src/main/res/layout/personal/setting',

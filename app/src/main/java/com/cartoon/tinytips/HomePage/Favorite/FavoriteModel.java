@@ -54,7 +54,10 @@ public class FavoriteModel implements IFavorite.Model {
         else {
             Set<Note> noteSet=new HashSet<>();
             for(Note temp:notes){
-                noteSet.add(temp);
+                if(temp.getId()!=localInformation.getId()){
+                    noteSet.add(temp);
+                }
+
             }
             Iterator<Note> iterator=noteSet.iterator();
             while(iterator.hasNext()){

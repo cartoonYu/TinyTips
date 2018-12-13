@@ -122,11 +122,7 @@ public class DivideNote {
             }
         }
         List<File> files=new ArrayList<>();
-        for(String s:word){
-            Log.d("asd",s);
-        }
         for(String s:photo){
-            Log.d("asd",s);
             Uri uri=Uri.parse(s);
             files.add(UriAndFile.getInstance().uriToFile(uri));
         }

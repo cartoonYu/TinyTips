@@ -43,6 +43,20 @@ public class IntentActivity{
     }
 
     /**
+     * 使用intent携带字符串数值数据跳转活动
+     * context为开始的活动，des为目标活动,data为控制fragment显示的变量
+     * @param context
+     * @param des
+     * @param str
+     * @param data(传递的数据)
+     */
+    public static void intentWithData(Context context,Class<?> des,String str,String data){
+        intent=new Intent(context,des);
+        intent.putExtra(str, data);
+        intent(context,intent);
+    }
+
+    /**
      * 使用intent携带bean对象跳转活动
      * context为开始的活动，des为目标活动,data为控制fragment显示的变量
      * @param context
@@ -89,6 +103,18 @@ public class IntentActivity{
         Activity activity=(Activity)context;
         intent=activity.getIntent();
         return intent.getIntExtra(str,defaultData);
+    }
+
+    /**
+     * 返回活动跳转中intent携带的字符串
+     * @param context
+     * @param str
+     * @return
+     */
+    public static String getIntentData(Context context,String str){
+        Activity activity=(Activity)context;
+        intent=activity.getIntent();
+        return intent.getStringExtra(str);
     }
 
     /**
