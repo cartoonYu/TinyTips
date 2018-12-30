@@ -1,10 +1,12 @@
 package com.cartoon.tinytips.Register;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
-import com.cartoon.tinytips.util.JudgeEmpty;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+
+import java.util.List;
 
 class RegisterModel implements IRegister.Model {
 
@@ -13,7 +15,7 @@ class RegisterModel implements IRegister.Model {
     private LocalInformation localInformation;
 
     @Override
-    public void register(Information information, ValueCallBack<String> callBack) {
+    public void register(final Information information,final ValueCallBack<String> callBack) {
         if(information.getAccount().equals("")){
             callBack.onFail("尚未填写账号");
             return;
@@ -26,20 +28,32 @@ class RegisterModel implements IRegister.Model {
             callBack.onFail("尚未填写密码");
             return;
         }
-        operateInformation.add(information);
-        while (operateInformation.isNotFinish()){
-        }
-        if(operateInformation.isSuccess()){
-            operateInformation.query(information);
-            while (operateInformation.isNotFinish()){
+        operateInformation.add(information, new IOperateBean<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateInformation.query(information, new IOperateBean<List<Information>>() {
+                    @Override
+                    public void onSuccess(List<Information> information) {
+                        if(localInformation.add(information.get(0))){
+                            callBack.onSuccess("注册成功");
+                        }
+                        else {
+                            callBack.onFail("注册失败，请重试");
+                        }
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callBack.onFail("注册失败，请重试");
+                    }
+                });
             }
-            information=operateInformation.getQueryData().get(0);
-            if(localInformation.add(information)){
-                callBack.onSuccess("注册成功");
-                return;
+
+            @Override
+            public void onFail(String msg) {
+
             }
-        }
-        callBack.onFail("注册失败，请重试");
+        });
     }
 
     public RegisterModel(){

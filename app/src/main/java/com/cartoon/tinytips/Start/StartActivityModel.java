@@ -1,13 +1,9 @@
 package com.cartoon.tinytips.Start;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 

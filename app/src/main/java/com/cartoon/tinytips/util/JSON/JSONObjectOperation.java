@@ -2,11 +2,12 @@ package com.cartoon.tinytips.util.JSON;
 
 import android.util.Log;
 
-import com.cartoon.tinytips.bean.CommentDetails;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Social;
+import com.cartoon.tinytips.bean.table.Comment;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Social;
+import com.cartoon.tinytips.bean.view.CommentDetails;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
@@ -15,11 +16,10 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.lang.System.out;
 
 /**
  * @author cartoon
@@ -116,24 +116,24 @@ public class JSONObjectOperation {
 
     /**
      * 将传入的commentDetails转换成json文件
-     * @param commentDetails
+     * @param comment
      * @return
      */
-    public JSONObject setCommentDetailsToJSON(CommentDetails commentDetails,String method){
-        if(JudgeEmpty.isEmpty(commentDetails)){
+    public JSONObject setCommentToJSON(Comment comment, String method){
+        if(JudgeEmpty.isEmpty(comment)){
             return null;
         }
         else{
             JSONObject result=new JSONObject();
             try{
                 result.put("method",method);
-                if(commentDetails.getNoteId()!=0){
-                    result.put("noteId",commentDetails.getNoteId());
+                if(comment.getNoteId()!=0){
+                    result.put("noteId",comment.getNoteId());
                 }
-                if(commentDetails.getUserId()!=0){
-                    result.put("userId",commentDetails.getUserId());
+                if(comment.getUserId()!=0){
+                    result.put("userId",comment.getUserId());
                 }
-                result.put("details",commentDetails.getDetails());
+                result.put("details",comment.getDetails());
             }catch(JSONException e){
                 Log.e("jsonObjectException","将commentDetails转换json文件出现错误");
                 e.printStackTrace();
@@ -147,12 +147,12 @@ public class JSONObjectOperation {
      * @param object
      * @return
      */
-    public CommentDetails getCommentDetailsFromJSON(JSONObject object){
+    public Comment getCommentFromJSON(JSONObject object){
         if(JudgeEmpty.isEmpty(object)){
             return null;
         }
         else{
-            CommentDetails commentDetails=new CommentDetails();
+            Comment commentDetails=new Comment();
             try{
                 if(object.has("noteId")){
                     if(object.getLong("noteId")!=0){
@@ -395,6 +395,206 @@ public class JSONObjectOperation {
     }
 
     /**
+     * 获取传入json文件的StatSocial
+     * @param object
+     * @return
+     */
+    public StatSocial getStatSocialFromJSON(JSONObject object){
+        StatSocial data=new StatSocial();
+        try {
+            if(object.has("userId")&&object.getLong("userId")!=0){
+                data.setUserId(object.getLong("userId"));
+            }
+            if(object.has("headPortrait")){
+                data.setHeadPortraitResource(object.getString("headPortrait"));
+            }
+            if(object.has("headPortraitName")){
+                data.setHeadPortraitName(object.getString("headPortraitName"));
+            }
+            if(JudgeEmpty.isNotEmpty(data.getHeadPortraitResource())&&JudgeEmpty.isNotEmpty(data.getHeadPortraitName())){
+                data.setHeadPortrait(fileOperation.transStringToFile(data.getHeadPortraitResource(),data.getHeadPortraitName()));
+            }
+            if(object.has("nickName")){
+                data.setNickName(object.getString("nickName"));
+            }
+            if(object.has("noteId")&&object.getLong("noteId")!=0){
+                data.setNoteId(object.getLong("noteId"));
+            }
+            if(object.has("title")){
+                data.setTitle(object.getString("title"));
+            }
+            if(object.has("word")){
+                data.setWordDetails(changeStringToList(object.getString("word")));
+            }
+            if(object.has("photo")){
+                data.setPhotoSource(changeStringToMap(object.getString("photo")));
+            }
+            if(object.has("date")){
+                data.setDate(object.getString("date"));
+            }
+            if(object.has("numOfLove")){
+                data.setNumOfLove(object.getInt("numOfLove"));
+            }
+            if(object.has("loveList")){
+                List<String> temp=changeStringToList(object.getString("loveList"));
+                data.setLoveList(getStatSocialList(temp));
+            }
+            if(object.has("numOfComment")){
+                data.setNumOfComment(object.getInt("numOfComment"));
+            }
+            if(object.has("commentList")){
+                List<String> temp=changeStringToList(object.getString("commentList"));
+                data.setCommentList(getStatSocialList(temp));
+            }
+            if(object.has("numOfCollect")){
+                data.setNumOfCollect(object.getInt("numOfCollect"));
+            }
+            if(object.has("collectList")){
+                List<String> temp=changeStringToList(object.getString("collectList"));
+                data.setCollectList(getStatSocialList(temp));
+            }
+            if(object.has("numOfForward")){
+                data.setNumOfForward(object.getInt("numOfForward"));
+            }
+            if(object.has("forwardList")){
+                List<String> temp=changeStringToList(object.getString("forwardList"));
+                data.setForwardList(getStatSocialList(temp));
+            }
+        }catch (JSONException e){
+            Log.d("jsonObjectException","将json文件转换成statSocial发生错误");
+        }
+        return data;
+    }
+
+    /**
+     * 将StatSocial对象转换成json文件
+     * @param social
+     * @return
+     */
+    public JSONObject setStatSocialToJSON(StatSocial social){
+        JSONObject result=new JSONObject();
+        try {
+            if(social.getUserId()!=0){
+                result.put("userId",social.getUserId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getHeadPortrait())){
+                result.put("headPortrait",social.getHeadPortrait());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getHeadPortraitName())){
+                result.put("headPortraitName",social.getHeadPortraitName());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getNickName())){
+                result.put("nickName",social.getNickName());
+            }
+            if(social.getNoteId()!=0){
+                result.put("noteId",social.getNoteId());
+            }
+            if(JudgeEmpty.isNotEmpty("title")){
+                result.put("title",social.getTitle());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getWordDetails())){
+                result.put("word",social.getWordDetails());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getPhoto())){
+                result.put("photo",social.getPhoto().toString());
+            }
+            if(JudgeEmpty.isNotEmpty("date")){
+                result.put("date",social.getDate());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getLoveList())){
+                result.put("loveList",social.getLoveList().toString());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getCollectList())){
+                result.put("collectList",social.getCollectList().toString());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getCommentList())){
+                result.put("commentList",social.getCommentList().toString());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getForwardList())){
+                result.put("forwardList",social.getForwardList().toString());
+            }
+            result.put("numOfLove",social.getNumOfLove());
+            result.put("numOfComment",social.getNumOfComment());
+            result.put("numOfCollect",social.getNumOfCollect());
+            result.put("numOfForward",social.getNumOfForward());
+        }catch (JSONException e){
+            Log.d("jsonObjectException","将statSocial转换成json文件发生错误");
+        }
+        return result;
+    }
+
+    /**
+     * 获取传入json文件的CommentDetails
+     * @param object
+     * @return
+     */
+    public CommentDetails getCommentDetailsFromJSON(JSONObject object){
+        CommentDetails details=new CommentDetails();
+        try {
+            if(object.has("noteId")){
+                details.setNoteId(object.getLong("noteId"));
+            }
+            if(object.has("userId")){
+                details.setUserId(object.getLong("userId"));
+            }
+            if(object.has("date")){
+                details.setDate(object.getString("date"));
+            }
+            if(object.has("headPortrait")){
+                details.setHeadPortraitResource(object.getString("headPortrait"));
+            }
+            if(object.has("headPortraitName")){
+                details.setHeadPortraitName(object.getString("headPortraitName"));
+            }
+            if(object.has("nickName")){
+                details.setNickName(object.getString("nickName"));
+            }
+            if(object.has("details")){
+                details.setDetails(object.getString("details"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return details;
+    }
+
+    /**
+     * 将CommentDetails转换成JSON文件
+     * @param details
+     * @return
+     */
+    public JSONObject setCommentDetailsToJSON(CommentDetails details){
+        JSONObject object=new JSONObject();
+        try {
+            if(details.getNoteId()!=0){
+                object.put("noteId",details.getNoteId());
+            }
+            if(details.getUserId()!=0){
+                object.put("userId",details.getUserId());
+            }
+            if(JudgeEmpty.isNotEmpty(details.getDate())){
+                object.put("date",details.getDate());
+            }
+            if(JudgeEmpty.isNotEmpty(details.getDetails())){
+                object.put("details",details.getDetails());
+            }
+            if(JudgeEmpty.isNotEmpty(details.getHeadPortrait())){
+                object.put("headPortrait",details.getHeadPortraitResource());
+            }
+            if(JudgeEmpty.isNotEmpty(details.getHeadPortraitName())){
+                object.put("headPortraitName",details.getHeadPortraitName());
+            }
+            if(JudgeEmpty.isNotEmpty(details.getNickName())){
+                object.put("nickName",details.getNickName());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object;
+    }
+
+
+    /**
      * 功能
      * 获取传入json文件中的结果,用于解析post数据到服务器中返回的json文件
      *
@@ -423,6 +623,36 @@ public class JSONObjectOperation {
             }
             return result;
         }
+    }
+
+    /**
+     * 遍历json文件，用于测试
+     * @param object
+     */
+    public void displayJSON(JSONObject object){
+        if(JudgeEmpty.isEmpty(object)){
+            return;
+        }
+        Iterator<String> it=object.keys();
+        while (it.hasNext()){
+            String key=it.next();
+            Object value= null;
+            try {
+                value = object.get(key);
+
+                if(value instanceof List){
+                    List list=(List)value;
+                    Log.d("displayJSON",key+":"+Integer.toString(list.size()));
+                }
+                else {
+                    Log.d("displayJSON",key+":"+value.toString());
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        Log.d("displayJSON","-----------------------------------");
     }
 
     /**
@@ -465,6 +695,24 @@ public class JSONObjectOperation {
             result.put(strs[i].substring(0,flag).trim(),strs[i].substring(flag+1).trim());
         }
         return result;
+    }
+
+    /**
+     * 获取statSocial中点赞，收藏，转发，评论列表
+     * @param list
+     * @return
+     */
+    private List<Integer> getStatSocialList(List<String> list){
+        List<Integer> data=new ArrayList<>();
+        if(JudgeEmpty.isEmpty(list)){
+            return data;
+        }
+        for(String s:list){
+            if(!s.equals("")){
+                data.add(Integer.parseInt(s));
+            }
+        }
+        return data;
     }
 
     private JSONObjectOperation(){

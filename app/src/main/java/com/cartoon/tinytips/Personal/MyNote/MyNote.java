@@ -1,22 +1,17 @@
 package com.cartoon.tinytips.Personal.MyNote;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.Adapters.Personal.MyNote.NoteAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.util.List;
@@ -66,10 +61,16 @@ public class MyNote extends BaseActivity<MyNotePresenter> implements IMyNote.Vie
 
     @Override
     public void initNote(List<Note> notes){
-        LinearLayoutManager manager=new LinearLayoutManager(this);
-        note.setLayoutManager(manager);
         adapter=new NoteAdapter(notes);
-        note.setAdapter(adapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager manager=new LinearLayoutManager(MyNote.this);
+                note.setLayoutManager(manager);
+                note.setAdapter(adapter);
+            }
+        });
+
     }
 
     @OnClick(R.id.toolbarBack)

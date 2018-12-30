@@ -1,6 +1,6 @@
 package com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage;
 
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.util.Map;
 

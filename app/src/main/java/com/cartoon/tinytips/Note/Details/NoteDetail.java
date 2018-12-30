@@ -6,7 +6,8 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.Note.DivideNote;
@@ -19,6 +20,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INoteDetail.View{
+
+    private StatSocial social;
 
     private Note note;
 
@@ -39,6 +42,18 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
 
     @BindView(R.id.note_detail_date)
     TextView date;
+
+    @BindView(R.id.note_detail_like)
+    TextView like;
+
+    @BindView(R.id.note_detail_comment)
+    TextView comment;
+
+    @BindView(R.id.note_detail_forward)
+    TextView forward;
+
+    @BindView(R.id.note_detail_collect)
+    TextView collect;
 
     @Override
     protected NoteDetailPresenter initPresent(){
@@ -61,12 +76,17 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         initData();
     }
 
-   private void initData() {
+    private void initData() {
+        if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentStatSocial(this,"social"))){
+            social=IntentActivity.getIntentStatSocial(this,"social");
+            presenter.handleStatSocial(social);
+        }
         if(JudgeEmpty.isNotEmpty(IntentActivity.getIntentNote(this,"note"))){
             note=IntentActivity.getIntentNote(this,"note");
+            presenter.handleNote(note);
         }
-    }
 
+    }
 
     @OnClick(R.id.toolbarBack)
     protected void onClickBack(){
@@ -94,13 +114,23 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     }
 
     @Override
-    public void setTitle(String title){
-        this.title.setText(note.getTitle());
+    public void setNote(Note note) {
+        this.note = note;
     }
 
     @Override
-    public void setDetails(Note notedetail){
-      List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(notedetail);
+    public void setSocial(StatSocial social) {
+        this.social = social;
+    }
+
+    @Override
+    public void setTitle(String title){
+        this.title.setText(title);
+    }
+
+    @Override
+    public void setDetails(Note noteDetail){
+        List<SpannableString> stringList=DivideNote.getDivideNote().transNoteToString(noteDetail);
         for(SpannableString string:stringList){
             this.details.append(string);
         }
@@ -111,4 +141,31 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
         this.date.setText(date);
     }
 
+    @Override
+    public void setCollect(int num, boolean isClick) {
+        collect.setText(Integer.toString(num));
+        if(isClick){
+            collect.setCompoundDrawablesRelativeWithIntrinsicBounds
+                    (getResources().getDrawable(R.drawable.mycollection_press),null,null,null);
+        }
+    }
+
+    @Override
+    public void setLove(int num, boolean isClick) {
+        like.setText(Integer.toString(num));
+        if(isClick){
+            like.setCompoundDrawablesRelativeWithIntrinsicBounds
+                    (getResources().getDrawable(R.drawable.favorite_press),null,null,null);
+        }
+    }
+
+    @Override
+    public void setForward(int num, boolean isClick) {
+        forward.setText(Integer.toString(num));
+    }
+
+    @Override
+    public void setComment(int num, boolean isClick) {
+        comment.setText(Integer.toString(num));
+    }
 }

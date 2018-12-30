@@ -1,14 +1,12 @@
 package com.cartoon.tinytips.Personal;
 
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateNote;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.OperateNote;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 
@@ -42,20 +40,20 @@ class PersonalModel implements IPersonal.Model {
     }
 
     @Override
-    public void getNoteNum(ValueCallBack<Integer> callBack){
+    public void getNoteNum(final ValueCallBack<Integer> callBack){
         Note note=new Note();
         note.setUserId(info.getId());
-        operateNote.query(note);
-        while (operateNote.isNotFinish()){
-            ShowToast.shortToast("获取笔记信息中");
-        }
-        List<Note> notes= operateNote.getQueryData();
-        if(JudgeEmpty.isEmpty(notes)){
-            callBack.onFail("获取笔记信息失败");
-        }
-        else {
-            callBack.onSuccess(notes.size());
-        }
+        operateNote.query(note, new IOperateBean<List<Note>>() {
+            @Override
+            public void onSuccess(List<Note> list) {
+                callBack.onSuccess(list.size());
+            }
+
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail("获取笔记信息失败");
+            }
+        });
     }
 
 }

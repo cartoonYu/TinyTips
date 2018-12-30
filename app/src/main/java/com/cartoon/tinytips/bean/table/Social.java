@@ -1,4 +1,4 @@
-package com.cartoon.tinytips.bean;
+package com.cartoon.tinytips.bean.table;
 
 
 /**

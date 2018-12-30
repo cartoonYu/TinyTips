@@ -1,12 +1,10 @@
-package com.cartoon.tinytips.bean;
+package com.cartoon.tinytips.bean.table;
 
 import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Default_many {
     private Note note;

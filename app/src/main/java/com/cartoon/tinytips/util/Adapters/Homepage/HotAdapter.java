@@ -3,7 +3,6 @@ package com.cartoon.tinytips.util.Adapters.Homepage;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +13,13 @@ import android.widget.TextView;
 import com.cartoon.tinytips.HomePage.Hot.HotItem;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>{
 

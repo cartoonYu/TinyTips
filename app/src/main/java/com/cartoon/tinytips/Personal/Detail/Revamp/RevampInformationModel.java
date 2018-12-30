@@ -1,9 +1,10 @@
 package com.cartoon.tinytips.Personal.Detail.Revamp;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
 
 public class RevampInformationModel implements IRevampInformation.Model {
 
@@ -12,19 +13,26 @@ public class RevampInformationModel implements IRevampInformation.Model {
     private LocalInformation localInformation;
 
     @Override
-    public void revampInformation(Information information, ValueCallBack<String> callBack) {
+    public void revampInformation(final Information information,final ValueCallBack<String> callBack) {
         Information oldInformation=localInformation.query();
         information.setSex(oldInformation.isSex());
-        operateInformation.update(oldInformation,information);
-        while (operateInformation.isNotFinish()){
-        }
-        if(operateInformation.isSuccess()){
-            if(localInformation.update(information)){
-                callBack.onSuccess("修改成功");
-                return;
+        operateInformation.update(oldInformation, information, new IOperateBean<String>() {
+            @Override
+            public void onSuccess(String s) {
+                if(localInformation.update(information)){
+                    callBack.onSuccess("修改成功");
+                }
+                else {
+                    callBack.onFail("修改失败，请重试");
+                }
             }
-        }
-        callBack.onFail("修改失败，请重试");
+
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail("修改失败，请重试");
+            }
+        });
+
     }
 
     public RevampInformationModel(){

@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.Note.Addnote;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 
 interface IAddNote {
     interface View{

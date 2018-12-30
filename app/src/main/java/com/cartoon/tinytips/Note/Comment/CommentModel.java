@@ -1,85 +1,74 @@
 package com.cartoon.tinytips.Note.Comment;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.CommentDetails;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateCommentDetails;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Comment;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.OperateComment;
+import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.view.CommentDetails;
+import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.bean.view.check.CheckCommentDetails;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 import com.cartoon.tinytips.util.JudgeEmpty;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommentModel implements IComment.Model {
 
-    private OperateCommentDetails operateCommentDetails;
+    private OperateComment operateComment;
 
     private OperateInformation operateInformation;
+
+    private CheckCommentDetails checkCommentDetails;
 
     private Information localInformation;
 
     @Override
-    public void getComment(Note note, ValueCallBack<List<CommentItem>> callBack) {
+    public void getComment(StatSocial social, final ValueCallBack<List<CommentDetails>> callBack) {
+        if(JudgeEmpty.isEmpty(social)){
+            callBack.onFail("系统错误");
+        }
         CommentDetails commentDetails=new CommentDetails();
-        commentDetails.setNoteId(note.getId());
-        operateCommentDetails.query(commentDetails);
-        while (operateCommentDetails.isNotFinish()){
-        }
-        List<CommentDetails> list=operateCommentDetails.getQueryData();
-        if(JudgeEmpty.isEmpty(list)){
-            callBack.onFail("获取评论失败，请重试");
-        }
-        else {
-            List<CommentItem> commentItems=new ArrayList<>();
-            for(CommentDetails details:list){
-                CommentItem commentItem=new CommentItem();
-                commentItem.setContent(details.getDetails());
-                commentItem.setTime(details.getDate());
-
-                Information information=new Information();
-                information.setId(details.getUserId());
-                operateInformation.query(information);
-                while (operateInformation.isNotFinish()){
-                }
-                List<Information> informationList=operateInformation.getQueryData();
-                commentItem.setUserImage(informationList.get(0).getHeadPortrait());
-                commentItem.setUsername(informationList.get(0).getNickName());
-                commentItems.add(commentItem);
+        commentDetails.setNoteId(social.getNoteId());
+        checkCommentDetails.query(commentDetails, new IOperateBean<List<CommentDetails>>() {
+            @Override
+            public void onSuccess(List<CommentDetails> commentDetails) {
+                callBack.onSuccess(commentDetails);
             }
-            callBack.onSuccess(commentItems);
-        }
+
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail(msg);
+            }
+        });
     }
 
     @Override
-    public void addComment(CommentDetails details, ValueCallBack<CommentItem> callBack) {
+    public void addComment(final Comment details, final ValueCallBack<String> callBack) {
         details.setUserId(localInformation.getId());
-        operateCommentDetails.add(details);
-        while (operateCommentDetails.isNotFinish()){
-        }
-        if(operateCommentDetails.isSuccess()){
-            operateCommentDetails.query(details);
-            while (operateCommentDetails.isNotFinish()){
+        operateComment.add(details, new IOperateBean<String>() {
+            @Override
+            public void onSuccess(String s) {
+                callBack.onSuccess("评论成功");
             }
-            CommentDetails commentDetails=operateCommentDetails.getQueryData().get(0);
 
-            CommentItem item=new CommentItem();
-            item.setTime(commentDetails.getDate());
-            item.setUsername(localInformation.getNickName());
-            item.setContent(commentDetails.getDetails());
-            item.setUserImage(localInformation.getHeadPortrait());
-            callBack.onSuccess(item);
-        }
-        else {
-            callBack.onFail("评论失败，请重试");
-        }
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail(msg);
+            }
+        });
     }
 
     public CommentModel(){
-        operateCommentDetails=OperateCommentDetails.getCommentDetails();
+        operateComment =OperateComment.getCommentDetails();
         operateInformation=OperateInformation.getOperateInformation();
         localInformation=LocalInformation.getLocalInformation().query();
+        checkCommentDetails=CheckCommentDetails.getCheckCommentDetails();
     }
 }

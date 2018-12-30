@@ -2,8 +2,7 @@ package com.cartoon.tinytips.Personal.MyNote;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;

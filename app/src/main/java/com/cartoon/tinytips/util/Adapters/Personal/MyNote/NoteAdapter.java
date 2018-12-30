@@ -3,7 +3,6 @@ package com.cartoon.tinytips.util.Adapters.Personal.MyNote;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +13,12 @@ import android.widget.TextView;
 
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Note.RevampNote.RevampNote;
-import com.cartoon.tinytips.Personal.Detail.Detail;
 import com.cartoon.tinytips.Personal.MyNote.IMyNote;
 import com.cartoon.tinytips.Personal.MyNote.MyNoteModel;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.util.ActivityAndContext;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -114,7 +113,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                                 model.deleteNote(list,list.get(position), new ValueCallBack<String>() {
                                     @Override
                                     public void onSuccess(String s) {
-                                        notifyDataSetChanged();
+                                        ActivityAndContext.getActivity(mContext).runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                notifyDataSetChanged();
+                                            }
+                                        });
                                         ShowToast.shortToast(s);
                                     }
 

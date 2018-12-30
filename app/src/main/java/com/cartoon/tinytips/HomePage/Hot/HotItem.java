@@ -1,10 +1,6 @@
 package com.cartoon.tinytips.HomePage.Hot;
 
-import android.text.SpannableString;
-
-import com.cartoon.tinytips.bean.Note;
-
-import java.util.List;
+import com.cartoon.tinytips.bean.table.Note;
 
 public class HotItem {
 

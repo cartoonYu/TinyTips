@@ -1,19 +1,13 @@
 package com.cartoon.tinytips.Login;
 
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.Register.Register;
-import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import butterknife.BindView;

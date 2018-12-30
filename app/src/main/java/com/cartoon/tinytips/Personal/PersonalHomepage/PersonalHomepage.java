@@ -3,33 +3,25 @@ package com.cartoon.tinytips.Personal.PersonalHomepage;
 import android.support.v7.widget.LinearLayoutManager;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
 import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicStateAdapter;
-import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> implements IPersonalHomepage.View{
 

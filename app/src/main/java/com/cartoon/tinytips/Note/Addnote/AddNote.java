@@ -21,7 +21,7 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Note.Addnote.Athority.Athority;
 import com.cartoon.tinytips.Note.Addnote.NoteTips.NoteTips;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.Adapters.Tips.TipsItem;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;

@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cartoon.tinytips.HomePage.Recommend.IRecommend;
+import com.cartoon.tinytips.Note.Comment.IComment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.bean.view.CommentDetails;
 
 import java.util.List;
 
@@ -22,9 +22,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
+
     private Context mContext;
 
-    private List<CommentItem> mCommentItems;
+    private List<CommentDetails> mCommentItems;
+
+    private IComment.View view;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,7 +49,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         }
     }
 
-    public CommentAdapter(List<CommentItem> mCommentItem) {
+    public CommentAdapter(IComment.View view,List<CommentDetails> mCommentItem) {
+        this.view=view;
         this.mCommentItems = mCommentItem;
     }
 
@@ -63,11 +67,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @NonNull
     @Override
     public void onBindViewHolder(CommentAdapter.ViewHolder holder, int position) {
-        CommentItem commentItem = mCommentItems.get(position);
-        holder.userNames.setText(commentItem.getUsername());
-        holder.contents.setText(commentItem.getContent());
-        holder.time.setText(commentItem.getTime());
-        Glide.with(mContext).load(commentItem.getUserImage()).into(holder.userImages);
+        CommentDetails details=mCommentItems.get(position);
+        holder.userNames.setText(details.getNickName());
+        holder.contents.setText(details.getDetails());
+        holder.time.setText(details.getDate());
+        Glide.with(mContext).load(details.getHeadPortrait()).into(holder.userImages);
     }
 
     @Override

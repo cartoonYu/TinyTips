@@ -1,24 +1,19 @@
 package com.cartoon.tinytips.Personal.Collect;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

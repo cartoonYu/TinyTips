@@ -1,12 +1,10 @@
 package com.cartoon.tinytips.Personal.Detail;
 
 import android.net.Uri;
-import android.util.Log;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.file.UriAndFile;
 

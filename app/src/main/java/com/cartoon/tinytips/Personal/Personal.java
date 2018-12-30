@@ -1,8 +1,6 @@
 package com.cartoon.tinytips.Personal;
 
 
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -16,10 +14,7 @@ import com.cartoon.tinytips.Personal.MyNote.MyNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.Setting.Setting;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 
 import java.io.File;
@@ -110,25 +105,22 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     }
 
     @Override
-    public void setHeadPro(File headPro){
-        Glide.with(this).load(headPro).into(this.headPro);
+    public void setHeadPro(final File headPro){
+        Glide.with(Personal.this).load(headPro).into(Personal.this.headPro);
     }
 
     @Override
     public void setNotes(Integer notes) {
-        //this.notes.append(Integer.toString(notes));
         this.notes.setText("笔记  "+Integer.toString(notes));
     }
 
     @Override
     public void setAttentions(Integer attentions) {
-        //this.attentions.append(Integer.toString(attentions));
         this.attentions.setText("关注  "+Integer.toString(attentions));
     }
 
     @Override
     public void setFans(Integer fans) {
-
         this.fans.setText("粉丝  "+Integer.toString(fans));
     }
 

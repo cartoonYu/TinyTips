@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
 
 import java.io.Serializable;
 
@@ -149,6 +150,23 @@ public class IntentActivity{
             note=(Note) bean;
         }
         return note;
+    }
+
+    /**
+     * 返回活动跳转中intent携带的StatSocial
+     * @param context
+     * @param str
+     * @return
+     */
+    public static StatSocial getIntentStatSocial(Context context, String str){
+        Activity activity=(Activity)context;
+        intent=activity.getIntent();
+        Serializable bean=intent.getSerializableExtra(str);
+        StatSocial social=null;
+        if(bean instanceof StatSocial){
+            social=(StatSocial) bean;
+        }
+        return social;
     }
 
     private static void intent(Context context,Intent intent){

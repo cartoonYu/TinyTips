@@ -10,11 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
-import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;

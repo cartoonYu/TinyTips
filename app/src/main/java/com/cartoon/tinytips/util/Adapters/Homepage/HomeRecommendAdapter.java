@@ -3,8 +3,6 @@ package com.cartoon.tinytips.util.Adapters.Homepage;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +10,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Recommend.IRecommend;
-import com.cartoon.tinytips.HomePage.Recommend.Recommend;
-import com.cartoon.tinytips.HomePage.Recommend.RecommendItem;
 import com.cartoon.tinytips.HomePage.Recommend.RecommendModel;
 import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.Note.DivideNote;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
@@ -36,16 +31,15 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class HomeRecommendAdapter
         extends RecyclerView.Adapter<HomeRecommendAdapter.ViewHolder> {
 
     private Context mContext;
 
-    private List<RecommendItem> mRecommendItems;
+    private List<StatSocial> mSocials;
+
+    private IRecommend.View view;
 
     private IRecommend.Model model;
 
@@ -94,9 +88,10 @@ public class HomeRecommendAdapter
         }
     }
 
-    public HomeRecommendAdapter(List<RecommendItem> mRecommendItem) {
+    public HomeRecommendAdapter(IRecommend.View view,List<StatSocial> mSocials) {
+        this.view=view;
         this.model=new RecommendModel();
-        this.mRecommendItems = mRecommendItem;
+        this.mSocials=mSocials;
     }
 
     @Override
@@ -104,32 +99,29 @@ public class HomeRecommendAdapter
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_recommend, parent, false);
-        final ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=
+                new ViewHolder
+                        (LayoutInflater.from(mContext).inflate(R.layout.item_recommend, parent, false));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",item.getNote());
+                //卡片点击事件
+                StatSocial social=mSocials.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"social",social);
             }
         });
         holder.collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //收藏按钮点击事件
-                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                model.clickItem(item,new String("Collect"),new ValueCallBack<String>() {
+                final StatSocial social=mSocials.get(holder.getAdapterPosition());
+                model.clickCollect(social,new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        notifyDataSetChanged();
                         ShowToast.shortToast(s);
-                        if(item.getIsClick().get("Collect")){
-                            holder.collect.setBackgroundResource(R.drawable.mycollection_press);
-                        }
-                        else {
-                            holder.collect.setBackgroundResource(R.drawable.mycollection);
-                        }
+                        view.initData();
                     }
+
                     @Override
                     public void onFail(String msg) {
                         ShowToast.shortToast(msg);
@@ -141,19 +133,14 @@ public class HomeRecommendAdapter
             @Override
             public void onClick(View v) {
                 //点赞按钮点击事件
-                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                model.clickItem(item,new String("Like"),new ValueCallBack<String>() {
+                final StatSocial social=mSocials.get(holder.getAdapterPosition());
+                model.clickLike(social, new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        notifyDataSetChanged();
                         ShowToast.shortToast(s);
-                        if(item.getIsClick().get("Like")){
-                            holder.like.setBackgroundResource(R.drawable.favorite_press);
-                        }
-                        else {
-                            holder.like.setBackgroundResource(R.drawable.favourit);
-                        }
+                        view.initData();
                     }
+
                     @Override
                     public void onFail(String msg) {
                         ShowToast.shortToast(msg);
@@ -161,7 +148,7 @@ public class HomeRecommendAdapter
                 });
             }
         });
-        holder.userImages.setOnClickListener(new View.OnClickListener() {
+       /* holder.userImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //头像点击事件
@@ -200,13 +187,13 @@ public class HomeRecommendAdapter
                     }
                 });
             }
-        });
+        });*/
         holder.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //评论点击事件
-                RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                IntentActivity.intentWithData(mContext,Comment.class,"note",item.getNote());
+                final StatSocial social=mSocials.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,Comment.class,"social",social);
             }
         });
         return holder;
@@ -215,32 +202,36 @@ public class HomeRecommendAdapter
     @NonNull
     @Override
     public void onBindViewHolder(HomeRecommendAdapter.ViewHolder holder, int position) {
-        RecommendItem recommendItem = mRecommendItems.get(position);
-        Note note=recommendItem.getNote();
-        Map<String,Boolean> isClick=recommendItem.getIsClick();
-        Map<String,Integer> numOfSocial=recommendItem.getNumOfSocial();
-        holder.userNames.setText(note.getAuthor());
-        holder.titles.setText(note.getTitle());
-        if(JudgeEmpty.isNotEmpty(note.getPhotoDetails())){
-            if(!note.getPhotoDetails().isEmpty()){
-                Glide.with(mContext).load(note.getPhotoDetails().get(0)).into(holder.noteImage);
+        StatSocial temp=mSocials.get(position);
+        holder.userNames.setText(temp.getNickName());
+        holder.titles.setText(temp.getTitle());
+        if(JudgeEmpty.isNotEmpty(temp.getPhoto())){
+            if(!temp.getPhoto().isEmpty()){
+                Glide.with(mContext).load(temp.getPhoto().get(0)).into(holder.noteImage);
             }
         }
-        if(isClick.get("Like")){
+        if(temp.isLove()){
             holder.like.setBackgroundResource(R.drawable.favorite_press);
         }
-        if(isClick.get("Collect")){
+        if(temp.isCollect()){
             holder.collect.setBackgroundResource(R.drawable.mycollection_press);
         }
-        holder.contents.setText(note.getWordDetails().get(0));
-        holder.collectNum.setText(numOfSocial.get("Collect").toString());
-        holder.commentNum.setText(numOfSocial.get("Comment").toString());
-        holder.likeNum.setText(numOfSocial.get("Like").toString());
-        Glide.with(mContext).load(recommendItem.getUserImage()).into(holder.userImages);
+        if(temp.isComment()){
+
+        }
+        if(JudgeEmpty.isNotEmpty(temp.getWordDetails())){
+            if(!temp.getWordDetails().isEmpty()){
+                holder.contents.setText(temp.getWordDetails().get(0));
+            }
+        }
+        holder.collectNum.setText(Integer.toString(temp.getNumOfCollect()));
+        holder.likeNum.setText(Integer.toString(temp.getNumOfLove()));
+        holder.commentNum.setText(Integer.toString(temp.getNumOfComment()));
+        Glide.with(mContext).load(temp.getHeadPortrait()).into(holder.userImages);
     }
 
     @Override
     public int getItemCount() {
-        return mRecommendItems.size();
+        return mSocials.size();
     }
 }

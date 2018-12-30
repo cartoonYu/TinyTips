@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.HomePage.Favorite.Favorite;
-import com.cartoon.tinytips.HomePage.Homepage;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.CommentDetails;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.CommentDetails;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentAdapter;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -41,16 +39,12 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     @BindView(R.id.edit_comment)
     TextView editComment;
 
-    private ArrayList<CommentItem> commentArraylist;
-
-    private List<CommentItem> commentList;
-
     private CommentAdapter adapter;
 
     @BindView(R.id.comment_recyclerview)
     RecyclerView recyclerView;
 
-    private Note note;
+    private StatSocial statSocial;
 
     @Override
     protected CommentPresenter initPresent(){
@@ -70,30 +64,26 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
 
     @Override
     protected void onPrepare(){
-        getNote();
-        presenter.initComment(note);
+        getStatSocial();
+        initComment();
     }
 
     @OnClick(R.id.comment_editP)
     public void sendComment(){
         //评论发送点击事件
         String comment=editComment.getText().toString();
-        presenter.addComment(comment,note);
+        presenter.addComment(comment,statSocial);
     }
 
     @Override
-    public void addComment(CommentItem list) {
-        editComment.setText("");
-        commentList.add(list);
-        adapter.notifyDataSetChanged();
-        adapter.notifyItemChanged(commentList.size(),list);
-        Log.d("AAAAAA",commentList.size()+"aaaaa");
+    public void initComment() {
+        presenter.initComment(statSocial);
     }
 
 
-    private void getNote() {
+    private void getStatSocial() {
         //获取上级页面传递的笔记对象
-        note=IntentActivity.getIntentNote(this,"note");
+        statSocial=IntentActivity.getIntentStatSocial(this,"social");
     }
 
     private void revampStatusBar(){
@@ -106,13 +96,16 @@ public class Comment extends BaseActivity<CommentPresenter> implements IComment.
     }
 
     @Override
-    public void recyclerList(List<CommentItem> list) {
-        commentList=list;
-        Log.d("AAAAAA",commentList.size()+"");
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new CommentAdapter(commentList);
-        recyclerView.setAdapter(adapter);
+    public void recyclerList(final List<CommentDetails> list) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter = new CommentAdapter(Comment.this,list);
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
     @OnClick(R.id.toolbarBack)

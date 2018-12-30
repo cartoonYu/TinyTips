@@ -1,7 +1,6 @@
 package com.cartoon.tinytips.util.Adapters.Discover.NoteList;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +10,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
-import com.cartoon.tinytips.util.IntentActivity;
 
 import java.util.List;
-
-import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHolder>{
     private Context mContext;

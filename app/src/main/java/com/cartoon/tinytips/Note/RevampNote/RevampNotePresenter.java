@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Note.RevampNote;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.Note.DivideNote;
 import com.cartoon.tinytips.util.ShowToast;
 

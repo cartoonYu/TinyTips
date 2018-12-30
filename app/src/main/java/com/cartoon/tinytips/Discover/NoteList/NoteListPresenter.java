@@ -2,8 +2,8 @@ package com.cartoon.tinytips.Discover.NoteList;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.ShowToast;
 
 public class NoteListPresenter extends BaseActivityPresenter<NoteList> implements INoteList.Presenter {

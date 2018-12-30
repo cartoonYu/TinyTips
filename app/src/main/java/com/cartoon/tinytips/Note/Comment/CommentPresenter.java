@@ -2,24 +2,26 @@ package com.cartoon.tinytips.Note.Comment;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.CommentDetails;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Comment;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.CommentDetails;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 
-public class  CommentPresenter extends BaseActivityPresenter<Comment> implements IComment.Presenter {
+public class  CommentPresenter extends BaseActivityPresenter<com.cartoon.tinytips.Note.Comment.Comment> implements IComment.Presenter {
 
     private IComment.View view;
 
     private IComment.Model model;
 
     @Override
-    public void initComment(Note note) {
-        model.getComment(note, new ValueCallBack<List<CommentItem>>() {
+    public void initComment(StatSocial social) {
+        model.getComment(social, new ValueCallBack<List<CommentDetails>>() {
             @Override
-            public void onSuccess(List<CommentItem> commentItems) {
+            public void onSuccess(List<CommentDetails> commentItems) {
                 view.recyclerList(commentItems);
             }
 
@@ -31,15 +33,15 @@ public class  CommentPresenter extends BaseActivityPresenter<Comment> implements
     }
 
     @Override
-    public void addComment(String details,Note note) {
-        CommentDetails commentDetails=new CommentDetails();
-        commentDetails.setDetails(details);
-        commentDetails.setNoteId(note.getId());
-        model.addComment(commentDetails, new ValueCallBack<CommentItem>() {
+    public void addComment(String details,StatSocial social) {
+        Comment comment=new Comment();
+        comment.setDetails(details);
+        comment.setNoteId(social.getNoteId());
+        model.addComment(comment, new ValueCallBack<String>() {
             @Override
-            public void onSuccess(CommentItem commentItem) {
-                view.addComment(commentItem);
-                ShowToast.shortToast("评论成功");
+            public void onSuccess(String s) {
+                ShowToast.shortToast(s);
+                view.initComment();
             }
 
             @Override

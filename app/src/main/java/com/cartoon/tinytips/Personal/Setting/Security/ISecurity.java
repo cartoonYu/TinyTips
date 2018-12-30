@@ -1,7 +1,6 @@
 package com.cartoon.tinytips.Personal.Setting.Security;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
 
 interface ISecurity {
     interface View{

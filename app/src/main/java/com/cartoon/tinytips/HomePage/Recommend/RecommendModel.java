@@ -1,25 +1,20 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.CommentDetails;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.bean.Operate.OperateCommentDetails;
-import com.cartoon.tinytips.bean.Operate.OperateNote;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
-import com.cartoon.tinytips.bean.Operate.OperateSocial;
-import com.cartoon.tinytips.bean.Social;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.table.Operate.OperateComment;
+import com.cartoon.tinytips.bean.table.Operate.OperateNote;
+import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.table.Social;
+import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class RecommendModel implements IRecommend.Model {
 
@@ -29,165 +24,108 @@ public class RecommendModel implements IRecommend.Model {
 
     private OperateSocial operateSocial;
 
-    private OperateCommentDetails operateCommentDetails;
+    private OperateComment operateComment;
 
     private Information localInformation;
 
+    private CheckStatSocial checkStatSocial;
+
     @Override
-    public void initData(ValueCallBack<List<RecommendItem>> callBack){
-        Note note=new Note();
-        Information information=new Information();
-        operateNote.query(note);
-        while (operateNote.isNotFinish()){
+    public void initData(final ValueCallBack<List<StatSocial>> callBack){
+        StatSocial statSocial=new StatSocial();
+        checkStatSocial.query(statSocial, new IOperateBean<List<StatSocial>>() {
+            @Override
+            public void onSuccess(List<StatSocial> statSocials) {
+                callBack.onSuccess(statSocials);
+            }
 
-        }
-        List<Note> notes= operateNote.getQueryData();
-        operateInformation.query(information);
-        while(operateInformation.isNotFinish()){
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail(msg);
+            }
+        });
+    }
 
-        }
-        List<Information> informations= operateInformation.getQueryData();
-        List<RecommendItem> result=new ArrayList<>();
-        if(notes.isEmpty()){
-            callBack.onFail("获取信息失败");
+    @Override
+    public void clickLike(StatSocial social, final ValueCallBack<String> callBack) {
+        Social data=new Social();
+        data.setType("Like");
+        data.setUserId(localInformation.getId());
+        data.setNoteId(social.getNoteId());
+        if(social.isLove()){
+            operateSocial.delete(data, new IOperateBean<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    callBack.onSuccess("取消成功");
+                }
+
+                @Override
+                public void onFail(String msg) {
+                    callBack.onFail("取消失败");
+                }
+            });
         }
         else {
-            Set<Note> noteSet=new HashSet<>();
-            for(Note temp:notes){
-                if(temp.getId()!=localInformation.getId()){
-                    noteSet.add(temp);
+            operateSocial.add(data, new IOperateBean<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    callBack.onSuccess("点赞成功");
                 }
-            }
-            Iterator<Note> iterator=noteSet.iterator();
-            while(iterator.hasNext()){
-                Note temp=iterator.next();
-                RecommendItem item=new RecommendItem();
-                File file=null;
-                for(Information t:informations){
-                    if(t.getNickName().equals(temp.getAuthor())){
-                        file=t.getHeadPortrait();
-                    }
+
+                @Override
+                public void onFail(String msg) {
+                    callBack.onFail("点赞失败");
                 }
-                if(JudgeEmpty.isNotEmpty(file)){
-                    item.setUserImage(file);
-                }
-                item.setNote(temp);
-
-                Map<String,Boolean> isClick=new HashMap<>();
-                Map<String,Integer> numOfSocial=new HashMap<>();
-
-                Social social=new Social();
-                social.setNoteId(temp.getId());
-
-                social.setType("Collect");
-                operateSocial.query(social);
-                while (operateSocial.isNotFinish()){
-
-                }
-                List<Social> socials=operateSocial.getQueryData();
-                isClick.put(social.getType(),false);
-                for(Social s:socials){
-                    if(s.getUserId()==localInformation.getId()){
-                        isClick.put(social.getType(),true);
-                        break;
-                    }
-                }
-                numOfSocial.put(social.getType(),socials.size());
-
-                social.setType("Like");
-                operateSocial.query(social);
-                while (operateSocial.isNotFinish()){
-
-                }
-                socials=operateSocial.getQueryData();
-                isClick.put(social.getType(),false);
-                for(Social s:socials){
-                    if(s.getUserId()==localInformation.getId()){
-                        isClick.put(social.getType(),true);
-                        break;
-                    }
-                }
-                numOfSocial.put(social.getType(),socials.size());
-
-                CommentDetails details=new CommentDetails();
-                details.setNoteId(temp.getId());
-                operateCommentDetails.query(details);
-                while (operateCommentDetails.isNotFinish()){
-
-                }
-                numOfSocial.put("Comment",operateCommentDetails.getQueryData().size());
-
-                item.setIsClick(isClick);
-                item.setNumOfSocial(numOfSocial);
-                result.add(item);
-            }
-            callBack.onSuccess(result);
+            });
         }
     }
 
     @Override
-    public void clickItem(RecommendItem item,String type,ValueCallBack<String> callBack) {
-        Social social=new Social();
-        social.setNoteId(item.getNote().getId());
-        social.setUserId(localInformation.getId());
-        social.setType(type);
-        if(item.getIsClick().get(type)){
-            operateSocial.delete(social);
-            while (operateSocial.isNotFinish()){
-            }
-            if(operateSocial.isSuccess()){
-                item.getIsClick().put(type,false);
-                item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)-1);
-                callBack.onSuccess(type+":取消成功");
-            }
-            else {
-                callBack.onFail(type+":取消失败");
-            }
+    public void clickCollect(StatSocial social,final ValueCallBack<String> callBack) {
+        Social data=new Social();
+        data.setType("Collect");
+        data.setUserId(localInformation.getId());
+        data.setNoteId(social.getNoteId());
+        if(social.isCollect()){
+            operateSocial.delete(data, new IOperateBean<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    callBack.onSuccess("取消成功");
+                }
+
+                @Override
+                public void onFail(String msg) {
+                    callBack.onFail("取消失败");
+                }
+            });
         }
         else {
-            operateSocial.add(social);
-            while (operateSocial.isNotFinish()){
-            }
-            if(operateSocial.isSuccess()){
-                item.getNumOfSocial().put(type,item.getNumOfSocial().get(type)+1);
-                item.getIsClick().put(type,true);
-                callBack.onSuccess(type+":成功");
-            }
-            else {
-                callBack.onFail(type+":失败");
-            }
-        }
+            operateSocial.add(data, new IOperateBean<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    callBack.onSuccess("点赞成功");
+                }
 
+                @Override
+                public void onFail(String msg) {
+                    callBack.onFail("点赞失败");
+                }
+            });
+        }
     }
 
-    /**
-     * 功能
-     * 处理点击用户头像或呢称的数据
-     *
-     * 使用方法
-     * 1.传入带有用户id或呢称的个人信息对象
-     * @param information
-     * @param callBack
-     */
+
     @Override
-    public void clickUser(Information information, ValueCallBack<Information> callBack) {
-        operateInformation.query(information);
-        while (operateInformation.isNotFinish()){
-        }
-        Information result=operateInformation.getQueryData().get(0);
-        if(JudgeEmpty.isEmpty(result)){
-            callBack.onFail("网络错误");
-        }
-        else {
-            callBack.onSuccess(result);
-        }
+    public void clickUser(StatSocial social, ValueCallBack<Information> callBack) {
+
     }
 
     public RecommendModel(){
         operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
         operateSocial=OperateSocial.getOperateSocial();
-        operateCommentDetails=OperateCommentDetails.getCommentDetails();
+        operateComment =OperateComment.getCommentDetails();
         localInformation=LocalInformation.getLocalInformation().query();
+        checkStatSocial=CheckStatSocial.getCheckStatSocial();
     }
 }

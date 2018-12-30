@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.Adapters.Homepage.FavoriteAdapter;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;

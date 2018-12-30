@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * @author cartoon
- * @version 1.2
+ * @version 1.3
  *
  * description
  * 1.使用http进行网络传输数据
@@ -38,7 +38,7 @@ import java.util.List;
  * 2.对象通过调用静态方法getOperate获取
  */
 
-public class HttpConnection implements Runnable{
+public class HttpConnection{
 
     private static volatile HttpConnection connection;
 
@@ -54,14 +54,9 @@ public class HttpConnection implements Runnable{
 
     private InputStream inputStream;
 
-    private JSONObject object;
-
     private JSONArray data;
 
     private String result;
-
-    private boolean isRun;
-
 
     /**
      * 功能
@@ -77,7 +72,6 @@ public class HttpConnection implements Runnable{
     public void sendJSONObject(String url,String method, JSONObject object){
         this.url=url;
         this.method=method;
-        this.object=object;
         List<JSONObject> temp=new ArrayList<>();
         temp.add(object);
         data=JSONArrayOperation.getOperation().setObjectToArray(temp);
@@ -101,38 +95,43 @@ public class HttpConnection implements Runnable{
         this.data=data;
     }
 
-
-    @Override
-    public void run(){
-        synchronized (HttpConnection.class){
-            StringBuffer buffer=new StringBuffer();
-            getURLConnection(url,method);
-            if(JudgeEmpty.isNotEmpty(urlConnection)){
-                getOutputStream(urlConnection);
-                if(JudgeEmpty.isNotEmpty(outputStream)){
-                    try{
-                        String temp=data.toString();
-                        outputStream.write(temp.getBytes());
-                        getInputStream(urlConnection);
-                        if(JudgeEmpty.isNotEmpty(inputStream)){
-                            BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
-                            String line;
-                            while((line=reader.readLine())!=null){
-                                buffer.append(line);
+    public void sendData(final IDataCallBack<String> callBack){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StringBuffer buffer=new StringBuffer();
+                getURLConnection(url,method);
+                if(JudgeEmpty.isNotEmpty(urlConnection)){
+                    getOutputStream(urlConnection);
+                    if(JudgeEmpty.isNotEmpty(outputStream)){
+                        try{
+                            String temp=data.toString();
+                            outputStream.write(temp.getBytes());
+                            getInputStream(urlConnection);
+                            if(JudgeEmpty.isNotEmpty(inputStream)){
+                                BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+                                String line;
+                                while((line=reader.readLine())!=null){
+                                    buffer.append(line);
+                                }
+                                inputStream.close();
                             }
-
-                            inputStream.close();
+                        }catch (IOException e){
+                            e.printStackTrace();
+                            Log.e("networkException",new String("写入错误"));
                         }
-                    }catch (IOException e){
-                        e.printStackTrace();
-                        Log.e("networkException",new String("写入错误"));
                     }
                 }
+                result=buffer.toString();
+                urlConnection.disconnect();
+                if(result.equals("300")||result.equals("400")){
+                    callBack.onFail(result);
+                }
+                else {
+                    callBack.onSuccess(result);
+                }
             }
-            result=buffer.toString();
-            urlConnection.disconnect();
-            setRun(false);
-        }
+        }).start();
     }
 
     /**
@@ -190,31 +189,6 @@ public class HttpConnection implements Runnable{
         }
     }
 
-    /**
-     * 功能
-     * 将服务器返回的结果返回
-     *
-     * 使用方法
-     * 1.子线程完成后通过对象调用获取返回值
-     * @return
-     */
-    public String getResult(){
-        setRun(true);
-        return result;
-    }
-
-    public void setRun(boolean run) {
-        isRun = run;
-    }
-
-    /**
-     * 功能：检测子线程是否运行
-     * @return
-     */
-    public boolean isRun() {
-        return isRun;
-    }
-
     public static HttpConnection getConnection(){
         if(JudgeEmpty.isEmpty(connection)){
             synchronized (HttpConnection.class){
@@ -227,9 +201,7 @@ public class HttpConnection implements Runnable{
     }
 
     private HttpConnection(){
-        result=new String();
         TIME_OUT=2000;
-        setRun(true);
     }
 
 }

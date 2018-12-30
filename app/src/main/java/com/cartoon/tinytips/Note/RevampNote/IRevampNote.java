@@ -3,7 +3,7 @@ package com.cartoon.tinytips.Note.RevampNote;
 import android.text.SpannableString;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.util.List;
 

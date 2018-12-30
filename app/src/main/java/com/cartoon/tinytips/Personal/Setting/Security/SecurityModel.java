@@ -1,12 +1,10 @@
 package com.cartoon.tinytips.Personal.Setting.Security;
 
-import android.util.Log;
-
-import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Local.LocalInformation;
-import com.cartoon.tinytips.bean.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.LocalInformation;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
 
 public class SecurityModel implements ISecurity.Model {
 
@@ -19,7 +17,7 @@ public class SecurityModel implements ISecurity.Model {
     private OperateInformation operateInformation;
 
     @Override
-    public void changePassword(String phone, String authCode, String password, String confirmPassword, ValueCallBack<String> callBack) {
+    public void changePassword(String phone, String authCode,final String password, String confirmPassword,final ValueCallBack<String> callBack) {
         if(!info.getAccount().equals(phone)){
             callBack.onFail("手机号码输入错误，请重试");
             return;
@@ -30,18 +28,23 @@ public class SecurityModel implements ISecurity.Model {
         }
         Information information=new Information();
         information.setPassword(password);
-        operateInformation.update(info,information);
-        while (operateInformation.isNotFinish()){
-        }
-        if(operateInformation.isSuccess()){
-            info.setPassword(password);
-            if(localInformation.update(info)){
-                callBack.onSuccess("修改成功");
+        operateInformation.update(info, information, new IOperateBean<String>() {
+            @Override
+            public void onSuccess(String s) {
+                info.setPassword(password);
+                if(localInformation.update(info)){
+                    callBack.onSuccess("修改成功");
+                }
+                else {
+                    callBack.onFail("修改失败，请重试");
+                }
             }
-            else {
+
+            @Override
+            public void onFail(String msg) {
                 callBack.onFail("修改失败，请重试");
             }
-        }
+        });
     }
 
     @Override

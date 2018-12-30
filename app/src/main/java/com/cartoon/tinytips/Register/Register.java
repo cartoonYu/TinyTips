@@ -1,7 +1,5 @@
 package com.cartoon.tinytips.Register;
 
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -9,7 +7,6 @@ import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 

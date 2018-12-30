@@ -1,32 +1,22 @@
 package com.cartoon.tinytips.Main;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Discover.Discover;
-import com.cartoon.tinytips.HomePage.Favorite.Favorite;
 import com.cartoon.tinytips.HomePage.Homepage;
-import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Message.Message;
 import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

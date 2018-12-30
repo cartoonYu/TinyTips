@@ -1,10 +1,10 @@
-package com.cartoon.tinytips.bean;
+package com.cartoon.tinytips.bean.table;
 
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CommentDetails implements Serializable{
+public class Comment implements Serializable{
 
     private String nickName;    //昵称
 
@@ -18,7 +18,7 @@ public class CommentDetails implements Serializable{
 
     private long noteId;       //笔记编号
 
-    public CommentDetails(){
+    public Comment(){
 
     }
 

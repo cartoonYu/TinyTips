@@ -4,9 +4,8 @@ import android.net.Uri;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
-import android.util.Log;
 
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.file.UriAndFile;
 import com.cartoon.tinytips.util.JudgeEmpty;

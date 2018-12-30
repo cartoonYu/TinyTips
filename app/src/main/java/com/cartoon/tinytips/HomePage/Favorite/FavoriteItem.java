@@ -1,6 +1,6 @@
 package com.cartoon.tinytips.HomePage.Favorite;
 
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.io.File;
 import java.util.Map;

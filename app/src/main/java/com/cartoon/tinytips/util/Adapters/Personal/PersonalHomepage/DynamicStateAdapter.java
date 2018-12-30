@@ -9,12 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

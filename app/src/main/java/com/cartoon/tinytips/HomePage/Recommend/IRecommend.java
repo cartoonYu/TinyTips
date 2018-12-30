@@ -1,22 +1,26 @@
 package com.cartoon.tinytips.HomePage.Recommend;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
 
 import java.util.List;
 
 public interface IRecommend {
 
     interface View{
-        void initData(List<RecommendItem> recommendItems);
+        void initData();
+        void initData(List<StatSocial> recommendItems);
     }
     interface Presenter{
         void initData();
     }
 
     interface Model{
-        void initData(ValueCallBack<List<RecommendItem>> callBack);
-        void clickItem(RecommendItem item,String type,ValueCallBack<String> callBack);
-        void clickUser(Information information,ValueCallBack<Information> callBack);
+        void initData(ValueCallBack<List<StatSocial>> callBack);
+        void clickLike(StatSocial social,ValueCallBack<String> callBack);
+        void clickCollect(StatSocial social,ValueCallBack<String> callBack);
+        void clickUser(StatSocial social,ValueCallBack<Information> callBack);
     }
 }

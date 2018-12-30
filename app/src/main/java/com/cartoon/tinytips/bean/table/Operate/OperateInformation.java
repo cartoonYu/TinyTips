@@ -1,11 +1,13 @@
-package com.cartoon.tinytips.bean.Operate;
+package com.cartoon.tinytips.bean.table.Operate;
 
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.network.HttpConstant;
 import com.cartoon.tinytips.util.network.HttpConnection;
+import com.cartoon.tinytips.util.network.IDataCallBack;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,12 +55,6 @@ public class OperateInformation {
 
     private String method;
 
-    private boolean isNotFinish;
-
-    private boolean isSuccess;
-
-    private List<Information> queryData;
-
     /**
      * 功能
      * 返回本类对象，确保在程序运行的过程只有一个对象
@@ -93,10 +89,20 @@ public class OperateInformation {
      * @param information
      * @return
      */
-    public void add(Information information){
+    public void add(Information information, final IOperateBean<String> operateBean){
         JSONObject data=objectOperation.setInformationToJSON(information,"add");
-        String result=sendData(data,null);
-        setSuccess(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -113,10 +119,20 @@ public class OperateInformation {
      * @param condition
      * @return
      */
-    public void delete(Information condition){
+    public void delete(Information condition,final IOperateBean<String> operateBean){
         JSONObject data=objectOperation.setInformationToJSON(condition,"delete");
-        String result=sendData(data,null);
-        setSuccess(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -133,10 +149,42 @@ public class OperateInformation {
      * @param condition
      * @return
      */
-    public void query(Information condition){
+    public void query(Information condition,final IOperateBean<List<Information>> operateBean){
         JSONObject data=objectOperation.setInformationToJSON(condition,"query");
-        String result=sendData(data,null);
-        setQueryData(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                if(result.equals("[]")){
+                    operateBean.onFail("500");
+                }
+                else {
+                    JSONArray array=null;
+                    try {
+                        array=new JSONArray(result);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    List<JSONObject> temp=null;
+                    if(JudgeEmpty.isNotEmpty(array)){
+                        temp=arrayOperation.getObjectsFromArray(array);
+                    }
+                    List<Information> list=new ArrayList<>();
+                    if(JudgeEmpty.isNotEmpty(temp)){
+                        for(JSONObject object:temp){
+                            list.add(objectOperation.getInformationFromJSON(object));
+                        }
+                    }
+                    operateBean.onSuccess(list);
+                }
+
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -154,120 +202,27 @@ public class OperateInformation {
      * @param newInformation
      * @return
      */
-    public void update(Information oldInformation,Information newInformation){
+    public void update(Information oldInformation,Information newInformation,final IOperateBean<String> operateBean){
         JSONObject condition=objectOperation.setInformationToJSON(oldInformation,"update");
         JSONObject data=objectOperation.setInformationToJSON(newInformation,"update");
         List<JSONObject> temp=new ArrayList<>();
         temp.add(condition);
         temp.add(data);
         JSONArray array=arrayOperation.setObjectToArray(temp);
-        String result=sendData(null,array);
-        setSuccess(result);
-    }
-
-    /**
-     * 功能
-     * 调用网络连接工具类发送数据
-     *
-     * 使用方法
-     *
-     * 注意
-     * 1.两个形参中必须有一个为null
-     *
-     * @param object
-     * @param array
-     * @return
-     */
-    private String sendData(JSONObject object,JSONArray array){
-        if(JudgeEmpty.isNotEmpty(object)){
-            connection.sendJSONObject(url,method,object);
-        }else if(JudgeEmpty.isNotEmpty(array)){
-            connection.sendJSONArray(url,method,array);
-        }
-        new Thread(connection).start();
-        while (connection.isRun()){
-        }
-        setNotFinish(false);
-        return connection.getResult();
-    }
-
-    /**
-     * 功能
-     * 判断网络传输是否完成
-     *
-     * @return
-     */
-    public boolean isNotFinish() {
-        return isNotFinish;
-    }
-
-    /**
-     * 获取插入，删除，更新数据是否成功
-     * @return
-     */
-    public boolean isSuccess() {
-        setNotFinish(true);
-        return isSuccess;
-    }
-
-    /**
-     * 获取查询的结果
-     *
-     * @return
-     */
-    public List<Information> getQueryData() {
-        setNotFinish(true);
-        return queryData;
-    }
-
-    private void setNotFinish(boolean notFinish) {
-        isNotFinish = notFinish;
-    }
-
-    private void setSuccess(String result) {
-        JSONObject object=null;
-        try {
-            object=new JSONObject(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if(JudgeEmpty.isNotEmpty(object)){
-            if(objectOperation.getResultFromJSON(object).equals("200")){
-                isSuccess=true;
+        connection.sendJSONArray(url,method,array);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
             }
-            else {
-                isSuccess=false;
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
             }
-        }
+        });
     }
 
-    /**
-     * 功能
-     * 将服务器返回的查询数据转换成集合形式输出
-     *
-     * @param result
-     */
-    private void setQueryData(String result) {
-        queryData.clear();
-        if(result.equals("[]")){
-            return;
-        }
-        JSONArray array=null;
-        try {
-            array=new JSONArray(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        List<JSONObject> temp=null;
-        if(JudgeEmpty.isNotEmpty(array)){
-            temp=arrayOperation.getObjectsFromArray(array);
-        }
-        if(JudgeEmpty.isNotEmpty(temp)){
-            for(JSONObject object:temp){
-                queryData.add(objectOperation.getInformationFromJSON(object));
-            }
-        }
-    }
 
     private OperateInformation(){
         objectOperation=JSONObjectOperation.getInstance();
@@ -275,7 +230,5 @@ public class OperateInformation {
         connection=HttpConnection.getConnection();
         url=HttpConstant.getConstant().getURL_Information();
         method="POST";
-        setNotFinish(true);
-        queryData=new ArrayList<>();
     }
 }

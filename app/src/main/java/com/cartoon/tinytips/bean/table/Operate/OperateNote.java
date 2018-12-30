@@ -1,14 +1,14 @@
-package com.cartoon.tinytips.bean.Operate;
+package com.cartoon.tinytips.bean.table.Operate;
 
-import android.util.Log;
-
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.network.HttpConstant;
 import com.cartoon.tinytips.util.network.HttpConnection;
+import com.cartoon.tinytips.util.network.IDataCallBack;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,12 +57,6 @@ public class OperateNote {
 
     private JSONArrayOperation arrayOperation;
 
-    private boolean isNotFinish;
-
-    private boolean isSuccess;
-
-    private List<Note> queryData;
-
     private HttpConnection connection;
 
     private String url;
@@ -102,11 +96,21 @@ public class OperateNote {
      * @param note
      * @return
      */
-    public void add(Note note){
+    public void add(Note note, final IOperateBean<String> operateBean){
         note=handleNote(note);
         JSONObject data=objectOperation.setNoteToJSON(note,"add");
-        String result=sendData(data,null);
-        setSuccess(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -122,11 +126,21 @@ public class OperateNote {
      * @param condition
      * @return
      */
-    public void delete(Note condition){
+    public void delete(Note condition, final IOperateBean<String> operateBean){
         condition=handleNote(condition);
         JSONObject data=objectOperation.setNoteToJSON(condition,"delete");
-        String result=sendData(data,null);
-        setSuccess(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -143,11 +157,55 @@ public class OperateNote {
      * @param condition
      * @return
      */
-    public void query(Note condition){
+    public void query(Note condition, final IOperateBean<List<Note>> operateBean){
         condition=handleNote(condition);
         JSONObject data=objectOperation.setNoteToJSON(condition,"query");
-        String result=sendData(data,null);
-        setQueryData(result);
+        connection.sendJSONObject(url,method,data);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                if(result.equals("[]")){
+                    operateBean.onFail("500");
+                }
+                JSONArray array=null;
+                try {
+                    array=new JSONArray(result);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                List<JSONObject> temp=null;
+                if(JudgeEmpty.isNotEmpty(array)){
+                    temp=arrayOperation.getObjectsFromArray(array);
+                }
+                List<Note> list=new ArrayList<>();
+                if(JudgeEmpty.isNotEmpty(temp)){
+                    for(JSONObject object:temp){
+                        list.add(objectOperation.getNoteFromJSON(object));
+                    }
+                }
+                for(Note note:list){
+                    if(JudgeEmpty.isNotEmpty(note.getPhotoSource())){
+                        if(!note.getPhotoSource().isEmpty()){
+                            List<File> files=new ArrayList<>();
+                            Set<String> set=note.getPhotoSource().keySet();
+                            Iterator<String> iterator=set.iterator();
+                            while(iterator.hasNext()){
+                                String fileName=iterator.next();
+                                String file=note.getPhotoSource().get(fileName);
+                                files.add(fileOperation.transStringToFile(file,fileName));
+                            }
+                            note.setPhotoDetails(files);
+                        }
+                    }
+                }
+                operateBean.onSuccess(list);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -165,7 +223,7 @@ public class OperateNote {
      * @param newNote
      * @return
      */
-    public void update(Note oldNote,Note newNote){
+    public void update(Note oldNote, Note newNote, final IOperateBean<String> operateBean){
         oldNote=handleNote(oldNote);
         newNote=handleNote(newNote);
         JSONObject condition=objectOperation.setNoteToJSON(oldNote,"update");
@@ -174,8 +232,18 @@ public class OperateNote {
         list.add(condition);
         list.add(data);
         JSONArray array=arrayOperation.setObjectToArray(list);
-        String result=sendData(null,array);
-        setSuccess(result);
+        connection.sendJSONArray(url,method,array);
+        connection.sendData(new IDataCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                operateBean.onSuccess(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                operateBean.onFail(msg);
+            }
+        });
     }
 
     /**
@@ -202,130 +270,10 @@ public class OperateNote {
         return source;
     }
 
-    /**
-     * 功能
-     * 调用网络连接工具类发送数据
-     *
-     * 使用方法
-     *
-     * 注意
-     * 1.两个形参中必须有一个为null
-     *
-     * @param object
-     * @param array
-     * @return
-     */
-    private String sendData(JSONObject object, JSONArray array){
-        if(JudgeEmpty.isNotEmpty(object)){
-            connection.sendJSONObject(url,method,object);
-        }else if(JudgeEmpty.isNotEmpty(array)){
-            connection.sendJSONArray(url,method,array);
-        }
-        new Thread(connection).start();
-        while (connection.isRun()){
-        }
-        setNotFinish(false);
-        return connection.getResult();
-    }
-
-    /**
-     * 功能
-     * 判断网络传输是否完成
-     *
-     * @return
-     */
-    public boolean isNotFinish() {
-        return isNotFinish;
-    }
-
-    /**
-     * 获取插入，删除，更新数据是否成功
-     * @return
-     */
-    public boolean isSuccess() {
-        setNotFinish(true);
-        return isSuccess;
-    }
-
-    /**
-     * 获取查询的结果
-     *
-     * @return
-     */
-    public List<Note> getQueryData() {
-        setNotFinish(true);
-        return queryData;
-    }
-
-    private void setNotFinish(boolean notFinish) {
-        isNotFinish = notFinish;
-    }
-
-    private void setSuccess(String result) {
-        JSONObject object=null;
-        try {
-            object=new JSONObject(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if(JudgeEmpty.isNotEmpty(object)){
-            if(objectOperation.getResultFromJSON(object).equals("200")){
-                isSuccess=true;
-            }
-            else {
-                isSuccess=false;
-            }
-        }
-    }
-
-    /**
-     * 功能
-     * 将服务器返回的查询数据转换成集合形式输出
-     *
-     * @param result
-     */
-    private void setQueryData(String result) {
-        queryData.clear();
-        if(result.equals("[]")){
-            return;
-        }
-        JSONArray array=null;
-        try {
-            array=new JSONArray(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        List<JSONObject> temp=null;
-        if(JudgeEmpty.isNotEmpty(array)){
-            temp=arrayOperation.getObjectsFromArray(array);
-        }
-        if(JudgeEmpty.isNotEmpty(temp)){
-            for(JSONObject object:temp){
-                queryData.add(objectOperation.getNoteFromJSON(object));
-            }
-        }
-        for(Note note:queryData){
-            if(JudgeEmpty.isNotEmpty(note.getPhotoSource())){
-                if(!note.getPhotoSource().isEmpty()){
-                    List<File> files=new ArrayList<>();
-                    Set<String> set=note.getPhotoSource().keySet();
-                    Iterator<String> iterator=set.iterator();
-                    while(iterator.hasNext()){
-                        String fileName=iterator.next();
-                        String file=note.getPhotoSource().get(fileName);
-                        files.add(fileOperation.transStringToFile(file,fileName));
-                    }
-                    note.setPhotoDetails(files);
-                }
-            }
-        }
-    }
-
     private OperateNote(){
         fileOperation=FileOperation.getOperation();
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        queryData=new ArrayList<>();
         connection=HttpConnection.getConnection();
         url=HttpConstant.getConstant().getURL_Note();
         method="POST";

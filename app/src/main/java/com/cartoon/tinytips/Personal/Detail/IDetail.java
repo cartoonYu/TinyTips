@@ -3,7 +3,7 @@ package com.cartoon.tinytips.Personal.Detail;
 import android.net.Uri;
 
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
 
 import java.io.File;
 import java.util.List;

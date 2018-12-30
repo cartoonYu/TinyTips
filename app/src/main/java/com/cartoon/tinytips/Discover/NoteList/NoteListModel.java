@@ -1,13 +1,10 @@
 package com.cartoon.tinytips.Discover.NoteList;
 
 import android.content.Context;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.io.File;
 import java.util.List;

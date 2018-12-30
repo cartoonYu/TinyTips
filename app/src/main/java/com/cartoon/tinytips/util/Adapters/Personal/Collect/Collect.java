@@ -1,7 +1,7 @@
 package com.cartoon.tinytips.util.Adapters.Personal.Collect;
 
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
 
 import java.util.Map;
 

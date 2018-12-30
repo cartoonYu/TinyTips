@@ -52,7 +52,7 @@ public class HttpConstant {
     }
 
     private void setFilePath() {
-        filePath=new String("url_server.properties");
+        filePath=new String("url_local.properties");
     }
 
     public static HttpConstant getConstant(){
@@ -66,8 +66,8 @@ public class HttpConstant {
         return constant;
     }
 
-    public String getURL_CommentDetails() {
-        return properties.getProperty("commentDetails");
+    public String getURL_Comment() {
+        return properties.getProperty("comment");
     }
 
     public String getURL_Note() {
@@ -84,5 +84,13 @@ public class HttpConstant {
 
     public String getURL_Social(){
         return properties.getProperty("social");
+    }
+
+    public String getURL_StatSocial() {
+        return properties.getProperty("statSocial");
+    }
+
+    public String getURL_CommentDetails() {
+        return properties.getProperty("commentDetails");
     }
 }

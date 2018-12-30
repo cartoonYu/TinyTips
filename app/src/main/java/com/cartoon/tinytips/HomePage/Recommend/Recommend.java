@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Homepage.HomeRecommendAdapter;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -24,7 +25,7 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
 
     private HomeRecommendAdapter adapter;
 
-    private List<RecommendItem> recommendItemList;
+
     private ClassicsHeader Classicsheader;
 
     @BindView(R.id.home_recommend_recyclerview)
@@ -46,14 +47,6 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
 
     @Override
     protected void initView() {
-        presenter.initData();
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(layoutManager);
-        if(JudgeEmpty.isEmpty(recommendItemList)){
-            recommendItemList=new ArrayList<>();
-        }
-        adapter = new HomeRecommendAdapter(recommendItemList);
-        recyclerView.setAdapter(adapter);
         RecommendRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -66,7 +59,6 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
                 refreshlayout.finishLoadmore(2000/*,false*/);//传入false表示加载失败
             }
         });
-
         Classicsheader = new ClassicsHeader(getContext()).setTextSizeTitle(0);
         Classicsheader.setTextSizeTime(0);
         Classicsheader.setAccentColor(Color.parseColor("#444444"));
@@ -78,12 +70,25 @@ public class Recommend extends BaseFragment<RecommendPresenter> implements IReco
 
     @Override
     protected void onPrepare() {
-
+        initData();
     }
 
     @Override
-    public void initData(List<RecommendItem> recommends){
-        recommendItemList=recommends;
+    public void initData() {
+        presenter.initData();
+    }
+
+    @Override
+    public void initData(final List<StatSocial> socials){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter = new HomeRecommendAdapter(Recommend.this,socials);
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
 }

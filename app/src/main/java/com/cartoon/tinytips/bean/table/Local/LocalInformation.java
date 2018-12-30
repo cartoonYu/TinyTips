@@ -1,10 +1,9 @@
-package com.cartoon.tinytips.bean.Local;
+package com.cartoon.tinytips.bean.table.Local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.TinyTipsApplication;
 import com.cartoon.tinytips.util.file.FileOperation;

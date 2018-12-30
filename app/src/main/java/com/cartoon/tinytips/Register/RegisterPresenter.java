@@ -1,12 +1,9 @@
 package com.cartoon.tinytips.Register;
 
-import android.icu.text.IDNA;
-
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.ShowToast;
 import com.cartoon.tinytips.util.file.ImageOperation;
 

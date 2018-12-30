@@ -1,9 +1,7 @@
 package com.cartoon.tinytips.Main;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
-import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.util.ShowToast;
+import com.cartoon.tinytips.bean.table.Information;
 
 public class MainPresenter extends BaseActivityPresenter<Main> implements IMain.Presenter{
     protected IMain.View view;

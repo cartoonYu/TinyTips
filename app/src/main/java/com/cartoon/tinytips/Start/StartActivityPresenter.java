@@ -1,10 +1,8 @@
 package com.cartoon.tinytips.Start;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
-import com.cartoon.tinytips.Main.IMain;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.ShowToast;
 
 public class StartActivityPresenter extends BaseActivityPresenter<StartActivity> implements IStartActivity.Presenter {

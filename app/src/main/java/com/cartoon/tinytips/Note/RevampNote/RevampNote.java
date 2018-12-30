@@ -18,9 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
-import com.cartoon.tinytips.Note.Addnote.AddNote;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Note;
+import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;

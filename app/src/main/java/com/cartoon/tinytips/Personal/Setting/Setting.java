@@ -1,6 +1,5 @@
 package com.cartoon.tinytips.Personal.Setting;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,10 +8,8 @@ import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.Personal.Setting.Management.Management;
 import com.cartoon.tinytips.Personal.Setting.Security.Security;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
-import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 

@@ -2,7 +2,7 @@ package com.cartoon.tinytips.Personal;
 
 import com.cartoon.tinytips.BaseFragmentPresenter;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.ShowToast;
 
 class PersonalPresenter extends BaseFragmentPresenter<Personal> implements IPersonal.Presenter {

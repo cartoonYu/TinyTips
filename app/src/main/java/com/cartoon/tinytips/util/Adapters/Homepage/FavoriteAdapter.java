@@ -1,10 +1,8 @@
 package com.cartoon.tinytips.util.Adapters.Homepage;
 
 import android.content.Context;
-import android.icu.text.IDNA;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +15,13 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteItem;
 import com.cartoon.tinytips.HomePage.Favorite.FavoriteModel;
 import com.cartoon.tinytips.HomePage.Favorite.IFavorite;
-import com.cartoon.tinytips.Note.Comment.Comment;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
-import com.cartoon.tinytips.Note.ShareNote.ShareNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.ValueCallBack;
-import com.cartoon.tinytips.bean.Information;
-import com.cartoon.tinytips.bean.Note;
-import com.cartoon.tinytips.util.Adapters.Tips.IOnItemClickListener;
+import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.util.ActivityAndContext;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.ShowToast;
@@ -35,8 +31,6 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder>{
 
@@ -127,7 +121,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 model.onClickItem(item, "Collect", new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        notifyDataSetChanged();
+                        ActivityAndContext.getActivity(mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyDataSetChanged();
+                            }
+                        });
                         ShowToast.shortToast(s);
                         if(item.getIsClick().get("Collect")){
                             holder.Cnums_item_favorite.setBackgroundResource(R.drawable.mycollection_press);
@@ -139,7 +138,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
                     @Override
                     public void onFail(String msg) {
-
+                        ShowToast.shortToast(msg);
                     }
                 });
             }
@@ -152,7 +151,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 model.onClickItem(item, "Like", new ValueCallBack<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        notifyDataSetChanged();
+                        ActivityAndContext.getActivity(mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyDataSetChanged();
+                            }
+                        });
                         ShowToast.shortToast(s);
                         if(item.getIsClick().get("Like")){
                             holder.favoritenums_item_favorite.setBackgroundResource(R.drawable.favorite_press);

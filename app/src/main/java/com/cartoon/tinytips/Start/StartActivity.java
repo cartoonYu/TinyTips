@@ -1,19 +1,16 @@
 package com.cartoon.tinytips.Start;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Login.Login;
 import com.cartoon.tinytips.Main.Main;
-import com.cartoon.tinytips.Personal.Personal;
 import com.cartoon.tinytips.R;
-import com.cartoon.tinytips.bean.Information;
+import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.ShowToast;
 
