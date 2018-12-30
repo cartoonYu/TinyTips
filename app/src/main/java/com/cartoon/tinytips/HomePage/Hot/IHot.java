@@ -1,12 +1,15 @@
 package com.cartoon.tinytips.HomePage.Hot;
 
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.view.StatSocial;
 
 import java.util.List;
 
-interface IHot {
+public interface IHot {
+
     interface View{
-        void initData(List<HotItem> hotItems);
+        void initData();
+        void initData(List<StatSocial> hotItems);
     }
 
     interface Presenter{
@@ -14,6 +17,6 @@ interface IHot {
     }
 
     interface Model{
-        void initData(ValueCallBack<List<HotItem>> callBack);
+        void initData(ValueCallBack<List<StatSocial>> callBack);
     }
 }

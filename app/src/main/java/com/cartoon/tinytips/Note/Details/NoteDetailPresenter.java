@@ -84,8 +84,8 @@ class NoteDetailPresenter extends BaseActivityPresenter<NoteDetail> implements I
         view.setDate(note.getDate());
         view.setNote(note);
         view.setCollect(social.getNumOfCollect(),social.isCollect());
-        view.setComment(social.getNumOfComment(),social.isComment());
+        view.setComment(social.getNumOfComment());
         view.setLove(social.getNumOfLove(),social.isLove());
-        view.setForward(social.getNumOfForward(),social.isForward());
+        view.setForward(social.getNumOfForward());
     }
 }

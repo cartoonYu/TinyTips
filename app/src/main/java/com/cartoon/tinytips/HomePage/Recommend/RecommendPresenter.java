@@ -15,6 +15,7 @@ class RecommendPresenter extends BaseFragmentPresenter<Recommend> implements IRe
 
     @Override
     public void initData(){
+        ShowToast.longToast("数据加载中");
         model.initData(new ValueCallBack<List<StatSocial>>() {
             @Override
             public void onSuccess(List<StatSocial> statSocials) {

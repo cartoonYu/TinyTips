@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.table.Information;
-import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicStateAdapter;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
@@ -52,9 +52,6 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
             R.id.personal_homepage_interest3,R.id.personal_homepage_interest4})
     List<TextView> interests;    //四个兴趣
 
-
-    private List<DynamicState> dynamicStateList;
-
     private DynamicStateAdapter dynamicStateAdapter;
 
     @BindView(R.id.personal_homepage_dynamicState)
@@ -72,15 +69,19 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
 
     @Override
     protected void initView(){
-        information=IntentActivity.getIntentInformation(this,"Information");
-        presenter.initInformation(information);
-        presenter.initDynamicState();
         revampStatusBar();
     }
 
     @Override
     protected void onPrepare(){
+        information=IntentActivity.getIntentInformation(this,"Information");
+        presenter.initInformation(information);
+        initDynamicState();
+    }
 
+    @Override
+    public void initDynamicState() {
+        presenter.initDynamicState();
     }
 
     @OnClick(R.id.personal_homepage_back)
@@ -98,14 +99,18 @@ public class PersonalHomepage extends BaseActivity<PersonalHomepagePresenter> im
     }
 
     @Override
-    public void initDynamicState(List<DynamicState> list){
-        dynamicStateList=list;
-        LinearLayoutManager manager=new LinearLayoutManager(this);
-        dynamicState.setLayoutManager(manager);
-        dynamicStateAdapter=new DynamicStateAdapter(dynamicStateList);
-        dynamicState.setAdapter(dynamicStateAdapter);
-        dynamicState.setFocusableInTouchMode(false);
-        dynamicState.requestFocus();
+    public void initDynamicState(final List<StatSocial> list){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager manager=new LinearLayoutManager(PersonalHomepage.this);
+                dynamicState.setLayoutManager(manager);
+                dynamicStateAdapter=new DynamicStateAdapter(PersonalHomepage.this,list);
+                dynamicState.setAdapter(dynamicStateAdapter);
+                dynamicState.setFocusableInTouchMode(false);
+                dynamicState.requestFocus();
+            }
+        });
     }
 
     @Override

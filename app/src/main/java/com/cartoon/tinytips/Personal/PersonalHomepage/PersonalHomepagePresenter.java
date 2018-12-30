@@ -4,7 +4,7 @@ import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Note;
-import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
@@ -47,10 +47,11 @@ class PersonalHomepagePresenter extends BaseActivityPresenter<PersonalHomepage> 
 
     @Override
     public void initDynamicState() {
-        model.getDynamicStateList(new ValueCallBack<List<DynamicState>>() {
+        ShowToast.longToast("数据加载中");
+        model.getDynamicStateList(new ValueCallBack<List<StatSocial>>() {
             @Override
-            public void onSuccess(List<DynamicState> dynamicStateList) {
-                view.initDynamicState(dynamicStateList);
+            public void onSuccess(List<StatSocial> list) {
+                view.initDynamicState(list);
             }
 
             @Override

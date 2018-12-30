@@ -8,8 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.cartoon.tinytips.Note.Comment.Comment;
+import com.cartoon.tinytips.Note.Details.NoteDetail;
+import com.cartoon.tinytips.Personal.PersonalHomepage.IPersonalHomepage;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
 import java.util.Map;
@@ -21,11 +28,14 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
 
     private Context mContext;
 
-    private List<DynamicState> list;
+    private IPersonalHomepage.View view;
 
-    private List<Note> noteList;
+    private List<StatSocial> list;
+
+    private IPersonalHomepage.Model model;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         CardView cardView;
 
         @BindView(R.id.personal_homepage_dynamicState_title)
@@ -53,8 +63,10 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
         }
     }
 
-    public DynamicStateAdapter(List<DynamicState> list) {           //传入日记列表
+    public DynamicStateAdapter(IPersonalHomepage.View view,List<StatSocial> list) {           //传入日记列表
+        this.view=view;
         this.list = list;
+
     }
 
     @Override
@@ -62,31 +74,80 @@ public class DynamicStateAdapter extends RecyclerView.Adapter<DynamicStateAdapte
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.personal_homepage_dynamicstate_item, parent, false);
-        return new DynamicStateAdapter.ViewHolder(view);
+        final ViewHolder holder=
+                new ViewHolder
+                        (LayoutInflater.from(mContext).inflate(R.layout.personal_homepage_dynamicstate_item, parent, false));
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final StatSocial social=list.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"social",social);
+            }
+        });
+        holder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //评论点击事件
+                final StatSocial social=list.get(holder.getAdapterPosition());
+                IntentActivity.intentWithData(mContext,Comment.class,"social",social);
+            }
+        });
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点赞
+                final StatSocial social=list.get(holder.getAdapterPosition());
+                model.clickLike(social, new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        ShowToast.shortToast(s);
+                        view.initDynamicState();
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        ShowToast.shortToast(msg);
+                    }
+                });
+            }
+        });
+        holder.collect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //收藏
+                final StatSocial social=list.get(holder.getAdapterPosition());
+                model.clickCollect(social, new ValueCallBack<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        ShowToast.shortToast(s);
+                        view.initDynamicState();
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+
+                    }
+                });
+            }
+        });
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(DynamicStateAdapter.ViewHolder holder, int position) {
-
-        DynamicState state=list.get(position);
-        Note note = state.getNote();
-        Map<String,Integer> numOfSocial=state.getNumOfSocial();
-        Map<String,Boolean> isClick=state.getIsClick();
-
-        holder.title.setText(note.getTitle());
-        holder.date.setText(note.getDate());
-        holder.like.setText(Integer.toString(numOfSocial.get("Like")));
-        holder.comment.setText(Integer.toString(numOfSocial.get("Comment")));
-        holder.collect.setText(Integer.toString(numOfSocial.get("Collect")));
-
-        if(isClick.get("Like")){
+        StatSocial social=list.get(position);
+        holder.title.setText(social.getTitle());
+        holder.date.setText(social.getDate());
+        holder.like.setText(Integer.toString(social.getNumOfLove()));
+        holder.comment.setText(Integer.toString(social.getNumOfComment()));
+        holder.collect.setText(Integer.toString(social.getNumOfCollect()));
+        holder.forward.setText(Integer.toString(social.getNumOfForward()));
+        if(social.isLove()){
             holder.like.setCompoundDrawablesWithIntrinsicBounds(mContext.getDrawable(R.drawable.favorite_press),null,null,null);
         }
-        if(isClick.get("Collect")){
+        if(social.isCollect()){
             holder.collect.setCompoundDrawablesWithIntrinsicBounds(mContext.getDrawable(R.drawable.mycollection_press),null,null,null);
         }
-
     }
 
     @Override

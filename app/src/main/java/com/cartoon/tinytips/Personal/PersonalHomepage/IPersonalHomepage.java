@@ -2,14 +2,16 @@ package com.cartoon.tinytips.Personal.PersonalHomepage;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
-import com.cartoon.tinytips.util.Adapters.Personal.PersonalHomepage.DynamicState;
+import com.cartoon.tinytips.bean.view.StatSocial;
 
 import java.io.File;
 import java.util.List;
 
-interface IPersonalHomepage {
+public interface IPersonalHomepage {
+
     interface View{
-        void initDynamicState(List<DynamicState> list);    //初始化动态列表
+        void initDynamicState();
+        void initDynamicState(List<StatSocial> list);    //初始化动态列表
         void setHeadPro(File headPro);   //设置头像
         void setNickName(String name);     //设置昵称
         void setSchool(String school);    //设置学习
@@ -25,6 +27,8 @@ interface IPersonalHomepage {
 
     interface Model{
         void getInformation(Information information,ValueCallBack<Information> callBack);   //获取个人信息
-        void getDynamicStateList(ValueCallBack<List<DynamicState>> callBack);
+        void getDynamicStateList(ValueCallBack<List<StatSocial>> callBack);
+        void clickLike(StatSocial social,ValueCallBack<String> callBack);
+        void clickCollect(StatSocial social,ValueCallBack<String> callBack);
     }
 }

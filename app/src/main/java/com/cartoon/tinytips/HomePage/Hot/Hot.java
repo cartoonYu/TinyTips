@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Homepage.HotAdapter;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -22,8 +23,6 @@ import butterknife.BindView;
 public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
 
     private HotAdapter adapter;
-
-    private List<HotItem> HotItemList;
 
     private ClassicsHeader Classicsheader;
 
@@ -45,15 +44,6 @@ public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
 
     @Override
     protected void initView() {
-        presenter.initData();
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-        hot_recyclerView.setLayoutManager(layoutManager);
-        if(JudgeEmpty.isEmpty(HotItemList)){
-            HotItemList=new ArrayList<>();
-        }
-        adapter = new HotAdapter(HotItemList);
-        hot_recyclerView.setAdapter(adapter);
-
         Hotrefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -78,12 +68,25 @@ public class Hot extends BaseFragment<HotPresenter> implements IHot.View{
 
     @Override
     protected void onPrepare() {
-
+        initData();
     }
 
     @Override
-    public void initData(List<HotItem> hotItems){
-        this.HotItemList=hotItems;
+    public void initData() {
+        presenter.initData();
+    }
+
+    @Override
+    public void initData(final List<StatSocial> list){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+                hot_recyclerView.setLayoutManager(layoutManager);
+                adapter = new HotAdapter(Hot.this,list);
+                hot_recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
 }

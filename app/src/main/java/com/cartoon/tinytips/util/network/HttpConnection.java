@@ -44,7 +44,7 @@ public class HttpConnection{
 
     private String url;   //ip地址
 
-    private String method;   //服务器中servlet的位置
+    private String method;
 
     private HttpURLConnection urlConnection;
 

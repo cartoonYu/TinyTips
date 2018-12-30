@@ -2,6 +2,7 @@ package com.cartoon.tinytips.Personal.Collect;
 
 import com.cartoon.tinytips.BaseActivityPresenter;
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.ShowToast;
 
 import java.util.List;
@@ -13,10 +14,11 @@ class CollectPresenter extends BaseActivityPresenter<Collect> implements ICollec
 
     @Override
     public void initData() {
-        model.initData(new ValueCallBack<List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect>>() {
+        ShowToast.longToast("数据加载中");
+        model.initData(new ValueCallBack<List<StatSocial>>() {
             @Override
-            public void onSuccess(List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collects) {
-                view.initCollect(collects);
+            public void onSuccess(List<StatSocial> socials) {
+                view.initCollect(socials);
             }
 
             @Override

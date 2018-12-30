@@ -98,9 +98,6 @@ dependencies {
 
     /***************************网络通讯类*********************************/
 
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    //http传输
-
     /***************************网络通讯类*********************************/
 
     testImplementation 'junit:junit:4.12'

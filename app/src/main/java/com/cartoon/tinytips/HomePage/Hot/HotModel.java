@@ -1,23 +1,35 @@
 package com.cartoon.tinytips.HomePage.Hot;
 
 import com.cartoon.tinytips.ValueCallBack;
+import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
+import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
 
 import java.util.List;
 
 public class HotModel implements IHot.Model {
 
-    private int flag;
-
-    private OperateNote operateNote;
+    private CheckStatSocial checkStatSocial;
 
     @Override
-    public void initData(ValueCallBack<List<HotItem>> callBack){
-        callBack.onFail("系统错误");
+    public void initData(final ValueCallBack<List<StatSocial>> callBack){
+        /*StatSocial statSocial=new StatSocial();
+        checkStatSocial.query(statSocial, new IOperateBean<List<StatSocial>>() {
+            @Override
+            public void onSuccess(List<StatSocial> list) {
+                callBack.onSuccess(list);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail(msg);
+            }
+        });*/
+        callBack.onFail("初始化热门列表错误");
     }
 
     public HotModel(){
-        flag=0;
-        operateNote =OperateNote.getOperateNote();
+        checkStatSocial=CheckStatSocial.getCheckStatSocial();
     }
 }

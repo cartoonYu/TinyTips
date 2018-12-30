@@ -22,6 +22,7 @@ import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.util.ActivityAndContext;
 import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.ShowToast;
@@ -148,14 +149,12 @@ public class HomeRecommendAdapter
                 });
             }
         });
-       /* holder.userImages.setOnClickListener(new View.OnClickListener() {
+       holder.userImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //头像点击事件
-                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                Information information=new Information();
-                information.setNickName(item.getNote().getAuthor());
-                model.clickUser(information, new ValueCallBack<Information>() {
+                final StatSocial social=mSocials.get(holder.getAdapterPosition());
+                model.clickUser(social, new ValueCallBack<Information>() {
                     @Override
                     public void onSuccess(Information information) {
                         IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
@@ -168,14 +167,12 @@ public class HomeRecommendAdapter
                 });
             }
         });
-        holder.userNames.setOnClickListener(new View.OnClickListener() {
+       holder.userNames.setOnClickListener(new View.OnClickListener() {
             //昵称点击事件
             @Override
             public void onClick(View v) {
-                final RecommendItem item=mRecommendItems.get(holder.getAdapterPosition());
-                Information information=new Information();
-                information.setNickName(item.getNote().getAuthor());
-                model.clickUser(information, new ValueCallBack<Information>() {
+                final StatSocial social=mSocials.get(holder.getAdapterPosition());
+                model.clickUser(social, new ValueCallBack<Information>() {
                     @Override
                     public void onSuccess(Information information) {
                         IntentActivity.intentWithData(mContext,PersonalHomepage.class,"Information",information);
@@ -187,16 +184,16 @@ public class HomeRecommendAdapter
                     }
                 });
             }
-        });*/
-        holder.comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //评论点击事件
-                final StatSocial social=mSocials.get(holder.getAdapterPosition());
-                IntentActivity.intentWithData(mContext,Comment.class,"social",social);
-            }
         });
-        return holder;
+       holder.comment.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               //评论点击事件
+               final StatSocial social=mSocials.get(holder.getAdapterPosition());
+               IntentActivity.intentWithData(mContext,Comment.class,"social",social);
+           }
+       });
+       return holder;
     }
 
     @NonNull
@@ -215,9 +212,6 @@ public class HomeRecommendAdapter
         }
         if(temp.isCollect()){
             holder.collect.setBackgroundResource(R.drawable.mycollection_press);
-        }
-        if(temp.isComment()){
-
         }
         if(JudgeEmpty.isNotEmpty(temp.getWordDetails())){
             if(!temp.getWordDetails().isEmpty()){

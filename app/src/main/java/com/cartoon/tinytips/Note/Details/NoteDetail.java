@@ -160,12 +160,12 @@ public class NoteDetail extends BaseActivity<NoteDetailPresenter> implements INo
     }
 
     @Override
-    public void setForward(int num, boolean isClick) {
+    public void setForward(int num) {
         forward.setText(Integer.toString(num));
     }
 
     @Override
-    public void setComment(int num, boolean isClick) {
+    public void setComment(int num) {
         comment.setText(Integer.toString(num));
     }
 }

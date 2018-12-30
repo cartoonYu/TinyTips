@@ -14,8 +14,8 @@ interface INoteDetail {
         void setDate(String date);
         void setCollect(int num,boolean isClick);
         void setLove(int num,boolean isClick);
-        void setForward(int num,boolean isClick);
-        void setComment(int num,boolean isClick);
+        void setForward(int num);
+        void setComment(int num);
     }
 
     interface Presenter{

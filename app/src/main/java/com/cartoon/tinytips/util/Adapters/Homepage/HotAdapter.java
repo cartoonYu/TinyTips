@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cartoon.tinytips.HomePage.Hot.HotItem;
+import com.cartoon.tinytips.HomePage.Hot.IHot;
 import com.cartoon.tinytips.Note.Details.NoteDetail;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.IntentActivity;
+import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
@@ -25,7 +27,9 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>{
 
     private Context mContext;
 
-    private List<HotItem> mHotItems;
+    private List<StatSocial> mHotItems;
+
+    private IHot.View view;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -50,8 +54,9 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>{
         }
     }
 
-    public HotAdapter(List<HotItem> mHotItem) {
+    public HotAdapter(IHot.View view,List<StatSocial> mHotItem) {
         this.mHotItems = mHotItem;
+        this.view=view;
     }
 
     @Override
@@ -65,9 +70,8 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 int position=holder.getAdapterPosition();
-                Note note=mHotItems.get(position).getNote();
-                Log.d("asd",note.getTitle());
-                IntentActivity.intentWithData(mContext,NoteDetail.class,"note",note);
+                StatSocial social=mHotItems.get(position);
+                IntentActivity.intentWithData(mContext,NoteDetail.class,"social",social);
             }
         });
         return holder;
@@ -76,14 +80,15 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>{
     @NonNull
     @Override
     public void onBindViewHolder(HotAdapter.ViewHolder holder, int position) {
-        HotItem HotItem = mHotItems.get(position);
-        Note note=HotItem.getNote();
-        holder.sequence.setText(Integer.toString(0).concat(Integer.toString(HotItem.getSequence())));
-        if(!note.getWordDetails().isEmpty()){
-            holder.contents.setText(note.getWordDetails().get(0));
+        StatSocial social=mHotItems.get(position);
+        if(JudgeEmpty.isNotEmpty(social.getWordDetails())){
+            if(!social.getWordDetails().isEmpty()){
+                holder.contents.setText(social.getWordDetails().get(0));
+            }
         }
-        holder.titles.setText(note.getTitle());
-        holder.NumOfNumOfClick.setText(Integer.toString(HotItem.getNumOfClick()));
+        holder.titles.setText(social.getTitle());
+        holder.sequence.setText("0"+position);
+        holder.NumOfNumOfClick.setText(Integer.toString(1000));
     }
 
     @Override

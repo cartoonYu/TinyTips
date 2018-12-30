@@ -47,7 +47,7 @@ public class RecommendModel implements IRecommend.Model {
     }
 
     @Override
-    public void clickLike(StatSocial social, final ValueCallBack<String> callBack) {
+    public void clickLike(final StatSocial social, final ValueCallBack<String> callBack) {
         Social data=new Social();
         data.setType("Like");
         data.setUserId(localInformation.getId());
@@ -56,6 +56,7 @@ public class RecommendModel implements IRecommend.Model {
             operateSocial.delete(data, new IOperateBean<String>() {
                 @Override
                 public void onSuccess(String s) {
+                    social.setLove(false);
                     callBack.onSuccess("取消成功");
                 }
 
@@ -69,6 +70,7 @@ public class RecommendModel implements IRecommend.Model {
             operateSocial.add(data, new IOperateBean<String>() {
                 @Override
                 public void onSuccess(String s) {
+                    social.setLove(true);
                     callBack.onSuccess("点赞成功");
                 }
 
@@ -116,8 +118,20 @@ public class RecommendModel implements IRecommend.Model {
 
 
     @Override
-    public void clickUser(StatSocial social, ValueCallBack<Information> callBack) {
+    public void clickUser(StatSocial social, final ValueCallBack<Information> callBack) {
+        Information information=new Information();
+        information.setId(social.getUserId());
+        operateInformation.query(information, new IOperateBean<List<Information>>() {
+            @Override
+            public void onSuccess(List<Information> information) {
+                callBack.onSuccess(information.get(0));
+            }
 
+            @Override
+            public void onFail(String msg) {
+                callBack.onFail(msg);
+            }
+        });
     }
 
     public RecommendModel(){

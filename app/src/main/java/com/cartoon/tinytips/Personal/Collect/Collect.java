@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.cartoon.tinytips.BaseActivity;
 import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
+import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Personal.Collect.CollectAdapter;
 import com.cartoon.tinytips.util.FragmentConstant;
 import com.cartoon.tinytips.util.IntentActivity;
@@ -30,7 +31,6 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     @BindView(R.id.toolbarText)
     TextView toolbarText;
 
-    private List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collectList;
     private CollectAdapter collectAdapter;
 
     @BindView(R.id.personal_collect_collectList)
@@ -50,12 +50,17 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     protected void initView(){
         revampStatusBar();
         initToolbar();
-        presenter.initData();
+        initCollect();
     }
 
     @Override
     protected void onPrepare(){
 
+    }
+
+    @Override
+    public void initCollect() {
+        presenter.initData();
     }
 
     private void revampStatusBar(){
@@ -68,12 +73,16 @@ public class Collect extends BaseActivity<CollectPresenter> implements ICollect.
     }
 
     @Override
-    public void initCollect(List<com.cartoon.tinytips.util.Adapters.Personal.Collect.Collect> collects){
-        collectList=collects;
-        LinearLayoutManager manager=new LinearLayoutManager(this);
-        collect.setLayoutManager(manager);
-        collectAdapter=new CollectAdapter(collectList);
-        collect.setAdapter(collectAdapter);
+    public void initCollect(final List<StatSocial> socials){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager manager=new LinearLayoutManager(Collect.this);
+                collect.setLayoutManager(manager);
+                collectAdapter=new CollectAdapter(Collect.this,socials);
+                collect.setAdapter(collectAdapter);
+            }
+        });
     }
 
     @OnClick(R.id.toolbarBack)
