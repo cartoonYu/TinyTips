@@ -33,6 +33,7 @@ android {
                             'src/main/res/layout/note/comment',
                             'src/main/res/layout/personal',
                             'src/main/res/layout/personal/mynote',
+                            'src/main/res/layout/personal/likes',
                             'src/main/res/layout/personal/detail',
                             'src/main/res/layout/personal/detail/revamp',
                             'src/main/res/layout/personal/homepage',
