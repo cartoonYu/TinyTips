@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.cartoon.tinytips.BaseFragment;
 import com.cartoon.tinytips.Personal.Collect.Collect;
 import com.cartoon.tinytips.Personal.Detail.Detail;
+import com.cartoon.tinytips.Personal.Likes.Likes;
 import com.cartoon.tinytips.Personal.MyNote.MyNote;
 import com.cartoon.tinytips.Personal.PersonalHomepage.PersonalHomepage;
 import com.cartoon.tinytips.Personal.Setting.Setting;
@@ -78,6 +79,12 @@ public class Personal extends BaseFragment<PersonalPresenter> implements IPerson
     @OnClick(R.id.personal_notes)
     public void onClickNote(){
         IntentActivity.intentWithoutData(getContext(),MyNote.class);
+        IntentActivity.finishActivity(getActivity());
+    }
+
+    @OnClick(R.id.favorite_Personal)
+    public void onClickFavorite(){
+        IntentActivity.intentWithoutData(getContext(),Likes.class);
         IntentActivity.finishActivity(getActivity());
     }
 
