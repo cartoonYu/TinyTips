@@ -13,6 +13,11 @@
         android:layout_marginLeft="10dp"
         android:background="@drawable/coners_bg_white">
 
+        <include android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/lieks_item_head"
+            android:layout_marginTop="5dp"
+            android:id="@+id/likes_head"/>
         <TextView
             android:id="@+id/likes_item_title"
             android:layout_width="match_parent"
@@ -20,29 +25,45 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_below="@id/likes_head"
             android:textColor="@color/black"
-            android:textSize="16dp"/>
+            android:textSize="14dp"/>
+
+
+
+        <TextView
+            android:id="@+id/likes_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/likes_item_title"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="12dp"
+            android:text="定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
+
+Templateemplate已有的是一段么办？那我们就用回调个操纵JdbcTemplate中变量的方法，我们去实现这个方法，就把变化的东西集中到这里了。然后我们再传入这个回调对象到JdbcTemplate，从而完成了调用。这可能是Template Method不需要继承的另一种实现方式吧。"/>
 
         <TextView
             android:id="@+id/likes_item_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/likes_item_title"
+            android:layout_below="@id/likes_item_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:textSize="10dp" />
 
-        <TextView
-            android:id="@+id/likes_item_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/likes_item_tags"
-            android:layout_below="@id/likes_item_title"
-            android:textSize="10dp"
+        <include android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            layout="@layout/likes_item_buttom"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/likes_item_tags"
+            />
     </RelativeLayout>
 </RelativeLayout>

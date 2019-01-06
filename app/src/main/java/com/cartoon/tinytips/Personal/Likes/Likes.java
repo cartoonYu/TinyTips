@@ -6,9 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cartoon.tinytips.BaseActivity;
+import com.cartoon.tinytips.Main.Main;
 import com.cartoon.tinytips.R;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.util.Adapters.Likes.LikesAdapter;
+import com.cartoon.tinytips.util.FragmentConstant;
+import com.cartoon.tinytips.util.IntentActivity;
 import com.cartoon.tinytips.util.UI.RevampStatusBar;
 import com.cartoon.tinytips.util.UI.RevampToolbar;
 
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.cartoon.tinytips.util.TinyTipsApplication.getContext;
 
@@ -66,6 +70,12 @@ Likes extends BaseActivity<LikesPresenter> implements ILikes.View{
 
     private void revampToolbar(){
         RevampToolbar.setText(toolbarText,new String("我的赞"));
+    }
+
+    @OnClick(R.id.toolbarBack)
+    public void onClickBack(){
+        IntentActivity.intentWithData(this,Main.class,new String("main"), FragmentConstant.getConstant().getPersonal());
+        IntentActivity.finishActivity(this);
     }
 
     public void initData(){

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/likes_buttom_share"
+        app:layout_widthPercent="50%"
+        app:layout_heightPercent="100%"
+        android:background="@color/skyBlue"
+        android:text="分享"/>
+
+    <Button
+        android:id="@+id/likes_buttom_delete"
+        android:layout_alignParentRight="true"
+        app:layout_widthPercent="50%"
+        app:layout_heightPercent="100%"
+        android:background="@color/hot1"
+        android:text="删除"/>
+</com.zhy.android.percent.support.PercentRelativeLayout>
