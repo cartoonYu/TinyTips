@@ -5,9 +5,10 @@ import com.cartoon.tinytips.bean.table.Social;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
+import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +25,7 @@ public class OperateSocial {
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -45,9 +46,9 @@ public class OperateSocial {
      * @return
      */
     public void add(Social social, final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setSocialToJSON(social,"add");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Social("add");
+        JSONObject data=objectOperation.setSocialToJSON(social);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -75,9 +76,9 @@ public class OperateSocial {
      * @return
      */
     public void delete(Social condition, final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setSocialToJSON(condition,"delete");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Social("delete");
+        JSONObject data=objectOperation.setSocialToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -105,9 +106,9 @@ public class OperateSocial {
      * @return
      */
     public void query(Social condition, final IOperateBean<List<Social>> operateBean){
-        JSONObject data=objectOperation.setSocialToJSON(condition,"query");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Social("query");
+        JSONObject data=objectOperation.setSocialToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 if(result.equals("[]")){
@@ -144,8 +145,7 @@ public class OperateSocial {
     private OperateSocial(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_Social();
+        connection=new HttpConnection();
         method="POST";
     }
 

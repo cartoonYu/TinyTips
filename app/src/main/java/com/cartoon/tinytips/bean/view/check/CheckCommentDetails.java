@@ -1,16 +1,16 @@
 package com.cartoon.tinytips.bean.view.check;
 
 
-import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.view.CommentDetails;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.file.FileOperation;
-import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
+import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +34,7 @@ public class CheckCommentDetails {
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -43,8 +43,9 @@ public class CheckCommentDetails {
     private FileOperation fileOperation;
 
     public void query(CommentDetails details, final IOperateBean<List<CommentDetails>> operateBean){
-        connection.sendJSONObject(url,method,objectOperation.setCommentDetailsToJSON(details));
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_CommentDetails("query");
+        connection.sendJSONObject(url, method,
+                objectOperation.setCommentDetailsToJSON(details), new IDataCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 if(result.equals("[]")){
@@ -97,8 +98,7 @@ public class CheckCommentDetails {
     private CheckCommentDetails(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_CommentDetails();
+        connection=new HttpConnection();
         method="POST";
         fileOperation=FileOperation.getOperation();
     }

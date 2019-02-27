@@ -2,7 +2,6 @@ package com.cartoon.tinytips.util.network;
 
 import android.util.Log;
 
-import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import org.json.JSONArray;
@@ -16,9 +15,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * @author cartoon
@@ -28,23 +24,12 @@ import java.util.List;
  * 1.使用http进行网络传输数据
  *
  * how to use
- * 1.通过静态方法getConstant获取获取本类对象
- * 2.通过调用sendJSONObject或者sendJSONArray方法将数据传入类中
- * 3.开启线程，调用run方法进行数据传输
- * 4.线程等待，通过getResult方法返回数据
+ * 1.通过调用sendJSONArray发送jsonArray到服务器
+ * 2.通过调用sendJSONObject发送json文件到服务器
  *
- * notice
- * 1.本类为单例
- * 2.对象通过调用静态方法getOperate获取
  */
 
-public class HttpConnection{
-
-    private static volatile HttpConnection connection;
-
-    private String url;   //ip地址
-
-    private String method;
+public class HttpConnection implements IHttpConnection {
 
     private HttpURLConnection urlConnection;
 
@@ -54,59 +39,23 @@ public class HttpConnection{
 
     private InputStream inputStream;
 
-    private JSONArray data;
-
     private String result;
 
-    /**
-     * 功能
-     * 客户端数据发送到服务器端
-     *
-     * 使用方法
-     * 1.传入ip地址，处理方法，需要发送的JSONObject对象
-     *
-     * @param url
-     * @param method
-     * @param object
-     */
-    public void sendJSONObject(String url,String method, JSONObject object){
-        this.url=url;
-        this.method=method;
-        List<JSONObject> temp=new ArrayList<>();
-        temp.add(object);
-        data=JSONArrayOperation.getOperation().setObjectToArray(temp);
-    }
-
-
-    /**
-     * 功能
-     * 客户端数据发送到服务器端
-     *
-     * 使用方法
-     * 1.传入ip地址，处理方法，需要发送的JSONArray对象
-     *
-     * @param url
-     * @param method
-     * @param data
-     */
-    public void sendJSONArray(String url,String method,JSONArray data){
-        this.url=url;
-        this.method=method;
-        this.data=data;
-    }
-
-    public void sendData(final IDataCallBack<String> callBack){
+    @Override
+    public void sendJSONObject(final String url, final String method, final JSONObject object,final IDataCallBack<String> callBack) {
+        Log.d("network",url);
+        Log.d("network",method);
+        Log.d("data",object.toString());
         new Thread(new Runnable() {
             @Override
             public void run() {
                 StringBuffer buffer=new StringBuffer();
                 getURLConnection(url,method);
-                if(JudgeEmpty.isNotEmpty(urlConnection)){
+                if(JudgeEmpty.isNotEmpty(urlConnection)) {
                     getOutputStream(urlConnection);
                     if(JudgeEmpty.isNotEmpty(outputStream)){
-                        try{
-                            String temp=data.toString();
-                            outputStream.write(temp.getBytes());
+                        try {
+                            outputStream.write(object.toString().getBytes());
                             getInputStream(urlConnection);
                             if(JudgeEmpty.isNotEmpty(inputStream)){
                                 BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
@@ -116,7 +65,7 @@ public class HttpConnection{
                                 }
                                 inputStream.close();
                             }
-                        }catch (IOException e){
+                        } catch (IOException e) {
                             e.printStackTrace();
                             Log.e("networkException",new String("写入错误"));
                         }
@@ -124,6 +73,50 @@ public class HttpConnection{
                 }
                 result=buffer.toString();
                 urlConnection.disconnect();
+                Log.d("network",result);
+                if(result.equals("300")||result.equals("400")){
+                    callBack.onFail(result);
+                }
+                else {
+                    callBack.onSuccess(result);
+                }
+            }
+        }).start();
+    }
+
+    @Override
+    public void sendJSONArray(final String url, final String method, final JSONArray array,final IDataCallBack<String> callBack) {
+        Log.d("network",url);
+        Log.d("network",method);
+        Log.d("data",array.toString());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StringBuffer buffer=new StringBuffer();
+                getURLConnection(url,method);
+                if(JudgeEmpty.isNotEmpty(urlConnection)) {
+                    getOutputStream(urlConnection);
+                    if(JudgeEmpty.isNotEmpty(outputStream)){
+                        try {
+                            outputStream.write(array.toString().getBytes());
+                            getInputStream(urlConnection);
+                            if(JudgeEmpty.isNotEmpty(inputStream)){
+                                BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+                                String line;
+                                while((line=reader.readLine())!=null){
+                                    buffer.append(line);
+                                }
+                                inputStream.close();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.e("networkException",new String("写入错误"));
+                        }
+                    }
+                }
+                result=buffer.toString();
+                urlConnection.disconnect();
+                Log.d("network",result);
                 if(result.equals("300")||result.equals("400")){
                     callBack.onFail(result);
                 }
@@ -189,19 +182,7 @@ public class HttpConnection{
         }
     }
 
-    public static HttpConnection getConnection(){
-        if(JudgeEmpty.isEmpty(connection)){
-            synchronized (HttpConnection.class){
-                if(JudgeEmpty.isEmpty(connection)){
-                    connection=new HttpConnection();
-                }
-            }
-        }
-        return connection;
-    }
-
-    private HttpConnection(){
+    public HttpConnection() {
         TIME_OUT=2000;
     }
-
 }

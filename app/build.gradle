@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cartoon.tinytips"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -18,8 +18,8 @@ android {
     }
     sourceSets {
         main {
-            res.srcDirs =
-                    [
+                res.srcDirs =
+                        [
                             'src/main/res/layout/discover',
                             'src/main/res/layout/discover/list',
                             'src/main/res/layout/homepage',

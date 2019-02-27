@@ -31,7 +31,10 @@
         </activity>
 
         <activity android:name=".Start.StartActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Message.CommentMessage.CommentMessage"/>
         <activity android:name=".Message.FlowingMessage.FlowingMessage"/>
@@ -57,10 +60,7 @@
         <activity android:name=".Personal.Setting.Security.Security"/>
         <activity android:name=".Personal.Setting.Management.Management"/>
         <activity android:name=".Personal.Likes.Likes">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".Discover.NoteList.NoteList"/>

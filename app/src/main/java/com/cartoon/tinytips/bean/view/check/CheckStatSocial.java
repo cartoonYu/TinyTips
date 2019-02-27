@@ -1,9 +1,6 @@
 package com.cartoon.tinytips.bean.view.check;
 
-import android.print.PrinterId;
-import android.util.Log;
 
-import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
@@ -12,16 +9,16 @@ import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.file.FileOperation;
-import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
+import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +38,7 @@ public class CheckStatSocial {
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -59,9 +56,9 @@ public class CheckStatSocial {
     }
 
     public void query(final StatSocial social, final IOperateBean<List<StatSocial>> operateBean){
+        url=HttpConstant.getConstant().getURL_StatSocial("query");
         JSONObject object=objectOperation.setStatSocialToJSON(social);
-        connection.sendJSONObject(url,method,object);
-        connection.sendData(new IDataCallBack<String>() {
+        connection.sendJSONObject(url, method, object, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 if(result.equals("[]")){
@@ -177,8 +174,7 @@ public class CheckStatSocial {
     private CheckStatSocial(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_StatSocial();
+        connection=new HttpConnection();
         method="POST";
     }
 }

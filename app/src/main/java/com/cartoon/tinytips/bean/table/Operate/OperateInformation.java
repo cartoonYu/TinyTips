@@ -1,5 +1,6 @@
 package com.cartoon.tinytips.bean.table.Operate;
 
+
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
@@ -8,6 +9,7 @@ import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.network.HttpConstant;
 import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +21,7 @@ import java.util.List;
 /**
  *
  * @author cartoon
- * @version 1.3
+ * @version 1.4
  *
  * description
  * 通过网络传输对数据库个人信息表进行增删查改操作
@@ -49,7 +51,7 @@ public class OperateInformation {
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -90,9 +92,9 @@ public class OperateInformation {
      * @return
      */
     public void add(Information information, final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setInformationToJSON(information,"add");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Information("add");
+        JSONObject data=objectOperation.setInformationToJSON(information);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -120,9 +122,9 @@ public class OperateInformation {
      * @return
      */
     public void delete(Information condition,final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setInformationToJSON(condition,"delete");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Information("delete");
+        JSONObject data=objectOperation.setInformationToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -150,9 +152,9 @@ public class OperateInformation {
      * @return
      */
     public void query(Information condition,final IOperateBean<List<Information>> operateBean){
-        JSONObject data=objectOperation.setInformationToJSON(condition,"query");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Information("query");
+        JSONObject data=objectOperation.setInformationToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 if(result.equals("[]")){
@@ -177,7 +179,6 @@ public class OperateInformation {
                     }
                     operateBean.onSuccess(list);
                 }
-
             }
 
             @Override
@@ -185,6 +186,7 @@ public class OperateInformation {
                 operateBean.onFail(msg);
             }
         });
+
     }
 
     /**
@@ -203,14 +205,14 @@ public class OperateInformation {
      * @return
      */
     public void update(Information oldInformation,Information newInformation,final IOperateBean<String> operateBean){
-        JSONObject condition=objectOperation.setInformationToJSON(oldInformation,"update");
-        JSONObject data=objectOperation.setInformationToJSON(newInformation,"update");
+        url=HttpConstant.getConstant().getURL_Information("update");
+        JSONObject condition=objectOperation.setInformationToJSON(oldInformation);
+        JSONObject data=objectOperation.setInformationToJSON(newInformation);
         List<JSONObject> temp=new ArrayList<>();
         temp.add(condition);
         temp.add(data);
         JSONArray array=arrayOperation.setObjectToArray(temp);
-        connection.sendJSONArray(url,method,array);
-        connection.sendData(new IDataCallBack<String>() {
+        connection.sendJSONArray(url, method, array, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -227,8 +229,7 @@ public class OperateInformation {
     private OperateInformation(){
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_Information();
+        connection=new HttpConnection();
         method="POST";
     }
 }

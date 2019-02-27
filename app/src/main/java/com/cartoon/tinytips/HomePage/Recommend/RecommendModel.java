@@ -138,7 +138,7 @@ public class RecommendModel implements IRecommend.Model {
         operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
         operateSocial=OperateSocial.getOperateSocial();
-        operateComment =OperateComment.getCommentDetails();
+        operateComment =OperateComment.getComment();
         localInformation=LocalInformation.getLocalInformation().query();
         checkStatSocial=CheckStatSocial.getCheckStatSocial();
     }

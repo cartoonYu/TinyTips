@@ -31,7 +31,6 @@ import java.util.Map;
  * notice
  * 1.本类为单例，对象通过调用静态方法getInstance获取
  */
-
 public class JSONObjectOperation {
 
     private static volatile JSONObjectOperation operation;
@@ -85,6 +84,31 @@ public class JSONObjectOperation {
         return result;
     }
 
+    public JSONObject setSocialToJSON(Social social){
+        if(JudgeEmpty.isEmpty(social)){
+            return null;
+        }
+        JSONObject result=new JSONObject();
+        try {
+            if(social.getUserId()!=0){
+                result.put("userId",social.getUserId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getType())){
+                result.put("type",social.getType());
+            }
+            if(social.getNoteId()!=0){
+                result.put("noteId",social.getNoteId());
+            }
+            if(JudgeEmpty.isNotEmpty(social.getDate())){
+                result.put("date",social.getDate());
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+            Log.d("jsonObjectException","将Social转换成JSON文件发生错误");
+        }
+        return result;
+    }
+
     /**
      * 将传入的json文件转化成Social
      * @param object
@@ -119,14 +143,13 @@ public class JSONObjectOperation {
      * @param comment
      * @return
      */
-    public JSONObject setCommentToJSON(Comment comment, String method){
+    public JSONObject setCommentToJSON(Comment comment){
         if(JudgeEmpty.isEmpty(comment)){
             return null;
         }
         else{
             JSONObject result=new JSONObject();
             try{
-                result.put("method",method);
                 if(comment.getNoteId()!=0){
                     result.put("noteId",comment.getNoteId());
                 }
@@ -183,21 +206,22 @@ public class JSONObjectOperation {
      * @param note
      * @return
      */
-    public JSONObject setNoteToJSON(Note note,String method){
+    public JSONObject setNoteToJSON(Note note){
         if(JudgeEmpty.isEmpty(note)){
             return null;
         }
         else{
             JSONObject result=new JSONObject();
             try{
-                result.put("method",method);
                 if(note.getUserId()!=0){
                     result.put("userId",note.getUserId());
                 }
                 if(note.getId()!=0){
                     result.put("id",note.getId());
                 }
-                result.put("title",note.getTitle());
+                if(JudgeEmpty.isNotEmpty(note.getTitle())){
+                    result.put("title",note.getTitle());
+                }
                 if(JudgeEmpty.isNotEmpty(note.getWordDetails())){
                     if(!note.getWordDetails().isEmpty()){
                         result.put("word",note.getWordDetails().toString());
@@ -286,34 +310,51 @@ public class JSONObjectOperation {
      * @param information
      * @return
      */
-    public JSONObject setInformationToJSON(Information information,String method){
+    public JSONObject setInformationToJSON(Information information){
         if(JudgeEmpty.isEmpty(information)){
             return null;
         }
         else{
             JSONObject result=new JSONObject();
             try{
-                result.put("method",method);
                 if(information.getId()!=0){
                     result.put("id",information.getId());
                 }
-                result.put("account",information.getAccount());
-                result.put("password",information.getPassword());
-                result.put("date",information.getDate());
+                if(JudgeEmpty.isNotEmpty(information.getAccount())){
+                    result.put("account",information.getAccount());
+                }
+                if(JudgeEmpty.isNotEmpty(information.getPassword())){
+                    result.put("password",information.getPassword());
+                }
+                if(JudgeEmpty.isNotEmpty(information.getDate())){
+                    result.put("date",information.getDate());
+                }
                 if(JudgeEmpty.isNotEmpty(information.getHeadPortrait())){
                     String resource= fileOperation.transFileToString(information.getHeadPortrait());
                     information.setHeadPortraitResource(resource);
                     result.put("headPortrait",information.getHeadPortraitResource());
                 }
-                result.put("nickName",information.getNickName());
-                result.put("sex",information.isSex());
+                if(JudgeEmpty.isNotEmpty(information.getNickName())){
+                    result.put("nickName",information.getNickName());
+                }
+                if(JudgeEmpty.isNotEmpty(information.isSex())){
+                    result.put("sex",information.isSex());
+                }
+                if(JudgeEmpty.isNotEmpty(information.getSchool())){
+                    result.put("school",information.getSchool());
+                }
                 if(JudgeEmpty.isNotEmpty(information.getInterest())){
                     result.put("interest",information.getInterest().toString());
                 }
-                result.put("school",information.getSchool());
-                result.put("major",information.getMajor());
-                result.put("background",information.getBackground());
-                result.put("resume",information.getResume());
+                if(JudgeEmpty.isNotEmpty(information.getMajor())){
+                    result.put("major",information.getMajor());
+                }
+                if(JudgeEmpty.isNotEmpty(information.getBackground())){
+                    result.put("background",information.getBackground());
+                }
+                if(JudgeEmpty.isNotEmpty(information.getResume())){
+                    result.put("resume",information.getResume());
+                }
             }catch(JSONException e){
                 Log.e("jsonObjectException","将Information转换json文件出现错误");
                 e.printStackTrace();

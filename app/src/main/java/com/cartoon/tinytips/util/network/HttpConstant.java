@@ -33,6 +33,17 @@ public class HttpConstant {
 
     private static volatile HttpConstant constant;
 
+    public static HttpConstant getConstant(){
+        if(JudgeEmpty.isEmpty(constant)){
+            synchronized (HttpConstant.class){
+                if(JudgeEmpty.isEmpty(constant)){
+                    constant=new HttpConstant();
+                }
+            }
+        }
+        return constant;
+    }
+
     private HttpConstant(){
         setFilePath();
         setProperties();
@@ -52,45 +63,37 @@ public class HttpConstant {
     }
 
     private void setFilePath() {
-        filePath=new String("url_server.properties");
+        filePath=new String("url_local.properties");
     }
 
-    public static HttpConstant getConstant(){
-        if(JudgeEmpty.isEmpty(constant)){
-            synchronized (HttpConstant.class){
-                if(JudgeEmpty.isEmpty(constant)){
-                    constant=new HttpConstant();
-                }
-            }
-        }
-        return constant;
+    public String getURL_Comment(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("comment"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_Comment() {
-        return properties.getProperty("comment");
+    public String getURL_Note(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("note"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_Note() {
-        return properties.getProperty("note");
+    public String getURL_Information(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("information"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_Information() {
-        return properties.getProperty("information");
+    public String getURL_Social(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("social"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_Text() {
-        return properties.getProperty("text");
+    public String getURL_StatSocial(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("statSocial"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_Social(){
-        return properties.getProperty("social");
+    public String getURL_CommentDetails(String method) {
+        StringBuilder temp=new StringBuilder(properties.getProperty("commentDetails"));
+        return temp.append(method).toString();
     }
 
-    public String getURL_StatSocial() {
-        return properties.getProperty("statSocial");
-    }
-
-    public String getURL_CommentDetails() {
-        return properties.getProperty("commentDetails");
-    }
 }

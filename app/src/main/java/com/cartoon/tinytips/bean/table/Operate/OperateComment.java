@@ -2,19 +2,14 @@ package com.cartoon.tinytips.bean.table.Operate;
 
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Comment;
-import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
-import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.HttpConstant;
+import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 拆分形参传进的CommentDetails，传递给数据库操作层
@@ -26,13 +21,9 @@ public class OperateComment {
 
     private static volatile OperateComment commentDetails;
 
-    private OperateInformation operateInformation;
-
     private JSONObjectOperation objectOperation;
 
-    private JSONArrayOperation arrayOperation;
-
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -47,7 +38,7 @@ public class OperateComment {
      *
      * @return
      */
-    public static OperateComment getCommentDetails(){
+    public static OperateComment getComment(){
         if(JudgeEmpty.isEmpty(commentDetails)){
             synchronized (OperateComment.class){
                 if(JudgeEmpty.isEmpty(commentDetails)){
@@ -73,9 +64,9 @@ public class OperateComment {
      * @return
      */
     public void add(Comment comment, final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setCommentToJSON(comment,"add");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Comment("add");
+        JSONObject data=objectOperation.setCommentToJSON(comment);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -103,9 +94,9 @@ public class OperateComment {
      * @return
      */
     public void delete(Comment comment, final IOperateBean<String> operateBean){
-        JSONObject data=objectOperation.setCommentToJSON(comment,"delete");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        url=HttpConstant.getConstant().getURL_Comment("delete");
+        JSONObject data=objectOperation.setCommentToJSON(comment);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -117,99 +108,10 @@ public class OperateComment {
             }
         });
     }
-
-    /**
-     * 功能
-     * 查询评论信息
-     *
-     * 使用方法
-     * 1.传入评论信息对象
-     *
-     * 注意
-     * 1.传入评论信息对象必须携带至少一个条件
-     * 2.通过方法getQueryData获取返回的个人信息集合
-     *
-     * @param condition
-     * @return
-     */
-    public void query(Comment condition, final IOperateBean<List<Comment>> operateBean){
-        JSONObject data=objectOperation.setCommentToJSON(condition,"query");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
-            @Override
-            public void onSuccess(String data) {
-                if(data.equals("[]")){
-                    operateBean.onFail("500");
-                }
-                else {
-                    JSONArray array=null;
-                    try {
-                        array=new JSONArray(data);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    List<JSONObject> temp=null;
-                    if(JudgeEmpty.isNotEmpty(array)){
-                        temp=arrayOperation.getObjectsFromArray(array);
-                    }
-                    List<Comment> comments=new ArrayList<>();
-                    for(JSONObject object:temp){
-                        comments.add(objectOperation.getCommentFromJSON(object));
-                    }
-                    operateBean.onSuccess(comments);
-                }
-            }
-
-            @Override
-            public void onFail(String msg) {
-                operateBean.onFail(msg);
-            }
-        });
-    }
-
-    /**
-     * 功能
-     * 更新评论信息
-     *
-     * 使用方法
-     * 1.传入原有评论信息以及修改后的评论信息
-     * 2.通过返回值判断更新是否成功
-     *
-     * 注意
-     * 1.传入的两个评论信息必须笔记ID以及用户ID都一致
-     *
-     * @param oldDetails
-     * @param newDetails
-     * @return
-     */
-    public void update(Comment oldDetails, Comment newDetails, final IOperateBean<String> operateBean){
-        JSONObject condition=objectOperation.setCommentToJSON(oldDetails,"update");
-        JSONObject data=objectOperation.setCommentToJSON(newDetails,"update");
-        List<JSONObject> temp=new ArrayList<>();
-        temp.add(condition);
-        temp.add(data);
-        JSONArray array=arrayOperation.setObjectToArray(temp);
-        connection.sendJSONArray(url,method,array);
-        connection.sendData(new IDataCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                operateBean.onSuccess(s);
-            }
-
-            @Override
-            public void onFail(String msg) {
-                operateBean.onFail(msg);
-            }
-        });
-    }
-
 
     private OperateComment(){
-        operateInformation=OperateInformation.getOperateInformation();
         objectOperation=JSONObjectOperation.getInstance();
-        arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_Comment();
+        connection=new HttpConnection();
         method="POST";
     }
 }

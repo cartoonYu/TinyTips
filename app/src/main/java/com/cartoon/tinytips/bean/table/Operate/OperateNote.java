@@ -9,6 +9,7 @@ import com.cartoon.tinytips.util.file.FileOperation;
 import com.cartoon.tinytips.util.network.HttpConstant;
 import com.cartoon.tinytips.util.network.HttpConnection;
 import com.cartoon.tinytips.util.network.IDataCallBack;
+import com.cartoon.tinytips.util.network.IHttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,7 +58,7 @@ public class OperateNote {
 
     private JSONArrayOperation arrayOperation;
 
-    private HttpConnection connection;
+    private IHttpConnection connection;
 
     private String url;
 
@@ -97,10 +98,10 @@ public class OperateNote {
      * @return
      */
     public void add(Note note, final IOperateBean<String> operateBean){
+        url=HttpConstant.getConstant().getURL_Note("add");
         note=handleNote(note);
-        JSONObject data=objectOperation.setNoteToJSON(note,"add");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        JSONObject data=objectOperation.setNoteToJSON(note);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -127,10 +128,10 @@ public class OperateNote {
      * @return
      */
     public void delete(Note condition, final IOperateBean<String> operateBean){
+        url=HttpConstant.getConstant().getURL_Note("delete");
         condition=handleNote(condition);
-        JSONObject data=objectOperation.setNoteToJSON(condition,"delete");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        JSONObject data=objectOperation.setNoteToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -158,10 +159,10 @@ public class OperateNote {
      * @return
      */
     public void query(Note condition, final IOperateBean<List<Note>> operateBean){
+        url=HttpConstant.getConstant().getURL_Note("query");
         condition=handleNote(condition);
-        JSONObject data=objectOperation.setNoteToJSON(condition,"query");
-        connection.sendJSONObject(url,method,data);
-        connection.sendData(new IDataCallBack<String>() {
+        JSONObject data=objectOperation.setNoteToJSON(condition);
+        connection.sendJSONObject(url, method, data, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 if(result.equals("[]")){
@@ -224,16 +225,16 @@ public class OperateNote {
      * @return
      */
     public void update(Note oldNote, Note newNote, final IOperateBean<String> operateBean){
+        url=HttpConstant.getConstant().getURL_Note("update");
         oldNote=handleNote(oldNote);
         newNote=handleNote(newNote);
-        JSONObject condition=objectOperation.setNoteToJSON(oldNote,"update");
-        JSONObject data=objectOperation.setNoteToJSON(newNote,"update");
+        JSONObject condition=objectOperation.setNoteToJSON(oldNote);
+        JSONObject data=objectOperation.setNoteToJSON(newNote);
         List<JSONObject> list=new ArrayList<>();
         list.add(condition);
         list.add(data);
         JSONArray array=arrayOperation.setObjectToArray(list);
-        connection.sendJSONArray(url,method,array);
-        connection.sendData(new IDataCallBack<String>() {
+        connection.sendJSONArray(url, method, array, new IDataCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 operateBean.onSuccess(s);
@@ -274,8 +275,7 @@ public class OperateNote {
         fileOperation=FileOperation.getOperation();
         objectOperation=JSONObjectOperation.getInstance();
         arrayOperation=JSONArrayOperation.getOperation();
-        connection=HttpConnection.getConnection();
-        url=HttpConstant.getConstant().getURL_Note();
+        connection=new HttpConnection();
         method="POST";
     }
 

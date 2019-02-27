@@ -74,7 +74,7 @@ public class FavoriteModel implements IFavorite.Model {
         operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
         operateSocial=OperateSocial.getOperateSocial();
-        operateComment =OperateComment.getCommentDetails();
+        operateComment =OperateComment.getComment();
         localInformation=LocalInformation.getLocalInformation().query();
     }
 }

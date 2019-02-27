@@ -66,7 +66,7 @@ public class CommentModel implements IComment.Model {
     }
 
     public CommentModel(){
-        operateComment =OperateComment.getCommentDetails();
+        operateComment =OperateComment.getComment();
         operateInformation=OperateInformation.getOperateInformation();
         localInformation=LocalInformation.getLocalInformation().query();
         checkCommentDetails=CheckCommentDetails.getCheckCommentDetails();
