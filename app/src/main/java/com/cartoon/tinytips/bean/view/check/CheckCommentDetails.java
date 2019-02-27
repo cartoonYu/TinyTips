@@ -3,6 +3,7 @@ package com.cartoon.tinytips.bean.view.check;
 
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.view.CommentDetails;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckCommentDetails;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -26,9 +27,9 @@ import java.util.List;
  * @version 1.0
  */
 
-public class CheckCommentDetails {
+public class CheckCommentDetails implements ICheckCommentDetails {
 
-    private static volatile CheckCommentDetails checkCommentDetails;
+    private static volatile ICheckCommentDetails checkCommentDetails;
 
     private JSONObjectOperation objectOperation;
 
@@ -42,6 +43,7 @@ public class CheckCommentDetails {
 
     private FileOperation fileOperation;
 
+    @Override
     public void query(CommentDetails details, final IOperateBean<List<CommentDetails>> operateBean){
         url=HttpConstant.getConstant().getURL_CommentDetails("query");
         connection.sendJSONObject(url, method,
@@ -103,7 +105,7 @@ public class CheckCommentDetails {
         fileOperation=FileOperation.getOperation();
     }
 
-    public static CheckCommentDetails getCheckCommentDetails(){
+    public static ICheckCommentDetails getCheckCommentDetails(){
         if(JudgeEmpty.isEmpty(checkCommentDetails)){
             synchronized (CheckCommentDetails.class){
                 if(JudgeEmpty.isEmpty(checkCommentDetails)){

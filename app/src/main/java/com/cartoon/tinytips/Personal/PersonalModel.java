@@ -6,24 +6,16 @@ import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateNote;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 class PersonalModel implements IPersonal.Model {
 
-    private String NumOfNote;
-
-    private String NumOfAttentions;
-
-    private String NumOfFans;
-
-    private List<Information> list;
-
     private Information info;
 
-
-    private OperateNote operateNote;
+    private IOperateNote operateNote;
 
     public PersonalModel() {
         operateNote =OperateNote.getOperateNote();

@@ -2,6 +2,7 @@ package com.cartoon.tinytips.bean.table.Operate;
 
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Comment;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateComment;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 import com.cartoon.tinytips.util.network.HttpConstant;
@@ -17,9 +18,9 @@ import org.json.JSONObject;
  * @version 1.3
  */
 
-public class OperateComment {
+public class OperateComment implements IOperateComment {
 
-    private static volatile OperateComment commentDetails;
+    private static volatile IOperateComment commentDetails;
 
     private JSONObjectOperation objectOperation;
 
@@ -38,7 +39,7 @@ public class OperateComment {
      *
      * @return
      */
-    public static OperateComment getComment(){
+    public static IOperateComment getComment(){
         if(JudgeEmpty.isEmpty(commentDetails)){
             synchronized (OperateComment.class){
                 if(JudgeEmpty.isEmpty(commentDetails)){
@@ -63,6 +64,7 @@ public class OperateComment {
      * @param comment
      * @return
      */
+    @Override
     public void add(Comment comment, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Comment("add");
         JSONObject data=objectOperation.setCommentToJSON(comment);
@@ -93,6 +95,7 @@ public class OperateComment {
      * @param comment
      * @return
      */
+    @Override
     public void delete(Comment comment, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Comment("delete");
         JSONObject data=objectOperation.setCommentToJSON(comment);

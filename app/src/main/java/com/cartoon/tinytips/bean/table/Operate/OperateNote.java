@@ -2,6 +2,7 @@ package com.cartoon.tinytips.bean.table.Operate;
 
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Note;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateNote;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -48,9 +49,9 @@ import java.util.Set;
  * 1.本类无法new对象，只能通过静态方法getOperateNote获取
  */
 
-public class OperateNote {
+public class OperateNote implements IOperateNote {
 
-    private static volatile OperateNote operateNote;
+    private static volatile IOperateNote operateNote;
 
     private FileOperation fileOperation;
 
@@ -73,7 +74,7 @@ public class OperateNote {
      *
      * @return
      */
-    public static OperateNote getOperateNote(){
+    public static IOperateNote getOperateNote(){
         if(JudgeEmpty.isEmpty(operateNote)){
             synchronized (OperateNote.class){
                 if(JudgeEmpty.isEmpty(operateNote)){
@@ -97,6 +98,7 @@ public class OperateNote {
      * @param note
      * @return
      */
+    @Override
     public void add(Note note, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Note("add");
         note=handleNote(note);
@@ -127,6 +129,7 @@ public class OperateNote {
      * @param condition
      * @return
      */
+    @Override
     public void delete(Note condition, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Note("delete");
         condition=handleNote(condition);
@@ -158,6 +161,7 @@ public class OperateNote {
      * @param condition
      * @return
      */
+    @Override
     public void query(Note condition, final IOperateBean<List<Note>> operateBean){
         url=HttpConstant.getConstant().getURL_Note("query");
         condition=handleNote(condition);
@@ -224,6 +228,7 @@ public class OperateNote {
      * @param newNote
      * @return
      */
+    @Override
     public void update(Note oldNote, Note newNote, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Note("update");
         oldNote=handleNote(oldNote);

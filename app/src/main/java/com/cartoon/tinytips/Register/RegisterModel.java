@@ -2,17 +2,19 @@ package com.cartoon.tinytips.Register;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.ILocalInformation;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 
 import java.util.List;
 
 class RegisterModel implements IRegister.Model {
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
-    private LocalInformation localInformation;
+    private ILocalInformation localInformation;
 
     @Override
     public void register(final Information information,final ValueCallBack<String> callBack) {

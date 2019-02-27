@@ -3,6 +3,7 @@ package com.cartoon.tinytips.bean.table.Operate;
 
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -43,9 +44,9 @@ import java.util.List;
  * 1.本类无法new对象，只能通过静态方法getOperateInformation获取
  */
 
-public class OperateInformation {
+public class OperateInformation implements IOperateInformation {
 
-    private static volatile OperateInformation operateInformation;
+    private static volatile IOperateInformation operateInformation;
 
     private JSONObjectOperation objectOperation;
 
@@ -66,7 +67,7 @@ public class OperateInformation {
      *
      * @return
      */
-    public static OperateInformation getOperateInformation(){
+    public static IOperateInformation getOperateInformation(){
         if(JudgeEmpty.isEmpty(operateInformation)){
             synchronized (OperateInformation.class){
                 if(JudgeEmpty.isEmpty(operateInformation)){
@@ -91,6 +92,7 @@ public class OperateInformation {
      * @param information
      * @return
      */
+    @Override
     public void add(Information information, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Information("add");
         JSONObject data=objectOperation.setInformationToJSON(information);
@@ -121,6 +123,7 @@ public class OperateInformation {
      * @param condition
      * @return
      */
+    @Override
     public void delete(Information condition,final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Information("delete");
         JSONObject data=objectOperation.setInformationToJSON(condition);
@@ -151,6 +154,7 @@ public class OperateInformation {
      * @param condition
      * @return
      */
+    @Override
     public void query(Information condition,final IOperateBean<List<Information>> operateBean){
         url=HttpConstant.getConstant().getURL_Information("query");
         JSONObject data=objectOperation.setInformationToJSON(condition);
@@ -204,6 +208,7 @@ public class OperateInformation {
      * @param newInformation
      * @return
      */
+    @Override
     public void update(Information oldInformation,Information newInformation,final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Information("update");
         JSONObject condition=objectOperation.setInformationToJSON(oldInformation);
@@ -224,7 +229,6 @@ public class OperateInformation {
             }
         });
     }
-
 
     private OperateInformation(){
         objectOperation=JSONObjectOperation.getInstance();

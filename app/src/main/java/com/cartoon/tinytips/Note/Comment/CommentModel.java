@@ -8,9 +8,11 @@ import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateComment;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateComment;
 import com.cartoon.tinytips.bean.view.CommentDetails;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckCommentDetails;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckCommentDetails;
 import com.cartoon.tinytips.util.Adapters.Comment.CommentItem;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
@@ -21,11 +23,9 @@ import java.util.List;
 
 public class CommentModel implements IComment.Model {
 
-    private OperateComment operateComment;
+    private IOperateComment operateComment;
 
-    private OperateInformation operateInformation;
-
-    private CheckCommentDetails checkCommentDetails;
+    private ICheckCommentDetails checkCommentDetails;
 
     private Information localInformation;
 
@@ -67,7 +67,6 @@ public class CommentModel implements IComment.Model {
 
     public CommentModel(){
         operateComment =OperateComment.getComment();
-        operateInformation=OperateInformation.getOperateInformation();
         localInformation=LocalInformation.getLocalInformation().query();
         checkCommentDetails=CheckCommentDetails.getCheckCommentDetails();
     }

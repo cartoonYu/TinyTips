@@ -8,20 +8,13 @@ import com.cartoon.tinytips.bean.table.Operate.OperateComment;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.table.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 
 import java.util.List;
 
 public class FavoriteModel implements IFavorite.Model {
 
-    private OperateNote operateNote;
-
-    private OperateInformation operateInformation;
-
-    private OperateSocial operateSocial;
-
-    private OperateComment operateComment;
-
-    private Information localInformation;
+    private IOperateInformation operateInformation;
 
     @Override
     public void initData(ValueCallBack<List<FavoriteItem>> callBack){
@@ -71,10 +64,6 @@ public class FavoriteModel implements IFavorite.Model {
     }
 
     public FavoriteModel(){
-        operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
-        operateSocial=OperateSocial.getOperateSocial();
-        operateComment =OperateComment.getComment();
-        localInformation=LocalInformation.getLocalInformation().query();
     }
 }

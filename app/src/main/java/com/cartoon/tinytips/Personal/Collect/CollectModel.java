@@ -1,28 +1,28 @@
 package com.cartoon.tinytips.Personal.Collect;
 
-import android.icu.text.IDNA;
-import android.util.Log;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.table.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateSocial;
 import com.cartoon.tinytips.bean.table.Social;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CollectModel implements ICollect.Model {
 
-    private CheckStatSocial checkStatSocial;
+    private ICheckStatSocial checkStatSocial;
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
-    private OperateSocial operateSocial;
+    private IOperateSocial operateSocial;
 
     private Information information;
 

@@ -2,15 +2,17 @@ package com.cartoon.tinytips.Personal.Detail.Revamp;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.ILocalInformation;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 
 public class RevampInformationModel implements IRevampInformation.Model {
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
-    private LocalInformation localInformation;
+    private ILocalInformation localInformation;
 
     @Override
     public void revampInformation(final Information information,final ValueCallBack<String> callBack) {

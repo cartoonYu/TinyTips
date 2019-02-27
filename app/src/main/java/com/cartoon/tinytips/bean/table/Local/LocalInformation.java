@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalInformation {
+public class LocalInformation implements ILocalInformation{
 
     private static volatile LocalInformation localInformation;
 
@@ -28,6 +28,7 @@ public class LocalInformation {
      * @param information
      * @return
      */
+    @Override
     public boolean add(Information information){
         if(JudgeEmpty.isEmpty(information)){
             return false;
@@ -59,6 +60,7 @@ public class LocalInformation {
      * @param information
      * @return
      */
+    @Override
     public boolean update(Information information){
         if(JudgeEmpty.isEmpty(information)){
             return false;
@@ -86,6 +88,7 @@ public class LocalInformation {
      *
      * @return
      */
+    @Override
     public Information query(){
         Information information=new Information();
         information.setId(preferences.getLong("id",0));

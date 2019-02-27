@@ -3,18 +3,20 @@ package com.cartoon.tinytips.Login;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.ILocalInformation;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 public class LoginModel implements ILogin.Model {
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
-    private LocalInformation localInformation;
+    private ILocalInformation localInformation;
 
     @Override
     public void checkInformation(Information information,final ValueCallBack<String> callBack) {

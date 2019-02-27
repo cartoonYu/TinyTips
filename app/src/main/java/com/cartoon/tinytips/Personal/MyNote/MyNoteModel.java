@@ -6,13 +6,14 @@ import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateNote;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 public class MyNoteModel implements IMyNote.Model {
 
-    private OperateNote operateNote;
+    private IOperateNote operateNote;
 
     private Information information;
 

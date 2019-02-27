@@ -9,26 +9,25 @@ import com.cartoon.tinytips.bean.table.Operate.OperateComment;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
 import com.cartoon.tinytips.bean.table.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateSocial;
 import com.cartoon.tinytips.bean.table.Social;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 public class RecommendModel implements IRecommend.Model {
 
-    private OperateNote operateNote;
+    private IOperateInformation operateInformation;
 
-    private OperateInformation operateInformation;
-
-    private OperateSocial operateSocial;
-
-    private OperateComment operateComment;
+    private IOperateSocial operateSocial;
 
     private Information localInformation;
 
-    private CheckStatSocial checkStatSocial;
+    private ICheckStatSocial checkStatSocial;
 
     @Override
     public void initData(final ValueCallBack<List<StatSocial>> callBack){
@@ -135,10 +134,8 @@ public class RecommendModel implements IRecommend.Model {
     }
 
     public RecommendModel(){
-        operateNote =OperateNote.getOperateNote();
         operateInformation =OperateInformation.getOperateInformation();
         operateSocial=OperateSocial.getOperateSocial();
-        operateComment =OperateComment.getComment();
         localInformation=LocalInformation.getLocalInformation().query();
         checkStatSocial=CheckStatSocial.getCheckStatSocial();
     }

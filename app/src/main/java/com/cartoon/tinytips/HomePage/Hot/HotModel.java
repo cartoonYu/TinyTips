@@ -5,12 +5,13 @@ import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 
 import java.util.List;
 
 public class HotModel implements IHot.Model {
 
-    private CheckStatSocial checkStatSocial;
+    private ICheckStatSocial checkStatSocial;
 
     @Override
     public void initData(final ValueCallBack<List<StatSocial>> callBack){

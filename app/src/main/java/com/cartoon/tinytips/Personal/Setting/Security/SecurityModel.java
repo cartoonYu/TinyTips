@@ -2,19 +2,19 @@ package com.cartoon.tinytips.Personal.Setting.Security;
 
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.table.Information;
+import com.cartoon.tinytips.bean.table.Local.ILocalInformation;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 
 public class SecurityModel implements ISecurity.Model {
 
-    private String authCode;   //验证码
-
     private Information info;
 
-    private LocalInformation localInformation;
+    private ILocalInformation localInformation;
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
     @Override
     public void changePassword(String phone, String authCode,final String password, String confirmPassword,final ValueCallBack<String> callBack) {

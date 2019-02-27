@@ -1,6 +1,7 @@
 package com.cartoon.tinytips.bean.table.Operate;
 
 import com.cartoon.tinytips.bean.IOperateBean;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateSocial;
 import com.cartoon.tinytips.bean.table.Social;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
@@ -17,9 +18,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperateSocial {
+public class OperateSocial implements IOperateSocial {
 
-    private static volatile OperateSocial operateSocial;
+    private static volatile IOperateSocial operateSocial;
 
     private JSONObjectOperation objectOperation;
 
@@ -45,6 +46,7 @@ public class OperateSocial {
      * @param social
      * @return
      */
+    @Override
     public void add(Social social, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Social("add");
         JSONObject data=objectOperation.setSocialToJSON(social);
@@ -75,6 +77,7 @@ public class OperateSocial {
      * @param condition
      * @return
      */
+    @Override
     public void delete(Social condition, final IOperateBean<String> operateBean){
         url=HttpConstant.getConstant().getURL_Social("delete");
         JSONObject data=objectOperation.setSocialToJSON(condition);
@@ -105,6 +108,7 @@ public class OperateSocial {
      * @param condition
      * @return
      */
+    @Override
     public void query(Social condition, final IOperateBean<List<Social>> operateBean){
         url=HttpConstant.getConstant().getURL_Social("query");
         JSONObject data=objectOperation.setSocialToJSON(condition);
@@ -149,7 +153,7 @@ public class OperateSocial {
         method="POST";
     }
 
-    public static OperateSocial getOperateSocial(){
+    public static IOperateSocial getOperateSocial(){
         if(JudgeEmpty.isEmpty(operateSocial)){
             synchronized (OperateSocial.class){
                 if(JudgeEmpty.isEmpty(operateSocial)){

@@ -6,19 +6,19 @@ import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateNote;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateNote;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
 
 public class NoteDetailModel implements INoteDetail.Model {
 
-    private OperateNote operateNote;
+    private IOperateNote operateNote;
 
-    private Information information;
-
-    private CheckStatSocial checkStatSocial;
+    private ICheckStatSocial checkStatSocial;
 
     @Override
     public void getNote(StatSocial social, final ValueCallBack<Note> callBack) {
@@ -62,7 +62,6 @@ public class NoteDetailModel implements INoteDetail.Model {
 
     public NoteDetailModel() {
         operateNote = OperateNote.getOperateNote();
-        information = LocalInformation.getLocalInformation().query();
         checkStatSocial=CheckStatSocial.getCheckStatSocial();
     }
 }

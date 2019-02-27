@@ -5,6 +5,7 @@ import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Operate.OperateInformation;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateInformation;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class DetailModel implements IDetail.Model {
 
     private Information info;
 
-    private OperateInformation operateInformation;
+    private IOperateInformation operateInformation;
 
     @Override
     public void getInformation(ValueCallBack<Information> callBack){

@@ -1,15 +1,15 @@
 package com.cartoon.tinytips.Personal.PersonalHomepage;
 
-import android.graphics.Path;
-
 import com.cartoon.tinytips.ValueCallBack;
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Operate.OperateSocial;
+import com.cartoon.tinytips.bean.table.Operate.imp.IOperateSocial;
 import com.cartoon.tinytips.bean.table.Social;
 import com.cartoon.tinytips.bean.view.StatSocial;
 import com.cartoon.tinytips.bean.view.check.CheckStatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 import com.cartoon.tinytips.util.JudgeEmpty;
 
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class PersonalHomepageModel implements IPersonalHomepage.Model {
 
     private Information info;
 
-    private CheckStatSocial checkStatSocial;
+    private ICheckStatSocial checkStatSocial;
 
-    private OperateSocial operateSocial;
+    private IOperateSocial operateSocial;
 
     @Override
     public void getInformation(Information information,ValueCallBack<Information> callBack) {

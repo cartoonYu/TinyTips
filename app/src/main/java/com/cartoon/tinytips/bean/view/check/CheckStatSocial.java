@@ -5,6 +5,7 @@ import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Information;
 import com.cartoon.tinytips.bean.table.Local.LocalInformation;
 import com.cartoon.tinytips.bean.view.StatSocial;
+import com.cartoon.tinytips.bean.view.check.imp.ICheckStatSocial;
 import com.cartoon.tinytips.util.JSON.JSONArrayOperation;
 import com.cartoon.tinytips.util.JSON.JSONObjectOperation;
 import com.cartoon.tinytips.util.JudgeEmpty;
@@ -30,9 +31,9 @@ import java.util.Set;
  * @version 1.0
  */
 
-public class CheckStatSocial {
+public class CheckStatSocial implements ICheckStatSocial {
 
-    private static volatile CheckStatSocial checkStatSocial;
+    private static volatile ICheckStatSocial checkStatSocial;
 
     private JSONObjectOperation objectOperation;
 
@@ -44,7 +45,7 @@ public class CheckStatSocial {
 
     private String method;
 
-    public static CheckStatSocial getCheckStatSocial(){
+    public static ICheckStatSocial getCheckStatSocial(){
         if(JudgeEmpty.isEmpty(checkStatSocial)){
             synchronized (CheckStatSocial.class){
                 if(JudgeEmpty.isEmpty(checkStatSocial)){
@@ -55,6 +56,7 @@ public class CheckStatSocial {
         return checkStatSocial;
     }
 
+    @Override
     public void query(final StatSocial social, final IOperateBean<List<StatSocial>> operateBean){
         url=HttpConstant.getConstant().getURL_StatSocial("query");
         JSONObject object=objectOperation.setStatSocialToJSON(social);
