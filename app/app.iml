@@ -17,7 +17,7 @@
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res/layout/discover" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res/layout/discover;file://$MODULE_DIR$/src/main/res/layout/discover/list;file://$MODULE_DIR$/src/main/res/layout/homepage;file://$MODULE_DIR$/src/main/res/layout/login;file://$MODULE_DIR$/src/main/res/layout/message;file://$MODULE_DIR$/src/main/res/layout/note;file://$MODULE_DIR$/src/main/res/layout/note/detail;file://$MODULE_DIR$/src/main/res/layout/note/revampnote;file://$MODULE_DIR$/src/main/res/layout/note/newnote;file://$MODULE_DIR$/src/main/res/layout/note/sharenote;file://$MODULE_DIR$/src/main/res/layout/note/comment;file://$MODULE_DIR$/src/main/res/layout/personal;file://$MODULE_DIR$/src/main/res/layout/personal/mynote;file://$MODULE_DIR$/src/main/res/layout/personal/likes;file://$MODULE_DIR$/src/main/res/layout/personal/detail;file://$MODULE_DIR$/src/main/res/layout/personal/detail/revamp;file://$MODULE_DIR$/src/main/res/layout/personal/homepage;file://$MODULE_DIR$/src/main/res/layout/personal/collect;file://$MODULE_DIR$/src/main/res/layout/personal/setting;file://$MODULE_DIR$/src/main/res/layout/personal/setting/management;file://$MODULE_DIR$/src/main/res/layout/personal/setting/security;file://$MODULE_DIR$/src/main/res/layout/register;file://$MODULE_DIR$/src/main/res/layout/start;file://$MODULE_DIR$/src/main/res/layout;file://$MODULE_DIR$/src/main/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res/layout/discover;file://$MODULE_DIR$/src/main/res/layout/discover/list;file://$MODULE_DIR$/src/main/res/layout/homepage;file://$MODULE_DIR$/src/main/res/layout/login;file://$MODULE_DIR$/src/main/res/layout/message;file://$MODULE_DIR$/src/main/res/layout/note;file://$MODULE_DIR$/src/main/res/layout/note/detail;file://$MODULE_DIR$/src/main/res/layout/note/revampnote;file://$MODULE_DIR$/src/main/res/layout/note/newnote;file://$MODULE_DIR$/src/main/res/layout/note/sharenote;file://$MODULE_DIR$/src/main/res/layout/note/comment;file://$MODULE_DIR$/src/main/res/layout/personal;file://$MODULE_DIR$/src/main/res/layout/personal/mynote;file://$MODULE_DIR$/src/main/res/layout/personal/likes;file://$MODULE_DIR$/src/main/res/layout/personal/detail;file://$MODULE_DIR$/src/main/res/layout/personal/detail/revamp;file://$MODULE_DIR$/src/main/res/layout/personal/homepage;file://$MODULE_DIR$/src/main/res/layout/personal/collect;file://$MODULE_DIR$/src/main/res/layout/personal/setting;file://$MODULE_DIR$/src/main/res/layout/personal/setting/management;file://$MODULE_DIR$/src/main/res/layout/personal/setting/security;file://$MODULE_DIR$/src/main/res/layout/register;file://$MODULE_DIR$/src/main/res/layout/start;file://$MODULE_DIR$/src/main/res/layout;file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/build/generated/res/rs/debug;file://$MODULE_DIR$/build/generated/res/resValues/debug" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
@@ -119,6 +119,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/checkDebugClasspath" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check_manifest_result" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/compatible_screen_manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-runtime-classes" />
@@ -150,6 +151,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split_list" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/validate_signing_config" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>

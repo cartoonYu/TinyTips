@@ -45,7 +45,7 @@ public class HttpConnection implements IHttpConnection {
     public void sendJSONObject(final String url, final String method, final JSONObject object,final IDataCallBack<String> callBack) {
         Log.d("network",url);
         Log.d("network",method);
-        Log.d("data",object.toString());
+        Log.d("network",object.toString());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -88,7 +88,7 @@ public class HttpConnection implements IHttpConnection {
     public void sendJSONArray(final String url, final String method, final JSONArray array,final IDataCallBack<String> callBack) {
         Log.d("network",url);
         Log.d("network",method);
-        Log.d("data",array.toString());
+        Log.d("network",array.toString());
         new Thread(new Runnable() {
             @Override
             public void run() {

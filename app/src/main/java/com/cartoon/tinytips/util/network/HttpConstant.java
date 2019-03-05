@@ -63,7 +63,7 @@ public class HttpConstant {
     }
 
     private void setFilePath() {
-        filePath=new String("url_local.properties");
+        filePath=new String("url_server.properties");
     }
 
     public String getURL_Comment(String method) {

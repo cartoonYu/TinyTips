@@ -728,12 +728,17 @@ public class JSONObjectOperation {
      * @return
      */
     private Map<String,String> changeStringToMap(String data){
+        Map<String,String> result=new LinkedHashMap<>();
+        if(data.length()==0||JudgeEmpty.isEmpty(data)){
+            return result;
+        }
         data=data.substring(1,data.length()-1);
         String[] strs=data.split(",");
-        Map<String,String> result=new LinkedHashMap<>();
         for(int i=0,length=strs.length;i<length;i++){
             int flag=strs[i].indexOf("=");
-            result.put(strs[i].substring(0,flag).trim(),strs[i].substring(flag+1).trim());
+            if(flag>=0){
+                result.put(strs[i].substring(0,flag).trim(),strs[i].substring(flag+1).trim());
+            }
         }
         return result;
     }

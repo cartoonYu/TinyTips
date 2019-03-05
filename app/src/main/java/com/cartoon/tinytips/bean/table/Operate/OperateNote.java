@@ -1,5 +1,7 @@
 package com.cartoon.tinytips.bean.table.Operate;
 
+import android.util.Log;
+
 import com.cartoon.tinytips.bean.IOperateBean;
 import com.cartoon.tinytips.bean.table.Note;
 import com.cartoon.tinytips.bean.table.Operate.imp.IOperateNote;
